@@ -1,0 +1,3 @@
+[submodule "fonts/FiraCodeiScript"]
+	path = fonts/FiraCodeiScript
+	url = https://github.com/kencrocken/FiraCodeiScript.git
