@@ -1,9 +1,9 @@
 <scheme name="Monokai copy" version="142" parent_scheme="Darcula">
   <metaInfo>
-    <property name="created">2019-02-18T18:55:50</property>
+    <property name="created">2019-02-18T21:38:31</property>
     <property name="ide">WebStorm</property>
     <property name="ideVersion">2018.1.5.0.0</property>
-    <property name="modified">2019-02-18T18:56:16</property>
+    <property name="modified">2019-02-18T21:38:39</property>
     <property name="originalScheme">Monokai copy</property>
   </metaInfo>
   <colors>
@@ -751,6 +751,12 @@
     <option name="INJECTED_LANGUAGE_FRAGMENT">
       <value>
         <option name="BACKGROUND" value="273627" />
+      </value>
+    </option>
+    <option name="INLINE_PARAMETER_HINT_CURRENT">
+      <value>
+        <option name="FOREGROUND" value="acacac" />
+        <option name="BACKGROUND" value="367800" />
       </value>
     </option>
     <option name="INSTANCE_FIELD_ATTRIBUTES">
