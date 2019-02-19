@@ -4,3 +4,5 @@
   username = radoslawgrochowski
 [web]
   browser = google-chrome
+[alias]
+  clean-all = !git branch | grep -ve " master$" | xargs git branch -D
