@@ -1,0 +1,21 @@
+export ZSH="/Users/rgrochowski/.oh-my-zsh"
+
+PATH=$PATH:/Projects/dotfiles/bin:$HOME/bin:/usr/local/bin
+
+source ~/antigen.zsh
+#
+antigen use oh-my-zsh
+antigen bundle git
+antigen bundle command-not-found
+antigen bundle lukechilds/zsh-nvm
+antigen bundle lukechilds/zsh-better-npm-completion
+antigen bundle zsh-users/zsh-completions
+#
+antigen bundle zsh-users/zsh-syntax-highlighting
+#
+antigen theme romkatv/powerlevel10k
+#
+antigen apply
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

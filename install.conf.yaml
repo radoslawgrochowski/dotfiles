@@ -1,0 +1,10 @@
+- link:
+    ~/.zshrc:
+      force: true
+      path: .zshrc.link
+
+- shell:
+    - [chsh -s $(which zsh), Making zsh the default shell]
+
+
+- clean: ['~']

@@ -1,1 +1,5 @@
 nvm, npx, zsh
+
+autoinstall:
+ - nvm,
+ - zsh, antigen
