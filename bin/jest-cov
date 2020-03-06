@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+npm run test $1 -- --coverage --collectCoverageFrom="*/$1/**" \
+&& open ./coverage/index.html
