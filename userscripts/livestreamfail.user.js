@@ -58,6 +58,6 @@
     cleanupVisited();
     setInterval(() => {
       addHandlerToLinks();
-    }, 5000);
+    }, 1000);
   });
 })();
