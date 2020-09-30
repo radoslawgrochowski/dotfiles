@@ -5,3 +5,4 @@ autoinstall:
  - zsh, antigen
  - httpie
  - jq
+ - https://www.npmjs.com/package/git-lab-cli
