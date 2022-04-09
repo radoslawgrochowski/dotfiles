@@ -1,3 +1,5 @@
 [user]
 	name = Radosław Grochowski
 	email = rg@fard.pl
+[core]
+	editor = vim
