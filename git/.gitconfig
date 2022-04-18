@@ -1,5 +1,11 @@
 [user]
-	name = Radosław Grochowski
 	email = rg@fard.pl
+	name = Radosław Grochowski
 [core]
-	editor = vim
+	editor = vi
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[mergetool "vimdiff"]
+	path = nvim
