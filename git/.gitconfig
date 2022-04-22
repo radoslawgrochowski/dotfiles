@@ -9,3 +9,5 @@
 	tool = vimdiff
 [mergetool "vimdiff"]
 	path = nvim
+[url "git@github.com:"]
+	insteadOf = https://github.com/
