@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:monospace 6 
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -138,11 +138,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -158,6 +153,34 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
+#bar {
+#        status_command i3status
+#}
+
+### Random wallpaper
+exec_always --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
+
+### default workspaces
+for_window [class=".*"] border pixel 2
+smart_gaps on
+smart_borders on
+gaps inner 16
+gaps outer 0
+
+### ws2 
+for_window [workspace=$ws2] floating enable
+for_window [workspace=$ws2] border pixel 4 
+
+#### Spotify 
+for_window [class="Spotify"] resize set 1200 800 
+for_window [class="Spotify"] move position 700 60
+assign [class="Spotify"] $ws2
+for_window [class="Spotify"] move to workspace $ws2
+
+### Lock screen with black 
+bindsym $mod+Shift+x exec i3lock --c=000000
+
+
+exec xrandr --output DP-2 --primary --mode 1920x1080 -r 144.0 --right-of HDMI-0
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
