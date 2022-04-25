@@ -182,5 +182,5 @@ bindsym $mod+Shift+x exec i3lock --c=000000
 
 
 exec xrandr --output DP-2 --primary --mode 1920x1080 -r 144.0 --right-of HDMI-0
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
 
