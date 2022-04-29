@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $term kitty
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -41,7 +42,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -151,31 +152,25 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#        status_command i3status
-#}
-
 ### Random wallpaper
 exec_always --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
 
 ### default workspaces
 for_window [class=".*"] border pixel 2
-smart_gaps on
+# smart_gaps on
 smart_borders on
-gaps inner 16
+gaps inner 10
 gaps outer 0
 
-### ws2 
-for_window [workspace=$ws2] floating enable
-for_window [workspace=$ws2] border pixel 4 
+### ws9 
+for_window [workspace=$ws9] floating enable
+for_window [workspace=$ws9] border pixel 4 
 
 #### Spotify 
 for_window [class="Spotify"] resize set 1200 800 
 for_window [class="Spotify"] move position 700 60
-assign [class="Spotify"] $ws2
-for_window [class="Spotify"] move to workspace $ws2
+assign [class="Spotify"] $ws9
+for_window [class="Spotify"] move to workspace $ws9
 
 ### Lock screen with black 
 bindsym $mod+Shift+x exec i3lock --c=000000
