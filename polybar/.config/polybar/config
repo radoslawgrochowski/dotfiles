@@ -1,13 +1,21 @@
 [colors]
-;background = ${xrdb:color0:#222}
-background = #222
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+background = #11121D
+foreground = #A0A8CD
+content-background = #2b2f37
+blue = #7199EE
+cyan = #38A89D
+green =  #A0E8A2
+orange = #d19a66
+red =  #e06c75
+yellow = #D4B261
+purple = #A485DD
+light-gray = #565c64
+
 
 [bar/example]
 monitor = ${env:MONITOR:}
@@ -33,8 +41,8 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "Noto Sans:size=8;1"
-font-1 = "Noto Sans:size=15;1"
+font-0 = "IBM Plex Mono:size=11;1"
+font-1 = "IBM Plex Mono:size=12;1"
 font-2 = "Noto Color Emoji:size=5:pixelsize=8:style=Regular:scale=10;2"
 
 modules-left= i3
@@ -46,7 +54,7 @@ tray-padding = 2
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 

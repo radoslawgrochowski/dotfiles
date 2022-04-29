@@ -15,6 +15,7 @@ set nobackup
 set incsearch
 set scrolloff=8
 set signcolumn=yes
+set termguicolors
 
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -29,6 +30,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'tiagovla/tokyodark.nvim'
 
 Plug 'mbbill/undotree'
 Plug 'neovim/nvim-lspconfig'
@@ -37,6 +40,14 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
 call plug#end()
 
+
+let g:tokyodark_transparent_background = 0
+let g:tokyodark_enable_italic_comment = 1
+let g:tokyodark_enable_italic = 1
+let g:tokyodark_color_gamma = "1.0"
+colorscheme tokyodark 
+
+lua require('lualine').setup{ options = { theme = 'tokyodark' } }
 lua require'lspconfig'.tsserver.setup{}
 
 let mapleader = " "
@@ -45,7 +56,7 @@ nnoremap <leader> <NOP>
 nnoremap <leader>u :UndotreeToggle<CR>
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>f <cmd>Telescope find_files hidden=true<cr>
 " nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 " nnoremap <leader>fb <cmd>Telescope buffers<cr>
 " nnoremap <leader>fh <cmd>Telescope help_tags<cr>
