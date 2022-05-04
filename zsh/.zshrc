@@ -13,6 +13,7 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
   git
   npm
+  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -23,5 +24,8 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
+
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
 
 prompt_context () { }
