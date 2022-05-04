@@ -190,4 +190,4 @@ assign [class="Spotify"] $ws9
 for_window [class="Spotify"] move to workspace $ws9
 
 exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
-
+exec --no-startup-id picom -b
