@@ -1,7 +1,6 @@
--- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,longest,preview'
 
-local cmp = require'cmp'
+local cmp = require 'cmp'
 local lspkind = require 'lspkind'
 
 cmp.setup({
@@ -25,7 +24,7 @@ cmp.setup({
     ['<C-u>'] = cmp.mapping.scroll_docs(4),
     ['<C-space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ 
+    ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -41,28 +40,29 @@ cmp.setup({
       else
         fallback()
       end
-    end, {"i","s","c",}),
+    end, { "i", "s", "c", }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'luasnip' }, -- For luasnip users.
   },
-  { 
+    {
     { name = 'buffer' },
     { name = 'path' },
   }
   ),
- formatting = {
-   format = lspkind.cmp_format {
-     with_text = true,
-     menu = {
-       buffer = '[BUF]',
-       nvim_lsp = '[LSP]',
-       nvim_lua = '[Lua]',
-       path = "[Path]",
-     },
-   },
- },
+  formatting = {
+    format = lspkind.cmp_format {
+      with_text = true,
+      menu = {
+        buffer = '[BUF]',
+        nvim_lsp = '[LSP]',
+        nvim_lua = '[Lua]',
+        path = "[Path]",
+      },
+    },
+  },
 })
 
 
@@ -83,4 +83,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
