@@ -175,6 +175,8 @@ workspace $ws1 output $SECONDARY_MONITOR
 workspace $ws2 output $SECONDARY_MONITOR
 workspace $ws3 output $SECONDARY_MONITOR
 workspace $ws4 output $SECONDARY_MONITOR
+workspace $ws5 output $SECONDARY_MONITOR
+workspace $ws6 output $SECONDARY_MONITOR
 workspace $ws7 output $PRIMARY_MONITOR
 workspace $ws8 output $PRIMARY_MONITOR
 workspace $ws9 output $PRIMARY_MONITOR
@@ -186,8 +188,8 @@ exec --no-startup-id spotify
 # for_window [workspace=$ws9] border pixel 4 
 # for_window [class="Spotify"] resize set 1200 800 
 # for_window [class="Spotify"] move position 700 60
-assign [class="Spotify"] $ws9
-for_window [class="Spotify"] move to workspace $ws9
+assign [class="Spotify"] $ws6
+for_window [class="Spotify"] move to workspace $ws6
 
 exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
 exec --no-startup-id picom -b
