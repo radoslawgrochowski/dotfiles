@@ -54,7 +54,8 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-bindsym $mod+c exec google-chrome-stable
+# use some site as default so vimium extension is able to work
+bindsym $mod+c exec google-chrome-stable https://google.com --new-window
 
 # change focus
 bindsym $mod+h focus left
