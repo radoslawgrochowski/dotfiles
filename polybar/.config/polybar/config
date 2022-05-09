@@ -1,49 +1,51 @@
 [colors]
 background-alt = #444
-foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
-alert = #bd2c40
-background = #11121D
-foreground = #A0A8CD
 content-background = #2b2f37
-blue = #7199EE
-cyan = #38A89D
-green =  #A0E8A2
-orange = #d19a66
-red =  #e06c75
-yellow = #D4B261
-purple = #A485DD
-light-gray = #565c64
 
+red =  #e06c75
+
+background = #141C21
+foreground = #F5F5F5
+foreground-alt = #FFFFFF
+alpha = #00000000
+
+;; shades
+shade1 = #BF360C
+shade2 = #D84315
+shade3 = #E64A19
+shade4 = #F4511E
+shade5 = #FF5722
+shade6 = #FF7043
+shade7 = #FF8A65
+shade8 = #FFAB91
 
 [bar/example]
 monitor = ${env:MONITOR:}
 width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
-radius = 6.0
-fixed-center = false
+height = 32 
+radius = 0.0
+fixed-center = true 
 
-background = ${colors.background}
+background = ${colors.alpha}
 foreground = ${colors.foreground}
 
-line-size = 3
-line-color = #f00
+border-size = 8 
+border-color = ${colors.alpha}
 
-border-size = 4
-border-color = #00000000
+underline-size = 2
+underline-color = ${colors.foreground}
 
-padding-left = 0
-padding-right = 2
+padding-left = 0 
+padding-right = 0 
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
-font-0 = "IBM Plex Mono:size=11;1"
-font-1 = "IBM Plex Mono:size=12;1"
-font-2 = "Noto Color Emoji:size=5:pixelsize=8:style=Regular:scale=10;2"
+font-0 = "IBM Plex Mono:size=10;1"
+font-1 = "IBM Plex Mono:size=10;1"
+font-2 = "Iosevka Nerd Font:pixelsize=15;4"
 
 modules-left= i3
 modules-center= xwindow
@@ -51,25 +53,18 @@ modules-right = pulseaudio memory cpu wlan eth battery temperature date powermen
 
 tray-position = right
 tray-padding = 2
-;tray-background = #0063ff
+tray-background = ${colors.shade1}
 
-;wm-restack = bspwm
 wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
 cursor-click = pointer
 cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:80:...%
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-padding = 5
 
 [module/i3]
 type = internal/i3
@@ -78,7 +73,7 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
@@ -86,12 +81,13 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
+label-focused-background = ${colors.background}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
+label-unfocused-background = ${colors.background}
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
@@ -102,28 +98,29 @@ label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.red}
 label-urgent-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
-
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "🔺"
-format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
-label = %percentage:2%%
+format-prefix = 
+format-prefix-font = 3
+format-background = ${colors.shade3}
+format-foreground = ${colors.foreground}
+format-padding = 2
+label = " %percentage:2%%"
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "🔹 "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
+label = " %percentage_used%%"
+format = <label>
+format-prefix = 
+format-prefix-font = 3
+format-background = ${colors.shade4}
+format-padding = 2
 
 [module/wlan]
 type = internal/network
@@ -135,10 +132,6 @@ format-connected-underline = #9f78e1
 label-connected = %essid%
 
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -158,54 +151,42 @@ format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
-interval = 5
-
-date =
-date-alt = " %Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 📅
-format-prefix-font = 2
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
-
-label = %date% %time%
+interval = 1.0
+time = " %I:%M %p"
+time-alt = " %a, %d %b %Y"
+format = <label>
+format-prefix = 
+format-prefix-font = 3
+format-background = ${colors.shade1}
+format-foreground = ${colors.foreground}
+format-padding = 2
+label = %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = 🔉 %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted = 🔇 muted
-label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = false
+interval = 5
+format-volume = <ramp-volume> <label-volume>
+format-volume-background = ${colors.shade6}
+format-volume-padding = 2
+format-muted = <label-muted>
+format-muted-prefix = 
+format-muted-prefix-font = 2
+format-muted-background = ${colors.shade6}
+format-muted-padding = 2
+label-volume = %percentage%%
+label-muted = " Muted"
+label-muted-foreground = ${colors.foreground}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-font = 2
 
 [module/battery]
 type = internal/battery
@@ -290,14 +271,9 @@ menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
-
+margin-top = 0
+margin-bottom = 0
+  
 ; vim:ft=dosini
