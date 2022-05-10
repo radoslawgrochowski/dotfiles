@@ -1,4 +1,14 @@
-local packer = require 'lib.packer-init'
+local packer = require 'packer'
+
+packer.init {
+  display = {
+    open_fn = function()
+      return require('packer.util').float { border = 'rounded' }
+    end,
+  },
+  auto_clean = true,
+  compile_on_sync = true,
+}
 
 packer.startup(function(use)
   use { 'wbthomason/packer.nvim' }
@@ -115,6 +125,5 @@ packer.startup(function(use)
   --  }
 
   -- use { 'sbdchd/neoformat' }
-
-
 end)
+
