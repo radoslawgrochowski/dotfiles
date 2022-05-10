@@ -159,7 +159,7 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
 
 ### default workspaces
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 4
 # smart_gaps on
 smart_borders on
 gaps inner 8
