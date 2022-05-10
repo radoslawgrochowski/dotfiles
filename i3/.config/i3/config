@@ -195,4 +195,5 @@ assign [class="Spotify"] $ws6
 for_window [class="Spotify"] move to workspace $ws6
 
 exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
+exec --no-startup-id shutter --min_at_startup
 exec --no-startup-id picom -b
