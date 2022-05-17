@@ -95,6 +95,11 @@ bindsym $mod+a focus parent
 
 # lock screen
 bindsym $MOD+m exec i3lock -c 000000
+
+
+# capture screenshoot
+bindsym $MOD+p exec shutter -a 
+
 # focus the child container
 #bindsym $mod+d focus child
 
