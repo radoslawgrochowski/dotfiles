@@ -42,9 +42,16 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# terminal
 # start a terminal
-bindsym $mod+n exec kitty 
+bindsym $mod+Shift+Return exec kitty 
+# start a terminal with same working directory
 bindsym $mod+Return exec kitty -d `xcwd` 
+
+# start a terminal with notes project
+bindsym $mod+n exec kitty /bin/zsh -c "nvim ~/Projects/notes/" 
+bindsym $mod+Shift+n exec kitty /bin/zsh -c "nvim ~/Projects/notes/TODO.md" 
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
