@@ -13,3 +13,5 @@
 	insteadOf = https://github.com/
 [push]
 	default = current
+[include]
+	path = ~/.wp.gitconfig
