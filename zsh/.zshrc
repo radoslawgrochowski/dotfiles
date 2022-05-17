@@ -6,7 +6,6 @@ export ZSH=$HOME/.oh-my-zsh
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="agnoster"
-
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
@@ -25,7 +24,16 @@ else
   export EDITOR='nvim'
 fi
 
+# vi mode
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
 
+# aliases
+. ~/.aliases
+for f in ~/.*.aliases; do
+   . $f
+done
+
+# WARNING - this must be last somehow 
+# hide machine name from prompt 
 prompt_context () { }

@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+alias copy="xclip -selection clipboard"
+alias paste="xclip -o -selection clipboard"
