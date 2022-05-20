@@ -8,6 +8,7 @@ vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
+---@diagnostic disable-next-line: unused-local
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -53,7 +54,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'tsserver' }
+local servers = { 'tsserver', 'ansiblels' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
@@ -72,8 +73,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 require 'lspconfig'.sumneko_lua.setup {
   on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 50,
+  flags = { debounce_text_changes = 50,
   },
   handlers = handlers,
   capabilities = capabilities,

@@ -106,11 +106,21 @@ packer.startup(function(use)
     end,
   }
 
+  -- use {
+  --   'j-hui/fidget.nvim',
+  --   config = function()
+  --     require('fidget').setup {}
+  --   end,
+  -- }
+
   use {
-    'j-hui/fidget.nvim',
-    config = function()
-      require('fidget').setup {}
-    end,
+      'kyazdani42/nvim-tree.lua',
+      requires = {
+        'kyazdani42/nvim-web-devicons', -- optional, for file icon
+      },
+      config = function()
+        require 'user.plugins.nvim-tree'
+      end,
   }
   -- plugins up to this line have been reviewed by me
   -- and I don't really know what are plugins below capable of
