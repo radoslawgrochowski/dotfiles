@@ -105,6 +105,18 @@ _G.packer_plugins = {
     path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["goyo.vim"] = {
+    config = { "\27LJ\2\2b\0\0\5\0\6\0\n6\0\0\0'\1\1\0B\0\2\0029\0\2\0\18\1\0\0'\2\3\0'\3\4\0'\4\5\0B\1\4\1K\0\1\0\18<cmd>Goyo<cr>\14<leader>g\6n\vkeymap\14lib.utils\frequire\0" },
+    loaded = true,
+    path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/goyo.vim",
+    url = "https://github.com/junegunn/goyo.vim"
+  },
+  ["limelight.vim"] = {
+    config = { "\27LJ\2\2»\1\0\0\2\0\5\1\t6\0\0\0009\0\1\0*\1\0\0=\1\2\0006\0\0\0009\0\3\0'\1\4\0B\0\2\1K\0\1\0b \n        autocmd! User GoyoEnter Limelight\n        autocmd! User GoyoLeave Limelight!\n      \bcmd\"limelight_default_coefficient\6g\bvimµæÌ™\19™³æþ\3\0" },
+    loaded = true,
+    path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/limelight.vim",
+    url = "https://github.com/junegunn/limelight.vim"
+  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
@@ -168,12 +180,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/spellsitter.nvim",
     url = "https://github.com/lewis6991/spellsitter.nvim"
-  },
-  ["splitjoin.vim"] = {
-    config = { "\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.plugins.splitjoin\frequire\0" },
-    loaded = true,
-    path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/splitjoin.vim",
-    url = "https://github.com/AndrewRadev/splitjoin.vim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
@@ -256,10 +262,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.plugins.telescope\frequire\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\0029\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16spellsitter\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 try_loadstring("\27LJ\2\0020\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\21user.plugins.cmp\frequire\0", "config", "nvim-cmp")
@@ -268,6 +274,10 @@ time([[Config for nvim-cmp]], false)
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.plugins.nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
+-- Config for: limelight.vim
+time([[Config for limelight.vim]], true)
+try_loadstring("\27LJ\2\2»\1\0\0\2\0\5\1\t6\0\0\0009\0\1\0*\1\0\0=\1\2\0006\0\0\0009\0\3\0'\1\4\0B\0\2\1K\0\1\0b \n        autocmd! User GoyoEnter Limelight\n        autocmd! User GoyoLeave Limelight!\n      \bcmd\"limelight_default_coefficient\6g\bvimµæÌ™\19™³æþ\3\0", "config", "limelight.vim")
+time([[Config for limelight.vim]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\0025\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\26user.plugins.gitsigns\frequire\0", "config", "gitsigns.nvim")
@@ -276,22 +286,22 @@ time([[Config for gitsigns.nvim]], false)
 time([[Config for tokyodark.nvim]], true)
 try_loadstring("\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.plugins.tokyodark\frequire\0", "config", "tokyodark.nvim")
 time([[Config for tokyodark.nvim]], false)
--- Config for: splitjoin.vim
-time([[Config for splitjoin.vim]], true)
-try_loadstring("\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.plugins.splitjoin\frequire\0", "config", "splitjoin.vim")
-time([[Config for splitjoin.vim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-try_loadstring("\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.plugins.lspconfig\frequire\0", "config", "nvim-lspconfig")
-time([[Config for nvim-lspconfig]], false)
+-- Config for: goyo.vim
+time([[Config for goyo.vim]], true)
+try_loadstring("\27LJ\2\2b\0\0\5\0\6\0\n6\0\0\0'\1\1\0B\0\2\0029\0\2\0\18\1\0\0'\2\3\0'\3\4\0'\4\5\0B\1\4\1K\0\1\0\18<cmd>Goyo<cr>\14<leader>g\6n\vkeymap\14lib.utils\frequire\0", "config", "goyo.vim")
+time([[Config for goyo.vim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.plugins.telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 -- Config for: undotree
 time([[Config for undotree]], true)
 try_loadstring("\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.plugins.tokyodark\frequire\0", "config", "undotree")
 time([[Config for undotree]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\0029\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16spellsitter\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+try_loadstring("\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.plugins.lspconfig\frequire\0", "config", "nvim-lspconfig")
+time([[Config for nvim-lspconfig]], false)
 if should_profile then save_profiles() end
 
 end)
