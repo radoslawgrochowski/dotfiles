@@ -122,6 +122,7 @@ packer.startup(function(use)
         require 'user.plugins.nvim-tree'
       end,
   }
+  
   -- plugins up to this line have been reviewed by me
   -- and I don't really know what are plugins below capable of
   --
@@ -133,7 +134,5 @@ packer.startup(function(use)
   --      require 'user.plugins.treesitter-context'
   --    end
   --  }
-
-  -- use { 'sbdchd/neoformat' }
 end)
 
