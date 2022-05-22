@@ -54,7 +54,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'tsserver', 'ansiblels' }
+local servers = { 'tsserver', 'ansiblels', 'bashls' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
@@ -71,7 +71,9 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-require 'lspconfig'.sumneko_lua.setup {
+local lspconfig = require 'lspconfig'
+
+lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   flags = { debounce_text_changes = 50,
   },
@@ -92,6 +94,50 @@ require 'lspconfig'.sumneko_lua.setup {
       telemetry = {
         enable = false,
       },
+    },
+  },
+}
+
+-- check https://github.com/lukas-reineke/dotfiles/blob/master/vim/lua/lsp/init.lua
+-- https://github.com/mattn/efm-langserver
+local eslint = {
+  lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}",
+  lintIgnoreExitCode = true,
+  lintStdin = true,
+  lintFormats = {
+    "%f(%l,%c): %tarning %m",
+    "%f(%l,%c): %rror %m",
+  },
+  lintSource = "eslint",
+}
+
+local prettier = {
+  formatCommand = [[$([ -n "$(command -v node_modules/.bin/prettier)" ] && echo "node_modules/.bin/prettier" || echo "prettier") --stdin-filepath ${INPUT} ${--config-precedence:configPrecedence} ${--tab-width:tabWidth} ${--single-quote:singleQuote} ${--trailing-comma:trailingComma}]],
+  formatStdin = true,
+}
+
+lspconfig.efm.setup {
+  capabilities = capabilities,
+  handlers = handlers,
+  on_attach = on_attach,
+  cmd = { "/home/radoslawgrochowski/go/src/github.com/mattn/efm-langserver" },
+  init_options = { documentFormatting = true },
+  root_dir = vim.loop.cwd,
+  settings = {
+    rootMarkers = { ".git/" },
+    lintDebounce = 100,
+    -- logLevel = 5,
+    languages = {
+      typescript = { prettier, eslint },
+      javascript = { prettier, eslint },
+      typescriptreact = { prettier, eslint },
+      javascriptreact = { prettier, eslint },
+      yaml = { prettier },
+      json = { prettier },
+      html = { prettier },
+      scss = { prettier },
+      css = { prettier },
+      markdown = { prettier },
     },
   },
 }
