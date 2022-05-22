@@ -54,7 +54,11 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'tsserver', 'ansiblels', 'bashls' }
+local servers = { 'tsserver',
+  'ansiblels',
+  'bashls',
+  -- 'eslint',
+}
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
@@ -100,16 +104,16 @@ lspconfig.sumneko_lua.setup {
 
 -- check https://github.com/lukas-reineke/dotfiles/blob/master/vim/lua/lsp/init.lua
 -- https://github.com/mattn/efm-langserver
-local eslint = {
-  lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}",
-  lintIgnoreExitCode = true,
-  lintStdin = true,
-  lintFormats = {
-    "%f(%l,%c): %tarning %m",
-    "%f(%l,%c): %rror %m",
-  },
-  lintSource = "eslint",
-}
+-- local eslint = {
+--   lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}",
+--   lintIgnoreExitCode = true,
+--   lintStdin = true,
+--   lintFormats = {
+--     "%f(%l,%c): %tarning %m",
+--     "%f(%l,%c): %rror %m",
+--   },
+--   lintSource = "eslint",
+-- }
 
 local prettier = {
   formatCommand = [[$([ -n "$(command -v node_modules/.bin/prettier)" ] && echo "node_modules/.bin/prettier" || echo "prettier") --stdin-filepath ${INPUT} ${--config-precedence:configPrecedence} ${--tab-width:tabWidth} ${--single-quote:singleQuote} ${--trailing-comma:trailingComma}]],
@@ -120,18 +124,18 @@ lspconfig.efm.setup {
   capabilities = capabilities,
   handlers = handlers,
   on_attach = on_attach,
-  cmd = { "/home/radoslawgrochowski/go/src/github.com/mattn/efm-langserver" },
-  init_options = { documentFormatting = true },
+  cmd = { "/home/radoslawgrochowski/go/bin/efm-langserver" },
+  init_options = { documentFormatting = true, codeAction = true },
   root_dir = vim.loop.cwd,
   settings = {
     rootMarkers = { ".git/" },
     lintDebounce = 100,
     -- logLevel = 5,
     languages = {
-      typescript = { prettier, eslint },
-      javascript = { prettier, eslint },
-      typescriptreact = { prettier, eslint },
-      javascriptreact = { prettier, eslint },
+      typescript = { prettier },
+      javascript = { prettier },
+      typescriptreact = { prettier },
+      javascriptreact = { prettier },
       yaml = { prettier },
       json = { prettier },
       html = { prettier },
@@ -141,3 +145,4 @@ lspconfig.efm.setup {
     },
   },
 }
+vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format{ async = true } ]]
