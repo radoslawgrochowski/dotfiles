@@ -32,17 +32,22 @@ packer.startup(function(use)
       require 'user.plugins.tokyodark'
     end
   }
-
+  use {
+    'L3MON4D3/LuaSnip',
+    config = function()
+      require 'user.plugins.snippets'
+    end
+  }
   use {
     'hrsh7th/nvim-cmp',
     requires = {
-      { 'L3MON4D3/LuaSnip' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-cmdline' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-path' },
       { 'onsails/lspkind.nvim' },
       { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+      { 'saadparwaiz1/cmp_luasnip' },
     },
     config = function()
       require 'user.plugins.cmp'
@@ -100,13 +105,13 @@ packer.startup(function(use)
   }
 
   use { 'junegunn/goyo.vim',
-  config = function ()
-    local keymap = require 'lib.utils'.keymap
-    keymap('n', '<leader>g', '<cmd>Goyo<cr>')
-  end
+    config = function()
+      local keymap = require 'lib.utils'.keymap
+      keymap('n', '<leader>g', '<cmd>Goyo<cr>')
+    end
   }
   use { 'junegunn/limelight.vim',
-    config = function ()
+    config = function()
       vim.g.limelight_default_coefficient = 0.4
       vim.cmd([[ 
         autocmd! User GoyoEnter Limelight
@@ -123,15 +128,15 @@ packer.startup(function(use)
   -- }
 
   use {
-      'kyazdani42/nvim-tree.lua',
-      requires = {
-        'kyazdani42/nvim-web-devicons', -- optional, for file icon
-      },
-      config = function()
-        require 'user.plugins.nvim-tree'
-      end,
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    config = function()
+      require 'user.plugins.nvim-tree'
+    end,
   }
-  
+
   -- plugins up to this line have been reviewed by me
   -- and I don't really know what are plugins below capable of
   --
@@ -144,4 +149,3 @@ packer.startup(function(use)
   --    end
   --  }
 end)
-

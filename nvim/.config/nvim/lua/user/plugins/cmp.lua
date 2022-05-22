@@ -8,7 +8,6 @@ cmp.setup({
     ghost_text = true,
   },
   snippet = {
-    -- REQUIRED - you must specify a snippet engine
     expand = function(args)
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
@@ -43,9 +42,9 @@ cmp.setup({
     end, { "i", "s", "c", }),
   }),
   sources = cmp.config.sources({
+    { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lsp_signature_help' },
-    { name = 'luasnip' }, -- For luasnip users.
   },
     {
     { name = 'buffer' },
