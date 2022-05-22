@@ -92,18 +92,27 @@ packer.startup(function(use)
   }
 
   use {
-    'AndrewRadev/splitjoin.vim',
-    config = function()
-      require('user.plugins.splitjoin')
-    end
-  }
-
-  use {
     'lewis6991/gitsigns.nvim',
     requires = 'nvim-lua/plenary.nvim',
     config = function()
       require 'user.plugins.gitsigns'
     end,
+  }
+
+  use { 'junegunn/goyo.vim',
+  config = function ()
+    local keymap = require 'lib.utils'.keymap
+    keymap('n', '<leader>g', '<cmd>Goyo<cr>')
+  end
+  }
+  use { 'junegunn/limelight.vim',
+    config = function ()
+      vim.g.limelight_default_coefficient = 0.4
+      vim.cmd([[ 
+        autocmd! User GoyoEnter Limelight
+        autocmd! User GoyoLeave Limelight!
+      ]])
+    end
   }
 
   -- use {
