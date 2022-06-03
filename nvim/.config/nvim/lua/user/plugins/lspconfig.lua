@@ -59,6 +59,7 @@ local servers = {
   'ansiblels',
   'bashls',
   'eslint',
+  'gopls'
 }
 
 for _, lsp in pairs(servers) do
@@ -141,9 +142,6 @@ lspconfig.efm.setup {
     'css'
   }
 }
-
-
-lspconfig.gopls.setup {}
 
 vim.cmd [[ autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll ]]
 -- vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format{ async = true } ]]
