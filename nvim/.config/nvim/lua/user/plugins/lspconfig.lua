@@ -54,11 +54,13 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'tsserver',
+local servers = {
+  'tsserver',
   'ansiblels',
   'bashls',
-  -- 'eslint',
+  'eslint',
 }
+
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
@@ -102,19 +104,6 @@ lspconfig.sumneko_lua.setup {
   },
 }
 
--- check https://github.com/lukas-reineke/dotfiles/blob/master/vim/lua/lsp/init.lua
--- https://github.com/mattn/efm-langserver
--- local eslint = {
---   lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}",
---   lintIgnoreExitCode = true,
---   lintStdin = true,
---   lintFormats = {
---     "%f(%l,%c): %tarning %m",
---     "%f(%l,%c): %rror %m",
---   },
---   lintSource = "eslint",
--- }
-
 local prettier = {
   formatCommand = [[$([ -n "$(command -v node_modules/.bin/prettier)" ] && echo "node_modules/.bin/prettier" || echo "prettier") --stdin-filepath ${INPUT} ${--config-precedence:configPrecedence} ${--tab-width:tabWidth} ${--single-quote:singleQuote} ${--trailing-comma:trailingComma}]],
   formatStdin = true,
@@ -144,5 +133,17 @@ lspconfig.efm.setup {
       markdown = { prettier },
     },
   },
+  filetypes = {
+    'markdown',
+    'yaml',
+    'json',
+    'html',
+    'css'
+  }
 }
-vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format{ async = true } ]]
+
+
+lspconfig.gopls.setup {}
+
+vim.cmd [[ autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll ]]
+-- vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format{ async = true } ]]
