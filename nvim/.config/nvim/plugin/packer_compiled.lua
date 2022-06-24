@@ -192,10 +192,10 @@ _G.packer_plugins = {
     path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
-  ["telescope-live-grep-raw.nvim"] = {
+  ["telescope-live-grep-args.nvim"] = {
     loaded = true,
-    path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/telescope-live-grep-raw.nvim",
-    url = "https://github.com/nvim-telescope/telescope-live-grep-raw.nvim"
+    path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/telescope-live-grep-args.nvim",
+    url = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim"
   },
   ["telescope.nvim"] = {
     config = { "\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.plugins.telescope\frequire\0" },
@@ -264,6 +264,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-test"] = {
+    config = { "\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22user.plugins.test\frequire\0" },
+    loaded = true,
+    path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/vim-test",
+    url = "https://github.com/vim-test/vim-test"
   }
 }
 
@@ -280,6 +286,10 @@ time([[Config for nvim-cmp]], false)
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.plugins.nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
+-- Config for: vim-test
+time([[Config for vim-test]], true)
+try_loadstring("\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22user.plugins.test\frequire\0", "config", "vim-test")
+time([[Config for vim-test]], false)
 -- Config for: limelight.vim
 time([[Config for limelight.vim]], true)
 try_loadstring("\27LJ\2\2»\1\0\0\2\0\5\1\t6\0\0\0009\0\1\0*\1\0\0=\1\2\0006\0\0\0009\0\3\0'\1\4\0B\0\2\1K\0\1\0b \n        autocmd! User GoyoEnter Limelight\n        autocmd! User GoyoLeave Limelight!\n      \bcmd\"limelight_default_coefficient\6g\bvimµæÌ™\19™³æþ\3\0", "config", "limelight.vim")
