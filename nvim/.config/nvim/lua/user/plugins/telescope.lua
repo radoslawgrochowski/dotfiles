@@ -44,4 +44,4 @@ keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]]
 keymap('n', '<leader>R', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]])
 keymap('n', '<leader>r', [[<cmd>lua require('telescope').extensions.live_grep_args.live_grep_raw()<CR>]])
 keymap('n', '<leader>e', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
-keymap('n', '<leader>d', [[<cmd>lua require('telescope.builtin').diagnostics()<CR>]])
+keymap('n', '<leader>D', [[<cmd>lua require('telescope.builtin').diagnostics()<CR>]])
