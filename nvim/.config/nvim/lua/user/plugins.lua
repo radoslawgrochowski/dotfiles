@@ -89,7 +89,7 @@ packer.startup(function(use)
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       { 'kyazdani42/nvim-web-devicons' },
-      { 'nvim-telescope/telescope-live-grep-raw.nvim' },
+      { 'nvim-telescope/telescope-live-grep-args.nvim' },
     },
     config = function()
       require 'user.plugins.telescope'
@@ -137,15 +137,11 @@ packer.startup(function(use)
     end,
   }
 
-  -- plugins up to this line have been reviewed by me
-  -- and I don't really know what are plugins below capable of
-  --
+  use {
+    'vim-test/vim-test',
+    config = function()
+      require('user.plugins.test')
+    end
+  }
 
-  -- this doesn't work somehow
-  --  use {
-  --    'romgrk/nvim-treesitter-context',
-  --    config = function()
-  --      require 'user.plugins.treesitter-context'
-  --    end
-  --  }
 end)
