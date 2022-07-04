@@ -204,6 +204,8 @@ exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
 exec --no-startup-id shutter --min_at_startup
 exec --no-startup-id picom -b
 
+exec_always --no-startup-id autorandr -c 
+
 #### Spotify 
 exec --no-startup-id spotify
 assign [class="Spotify"] $ws6
