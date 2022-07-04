@@ -163,7 +163,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-treesitter-context"] = {
-    config = { "\27LJ\2\2?\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0$user.plugins.treesitter-context\frequire\0" },
+    config = { "\27LJ\2\2D\0\0\3\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\1\2\0004\2\0\0B\1\2\1K\0\1\0\nsetup\23treesitter-context\frequire\0" },
     loaded = true,
     path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
@@ -294,7 +294,7 @@ try_loadstring("\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.
 time([[Config for nvim-tree.lua]], false)
 -- Config for: nvim-treesitter-context
 time([[Config for nvim-treesitter-context]], true)
-try_loadstring("\27LJ\2\2?\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0$user.plugins.treesitter-context\frequire\0", "config", "nvim-treesitter-context")
+try_loadstring("\27LJ\2\2D\0\0\3\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\1\2\0004\2\0\0B\1\2\1K\0\1\0\nsetup\23treesitter-context\frequire\0", "config", "nvim-treesitter-context")
 time([[Config for nvim-treesitter-context]], false)
 -- Config for: goyo.vim
 time([[Config for goyo.vim]], true)

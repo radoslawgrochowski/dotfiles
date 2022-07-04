@@ -144,15 +144,4 @@ packer.startup(function(use)
     end
   }
 
-  -- plugins up to this line have been reviewed by me
-  -- and I don't really know what are plugins below capable of
-  --
-
-  -- this doesn't work somehow
-  --  use {
-  --    'romgrk/nvim-treesitter-context',
-  --    config = function()
-  --      require 'user.plugins.treesitter-context'
-  --    end
-  --  }
 end)
