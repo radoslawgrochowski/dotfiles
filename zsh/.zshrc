@@ -33,6 +33,10 @@ for f in ~/.*.aliases; do
    . $f
 done
 
+# fast navigation using fzf
+bindkey -s '^f' 'cd $(fd --type d . $HOME  | fzf)^M'
+bindkey -s '^o' 'nvim $(fd --type d . $HOME  | fzf)^M'
+
 # WARNING - this must be last somehow 
 # hide machine name from prompt 
 prompt_context () { }

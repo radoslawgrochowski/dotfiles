@@ -2,3 +2,4 @@
 
 alias copy="xclip -selection clipboard"
 alias paste="xclip -o -selection clipboard"
+alias fd="fdfind"
