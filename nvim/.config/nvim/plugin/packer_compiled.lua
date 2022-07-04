@@ -162,6 +162,12 @@ _G.packer_plugins = {
     path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-treesitter-context"] = {
+    config = { "\27LJ\2\2?\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0$user.plugins.treesitter-context\frequire\0" },
+    loaded = true,
+    path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/radoslawgrochowski/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -286,18 +292,22 @@ time([[Config for nvim-cmp]], false)
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\0026\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\27user.plugins.nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
--- Config for: vim-test
-time([[Config for vim-test]], true)
-try_loadstring("\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22user.plugins.test\frequire\0", "config", "vim-test")
-time([[Config for vim-test]], false)
--- Config for: limelight.vim
-time([[Config for limelight.vim]], true)
-try_loadstring("\27LJ\2\2»\1\0\0\2\0\5\1\t6\0\0\0009\0\1\0*\1\0\0=\1\2\0006\0\0\0009\0\3\0'\1\4\0B\0\2\1K\0\1\0b \n        autocmd! User GoyoEnter Limelight\n        autocmd! User GoyoLeave Limelight!\n      \bcmd\"limelight_default_coefficient\6g\bvimµæÌ™\19™³æþ\3\0", "config", "limelight.vim")
-time([[Config for limelight.vim]], false)
+-- Config for: nvim-treesitter-context
+time([[Config for nvim-treesitter-context]], true)
+try_loadstring("\27LJ\2\2?\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0$user.plugins.treesitter-context\frequire\0", "config", "nvim-treesitter-context")
+time([[Config for nvim-treesitter-context]], false)
 -- Config for: goyo.vim
 time([[Config for goyo.vim]], true)
 try_loadstring("\27LJ\2\2b\0\0\5\0\6\0\n6\0\0\0'\1\1\0B\0\2\0029\0\2\0\18\1\0\0'\2\3\0'\3\4\0'\4\5\0B\1\4\1K\0\1\0\18<cmd>Goyo<cr>\14<leader>g\6n\vkeymap\14lib.utils\frequire\0", "config", "goyo.vim")
 time([[Config for goyo.vim]], false)
+-- Config for: limelight.vim
+time([[Config for limelight.vim]], true)
+try_loadstring("\27LJ\2\2»\1\0\0\2\0\5\1\t6\0\0\0009\0\1\0*\1\0\0=\1\2\0006\0\0\0009\0\3\0'\1\4\0B\0\2\1K\0\1\0b \n        autocmd! User GoyoEnter Limelight\n        autocmd! User GoyoLeave Limelight!\n      \bcmd\"limelight_default_coefficient\6g\bvimµæÌ™\19™³æþ\3\0", "config", "limelight.vim")
+time([[Config for limelight.vim]], false)
+-- Config for: vim-test
+time([[Config for vim-test]], true)
+try_loadstring("\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22user.plugins.test\frequire\0", "config", "vim-test")
+time([[Config for vim-test]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\0025\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\26user.plugins.gitsigns\frequire\0", "config", "gitsigns.nvim")
