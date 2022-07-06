@@ -144,4 +144,15 @@ packer.startup(function(use)
     end
   }
 
+  use {
+    'takac/vim-hardtime',
+    config = function()
+      vim.g.hardtime_default_on = 1
+      vim.g.hardtime_timeout = 250
+      vim.g.hardtime_showmsg = 1
+      vim.g.hardtime_maxcount = 3
+      vim.g.hardtime_motion_with_count_resets = 1
+    end
+  }
+
 end)
