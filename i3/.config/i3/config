@@ -197,19 +197,20 @@ workspace $ws6 output $CENTER_MONITOR $LEFT_MONITOR $RIGHT_MONITOR
 workspace $ws7 output $RIGHT_MONITOR $CENTER_MONITOR $LEFT_MONITOR  
 workspace $ws8 output $RIGHT_MONITOR $CENTER_MONITOR $LEFT_MONITOR  
 workspace $ws9 output $RIGHT_MONITOR $CENTER_MONITOR $LEFT_MONITOR  
-workspace $ws0 output $RIGHT_MONITOR $CENTER_MONITOR $LEFT_MONITOR  
+workspace $ws10 output $RIGHT_MONITOR $CENTER_MONITOR $LEFT_MONITOR  
 
 
 exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
-exec --no-startup-id shutter --min_at_startup
-exec --no-startup-id picom -b
-
 exec_always --no-startup-id autorandr -c 
+exec --no-startup-id sh $HOME/scripts/autostart.sh
 
 #### Spotify 
-exec --no-startup-id spotify
 assign [class="Spotify"] $ws6
 for_window [class="Spotify"] move to workspace $ws6
+
+#### Pavucontrol
+assign [class="Pavucontrol"] $ws6
+for_window [class="Pavucontrol"] move to workspace $ws6
 
 #### Microsoft Teams
 assign [class="Microsoft Teams"] $ws5
