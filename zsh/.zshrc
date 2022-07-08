@@ -37,6 +37,11 @@ done
 bindkey -s '^f' 'cd $(fd --type d . $HOME  | fzf)^M'
 bindkey -s '^o' 'nvim $(fd --type d . $HOME  | fzf)^M'
 
+# golang
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
+
 # WARNING - this must be last somehow 
 # hide machine name from prompt 
 prompt_context () { }
