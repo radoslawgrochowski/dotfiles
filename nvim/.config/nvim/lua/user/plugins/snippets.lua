@@ -24,9 +24,22 @@ local js = {
   snippet('error', fmt('console.error({})', { i(0) })),
 }
 
+local ts = {
+  snippet('tdi',
+    fmt(
+      [[
+        describe('{1}', () => {{
+          it('{2}', () => {{
+            {3}
+          }})
+        }})
+      ]],
+      { i(1), i(2), i(3) })
+  ),
+}
+
 local typescriptreact = {
-  snippet(
-    'rce',
+  snippet('rce',
     fmt(
       [[
         import react from 'react'
@@ -38,11 +51,13 @@ local typescriptreact = {
         export default {2}
       ]],
       { i(1), f(function(args) return args[1] end, { 1 }), i(2) })
-  )
+  ),
 }
 
-luasnip.add_snippets('typescript', js)
 luasnip.add_snippets('javascript', js)
 luasnip.add_snippets('javascriptreact', js)
+luasnip.add_snippets('typescript', js)
+luasnip.add_snippets('typescript', ts)
 luasnip.add_snippets('typescriptreact', js)
+luasnip.add_snippets('typescriptreact', ts)
 luasnip.add_snippets('typescriptreact', typescriptreact)
