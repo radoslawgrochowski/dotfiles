@@ -45,3 +45,8 @@ export PATH=$PATH:$GOBIN
 # WARNING - this must be last somehow 
 # hide machine name from prompt 
 prompt_context () { }
+
+# pnpm
+export PNPM_HOME="/home/radoslawgrochowski/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
