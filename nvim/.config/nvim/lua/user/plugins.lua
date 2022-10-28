@@ -55,13 +55,6 @@ packer.startup(function(use)
   }
 
   use {
-    'mbbill/undotree',
-    config = function()
-      require 'user.plugins.tokyodark'
-    end
-  }
-
-  use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     requires = {
@@ -144,4 +137,10 @@ packer.startup(function(use)
     end
   }
 
+  use { 
+    'lewis6991/impatient.nvim',
+    config = function()
+      require 'impatient'
+    end,
+  }
 end)
