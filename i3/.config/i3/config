@@ -50,7 +50,7 @@ bindsym $mod+Return exec kitty -d `xcwd`
 
 # start a terminal with notes project
 bindsym $mod+n exec kitty /bin/zsh -c "nvim ~/Projects/notes/" 
-bindsym $mod+Shift+n exec kitty /bin/zsh -c "nvim ~/Projects/notes/TODO.md" 
+bindsym $mod+Shift+n exec kitty /bin/zsh -c "sh ~/scripts/note.sh" 
 
 # kill focused window
 bindsym $mod+Shift+q kill
