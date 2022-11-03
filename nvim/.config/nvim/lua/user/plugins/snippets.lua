@@ -4,12 +4,8 @@ luasnip.config.set_config {
   updateevents = "TextChanged,TextChangedI",
 }
 
-vim.keymap.set("i", "<C-n>", function()
-  luasnip.jump(1)
-end)
-vim.keymap.set("i", "<C-p>", function()
-  luasnip.jump(-1)
-end)
+vim.keymap.set("i", "<C-n>", function() luasnip.jump(1) end)
+vim.keymap.set("i", "<C-p>", function() luasnip.jump(-1) end)
 
 luasnip.snippets = {}
 
@@ -42,13 +38,28 @@ local typescriptreact = {
   snippet('rce',
     fmt(
       [[
-        import react from 'react'
+        import React from 'react'
 
         const {1} = () => {{
           {3}
         }}
         
         export default {2}
+      ]],
+      { i(1), f(function(args) return args[1] end, { 1 }), i(2) })
+  ),
+  snippet('rtl',
+    fmt(
+      [[
+        import React from 'react'
+        import {{ render, screen }} from '@testing-library/react'
+
+        describe('{1}', () => {{
+          it('renders', () => {{
+            render({2})
+            expect(screen.getBy{3}).toBeInTheDocument()
+          }})
+        }})
       ]],
       { i(1), f(function(args) return args[1] end, { 1 }), i(2) })
   ),

@@ -184,8 +184,8 @@ gaps outer 0
 bindsym $mod+Shift+x exec i3lock --c=000000
 
 ### MONITOR SETUP
-set $RIGHT_MONITOR DP-2
-set $LEFT_MONITOR HDMI-1 HDMI-0
+set $RIGHT_MONITOR DP-2 DP-1-1
+set $LEFT_MONITOR HDMI-1 HDMI-0 DP-1-2
 set $CENTER_MONITOR eDP-1 
 
 workspace $ws1 output $LEFT_MONITOR $RIGHT_MONITOR $CENTER_MONITOR
@@ -198,6 +198,8 @@ workspace $ws7 output $RIGHT_MONITOR $CENTER_MONITOR $LEFT_MONITOR
 workspace $ws8 output $RIGHT_MONITOR $CENTER_MONITOR $LEFT_MONITOR  
 workspace $ws9 output $RIGHT_MONITOR $CENTER_MONITOR $LEFT_MONITOR  
 workspace $ws10 output $RIGHT_MONITOR $CENTER_MONITOR $LEFT_MONITOR  
+
+bindsym $mod+Tab workspace next
 
 
 exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
