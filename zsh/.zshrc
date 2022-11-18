@@ -21,6 +21,10 @@ export LANG=en_US.UTF-8
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
+  alias vi="nvim"
+  alias vim="nvim"
+  alias vimdiff='nvim -d'
+  alias view='nvim -R'
   export EDITOR='nvim'
 fi
 
