@@ -50,6 +50,7 @@ bindsym $mod+Return exec kitty -d `xcwd`
 
 # start a terminal with notes project
 bindsym $mod+n exec kitty /bin/zsh -c "nvim ~/Projects/notes/" 
+bindsym $mod+t exec kitty /bin/zsh -c "nvim ~/Projects/notes/TODO.md" 
 bindsym $mod+Shift+n exec kitty /bin/zsh -c "sh ~/scripts/note.sh" 
 
 # kill focused window
@@ -102,7 +103,6 @@ bindsym $mod+a focus parent
 
 # lock screen
 bindsym $MOD+m exec i3lock -c 000000
-
 
 # capture screenshoot
 bindsym $MOD+p exec shutter -a 
@@ -206,14 +206,14 @@ exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id autorandr -c 
 exec --no-startup-id sh $HOME/scripts/autostart.sh
 
-#### Spotify 
 assign [class="Spotify"] $ws6
 for_window [class="Spotify"] move to workspace $ws6
 
-#### Pavucontrol
 assign [class="Pavucontrol"] $ws6
 for_window [class="Pavucontrol"] move to workspace $ws6
 
-#### Microsoft Teams
 assign [class="Microsoft Teams"] $ws5
 for_window [class="Microsoft Teams"] move to workspace $ws5
+
+assign [class="keepassxc"] $ws4
+for_window [class="keepassxc"] move to workspace $ws4
