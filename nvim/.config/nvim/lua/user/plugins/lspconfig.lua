@@ -59,7 +59,6 @@ local servers = {
   'tsserver',
   'ansiblels',
   'bashls',
-  'eslint',
   'gopls',
 }
 
@@ -74,12 +73,25 @@ for _, lsp in pairs(servers) do
   }
 end
 
+-- eslint
+
+local lspconfig = require 'lspconfig'
+
+lspconfig.eslint.setup {
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 50,
+  },
+  root_dir = lspconfig.util.root_pattern('.git');
+  handlers = handlers,
+  capabilities = capabilities,
+}
+
 -- lua
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-local lspconfig = require 'lspconfig'
 
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
