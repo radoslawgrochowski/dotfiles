@@ -5,6 +5,7 @@
 	editor = vi
 [diff]
 	tool = vimdiff
+	colorMoved = zebra
 [merge]
 	tool = vimdiff
 [mergetool "vimdiff"]
@@ -13,5 +14,9 @@
 	insteadOf = https://github.com/
 [push]
 	default = current
+[pull]
+	rebase = true 
+[fetch]
+	prune = true
 [include]
 	path = ~/.wp.gitconfig
