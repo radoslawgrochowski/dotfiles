@@ -42,9 +42,10 @@ cmp.setup({
     end, { "i", "s", "c", }),
   }),
   sources = cmp.config.sources({
-    { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lsp_signature_help' },
+    { name = 'treesitter' },
+    { name = 'luasnip' },
   },
     {
     { name = 'buffer' },
@@ -55,10 +56,11 @@ cmp.setup({
     format = lspkind.cmp_format {
       with_text = true,
       menu = {
-        buffer = '[BUF]',
+        buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
         nvim_lua = '[Lua]',
         path = "[Path]",
+        treesitter = "[TS]",
       },
     },
   },

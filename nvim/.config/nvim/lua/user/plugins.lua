@@ -32,12 +32,14 @@ packer.startup(function(use)
       require 'user.plugins.tokyodark'
     end
   }
+
   use {
     'L3MON4D3/LuaSnip',
     config = function()
       require 'user.plugins.snippets'
     end
   }
+
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -57,11 +59,8 @@ packer.startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    requires = {
-      'lewis6991/spellsitter.nvim',
-    },
     config = function()
-      require('spellsitter').setup()
+      require 'user.plugins.treesitter'
     end
   }
 
@@ -97,12 +96,6 @@ packer.startup(function(use)
     end,
   }
 
-  use { 'junegunn/goyo.vim',
-    config = function()
-      local keymap = require 'lib.utils'.keymap
-      keymap('n', '<leader>g', '<cmd>Goyo<cr>')
-    end
-  }
   use { 'junegunn/limelight.vim',
     config = function()
       vim.g.limelight_default_coefficient = 0.4
@@ -113,12 +106,12 @@ packer.startup(function(use)
     end
   }
 
-  -- use {
-  --   'j-hui/fidget.nvim',
-  --   config = function()
-  --     require('fidget').setup {}
-  --   end,
-  -- }
+  use {
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup {}
+    end,
+  }
 
   use {
     'kyazdani42/nvim-tree.lua',
@@ -127,7 +120,7 @@ packer.startup(function(use)
     },
     tag = 'nightly',
     config = function()
-      require 'user.plugins.nvim-tree'
+      require('user.plugins.nvim-tree')
     end,
   }
 
@@ -138,10 +131,22 @@ packer.startup(function(use)
     end
   }
 
-  use { 
+  use {
     'lewis6991/impatient.nvim',
     config = function()
-      require 'impatient'
+      require('impatient')
     end,
   }
+
+  use 'folke/lsp-colors.nvim'
+
+  -- TODO: move to mason-lspconfig with automatic_installation
+  use {
+    "williamboman/mason.nvim",
+    config = function()
+      require('mason').setup()
+    end
+  }
+
+
 end)

@@ -21,7 +21,7 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.smartindent = true
 
--- mardown folding
+-- markdown folding
 vim.g.markdown_folding = true
 vim.cmd([[
   au FileType markdown setlocal foldlevel=99

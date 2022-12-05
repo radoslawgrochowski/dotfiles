@@ -7,7 +7,12 @@ telescope.setup {
     prompt_prefix = '   ',
     selection_caret = '  ',
     sorting_strategy = 'ascending',
-    file_ignore_patterns = { '.git/' },
+    file_ignore_patterns = {
+      '.git/',
+      'node_modules/.*',
+      'secret.d/.*',
+      '%.pem'
+    },
   },
   pickers = {
     find_files = {
