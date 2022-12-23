@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./targets/desktop/hardware-configuration.nix
     ];
 
   boot.supportedFilesystems = [ "ntfs" ];
@@ -25,7 +25,7 @@
     devices = [ "nodev" ];
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "radoslawgrochowski-desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -133,6 +133,9 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

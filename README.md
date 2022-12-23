@@ -7,10 +7,8 @@ dotfiles and NixOS system conifiguration for my workstation setup
 on clean NixOS instalation:
 
 ```sh
-$ git clone git@github.com:radoslawgrochowski/dotfiles.git $HOME/Projects/dotfiles
-$ sudo rm -rf /etc/nixos
-$ sudo ln -s $HOME/Projects/dotfiles /etc/nixos
-$ sudo nixos-rebuild --install-bootloader switch
+$ git clone git@github.com:radoslawgrochowski/dotfiles.git $HOME/Projects/dotfiles 
+$ sudo nixos-rebuild --install-bootloader switch --flake '$HOME/Projects/dotfiles#radoslawgrochowski-desktop'
 ```
 
 ## inspiration
