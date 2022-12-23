@@ -60,7 +60,13 @@
     xkbVariant = "";
    
     desktopManager.xterm.enable = false;
-    displayManager.defaultSession = "none+i3";
+    displayManager= {
+	defaultSession = "none+i3";
+	autoLogin = {
+		enable = true;
+		user = "radoslawgrochowski";
+ 	};
+    };
     windowManager.i3 = {
       enable = true;
 	extraPackages = with pkgs; [
@@ -72,6 +78,14 @@
     };    
   };
 
+  # Audio
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
+  nixpkgs.config.pulseaudio = true;
+
+  # Autologin
+  services.getty.autologinUser = "radoslawgrochowski";
+
   # Configure console keymap
   console.keyMap = "pl2";
 
@@ -79,12 +93,13 @@
   users.users.radoslawgrochowski = {
     isNormalUser = true;
     description = "radoslawgrochowski";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [
 	neovim
 	google-chrome
 	git
 	kitty
+	pavucontrol
 	];
   };
 
