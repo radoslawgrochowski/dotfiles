@@ -3,6 +3,8 @@
 {
   imports = [
     ./git.nix
+    ./kitty.nix
+    ./fish.nix
   ];
 
   programs.home-manager.enable = true;
