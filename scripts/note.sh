@@ -2,9 +2,7 @@
 # and open it in nvim 
 
 date=$(date '+%Y_%m_%d')
-word1=$(shuf -n1  /usr/share/dict/words)
-word2=$(shuf -n1  /usr/share/dict/words)
-default_input="${word1}_${word2}"
+default_input=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13 ; echo '')
 
 read -p "Enter filename [${default_input}]: " input 
 
