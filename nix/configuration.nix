@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./targets/desktop/hardware-configuration.nix
+      # ./targets/desktop/hardware-configuration.nix
     ];
 
   boot.supportedFilesystems = [ "ntfs" ];
@@ -25,7 +25,6 @@
     devices = [ "nodev" ];
   };
 
-  networking.hostName = "radoslawgrochowski-desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -101,6 +100,7 @@
 	kitty
 	pavucontrol
 	];
+    shell = pkgs.fish;
   };
 
   # Allow unfree packages
@@ -133,7 +133,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
