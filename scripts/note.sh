@@ -1,3 +1,4 @@
+#!/bin/sh
 # make new file in my notes projects 
 # and open it in nvim 
 

@@ -20,10 +20,9 @@ in {
       terminal = "kitty";
       modifier = mod;
       gaps = {
-	inner = 8;
+	inner = 6;
 	outer = 0;
         smartBorders = "on";
-        smartGaps = true;  
       };
       keybindings = lib.mkOptionDefault {
         # Focus
@@ -67,8 +66,6 @@ in {
 	    l = "resize grow width 10 px or 10 ppt";
        };
 
-       window.border = 4;
-
        assigns =  {
 	"4" = [{ class = "keepassxc"; }];
 	"5: 📨" = [{ class = "Microsoft Teams"; }];
@@ -77,7 +74,7 @@ in {
 		{ class = "Spotify"; }
 	];
        };
-
+       window.border = 0;
        window.commands = [
 	  {
 	    command = "move to workspace 6: 🎷";
@@ -112,12 +109,16 @@ in {
         { output= "${rightOutput} ${centerOutput} ${leftOutput}"; workspace= "9"; }
         { output= "${rightOutput} ${centerOutput} ${leftOutput}"; workspace= "0"; }
       ];
-
+    
       startup = [
         { command = "feh --randomize --bg-scale ~/Pictures/Wallpapers/*"; always = true; }
+        { command = "picom -b"; always = true; }
+        { command = "autorandr -c"; always = true; }
+        { command = "sh ~/scripts/autostart.sh"; always = false; }
       ];
     };
     extraConfig = ''
+      smart_gaps inverse_outer
     '';
   };
   

@@ -2,10 +2,13 @@
 
 {
   imports = [
+    ./autorandr.nix
     ./fish.nix
+    ./fonts.nix
     ./git.nix
     ./i3.nix
     ./kitty.nix
+    ./picom.nix
     ./polybar.nix
     ./rofi.nix
     ./scripts.nix
