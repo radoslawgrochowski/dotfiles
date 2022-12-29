@@ -17,13 +17,24 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    bat
     btop 
-    xcwd
+    fd
+    fzf  
+    google-drive-ocamlfuse
+    jq
+    keepassxc
     shutter
     spotify
-    keepassxc
-    google-drive-ocamlfuse
+    xcwd
   ];
+
+  programs.nix-index = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
+  home.file."./.fdignore".source = config.lib.file.mkOutOfStoreSymlink "${inputs.self}/fd/.fdignore";
 
   home.stateVersion = "22.11";
 }
