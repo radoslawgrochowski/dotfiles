@@ -21,6 +21,8 @@
     xcwd
     shutter
     spotify
+    keepassxc
+    google-drive-ocamlfuse
   ];
 
   home.stateVersion = "22.11";

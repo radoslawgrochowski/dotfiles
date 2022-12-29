@@ -21,19 +21,25 @@
 	  "window_type = 'desktop'"
 	  "_GTK_FRAME_EXTENTS@:c"
 	];
-inactive-opacity = 1;
-frame-opacity = 0.5;
-opacity-rule = [
-  "88:class_g = 'kitty' && focused"
-  "80:class_g = 'kitty' && !focused"
-  "80:class_g = 'Spotify'"
-];
+
+	inactive-opacity = 1;
+	frame-opacity = 0.5;
+	opacity-rule = [
+	  "94:class_g = 'kitty' && focused"
+	  "85:class_g = 'kitty' && !focused"
+	  "95:class_g = 'Spotify'"
+	  "99:class_g = 'Polybar'"
+	];
 
 
         corner-radius = 10;
 	rounded-corners-exclude = [
 	  "window_type = 'dock'"
 	  "window_type = 'desktop'"
+	];
+
+	shadow-exclude = [
+	  "class_g = 'Polybar'"
 	];
 
     };

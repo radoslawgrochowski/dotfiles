@@ -107,7 +107,7 @@ in {
         { output= "${rightOutput} ${centerOutput} ${leftOutput}"; workspace= "7"; }
         { output= "${rightOutput} ${centerOutput} ${leftOutput}"; workspace= "8"; }
         { output= "${rightOutput} ${centerOutput} ${leftOutput}"; workspace= "9"; }
-        { output= "${rightOutput} ${centerOutput} ${leftOutput}"; workspace= "0"; }
+        { output= "${rightOutput} ${centerOutput} ${leftOutput}"; workspace= "10"; }
       ];
     
       startup = [
@@ -115,7 +115,11 @@ in {
         { command = "picom -b"; always = true; }
         { command = "autorandr -c"; always = true; }
         { command = "sh ~/scripts/autostart.sh"; always = false; }
+        { command = "mkdir ~/Drive -p && google-drive-ocamlfuse ~/Drive"; always = false; notification = false; }
+        { command = "systemctl --user restart polybar"; always = true; notification = false; }
       ];
+
+      bars = [];
     };
     extraConfig = ''
       smart_gaps inverse_outer
