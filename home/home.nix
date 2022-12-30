@@ -8,6 +8,7 @@
     ./git.nix
     ./i3.nix
     ./kitty.nix
+    ./nvim.nix
     ./picom.nix
     ./polybar.nix
     ./rofi.nix
