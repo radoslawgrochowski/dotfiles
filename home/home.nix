@@ -28,6 +28,7 @@
     shutter
     spotify
     xcwd
+    steam-run
   ];
 
   programs.nix-index = {

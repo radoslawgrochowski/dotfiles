@@ -112,6 +112,7 @@
     vim 
     os-prober
     grub2
+    openjdk17
   #  wget
   ];
 
