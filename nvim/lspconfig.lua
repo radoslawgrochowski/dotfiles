@@ -26,11 +26,14 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>ca', ':CodeActionMenu<CR>', opts)
+
+  vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
+  vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+  vim.cmd [[ autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll ]]
+  -- vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format{ async = true } ]]
 end
 
 
-vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
-vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
 
 local border = {
   { "╭", "FloatBorder" },
@@ -59,6 +62,7 @@ local servers = {
   'ansiblels',
   'bashls',
   'gopls',
+  'rnix',
 }
 
 for _, lsp in pairs(servers) do
@@ -126,7 +130,6 @@ lspconfig.efm.setup {
   capabilities = capabilities,
   handlers = handlers,
   on_attach = on_attach,
-  cmd = { "/home/radoslawgrochowski/go/bin/efm-langserver" },
   init_options = { documentFormatting = true, codeAction = true },
   root_dir = vim.loop.cwd,
   settings = {
@@ -171,6 +174,3 @@ lspconfig.emmet_ls.setup {
   },
 }
 
-
-vim.cmd [[ autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll ]]
--- vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format{ async = true } ]]

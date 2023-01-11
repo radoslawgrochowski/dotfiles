@@ -20,10 +20,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.radoslawgrochowski = import ./home/home.nix;
-	    home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];
-	specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs; };
       };
       radoslawgrochowski-hp = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -36,10 +36,11 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.radoslawgrochowski = import ./home/home.nix;
-	    home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];
-	specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs; };
       };
     };
-  };}
+  };
+}

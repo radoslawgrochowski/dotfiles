@@ -2,33 +2,38 @@
 
 {
   imports = [
+    ../nvim/nvim.nix
     ./autorandr.nix
+    ./bspwm.nix
     ./fish.nix
     ./fonts.nix
     ./git.nix
-    ./i3.nix
     ./kitty.nix
-    ./nvim.nix
     ./picom.nix
     ./polybar.nix
     ./rofi.nix
     ./scripts.nix
+    ./sxkhd.nix
   ];
 
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
     bat
-    btop 
+    btop
     fd
-    fzf  
+    feh
+    fzf
+    google-chrome
     google-drive-ocamlfuse
+    i3lock
     jq
     keepassxc
+    kitty
     shutter
     spotify
-    xcwd
     steam-run
+    xcwd
   ];
 
   programs.nix-index = {

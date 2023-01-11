@@ -1,15 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-  "Lua.diagnostics.globals": [
-    "vim",
-    "pairs",
-    "package",
-    "table",
-    "pcall",
-    "ipairs",
-    "_G",
-    "string",
-    "loadstring",
-    "type"
-  ]
+    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "Lua.diagnostics.globals": [
+        "vim",
+        "pairs",
+        "package",
+        "table",
+        "pcall",
+        "ipairs",
+        "_G",
+        "string",
+        "loadstring",
+        "type"
+    ],
+    "Lua.workspace.checkThirdParty": false
 }

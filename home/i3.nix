@@ -1,11 +1,12 @@
 { config, lib, pkgs, inputs, ... }:
 
-let 
+let
   mod = "Mod4";
   rightOutput = "DP-2 DP-1 DP-1-1 DP-1-2";
   centerOutput = "eDP-1";
   leftOutput = "HDMI-2 HDMI-1 HDMI-0";
-in {
+in
+{
   home.packages = with pkgs; [
     xcwd
     kitty
@@ -20,8 +21,8 @@ in {
       terminal = "kitty";
       modifier = mod;
       gaps = {
-	inner = 6;
-	outer = 0;
+        inner = 6;
+        outer = 0;
         smartBorders = "on";
       };
       keybindings = lib.mkOptionDefault {
@@ -49,67 +50,67 @@ in {
         "${mod}+p" = "exec shutter -s";
         "${mod}+Shift+p" = "exec shutter -a";
         "${mod}+Tab" = "workspace next";
-       };
+      };
 
-       menu = "rofi -show combi";
+      menu = "rofi -show combi";
 
-       floating = {
-         modifier = mod;
-       };
+      floating = {
+        modifier = mod;
+      };
 
-       modes.resize = {
-	    Escape = "mode default";
-	    Return = "mode default";
-	    h = "resize shrink width 10 px or 10 ppt";
-	    j = "resize grow height 10 px or 10 ppt";
-	    k = "resize shrink height 10 px or 10 ppt";
-	    l = "resize grow width 10 px or 10 ppt";
-       };
+      modes.resize = {
+        Escape = "mode default";
+        Return = "mode default";
+        h = "resize shrink width 10 px or 10 ppt";
+        j = "resize grow height 10 px or 10 ppt";
+        k = "resize shrink height 10 px or 10 ppt";
+        l = "resize grow width 10 px or 10 ppt";
+      };
 
-       assigns =  {
-	"4" = [{ class = "keepassxc"; }];
-	"5: 📨" = [{ class = "Microsoft Teams"; }];
-	"6: 🎷" = [
-		{ class = "Pavucontrol"; }
-		{ class = "Spotify"; }
-	];
-       };
-       window.border = 0;
-       window.commands = [
-	  {
-	    command = "move to workspace 6: 🎷";
-	    criteria = { class = "Spotify"; };
-	  }
-	  {
-	    command = "move to workspace 6: 🎷";
-	    criteria = { class = "Pavucontrol"; };
-	  }
-	  {
-	    command = "move to workspace 5: 📨";
-	    criteria = { class = "Microsoft Teams"; };
-	  }
-	  {
-	    command = "move to workspace 4";
-	    criteria = { class = "keepassxc"; };
-	  }
-	];    
+      assigns = {
+        "4" = [{ class = "keepassxc"; }];
+        "5: 📨" = [{ class = "Microsoft Teams"; }];
+        "6: 🎷" = [
+          { class = "Pavucontrol"; }
+          { class = "Spotify"; }
+        ];
+      };
+      window.border = 0;
+      window.commands = [
+        {
+          command = "move to workspace 6: 🎷";
+          criteria = { class = "Spotify"; };
+        }
+        {
+          command = "move to workspace 6: 🎷";
+          criteria = { class = "Pavucontrol"; };
+        }
+        {
+          command = "move to workspace 5: 📨";
+          criteria = { class = "Microsoft Teams"; };
+        }
+        {
+          command = "move to workspace 4";
+          criteria = { class = "keepassxc"; };
+        }
+      ];
 
 
       workspaceOutputAssign = [
-        { output= "${leftOutput} ${rightOutput} ${centerOutput}"; workspace= "1"; }
-        { output= "${leftOutput} ${rightOutput} ${centerOutput}"; workspace= "2"; }
-        { output= "${leftOutput} ${rightOutput} ${centerOutput}"; workspace= "3"; }
-        { output= "${leftOutput} ${rightOutput} ${centerOutput}"; workspace= "4"; }
+        { output = "${leftOutput} ${rightOutput} ${centerOutput}"; workspace = "1"; }
+        { output = "${leftOutput} ${rightOutput} ${centerOutput}"; workspace = "2"; }
+        { output = "${leftOutput} ${rightOutput} ${centerOutput}"; workspace = "3"; }
+        { output = "${leftOutput} ${rightOutput} ${centerOutput}"; workspace = "4"; }
 
-        { output= "${centerOutput} ${leftOutput} ${rightOutput}"; workspace= "5: 📨"; }
-        { output= "${centerOutput} ${rightOutput} ${leftOutput}"; workspace= "6: 🎷"; }
+        { output = "${centerOutput} ${leftOutput} ${rightOutput}"; workspace = "5: 📨"; }
+        { output = "${centerOutput} ${rightOutput} ${leftOutput}"; workspace = "6: 🎷"; }
 
-        { output= "${rightOutput} ${centerOutput} ${leftOutput}"; workspace= "7"; }
-        { output= "${rightOutput} ${centerOutput} ${leftOutput}"; workspace= "8"; }
-        { output= "${rightOutput} ${centerOutput} ${leftOutput}"; workspace= "9"; }
-        { output= "${rightOutput} ${centerOutput} ${leftOutput}"; workspace= "10"; }
+        { output = "${rightOutput} ${centerOutput} ${leftOutput}"; workspace = "7"; }
+        { output = "${rightOutput} ${centerOutput} ${leftOutput}"; workspace = "8"; }
+        { output = "${rightOutput} ${centerOutput} ${leftOutput}"; workspace = "9"; }
+        { output = "${rightOutput} ${centerOutput} ${leftOutput}"; workspace = "10"; }
       ];
-    
+
       startup = [
         { command = "feh --randomize --bg-scale ~/Pictures/Wallpapers/*"; always = true; }
         { command = "picom -b"; always = true; }
@@ -119,12 +120,12 @@ in {
         { command = "systemctl --user restart polybar"; always = true; notification = false; }
       ];
 
-      bars = [];
+      bars = [ ];
     };
     extraConfig = ''
       smart_gaps inverse_outer
     '';
   };
-  
+
 }
 

@@ -6,17 +6,18 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       # ./targets/desktop/hardware-configuration.nix
     ];
 
   boot.supportedFilesystems = [ "ntfs" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = false;
-  boot.loader.efi={
-	canTouchEfiVariables = true;
-	efiSysMountPoint = "/boot/efi";
-	};
+  boot.loader.efi = {
+    canTouchEfiVariables = true;
+    efiSysMountPoint = "/boot/efi";
+  };
   boot.loader.grub = {
     enable = true;
     version = 2;
@@ -57,25 +58,18 @@
     enable = true;
     layout = "pl";
     xkbVariant = "";
-   
+
     desktopManager.xterm.enable = false;
-    displayManager= {
-	defaultSession = "none+i3";
-	autoLogin = {
-		enable = true;
-		user = "radoslawgrochowski";
- 	};
+    displayManager = {
+      defaultSession = "none+bspwm";
+      autoLogin = {
+        enable = true;
+        user = "radoslawgrochowski";
+      };
     };
-    windowManager.i3 = {
+    windowManager.bspwm = {
       enable = true;
-      package = pkgs.i3-gaps;
-	extraPackages = with pkgs; [
-		dmenu
-		i3status
-		i3lock
-		i3blocks
-	];
-    };    
+    };
   };
 
   # Audio
@@ -95,11 +89,11 @@
     description = "radoslawgrochowski";
     extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [
-	google-chrome
-	git
-	kitty
-	pavucontrol
-	];
+      google-chrome
+      git
+      kitty
+      pavucontrol
+    ];
     shell = pkgs.fish;
   };
 
@@ -109,11 +103,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim 
+    vim
     os-prober
     grub2
     openjdk17
-  #  wget
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

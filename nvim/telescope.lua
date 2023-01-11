@@ -42,7 +42,14 @@ telescope.setup {
   },
 }
 
-local keymap = require 'lib.utils'.keymap
+function keymap (mode, lhs, rhs, opts)
+  vim.api.nvim_set_keymap(
+    mode,
+    lhs,
+    rhs,
+    vim.tbl_extend('keep', opts or {}, { noremap = true, silent = true  })
+  )
+end
 
 keymap('n', '<leader>f', '<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>')
 keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]])
