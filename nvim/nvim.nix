@@ -35,6 +35,9 @@ in
       wget
       xclip
       nodePackages.prettier
+      nodePackages.bash-language-server
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
     ];
     viAlias = true;
     vimAlias = true;

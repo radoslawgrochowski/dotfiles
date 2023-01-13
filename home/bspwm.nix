@@ -15,5 +15,10 @@
       "mkdir ~/Drive -p && google-drive-ocamlfuse ~/Drive"
       "systemctl --user restart polybar"
     ];
+    extraConfig = ''
+      bspc config remove_disabled_monitors true
+      bspc config remove_unplugged_monitors true
+      bspc config merge_overlapping_monitors true 
+    '';
   };
 }

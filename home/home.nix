@@ -30,6 +30,8 @@
     jq
     keepassxc
     kitty
+    nodejs
+    nodePackages.typescript
     shutter
     spotify
     steam-run
