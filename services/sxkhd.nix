@@ -11,6 +11,7 @@
       "super + Return" = "kitty -d `xcwd`";
       "super + Shift + Return" = "kitty";
       "super + d" = "rofi -show combi";
+      "super + period" = "rofi -show emoji";
       "super + Escape" = "pkill -USR1 -x sxhkd";
       "super + alt + {q,r}" = "bspc {quit,wm -r}";
       "super + {_,shift + }q" = "bspc node -{c,k}";
@@ -40,7 +41,7 @@
       "super + {_,shift + }{h,j,k,l}" = "bspc node -{f,s} {west,south,north,east}";
 
       # focus the node for the given path jump
-      "super + {p,b,comma,period}" = "bspc node -f @{parent,brother,first,second}";
+      "super + {p,b,comma,minus}" = "bspc node -f @{parent,brother,first,second}";
 
       # focus the next/previous window in the current desktop
       "super + {_,shift + }c" = "bspc node -f {next,prev}.local.!hidden.window";
