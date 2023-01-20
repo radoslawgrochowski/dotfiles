@@ -3,6 +3,8 @@
 {
   imports = [
     ./programs
+    ./services
+    ./fonts.nix
   ];
 
   programs.home-manager.enable = true;
@@ -26,6 +28,7 @@
     spotify
     steam-run
     xcwd
+    haskellPackages.ghc
   ];
 
   programs.nix-index = {

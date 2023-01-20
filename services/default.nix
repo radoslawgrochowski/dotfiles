@@ -2,8 +2,9 @@
 
 {
   imports = [
+    ./dunst.nix
     ./picom.nix
-    ./polybar.nix
+    ./polybar
     ./sxkhd.nix
   ];
 }
