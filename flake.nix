@@ -41,6 +41,22 @@
         ];
         specialArgs = { inherit inputs; };
       };
+      radoslawgrochowski-dell = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nix/configuration.nix
+          ./nix/targets/dell/hardware-configuration.nix
+          ./nix/targets/dell/target.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.radoslawgrochowski = import ./home.nix;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+          }
+        ];
+        specialArgs = { inherit inputs; };
+      };
     };
   };
 }
