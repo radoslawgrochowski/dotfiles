@@ -20,5 +20,17 @@
       bspc config remove_unplugged_monitors true
       bspc config merge_overlapping_monitors true 
     '';
+    rules = {
+      "Spotify" = {
+        follow = true;
+        rectangle = "1160x760+0+0";
+        state = "pseudo_tiled";
+      };
+      "kitty" = {
+        follow = true;
+        rectangle = "680x320+0+0";
+        state = "pseudo_tiled";
+      };
+    };
   };
 }
