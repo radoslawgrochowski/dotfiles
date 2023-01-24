@@ -18,17 +18,19 @@
     fzf
     google-chrome
     google-drive-ocamlfuse
+    haskellPackages.ghc
     i3lock
     jq
     keepassxc
     kitty
     nodePackages.typescript
     nodejs
+    openjdk17
+    opera
     shutter
-    spotify
+    spotifywm
     steam-run
     xcwd
-    haskellPackages.ghc
   ];
 
   programs.nix-index = {

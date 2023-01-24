@@ -106,8 +106,7 @@
     vim
     os-prober
     grub2
-    openjdk17
-    #  wget
+    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

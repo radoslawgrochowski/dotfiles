@@ -25,6 +25,7 @@
         ];
         specialArgs = { inherit inputs; };
       };
+
       radoslawgrochowski-hp = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -41,6 +42,7 @@
         ];
         specialArgs = { inherit inputs; };
       };
+
       radoslawgrochowski-dell = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
