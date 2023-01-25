@@ -4,7 +4,6 @@
   services.polybar = {
     enable = true;
     package = pkgs.polybar.override {
-      i3GapsSupport = true;
       iwSupport = true;
       githubSupport = true;
     };
