@@ -69,7 +69,6 @@ in
         config = builtins.readFile (./nvim-tree.lua);
       }
 
-      lualine-lsp-progress
       lualine-nvim
       {
         plugin = tokyonight-nvim;
@@ -141,6 +140,13 @@ in
         type = "lua";
         config = builtins.readFile (./undotree.lua);
       }
+
+      {
+        plugin = fidget-nvim;
+        type = "lua";
+        config = builtins.readFile (./fidget.lua);
+      }
+
     ];
   };
 }
