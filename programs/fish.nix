@@ -34,16 +34,17 @@ in
   programs.fish = {
     enable = true;
     plugins = [
-      # { name = "tide"; src = pkgs.fishPlugins.tide.src; }
       { name = "sponge"; src = pkgs.fishPlugins.sponge.src; }
       { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
       { name = "done"; src = pkgs.fishPlugins.done.src; }
     ];
     interactiveShellInit = ''
-              set -g fish_key_bindings fish_vi_key_bindings 
-              set fish_greeting ""
+      function fish_user_key_bindings
+        fish_vi_key_bindings
+      end
+      set fish_greeting ""
 
-      	${tokyoNight}
+      ${tokyoNight}
     '';
     shellAliases = {
       weather = "curl wttr.in";

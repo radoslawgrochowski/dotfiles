@@ -4,6 +4,7 @@
   imports = [
     ./autorandr
     ./bspwm.nix
+    ./fd
     ./fish.nix
     ./git
     ./kitty
