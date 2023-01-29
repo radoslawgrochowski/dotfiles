@@ -6,5 +6,6 @@
     ./picom.nix
     ./polybar
     ./sxkhd.nix
+    ./notes
   ];
 }
