@@ -19,7 +19,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.radoslawgrochowski = import ./home.nix;
+            home-manager.users.radoslawgrochowski = import ./users/home.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];
@@ -36,7 +36,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.radoslawgrochowski = import ./home.nix;
+            home-manager.users.radoslawgrochowski = import ./users/home.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];
@@ -53,7 +53,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.radoslawgrochowski = import ./home.nix;
+            home-manager.users.radoslawgrochowski = import ./users/work.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];
