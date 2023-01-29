@@ -6,7 +6,8 @@ then
   cd $NOTES_DIR
   if [[ -n $(git status -s) ]]; then
     echo "Changes found. Pushing changes..."
-    git add -A && git commit -m "update" && git push
+    git add -A && git commit -m "update"
+    git push origin master
   else
     echo "No changes found. Skip pushing."
   fi
