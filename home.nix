@@ -30,6 +30,7 @@
     shutter
     spotifywm
     steam-run
+    teams
     xcwd
   ];
 
