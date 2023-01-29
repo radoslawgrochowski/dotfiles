@@ -37,6 +37,10 @@
       "super + ctrl + {m,x,y,z}" = "bspc node -g {marked,locked,sticky,private}";
 
       ## FOCUS/SWAP
+      # [ bracketleft
+      # { braceleft 
+      # ( parenleft
+
       # focus the node in the given direction
       "super + {_,shift + }{h,j,k,l}" = "bspc node -{f,s} {west,south,north,east}";
 
@@ -47,7 +51,7 @@
       "super + {_,shift + }c" = "bspc node -f {next,prev}.local.!hidden.window";
 
       # focus the next/previous desktop in the current monitor
-      "super + bracket{left,right}" = "bspc desktop -f {prev,next}.local";
+      "super + paren{left,right}" = "bspc desktop -f {prev,next}.local";
 
       # focus the last node/desktop
       "super + {grave,Tab}" = "bspc {node,desktop} -f last";
@@ -81,6 +85,10 @@
       # contract a window by moving one of its side inward
       "super + alt + shift + {h,j,k,l}" = "bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}";
       "super + {Left,Down,Up,Right}" = "bspc node -v {-20 0,0 20,0 -20,20 0}";
+
+      ## Desktop management
+      "super + equal" = "bspc monitor -a \"$(rofi -dmenu -p Workspace -i -no-fixed-num-lines)\"";
+      "super + minus" = "bspc desktop -r";
     };
   };
 }

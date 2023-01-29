@@ -11,5 +11,9 @@
 
   networking.hostName = "radoslawgrochowski-dell";
 
+  hardware.bluetooth.enable = true;
+  hardware.pulseaudio.extraConfig = "
+    load-module module-switch-on-connect
+  ";
 }
 
