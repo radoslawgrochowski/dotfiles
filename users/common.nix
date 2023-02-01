@@ -28,6 +28,8 @@
     xcwd
   ];
 
+  systemd.user.startServices = true;
+
   programs.nix-index = {
     enable = true;
     enableFishIntegration = true;
