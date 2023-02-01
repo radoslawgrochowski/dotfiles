@@ -1,6 +1,21 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
+  systemd.user.startServices = true;
+  systemd.user.timers.notes = {
+    Unit = {
+      Description = "Run notes.service periodically";
+    };
+    Timer = {
+      OnBootSec = "5m";
+      OnUnitActiveSec = "5m";
+      Unit = "notes.service";
+    };
+    Install = {
+      WantedBy = [ "timers.target" ];
+    };
+  };
+
   systemd.user.services.notes = {
     Install = {
       WantedBy = [ "default.target" ];

@@ -5,11 +5,12 @@ if [ -d "$NOTES_DIR" ]
 then
   cd $NOTES_DIR
   if [[ -n $(git status -s) ]]; then
-    echo "Changes found. Pushing changes..."
+    echo "Changes found. Commiting..."
     git add -A && git commit -m "update"
+  fi
+  if  [[ -n $(git log @{push}..) ]]; then
+    echo "Pushing changes..."
     git push origin master
-  else
-    echo "No changes found. Skip pushing."
   fi
   git pull
 else
