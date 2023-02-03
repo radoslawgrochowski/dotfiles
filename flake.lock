@@ -1,11 +1,52 @@
 {
   "nodes": {
+    "config-wp": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1675374494,
+        "narHash": "sha256-8/xooTTTJy2mCIJbRs+68En98McpvtDwbjtPcE2tuUM=",
+        "ref": "refs/heads/master",
+        "rev": "2f08a4f51b4c92b1a1354fc7fc946b577edf56db",
+        "revCount": 5,
+        "type": "git",
+        "url": "ssh://git@github.com/radoslawgrochowski/nixos-config-wp.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/radoslawgrochowski/nixos-config-wp.git"
+      }
+    },
     "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "config-wp",
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1675371293,
+        "narHash": "sha256-LrCjtrAXj/WJphhGEMnHgZs7oTsfOlvPfOjFTIvg39k=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "d1c7730bb707bf8124d997952f7babd2a281ae68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ],
-        "utils": "utils"
+        "utils": "utils_2"
       },
       "locked": {
         "lastModified": 1674556204,
@@ -23,6 +64,22 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1675183161,
+        "narHash": "sha256-Zq8sNgAxDckpn7tJo7V1afRSk2eoVbu3OjI1QklGLNg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "e1e1b192c1a5aab2960bf0a0bd53a2e8124fa18e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1674459583,
         "narHash": "sha256-L0UZl/u2H3HGsrhN+by42c5kNYeKtdmJiPzIRvEVeiM=",
         "owner": "nixos",
@@ -39,11 +96,27 @@
     },
     "root": {
       "inputs": {
-        "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "config-wp": "config-wp",
+        "home-manager": "home-manager_2",
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "utils": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_2": {
       "locked": {
         "lastModified": 1667395993,
         "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
