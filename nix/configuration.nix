@@ -93,10 +93,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
-    os-prober
     grub2
+    os-prober
+    vim
     wget
+    xsel
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
