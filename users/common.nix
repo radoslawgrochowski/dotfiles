@@ -22,6 +22,7 @@
     keepassxc
     kitty
     nixos-option
+    nodePackages.pnpm
     nodePackages.typescript
     nodejs
     shutter
