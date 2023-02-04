@@ -21,6 +21,7 @@
     jq
     keepassxc
     kitty
+    nodePackages.pnpm
     nodePackages.typescript
     nodejs
     shutter
