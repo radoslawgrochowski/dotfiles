@@ -5,9 +5,13 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    config-wp.url =
+      "git+ssh://git@github.com/radoslawgrochowski/nixos-config-wp.git";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, config-wp, agenix, ... }: {
     nixosConfigurations = {
       radoslawgrochowski-desktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -56,6 +60,10 @@
             home-manager.users.radoslawgrochowski = import ./users/work.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
+          config-wp.nixosModules.wp
+          agenix.nixosModules.age
+          { age.identityPaths = [ "/home/radoslawgrochowski/.ssh/id_ed25519" ]; }
+          { boot.kernelModules = [ "tun" "ipv6" ]; }
         ];
         specialArgs = { inherit inputs; };
       };
