@@ -3,7 +3,7 @@
 {
   imports = [
     ./autorandr
-    ./bspwm.nix
+    ./bspwm
     ./fd
     ./fish.nix
     ./git

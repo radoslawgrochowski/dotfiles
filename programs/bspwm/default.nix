@@ -16,6 +16,8 @@
       "systemctl --user restart polybar"
     ];
     extraConfig = ''
+      bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+      ${./split.sh}
       bspc config remove_disabled_monitors true
       bspc config remove_unplugged_monitors true
       bspc config merge_overlapping_monitors true 
