@@ -16,7 +16,6 @@
       "systemctl --user restart polybar"
     ];
     extraConfig = ''
-      bspc monitor -d 1 2 3 4 5 6 7 8 9 10
       ${./split.sh}
       bspc config remove_disabled_monitors true
       bspc config remove_unplugged_monitors true
@@ -27,6 +26,7 @@
         follow = true;
         rectangle = "1160x760+0+0";
         state = "pseudo_tiled";
+        desktop = "Music";
       };
       "kitty" = {
         follow = true;
