@@ -55,6 +55,13 @@
           ./nix/targets/dell/target.nix
           home-manager.nixosModules.home-manager
           {
+            nixpkgs.overlays = [
+              (final: prev: {
+                nodejs = prev.nodejs-16_x;
+              })
+            ];
+          }
+          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.radoslawgrochowski = import ./users/work.nix;
