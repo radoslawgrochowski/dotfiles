@@ -9,7 +9,7 @@
     enable = true;
     keybindings = {
       "super + Return" = "kitty -d `xcwd`";
-      "super + Shift + Return" = "kitty";
+      "super + shift + Return" = "kitty";
       "super + d" = "rofi -show combi";
       "super + period" = "rofi -show emoji";
       "super + Escape" = "pkill -USR1 -x sxhkd";
@@ -18,10 +18,10 @@
 
       # open notes project
       "super + n" = "kitty fish -C 'nvim ~/Projects/notes/'";
-      "super + Shift + n" = "kitty fish -C 'sh ~/scripts/node.sh'";
+      "super + shift + n" = "kitty fish -C 'sh ~/scripts/note.sh'";
 
       # alternate between the tiled and monocle layout
-      "super + m" = "bspc desktop -l next";
+      "super + m" = "bsp-layout next --layouts tiled,monocle,tall";
 
       # swap the current node and the biggest window
       "super + g" = "bspc node -s biggest.window";
