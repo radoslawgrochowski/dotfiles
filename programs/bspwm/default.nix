@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    bc
+    bsp-layout
     xcwd
   ];
 
@@ -28,11 +30,11 @@
         state = "pseudo_tiled";
         desktop = "Music";
       };
-      "kitty" = {
-        follow = true;
-        rectangle = "680x320+0+0";
-        state = "pseudo_tiled";
-      };
+      /* "kitty" = { */
+      /*   follow = true; */
+      /*   rectangle = "680x320+0+0"; */
+      /*   state = "pseudo_tiled"; */
+      /* }; */
     };
   };
 }
