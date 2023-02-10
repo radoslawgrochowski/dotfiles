@@ -18,6 +18,7 @@
     google-chrome
     google-drive-ocamlfuse
     i3lock
+    jc
     jq
     keepassxc
     kitty
