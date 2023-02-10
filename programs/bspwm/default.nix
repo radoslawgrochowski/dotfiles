@@ -30,6 +30,12 @@
         state = "pseudo_tiled";
         desktop = "Music";
       };
+      "Microsoft Teams - Preview" = {
+        follow = true;
+        rectangle = "1660x960+0+0";
+        state = "pseudo_tiled";
+        desktop = "Comms";
+      };
       /* "kitty" = { */
       /*   follow = true; */
       /*   rectangle = "680x320+0+0"; */

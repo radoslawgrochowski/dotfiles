@@ -1,5 +1,5 @@
 #!/bin/sh
-NAMES=(1 2 3 "Music" 5 6 7 8 9 10)
+NAMES=(1 2 3 "Music" "Comms" 6 7 8 9 10)
 MONITORS=($(bspc query -M --names))
 EVEN_COUNT=$((${#NAMES[@]} / ${#MONITORS[@]}))
 REMINDER=$((${#NAMES[@]} - $(($EVEN_COUNT * ${#MONITORS[@]}))))
