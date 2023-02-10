@@ -18,9 +18,11 @@
     google-chrome
     google-drive-ocamlfuse
     i3lock
+    jc
     jq
     keepassxc
     kitty
+    nixos-option
     nodePackages.pnpm
     nodePackages.typescript
     nodejs

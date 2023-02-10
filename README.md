@@ -15,7 +15,7 @@ dotfiles and NixOS system conifiguration for my workstation setup
 2. make sure root also knows the key
    (still need to verify how secure this is)
    ```sh
-   cp /home/radoslawgrochowski/.ssh/id_ed* /root/.ssh/
+   sudo cp /home/radoslawgrochowski/.ssh/id_ed* /root/.ssh/
    ```
 
 ### nix

@@ -1,6 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
+  services.tlp.enable = true;
   services.xserver.libinput = {
     enable = true;
     touchpad = {

@@ -5,7 +5,7 @@
     ./dunst.nix
     ./picom.nix
     ./polybar
-    ./sxkhd.nix
+    ./sxhkd.nix
     ./notes
   ];
 }
