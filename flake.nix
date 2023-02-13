@@ -26,6 +26,7 @@
             home-manager.users.radoslawgrochowski = import ./users/home.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
+          ./services/samba.nix
         ];
         specialArgs = { inherit inputs; };
       };
