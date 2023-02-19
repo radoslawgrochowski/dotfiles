@@ -10,7 +10,7 @@
       git
       rnix-lsp
       ripgrep
-      sumneko-lua-language-server
+      lua-language-server
       tree-sitter
       wget
       xclip
