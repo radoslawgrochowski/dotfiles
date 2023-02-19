@@ -104,9 +104,9 @@
         config = builtins.readFile (./telescope.lua);
       }
       {
-        plugin = nvim-tree-lua;
+        plugin = neo-tree-nvim;
         type = "lua";
-        config = builtins.readFile (./nvim-tree.lua);
+        config = builtins.readFile (./neo-tree.lua);
       }
       {
         plugin = undotree;
