@@ -15,6 +15,7 @@
       "sh ~/scripts/autostart.sh"
       "mkdir ~/Drive -p && google-drive-ocamlfuse ~/Drive"
       "systemctl --user restart polybar"
+      "pgrep spotifywm || spotifywm"
     ];
     extraConfig = ''
       ${./split.sh}
