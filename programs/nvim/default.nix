@@ -1,9 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  # home.file."./.config/nvim/init.lua".source =
-  #   config.lib.file.mkOutOfStoreSymlink "${inputs.self}/nvim/config.lua";
-
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;

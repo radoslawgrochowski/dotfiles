@@ -5,7 +5,8 @@
     ./dunst.nix
     ./picom.nix
     ./polybar
-    ./sxhkd.nix
-    ./notes
+    ./sxhkd
+    ./notes-sync
+    ./wallpapers-sync
   ];
 }

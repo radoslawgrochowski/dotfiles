@@ -18,7 +18,7 @@
 
       # open notes project
       "super + n" = "kitty fish -C 'nvim ~/Projects/notes/'";
-      "super + shift + n" = "kitty fish -C 'sh ~/scripts/note.sh'";
+      "super + shift + n" = "kitty fish -C 'sh '${./note.sh}'";
 
       # alternate between the tiled and monocle layout
       "super + m" = "bsp-layout next --layouts tiled,monocle,tall";

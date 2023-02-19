@@ -2,21 +2,21 @@
 
 {
   systemd.user.startServices = true;
-  systemd.user.timers.notes = {
+  systemd.user.timers.notes-sync = {
     Unit = {
-      Description = "Run notes.service periodically";
+      Description = "Run notes-sync.service periodically";
     };
     Timer = {
       OnBootSec = "5m";
       OnUnitActiveSec = "5m";
-      Unit = "notes.service";
+      Unit = "notes-sync.service";
     };
     Install = {
       WantedBy = [ "timers.target" ];
     };
   };
 
-  systemd.user.services.notes = {
+  systemd.user.services.notes-sync = {
     Install = {
       WantedBy = [ "default.target" ];
     };
@@ -34,7 +34,7 @@
 
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash ${./notes.sh}";
+      ExecStart = "${pkgs.bash}/bin/bash ${./notes-sync.sh}";
       Environment = [
         "PATH=${lib.makeBinPath (with pkgs; [ openssh git ])}"
       ];

@@ -10,5 +10,6 @@
     ./kitty
     ./nvim
     ./rofi.nix
+    ./npm
   ];
 }
