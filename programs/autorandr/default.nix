@@ -1,6 +1,13 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
-  home.packages = [ pkgs.autorandr ];
-  home.file."./.config/autorandr".source = config.lib.file.mkOutOfStoreSymlink "${inputs.self}/programs/autorandr/autorandr";
+  programs.autorandr = {
+    enable = true;
+    hooks = {
+      postswitch = {
+        "reload-bspwm" = "${pkgs.bspwm}/bin/bspc wm -r";
+      };
+    };
+  };
+  xsession.windowManager.bspwm.startupPrograms = [ "autorandr -c" ];
 }
