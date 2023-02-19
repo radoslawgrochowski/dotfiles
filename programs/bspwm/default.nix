@@ -22,6 +22,7 @@
       bspc config remove_disabled_monitors true
       bspc config remove_unplugged_monitors true
       bspc config merge_overlapping_monitors true 
+      bspc config focused_border_color '#9ece6a'
       sh ${./monitor-order.sh}
       sh ${./split.sh}
     '';
