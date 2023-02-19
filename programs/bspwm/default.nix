@@ -15,6 +15,7 @@
       "mkdir ~/Drive -p && google-drive-ocamlfuse ~/Drive"
       "systemctl --user restart polybar"
       "pgrep spotifywm || spotifywm"
+      "pgrep btop || kitty --title btop --class btop btop"
     ];
     extraConfig = ''
       ${./split.sh}
@@ -37,11 +38,10 @@
         state = "pseudo_tiled";
         desktop = "Comms";
       };
-      /* "kitty" = { */
-      /*   follow = true; */
-      /*   rectangle = "680x320+0+0"; */
-      /*   state = "pseudo_tiled"; */
-      /* }; */
+      "btop" = {
+        follow = true;
+        desktop = "^6";
+      };
     };
   };
 }
