@@ -1,22 +1,5 @@
 { config, lib, pkgs, inputs, ... }:
 
-let
-  # concatFiles = files:
-  #   pkgs.lib.strings.concatMapStringsSep "\n" builtins.readFile files;
-  #
-  # installs a vim plugin from git with a given tag / branch
-  # usage: pluginGit "HEAD" "ellisonleao/gruvbox.nvim");
-  # pluginGit = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
-  #   pname = "${lib.strings.sanitizeDerivationName repo}";
-  #   version = ref;
-  #   src = builtins.fetchGit {
-  #     url = "https://github.com/${repo}.git";
-  #     ref = ref;
-  #   };
-  # };
-
-in
-
 {
   # home.file."./.config/nvim/init.lua".source =
   #   config.lib.file.mkOutOfStoreSymlink "${inputs.self}/nvim/config.lua";
@@ -44,6 +27,7 @@ in
     vimAlias = true;
     withNodeJs = true;
     withPython3 = true;
+    defaultEditor = true;
 
     # FIXME:
     # migrate config to lua somehow
@@ -51,37 +35,16 @@ in
     extraConfig = builtins.readFile (./config.vim);
 
     plugins = with pkgs.vimPlugins; [
+      # Util libraries
       plenary-nvim
 
-      vim-rooter
-      vim-lastplace
-      vim-commentary
-      vim-fugitive
-      vim-projectionist
-      vim-surround
-      vim-sleuth
-      vim-eunuch
-
-
-      {
-        plugin = nvim-tree-lua;
-        type = "lua";
-        config = builtins.readFile (./nvim-tree.lua);
-      }
-
-      lualine-nvim
-      {
-        plugin = tokyonight-nvim;
-        type = "lua";
-        config = builtins.readFile (./tokyodark.lua);
-      }
-
+      # Completion
+      neodev-nvim
       {
         plugin = luasnip;
         type = "lua";
         config = builtins.readFile (./snippets.lua);
       }
-
       cmp-buffer
       cmp-cmdline
       cmp-nvim-lsp
@@ -95,24 +58,39 @@ in
         config = builtins.readFile (./cmp.lua);
       }
 
-      nvim-treesitter-context
-      nvim-treesitter-textobjects
-      nvim-ts-context-commentstring
       {
-        plugin = nvim-treesitter.withAllGrammars;
+        plugin = comment-nvim;
         type = "lua";
-        config = builtins.readFile (./treesitter.lua);
+        config = "require('Comment').setup()";
       }
+      vim-surround
+      vim-sleuth
+      vim-eunuch
 
-      lsp-status-nvim
+      # Completion/Lsp
       SchemaStore-nvim
       nvim-code-action-menu
+      lsp-colors-nvim
+      {
+        plugin = fidget-nvim;
+        type = "lua";
+        config = builtins.readFile (./fidget.lua);
+      }
       {
         plugin = nvim-lspconfig;
         type = "lua";
         config = builtins.readFile (./lspconfig.lua);
       }
 
+      # Movement
+      vim-rooter
+      vim-lastplace
+      vim-projectionist
+      {
+        plugin = vim-test;
+        type = "lua";
+        config = builtins.readFile (./test.lua);
+      }
       telescope-fzf-native-nvim
       nvim-web-devicons
       telescope-live-grep-args-nvim
@@ -121,32 +99,43 @@ in
         type = "lua";
         config = builtins.readFile (./telescope.lua);
       }
-
       {
-        plugin = gitsigns-nvim;
+        plugin = nvim-tree-lua;
         type = "lua";
-        config = builtins.readFile (./gitsigns.lua);
+        config = builtins.readFile (./nvim-tree.lua);
       }
-
-      {
-        plugin = vim-test;
-        type = "lua";
-        config = builtins.readFile (./test.lua);
-      }
-
-      lsp-colors-nvim
       {
         plugin = undotree;
         type = "lua";
         config = builtins.readFile (./undotree.lua);
       }
 
+      # Git 
+      vim-fugitive
       {
-        plugin = fidget-nvim;
+        plugin = gitsigns-nvim;
         type = "lua";
-        config = builtins.readFile (./fidget.lua);
+        config = builtins.readFile (./gitsigns.lua);
       }
 
+      # UI
+      lualine-nvim
+      lsp-status-nvim
+      {
+        plugin = tokyonight-nvim;
+        type = "lua";
+        config = builtins.readFile (./tokyodark.lua);
+      }
+
+      # Treesitter
+      nvim-treesitter-context
+      nvim-treesitter-textobjects
+      nvim-ts-context-commentstring
+      {
+        plugin = nvim-treesitter.withAllGrammars;
+        type = "lua";
+        config = builtins.readFile (./treesitter.lua);
+      }
     ];
   };
 }

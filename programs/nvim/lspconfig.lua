@@ -18,7 +18,6 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>;', '<cmd>lua vim.lsp.buf.format{ async = true }<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', ':CodeActionMenu<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -36,20 +35,20 @@ end
 
 
 local border = {
-  { "╭", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "╮", "FloatBorder" },
-  { "│", "FloatBorder" },
-  { "╯", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "╰", "FloatBorder" },
-  { "│", "FloatBorder" },
+    { "╭", "FloatBorder" },
+    { "─", "FloatBorder" },
+    { "╮", "FloatBorder" },
+    { "│", "FloatBorder" },
+    { "╯", "FloatBorder" },
+    { "─", "FloatBorder" },
+    { "╰", "FloatBorder" },
+    { "│", "FloatBorder" },
 }
 
 -- LSP settings (for overriding per client)
 local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
 }
 
 -- Setup lspconfig.
@@ -58,22 +57,22 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-  'tsserver',
-  'ansiblels',
-  'bashls',
-  'gopls',
-  'rnix',
-  'hls',
+    'tsserver',
+    'ansiblels',
+    'bashls',
+    'gopls',
+    'rnix',
+    'hls',
 }
 
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 50,
-    },
-    handlers = handlers,
-    capabilities = capabilities,
+      on_attach = on_attach,
+      flags = {
+          debounce_text_changes = 50,
+      },
+      handlers = handlers,
+      capabilities = capabilities,
   }
 end
 
@@ -82,13 +81,13 @@ end
 local lspconfig = require 'lspconfig'
 
 lspconfig.eslint.setup {
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 50,
-  },
-  root_dir = lspconfig.util.root_pattern('.git');
-  handlers = handlers,
-  capabilities = capabilities,
+    on_attach = on_attach,
+    flags = {
+        debounce_text_changes = 50,
+    },
+    root_dir = lspconfig.util.root_pattern('.git'),
+    handlers = handlers,
+    capabilities = capabilities,
 }
 
 -- lua
@@ -98,80 +97,77 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 
 lspconfig.sumneko_lua.setup {
-  on_attach = on_attach,
-  flags = { debounce_text_changes = 50,
-  },
-  handlers = handlers,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-        path = runtime_path,
-      },
-      diagnostics = {
-        globals = { 'vim' },
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      telemetry = {
-        enable = false,
-      },
+    on_attach = on_attach,
+    flags = { debounce_text_changes = 50,
     },
-  },
+    handlers = handlers,
+    capabilities = capabilities,
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT',
+                path = runtime_path,
+            },
+            diagnostics = {
+                globals = { 'vim' },
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
 }
 
+
+--- efm/prettier
 local prettier = {
-  formatCommand = [[$([ -n "$(command -v node_modules/.bin/prettier)" ] && echo "node_modules/.bin/prettier" || echo "prettier") --stdin-filepath ${INPUT} ${--config-precedence:configPrecedence} ${--tab-width:tabWidth} ${--single-quote:singleQuote} ${--trailing-comma:trailingComma}]],
-  formatStdin = true,
+    formatCommand = [[$([ -n "$(command -v node_modules/.bin/prettier)" ] && echo "node_modules/.bin/prettier" || echo "prettier") --stdin-filepath ${INPUT} ${--config-precedence:configPrecedence} ${--tab-width:tabWidth} ${--single-quote:singleQuote} ${--trailing-comma:trailingComma}]],
+    formatStdin = true,
 }
 
 lspconfig.efm.setup {
-  capabilities = capabilities,
-  handlers = handlers,
-  on_attach = on_attach,
-  init_options = { documentFormatting = true, codeAction = true },
-  root_dir = vim.loop.cwd,
-  settings = {
-    rootMarkers = { ".git/" },
-    lintDebounce = 100,
-    -- logLevel = 5,
-    languages = {
-      typescript = { prettier },
-      javascript = { prettier },
-      typescriptreact = { prettier },
-      javascriptreact = { prettier },
-      yaml = { prettier },
-      json = { prettier },
-      html = { prettier },
-      scss = { prettier },
-      css = { prettier },
-      markdown = { prettier },
+    capabilities = capabilities,
+    handlers = handlers,
+    on_attach = on_attach,
+    init_options = { documentFormatting = true, codeAction = true },
+    root_dir = vim.loop.cwd,
+    settings = {
+        rootMarkers = { ".git/" },
+        lintDebounce = 100,
+        -- logLevel = 5,
+        languages = {
+            typescript = { prettier },
+            javascript = { prettier },
+            typescriptreact = { prettier },
+            javascriptreact = { prettier },
+            yaml = { prettier },
+            json = { prettier },
+            html = { prettier },
+            scss = { prettier },
+            css = { prettier },
+            markdown = { prettier },
+        },
     },
-  },
-  filetypes = {
-    'markdown',
-    'yaml',
-    'json',
-    'html',
-    'css'
-  }
+    filetypes = {
+        'markdown',
+        'yaml',
+        'json',
+        'html',
+        'css'
+    }
 }
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- lspconfig.emmet_ls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   filetypes = {
---     'html',
---     'typescriptreact',
---     'javascriptreact',
---     'css',
---     'sass',
---     'scss',
---     'less',
---   },
--- }
-
+-- json
+lspconfig.jsonls.setup {
+    settings = {
+        json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
+        },
+    },
+}

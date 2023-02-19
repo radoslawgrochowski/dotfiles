@@ -51,7 +51,7 @@
       "super + {_,shift + }c" = "bspc node -f {next,prev}.local.!hidden.window";
 
       # focus the next/previous desktop in the current monitor
-      "super + paren{left,right}" = "bspc desktop -f {prev,next}.local";
+      "super + brace{left,right}" = "bspc desktop -f {prev,next}.local";
 
       # focus the last node/desktop
       "super + {grave,Tab}" = "bspc {node,desktop} -f last";

@@ -28,6 +28,7 @@
     nodejs
     shutter
     spotifywm
+    vlc
     xcwd
   ];
 
