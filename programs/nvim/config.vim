@@ -54,7 +54,7 @@ keymap('v', '<', '<gv')
 keymap('v', '>', '>gv')
 
 -- allow gf to open non-existent files
-keymap('', 'gf', ':edit <cfile><CR>')
+keymap('', 'gF', ':edit %:p:h/<cfile><CR>')
 
 -- Maintain the cursor position when yanking a visual selection
 -- http://ddrscott.github.io/blog/2016/yank-without-jank/
