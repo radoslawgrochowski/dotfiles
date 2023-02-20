@@ -94,6 +94,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     grub2
+    lsof
     os-prober
     vim
     wget
