@@ -5,7 +5,7 @@ luasnip.config.set_config {
 }
 
 vim.keymap.set("i", "<C-n>", function() luasnip.jump(1) end)
-vim.keymap.set("i", "<C-p>", function() luasnip.jump(-1) end)
+vim.keymap.set("i", "<C-p>", function() luasnip.jump( -1) end)
 
 luasnip.snippets = {}
 
@@ -18,6 +18,33 @@ local js = {
   snippet('warn', fmt('console.warn({})', { i(0) })),
   snippet('debug', fmt('console.debug({})', { i(0) })),
   snippet('error', fmt('console.error({})', { i(0) })),
+}
+
+local text = {
+  snippet({
+    trig = "filename",
+    dscr = "Insert filename without extension"
+  }, {
+    luasnip.function_node(function() return { vim.fn.expand("%:t:r") } end, {}),
+  }),
+  snippet({
+    trig = "date",
+    dscr = "Insert current date"
+  }, {
+    luasnip.function_node(function() return { os.date('%Y-%m-%d') } end, {}),
+  }),
+  snippet({
+    trig = "datetime",
+    dscr = "Insert current datetime"
+  }, {
+    luasnip.function_node(function() return { os.date('%Y-%m-%d %H:%M') } end, {}),
+  }),
+  snippet({
+    trig = "time",
+    dscr = "Insert current time"
+  }, {
+    luasnip.function_node(function() return { os.date('%H:%M') } end, {}),
+  })
 }
 
 local ts = {
@@ -43,7 +70,7 @@ local typescriptreact = {
         const {1} = () => {{
           {3}
         }}
-        
+
         export default {2}
       ]],
       { i(1), f(function(args) return args[1] end, { 1 }), i(2) })
@@ -72,3 +99,4 @@ luasnip.add_snippets('typescript', ts)
 luasnip.add_snippets('typescriptreact', js)
 luasnip.add_snippets('typescriptreact', ts)
 luasnip.add_snippets('typescriptreact', typescriptreact)
+luasnip.add_snippets('markdown', text)
