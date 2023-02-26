@@ -48,6 +48,9 @@ in
     '';
     shellAliases = {
       weather = "curl wttr.in";
+      l = "ll";
+      g = "git";
+      G = "git";
     };
   };
 
