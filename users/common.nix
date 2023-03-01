@@ -30,6 +30,7 @@
     spotifywm
     unzip
     vlc
+    xclip
     xcwd
   ];
 
