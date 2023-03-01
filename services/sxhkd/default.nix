@@ -87,8 +87,8 @@
       "super + {Left,Down,Up,Right}" = "bspc node -v {-20 0,0 20,0 -20,20 0}";
 
       # screenshots
-      "super + p" = "shutter -s -C -e";
-      "super + shift + p" = "shutter -a -c -e";
+      "super + p" =
+        "path=\"$HOME/Pictures/$(date +%s).png\" && maim -s \"$path\" && xclip -selection clipboard -t image/png \"$path\"";
     };
   };
 }

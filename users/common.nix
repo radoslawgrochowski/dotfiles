@@ -26,7 +26,7 @@
     nodePackages.pnpm
     nodePackages.typescript
     nodejs
-    shutter
+    maim
     spotifywm
     unzip
     vlc
