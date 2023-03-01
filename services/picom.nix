@@ -20,6 +20,7 @@
         "window_type = 'dock'"
         "window_type = 'desktop'"
         "_GTK_FRAME_EXTENTS@:c"
+        "class_g = 'slop'"
       ];
 
       inactive-opacity = 1;
@@ -40,6 +41,7 @@
 
       shadow-exclude = [
         "class_g = 'Polybar'"
+        "class_g = 'slop'"
       ];
 
     };
