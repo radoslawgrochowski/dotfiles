@@ -31,6 +31,10 @@ let
   '';
 in
 {
+  home.packages = with pkgs; [
+    fd
+    bat
+  ];
   programs.fish = {
     enable = true;
     plugins = [

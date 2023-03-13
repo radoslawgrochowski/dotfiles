@@ -12,7 +12,7 @@
     startupPrograms = [
       "feh --randomize --bg-scale ~/Pictures/Wallpapers/*"
       "picom -b"
-      "mkdir ~/Drive -p && google-drive-ocamlfuse ~/Drive"
+      "mkdir ~/Drives/rg@fard.pl -p && google-drive-ocamlfuse -label rg@fard.pl ~/Drives/rg@fard.pl"
       "systemctl --user restart polybar"
       "pgrep spotifywm || spotifywm"
       "pgrep btop || kitty --title btop --class btop btop"
