@@ -27,6 +27,7 @@
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
           ./services/samba.nix
+          ./services/printing.nix
           {
             virtualisation.docker.enable = true;
             users.groups.docker.members = [ "radoslawgrochowski" ];
