@@ -1,15 +1,10 @@
 { config, pkgs, inputs, ... }:
 
 {
-  home.packages = with pkgs; [
-    xcwd
-  ];
-
   services.sxhkd = {
     enable = true;
     keybindings = {
-      "super + Return" = "kitty -d `xcwd`";
-      "super + shift + Return" = "kitty";
+      "super + Return" = "kitty";
       "super + d" = "rofi -show combi";
       "super + period" = "rofi -show emoji";
       "super + Escape" = "pkill -USR1 -x sxhkd";
