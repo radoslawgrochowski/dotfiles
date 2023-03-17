@@ -18,7 +18,6 @@
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
-      haskell-language-server
     ];
     viAlias = true;
     vimAlias = true;

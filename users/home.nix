@@ -6,7 +6,6 @@
   ];
 
   home.packages = with pkgs; [
-    haskellPackages.ghc
     openjdk17
     opera
     steam-run
