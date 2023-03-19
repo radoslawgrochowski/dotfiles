@@ -26,12 +26,9 @@
     nodePackages.pnpm
     nodePackages.typescript
     nodejs
-    maim
     spotifywm
     unzip
     vlc
-    xclip
-    xcwd
   ];
 
   systemd.user.startServices = true;

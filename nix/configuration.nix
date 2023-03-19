@@ -2,7 +2,6 @@
 
 {
   boot.supportedFilesystems = [ "ntfs" ];
-  # Bootloader.
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi = {
     canTouchEfiVariables = true;
@@ -15,22 +14,9 @@
     efiSupport = true;
     devices = [ "nodev" ];
   };
-
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
   networking.networkmanager.enable = true;
-
-  # Set your time zone.
   time.timeZone = "Europe/Warsaw";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pl_PL.UTF-8";
     LC_IDENTIFICATION = "pl_PL.UTF-8";
@@ -51,14 +37,14 @@
 
     desktopManager.xterm.enable = false;
     displayManager = {
-      defaultSession = "none+bspwm";
+      # defaultSession = "none+bspwm";
       autoLogin = {
         enable = true;
         user = "radoslawgrochowski";
       };
     };
     windowManager.bspwm = {
-      enable = true;
+      enable = false;
     };
   };
 
@@ -99,7 +85,10 @@
     vim
     wget
     xsel
+    wl-clipboard
   ];
+
+
 
   environment.localBinInPath = true;
 

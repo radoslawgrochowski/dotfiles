@@ -2,7 +2,7 @@
 
 {
   services.polybar = {
-    enable = true;
+    enable = false;
     package = pkgs.polybar.override {
       iwSupport = true;
       githubSupport = true;

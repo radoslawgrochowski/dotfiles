@@ -2,7 +2,7 @@
 
 {
   services.sxhkd = {
-    enable = true;
+    enable = false;
     keybindings = {
       "super + Return" = "kitty";
       "super + d" = "rofi -show combi";

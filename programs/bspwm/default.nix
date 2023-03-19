@@ -8,7 +8,7 @@
   ];
 
   xsession.windowManager.bspwm = {
-    enable = true;
+    enable = false;
     startupPrograms = [
       "feh --randomize --bg-scale ~/Pictures/Wallpapers/*"
       "picom -b"

@@ -64,9 +64,6 @@ keymap('v', 'Y', 'myY`y')
 -- disable annoying command line thing
 keymap('n', 'q:', ':q<CR>')
 
--- open with default program
-keymap('n', '<leader>x', ':!xdg-open %<cr><cr>')
-
 -- navigation
 keymap('n', '<leader>h', '<C-W>h')
 keymap('n', '<leader>j', '<C-W>j')
