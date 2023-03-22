@@ -8,29 +8,29 @@ vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', op
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 ---@diagnostic disable-next-line: unused-local
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+local on_lsp_attach = function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>;', '<cmd>lua vim.lsp.buf.format{ async = true }<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', ':CodeActionMenu<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>ca', ':CodeActionMenu<CR>', opts)
+    -- Mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>;', '<cmd>lua vim.lsp.buf.format{ async = true }<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', ':CodeActionMenu<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>ca', ':CodeActionMenu<CR>', opts)
 
-  vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
-  vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
-  vim.cmd [[ autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll ]]
-  -- vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format{ async = true } ]]
+    vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
+    vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+    -- vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format{ async = true } ]]
 end
+
 
 
 
@@ -65,22 +65,27 @@ local servers = {
 }
 
 for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-      on_attach = on_attach,
-      flags = {
-          debounce_text_changes = 50,
-      },
-      handlers = handlers,
-      capabilities = capabilities,
-  }
+    require('lspconfig')[lsp].setup {
+        on_attach = on_lsp_attach,
+        flags = {
+            debounce_text_changes = 50,
+        },
+        handlers = handlers,
+        capabilities = capabilities,
+    }
 end
 
 -- eslint
 
+local on_eslint_attach = function(client, bufnr)
+    on_lsp_attach(client, bufnr)
+    vim.cmd [[ autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll ]]
+end
+
 local lspconfig = require 'lspconfig'
 
 lspconfig.eslint.setup {
-    on_attach = on_attach,
+    on_attach = on_eslint_attach,
     flags = {
         debounce_text_changes = 50,
     },
@@ -96,7 +101,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 
 lspconfig.lua_ls.setup {
-    on_attach = on_attach,
+    on_attach = on_lsp_attach,
     flags = { debounce_text_changes = 50,
     },
     handlers = handlers,
@@ -123,14 +128,15 @@ lspconfig.lua_ls.setup {
 
 --- efm/prettier
 local prettier = {
-    formatCommand = [[$([ -n "$(command -v node_modules/.bin/prettier)" ] && echo "node_modules/.bin/prettier" || echo "prettier") --stdin-filepath ${INPUT} ${--config-precedence:configPrecedence} ${--tab-width:tabWidth} ${--single-quote:singleQuote} ${--trailing-comma:trailingComma}]],
+    formatCommand =
+    [[$([ -n "$(command -v node_modules/.bin/prettier)" ] && echo "node_modules/.bin/prettier" || echo "prettier") --stdin-filepath ${INPUT} ${--config-precedence:configPrecedence} ${--tab-width:tabWidth} ${--single-quote:singleQuote} ${--trailing-comma:trailingComma}]],
     formatStdin = true,
 }
 
 lspconfig.efm.setup {
     capabilities = capabilities,
     handlers = handlers,
-    on_attach = on_attach,
+    on_attach = on_lsp_attach,
     init_options = { documentFormatting = true, codeAction = true },
     root_dir = vim.loop.cwd,
     settings = {
