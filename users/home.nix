@@ -370,6 +370,7 @@
       # Execute your favorite apps at launch
 
       exec = /bin/sh ${../programs/hyprland/random-bg.sh}
+      exec-once = /bin/sh ${../programs/hyprland/google-drive.sh}
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
