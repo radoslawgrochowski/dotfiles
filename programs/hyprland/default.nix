@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  home.packages = [
+  home.packages = with pkgs; [
     grim
     pipewire
     slurp

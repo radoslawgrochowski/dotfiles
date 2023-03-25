@@ -1,6 +1,6 @@
 { config, pkgs, inputs, ... }:
 {
-  home.packages = [
+  home.packages = with pkgs; [
     font-awesome
   ];
   programs.waybar = {

@@ -20,90 +20,55 @@
           ./nix/configuration.nix
           ./nix/targets/desktop/hardware-configuration.nix
           ./nix/targets/desktop/target.nix
-          hyprland.nixosModules.default
-          {
-            nixpkgs.overlays = [
-              (self: super: {
-                waybar = super.waybar.overrideAttrs (oldAttrs: {
-                  mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-                });
-              })
-            ];
-            hardware.nvidia.modesetting.enable = true;
-            programs.xwayland.enable = true;
-            services.xserver.displayManager.gdm.wayland = true;
-            hardware.opengl.enable = true;
-            programs.hyprland = {
-              enable = true;
-              nvidiaPatches = true;
-            };
-            users.groups.input.members = [ "radoslawgrochowski" ];
-          }
-          {
-            # for udiskie
-            services.udisks2.enable = true;
-          }
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.radoslawgrochowski = import ./users/home.nix;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-          }
+          ./home.nix
+          { home-manager.users.radoslawgrochowski = import ./users/home.nix; }
+          ./hyprland.nix
           ./services/samba.nix
           ./services/printing.nix
-          {
-            virtualisation.docker.enable = true;
-            users.groups.docker.members = [ "radoslawgrochowski" ];
-          }
+          ./docker.nix
         ];
         specialArgs = { inherit inputs; };
       };
 
-      #   radoslawgrochowski-hp = nixpkgs.lib.nixosSystem {
-      #     system = "x86_64-linux";
-      #     modules = [
-      #       ./nix/configuration.nix
-      #       ./nix/targets/hp/hardware-configuration.nix
-      #       ./nix/targets/hp/target.nix
-      #       home-manager.nixosModules.home-manager
-      #       {
-      #         home-manager.useGlobalPkgs = true;
-      #         home-manager.useUserPackages = true;
-      #         home-manager.users.radoslawgrochowski = import ./users/home.nix;
-      #         home-manager.extraSpecialArgs = { inherit inputs; };
-      #       }
-      #     ];
-      #     specialArgs = { inherit inputs; };
-      #   };
-      #
-      #   radoslawgrochowski-dell = nixpkgs.lib.nixosSystem {
-      #     system = "x86_64-linux";
-      #     modules = [
-      #       ./nix/configuration.nix
-      #       ./nix/targets/dell/hardware-configuration.nix
-      #       ./nix/targets/dell/target.nix
-      #       home-manager.nixosModules.home-manager
-      #       {
-      #         nixpkgs.overlays = [
-      #           (final: prev: {
-      #             nodejs = prev.nodejs-16_x;
-      #           })
-      #         ];
-      #       }
-      #       {
-      #         home-manager.useGlobalPkgs = true;
-      #         home-manager.useUserPackages = true;
-      #         home-manager.users.radoslawgrochowski = import ./users/work.nix;
-      #         home-manager.extraSpecialArgs = { inherit inputs; };
-      #       }
-      #       config-wp.nixosModules.wp
-      #       agenix.nixosModules.age
-      #       { age.identityPaths = [ "/home/radoslawgrochowski/.ssh/id_ed25519" ]; }
-      #       { boot.kernelModules = [ "tun" "ipv6" ]; }
-      #     ];
-      #     specialArgs = { inherit inputs; };
-      #   };
+      radoslawgrochowski-hp = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nix/configuration.nix
+          ./nix/targets/hp/hardware-configuration.nix
+          ./nix/targets/hp/target.nix
+          ./home.nix
+          { home-manager.users.radoslawgrochowski = import ./users/home.nix; }
+          ./hyprland.nix
+        ];
+        specialArgs = { inherit inputs; };
+      };
+
+      radoslawgrochowski-dell = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nix/configuration.nix
+          ./nix/targets/dell/hardware-configuration.nix
+          ./nix/targets/dell/target.nix
+          home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                nodejs = prev.nodejs-16_x;
+              })
+            ];
+          }
+          ./home.nix
+          ./hyprland.nix
+          {
+            home-manager.users.radoslawgrochowski = import ./users/work.nix;
+          }
+          config-wp.nixosModules.wp
+          agenix.nixosModules.age
+          { age.identityPaths = [ "/home/radoslawgrochowski/.ssh/id_ed25519" ]; }
+          { boot.kernelModules = [ "tun" "ipv6" ]; }
+        ];
+        specialArgs = { inherit inputs; };
+      };
     };
   };
 }
