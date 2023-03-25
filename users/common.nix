@@ -5,6 +5,7 @@
     ../programs
     ../services
     ../fonts.nix
+    inputs.hyprland.homeManagerModules.default
   ];
   programs.home-manager.enable = true;
 
@@ -26,6 +27,8 @@
     nodePackages.pnpm
     nodePackages.typescript
     nodejs
+    polkit
+    polkit-kde-agent
     spotifywm
     unzip
     vlc

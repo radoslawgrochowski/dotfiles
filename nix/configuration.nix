@@ -88,6 +88,11 @@
     wl-clipboard
   ];
 
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
 
 
   environment.localBinInPath = true;

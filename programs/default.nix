@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./autorandr
-    ./bspwm
+    ./hyprland
+    ./waybar
     ./fd
     ./fish.nix
     ./git
