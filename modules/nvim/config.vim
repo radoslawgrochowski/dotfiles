@@ -11,7 +11,7 @@ vim.o.wrap = false
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.scrolloff = 8
-vim.o.signcolumn = 'yes:2'
+vim.o.signcolumn = 'yes:1'
 vim.o.smartcase = true
 vim.o.termguicolors = true
 
