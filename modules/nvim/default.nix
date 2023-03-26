@@ -9,12 +9,14 @@
         efm-langserver
         gcc
         git
-        rnix-lsp
-        ripgrep
+        ltex-ls
         lua-language-server
+        marksman
+        ripgrep
+        rnix-lsp
         tree-sitter
         wget
-        xclip
+
         nodePackages.prettier
         nodePackages.bash-language-server
         nodePackages.typescript-language-server

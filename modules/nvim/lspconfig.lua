@@ -176,3 +176,19 @@ lspconfig.jsonls.setup {
         },
     },
 }
+
+-- marksman
+lspconfig.marksman.setup {}
+
+-- languageTool
+vim.api.nvim_create_user_command('LspSetupLtexEn', function()
+    lspconfig.ltex.setup {
+        settings = { ltex = { language = 'en-US', } }
+    }
+end, { desc = 'Setups ltex-lsp with en-US language'})
+
+vim.api.nvim_create_user_command('LspSetupLtexPl', function()
+    lspconfig.ltex.setup {
+        settings = { ltex = { language = 'pl-PL', } }
+    }
+end, { desc = 'Setups ltex-lsp with pl-PL language'})
