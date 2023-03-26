@@ -31,6 +31,7 @@ let
   '';
 in
 {
+  programs.fish.enable = true;
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       fd
