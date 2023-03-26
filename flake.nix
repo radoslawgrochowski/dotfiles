@@ -16,6 +16,7 @@
   outputs = inputs@{ nixpkgs, home-manager, config-wp, agenix, hyprland, ... }:
     let
       overlays = [ inputs.neovim-nightly-overlay.overlay ];
+      username = "radoslawgrochowski";
     in
     {
       nixosConfigurations = {
@@ -23,16 +24,19 @@
           system = "x86_64-linux";
           modules = [
             { nixpkgs.overlays = overlays; }
+
             ./configuration.nix
             ./hosts/desktop
-            ./home.nix
-            { home-manager.users.radoslawgrochowski = import ./profiles/home.nix; }
-            ./hyprland.nix
-            ./services/samba.nix
-            ./services/printing.nix
-            ./docker.nix
+            ./profiles/home.nix
+
+            ./modules/docker.nix
+            ./modules/printing.nix
+            ./modules/samba.nix
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            inherit username;
+          };
         };
 
         radoslawgrochowski-hp = nixpkgs.lib.nixosSystem {
@@ -41,11 +45,12 @@
             { nixpkgs.overlays = overlays; }
             ./configuration.nix
             ./hosts/hp
-            ./home.nix
-            { home-manager.users.radoslawgrochowski = import ./profiles/home.nix; }
-            ./hyprland.nix
+            ./profiles/home.nix
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            inherit username;
+          };
         };
 
         radoslawgrochowski-dell = nixpkgs.lib.nixosSystem {
@@ -54,21 +59,13 @@
             { nixpkgs.overlays = overlays; }
             ./configuration.nix
             ./hosts/dell
-            home-manager.nixosModules.home-manager
-            {
-              nixpkgs.overlays = [ (import ./overlays/node_16.nix) ];
-            }
-            ./home.nix
-            ./hyprland.nix
-            {
-              home-manager.users.radoslawgrochowski = import ./profiles/work.nix;
-            }
-            config-wp.nixosModules.wp
-            agenix.nixosModules.age
-            { age.identityPaths = [ "/home/radoslawgrochowski/.ssh/id_ed25519" ]; }
-            { boot.kernelModules = [ "tun" "ipv6" ]; }
+            ./profiles/work.nix
+
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            inherit username;
+          };
         };
       };
     };

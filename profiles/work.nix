@@ -1,12 +1,18 @@
-
-{ config, pkgs, inputs, ... }:
+{ pkgs, username, inputs, ... }:
 
 {
   imports = [
-    ./common.nix
+    inputs.config-wp.nixosModules.wp
+    inputs.agenix.nixosModules.age
   ];
 
-  home.packages = with pkgs; [
-    glibc
-  ];
+  age.identityPaths = [ "/home/${username}/.ssh/id_ed25519" ];
+  boot.kernelModules = [ "tun" "ipv6" ];
+  nixpkgs.overlays = [ (import ../overlays/node_16.nix) ];
+
+  home-manager.users.${username} = {
+    home.packages = with pkgs; [
+      glibc
+    ];
+  };
 }

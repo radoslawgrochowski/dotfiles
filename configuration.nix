@@ -1,32 +1,43 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, inputs, ... }:
 
 {
-  boot.supportedFilesystems = [ "ntfs" ];
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.efi = {
-    canTouchEfiVariables = true;
-    efiSysMountPoint = "/boot/efi";
+  imports = [
+    ./modules/default.nix
+  ];
+
+  boot = {
+    supportedFilesystems = [ "ntfs" ];
+    loader.systemd-boot.enable = false;
+    loader.efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
+    loader.grub = {
+      enable = true;
+      version = 2;
+      useOSProber = true;
+      efiSupport = true;
+      devices = [ "nodev" ];
+    };
   };
-  boot.loader.grub = {
-    enable = true;
-    version = 2;
-    useOSProber = true;
-    efiSupport = true;
-    devices = [ "nodev" ];
-  };
+
   networking.networkmanager.enable = true;
+
   time.timeZone = "Europe/Warsaw";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pl_PL.UTF-8";
-    LC_IDENTIFICATION = "pl_PL.UTF-8";
-    LC_MEASUREMENT = "pl_PL.UTF-8";
-    LC_MONETARY = "pl_PL.UTF-8";
-    LC_NAME = "pl_PL.UTF-8";
-    LC_NUMERIC = "pl_PL.UTF-8";
-    LC_PAPER = "pl_PL.UTF-8";
-    LC_TELEPHONE = "pl_PL.UTF-8";
-    LC_TIME = "pl_PL.UTF-8";
+
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "pl_PL.UTF-8";
+      LC_IDENTIFICATION = "pl_PL.UTF-8";
+      LC_MEASUREMENT = "pl_PL.UTF-8";
+      LC_MONETARY = "pl_PL.UTF-8";
+      LC_NAME = "pl_PL.UTF-8";
+      LC_NUMERIC = "pl_PL.UTF-8";
+      LC_PAPER = "pl_PL.UTF-8";
+      LC_TELEPHONE = "pl_PL.UTF-8";
+      LC_TIME = "pl_PL.UTF-8";
+    };
   };
 
   # Configure keymap in X11
@@ -37,65 +48,52 @@
 
     desktopManager.xterm.enable = false;
     displayManager = {
-      # defaultSession = "none+bspwm";
       autoLogin = {
         enable = true;
-        user = "radoslawgrochowski";
+        user = username;
       };
-    };
-    windowManager.bspwm = {
-      enable = false;
     };
   };
 
   # Audio
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
+  hardware.pulseaudio = {
+    enable = true;
+    support32Bit = true;
+  };
   nixpkgs.config.pulseaudio = true;
 
-  # Autologin
-  services.getty.autologinUser = "radoslawgrochowski";
+  services.getty.autologinUser = username;
 
   # Configure console keymap
   console.keyMap = "pl2";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.radoslawgrochowski = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "radoslawgrochowski";
+    description = username;
     extraGroups = [ "networkmanager" "wheel" "audio" ];
-    packages = with pkgs; [
-      google-chrome
-      git
-      kitty
-      pavucontrol
-    ];
     shell = pkgs.fish;
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    grub2
-    lsof
-    os-prober
-    vim
-    wget
-    xsel
-    wl-clipboard
-  ];
+  environment = {
+    localBinInPath = true;
+    systemPackages = with pkgs; [
+      grub2
+      lsof
+      os-prober
+      vim
+      wget
+      wl-clipboard
+    ];
+  };
 
   security.pam.services.swaylock = {
     text = ''
       auth include login
     '';
   };
-
-
-  environment.localBinInPath = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

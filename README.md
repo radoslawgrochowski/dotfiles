@@ -1,6 +1,6 @@
 # dotfiles
 
-dotfiles and NixOS system conifiguration for my workstation setup
+NixOS system configuration for my machines 
 
 ## setup
 
