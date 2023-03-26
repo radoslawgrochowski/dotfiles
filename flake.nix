@@ -26,7 +26,7 @@
             ./nix/configuration.nix
             ./hosts/desktop
             ./home.nix
-            { home-manager.users.radoslawgrochowski = import ./users/home.nix; }
+            { home-manager.users.radoslawgrochowski = import ./profiles/home.nix; }
             ./hyprland.nix
             ./services/samba.nix
             ./services/printing.nix
@@ -42,7 +42,7 @@
             ./nix/configuration.nix
             ./hosts/hp
             ./home.nix
-            { home-manager.users.radoslawgrochowski = import ./users/home.nix; }
+            { home-manager.users.radoslawgrochowski = import ./profiles/home.nix; }
             ./hyprland.nix
           ];
           specialArgs = { inherit inputs; };
@@ -63,7 +63,7 @@
             ./home.nix
             ./hyprland.nix
             {
-              home-manager.users.radoslawgrochowski = import ./users/work.nix;
+              home-manager.users.radoslawgrochowski = import ./profiles/work.nix;
             }
             config-wp.nixosModules.wp
             agenix.nixosModules.age
