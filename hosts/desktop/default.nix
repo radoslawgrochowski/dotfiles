@@ -1,6 +1,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
+  imports = [
+    ./hardware-configuration.nix
+  ];
   networking.hostName = "radoslawgrochowski-desktop";
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;

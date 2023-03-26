@@ -24,8 +24,7 @@
           modules = [
             { nixpkgs.overlays = overlays; }
             ./nix/configuration.nix
-            ./nix/targets/desktop/hardware-configuration.nix
-            ./nix/targets/desktop/target.nix
+            ./hosts/desktop
             ./home.nix
             { home-manager.users.radoslawgrochowski = import ./users/home.nix; }
             ./hyprland.nix
@@ -41,8 +40,7 @@
           modules = [
             { nixpkgs.overlays = overlays; }
             ./nix/configuration.nix
-            ./nix/targets/hp/hardware-configuration.nix
-            ./nix/targets/hp/target.nix
+            ./hosts/hp
             ./home.nix
             { home-manager.users.radoslawgrochowski = import ./users/home.nix; }
             ./hyprland.nix
@@ -55,8 +53,7 @@
           modules = [
             { nixpkgs.overlays = overlays; }
             ./nix/configuration.nix
-            ./nix/targets/dell/hardware-configuration.nix
-            ./nix/targets/dell/target.nix
+            ./hosts/dell
             home-manager.nixosModules.home-manager
             {
               nixpkgs.overlays = [

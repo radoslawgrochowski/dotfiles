@@ -1,6 +1,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
+  imports = [
+    ./hardware-configuration.nix
+  ];
   services.xserver.libinput = {
     enable = true;
     touchpad = {
