@@ -144,6 +144,7 @@
         bind = $mainMod, Return, exec, kitty
         bind = $mainMod, D, exec, rofi -show combi 
         bind = $mainMod, Period, exec, rofi -show emoji 
+        bind = $mainMod, Equal, exec, rofi -show calc
         bind = $mainMod, Q, killactive,
         bind = $mainMod, N, exec, kitty fish -C 'nvim ~/Projects/notes/'
         bind = $mainMod SHIFT, N, exec, kitty fish -C 'sh ${./note.sh}'
