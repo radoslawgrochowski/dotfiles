@@ -3,11 +3,7 @@
   imports = [ inputs.hyprland.nixosModules.default ];
 
   nixpkgs.overlays = [
-    (self: super: {
-      waybar = super.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
-    })
+      (import ./overlays/waybar.nix)
   ];
 
   programs.xwayland.enable = true;

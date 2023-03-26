@@ -56,9 +56,7 @@
             ./hosts/dell
             home-manager.nixosModules.home-manager
             {
-              nixpkgs.overlays = [
-                (final: prev: { nodejs = prev.nodejs-16_x; })
-              ];
+              nixpkgs.overlays = [ (import ./overlays/node_16.nix) ];
             }
             ./home.nix
             ./hyprland.nix
