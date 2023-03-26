@@ -24,7 +24,6 @@
           system = "x86_64-linux";
           modules = [
             { nixpkgs.overlays = overlays; }
-
             ./configuration.nix
             ./hosts/desktop
             ./profiles/home.nix
@@ -60,7 +59,6 @@
             ./configuration.nix
             ./hosts/dell
             ./profiles/work.nix
-
           ];
           specialArgs = {
             inherit inputs;
