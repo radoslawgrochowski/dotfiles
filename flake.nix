@@ -29,6 +29,7 @@
             ./profiles/home.nix
 
             ./modules/docker.nix
+            ./modules/steam
             ./modules/printing.nix
             ./modules/samba.nix
           ];
