@@ -23,7 +23,7 @@
           system = "x86_64-linux";
           modules = [
             { nixpkgs.overlays = overlays; }
-            ./nix/configuration.nix
+            ./configuration.nix
             ./hosts/desktop
             ./home.nix
             { home-manager.users.radoslawgrochowski = import ./profiles/home.nix; }
@@ -39,7 +39,7 @@
           system = "x86_64-linux";
           modules = [
             { nixpkgs.overlays = overlays; }
-            ./nix/configuration.nix
+            ./configuration.nix
             ./hosts/hp
             ./home.nix
             { home-manager.users.radoslawgrochowski = import ./profiles/home.nix; }
@@ -52,7 +52,7 @@
           system = "x86_64-linux";
           modules = [
             { nixpkgs.overlays = overlays; }
-            ./nix/configuration.nix
+            ./configuration.nix
             ./hosts/dell
             home-manager.nixosModules.home-manager
             {
