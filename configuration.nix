@@ -56,9 +56,16 @@
   };
 
   # Audio
-  hardware.pulseaudio = {
+  # hardware.pulseaudio = {
+  #   enable = true;
+  #   support32Bit = true;
+  # };
+  security.rtkit.enable = true;
+  services.pipewire = {
     enable = true;
-    support32Bit = true;
+    pulse.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
   };
   nixpkgs.config.pulseaudio = true;
 
@@ -107,6 +114,7 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
