@@ -15,6 +15,7 @@
           modules-left = [ "hyprland/window" ];
           modules-center = [ ];
           modules-right = [
+            "custom/task"
             "wlr/workspaces"
             # "mpd"
             "hyprland/submap"
@@ -27,7 +28,7 @@
             # "backlight"
             # "keyboard-state"
             "battery"
-            "battery#bat2"
+            # "battery#bat2"
             "clock"
             "tray"
           ];
@@ -37,6 +38,23 @@
             "on-click" = "activate";
             "format-active" = " {icon} ";
             "sort-by-number" = true;
+          };
+
+          "custom/task" = {
+            "format" = " {}";
+            exec = pkgs.writeShellScript "waybar-task" ''
+              #!/bin/sh
+              FILE=$HOME/.config/.task
+              if test -f "$FILE"; then
+                value=`${pkgs.coreutils}/bin/cat $FILE`
+                echo ''${value:-"-"}
+              else
+                echo "-" 
+              fi
+            '';
+            "exec-on-event" = true;
+            "on-click" = "${pkgs.kitty}/bin/kitty --hold /bin/sh -c '${pkgs.vim}/bin/vim ~/.config/.task'";
+            "interval" = 10;
           };
 
           "hyprland/window" = {
@@ -157,10 +175,10 @@
         #network,
         #pulseaudio,
         #wireplumber,
-        #custom-media,
         #tray,
         #mode,
         #idle_inhibitor,
+        #custom-task,
         #scratchpad,
         #mpd {
             padding: 0 10px;
@@ -259,20 +277,6 @@
 
         #wireplumber.muted {
             background-color: #f53c3c;
-        }
-
-        #custom-media {
-            background-color: #66cc99;
-            color: #2a5c45;
-            min-width: 100px;
-        }
-
-        #custom-media.custom-spotify {
-            background-color: #66cc99;
-        }
-
-        #custom-media.custom-vlc {
-            background-color: #ffa000;
         }
 
         #temperature {
