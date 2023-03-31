@@ -59,7 +59,8 @@
                 natural_scroll = true 
             }
 
-            sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+            sensitivity = 0.2 # -1.0 - 1.0, 0 means no modification.
+            force_no_accel = true
         }
 
         general {
@@ -99,7 +100,8 @@
             bezier = myBezier, 0.05, 0.9, 0.1, 1.05
 
             animation = windows, 1, 3, myBezier
-            animation = windowsOut, 1, 3, default, popin 80%
+            animation = windowsOut, 1, 3, default, popin 50%
+            animation = windowsMove, 1, 3, default, slide
             animation = border, 1, 8, default
             animation = borderangle, 1, 7, default
             animation = fade, 1, 4, default
@@ -150,6 +152,8 @@
         bind = $mainMod, T, togglefloating,
         bind = $mainMod, F, fullscreen
         bind = $mainMod, P, exec, sh ${./screenshot.sh}
+        bind = $mainMod, S, togglespecialworkspace,
+        bind = $mainMod SHIFT, S, movetoworkspace, special
 
         # bind = $mainMod, P, pseudo, # dwindle
         # bind = $mainMod, S, togglesplit, # dwindle
