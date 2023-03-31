@@ -152,8 +152,8 @@
         bind = $mainMod, T, togglefloating,
         bind = $mainMod, F, fullscreen
         bind = $mainMod, P, exec, sh ${./screenshot.sh}
-        bind = $mainMod, S, togglespecialworkspace,
-        bind = $mainMod SHIFT, S, movetoworkspace, special
+        bind = $mainMod, S, movetoworkspace, special
+        bind = $mainMod SHIFT, S, togglespecialworkspace,
 
         # bind = $mainMod, P, pseudo, # dwindle
         # bind = $mainMod, S, togglesplit, # dwindle
