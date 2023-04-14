@@ -15,7 +15,7 @@
 
   outputs = inputs@{ nixpkgs, home-manager, config-wp, agenix, hyprland, ... }:
     let
-      overlays = [ inputs.neovim-nightly-overlay.overlay ];
+      overlays = [ /* inputs.neovim-nightly-overlay.overlay */ ];
       username = "radoslawgrochowski";
     in
     {
