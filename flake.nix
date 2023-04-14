@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     agenix.url = "github:ryantm/agenix";
@@ -13,7 +14,7 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, config-wp, agenix, hyprland, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, config-wp, agenix, hyprland, ... }:
     let
       overlays = [ /* inputs.neovim-nightly-overlay.overlay */ ];
       username = "radoslawgrochowski";
@@ -29,6 +30,7 @@
             ./profiles/home.nix
 
             ./modules/docker.nix
+            ./modules/virtualbox.nix
             ./modules/steam
             ./modules/printing.nix
             ./modules/samba.nix
@@ -36,6 +38,7 @@
           specialArgs = {
             inherit inputs;
             inherit username;
+            pkgs-stable = nixpkgs-stable.legacyPackages."x86_64-linux";
           };
         };
 
@@ -50,6 +53,7 @@
           specialArgs = {
             inherit inputs;
             inherit username;
+            pkgs-stable = nixpkgs-stable.legacyPackages."x86_64-linux";
           };
         };
 
@@ -64,6 +68,7 @@
           specialArgs = {
             inherit inputs;
             inherit username;
+            pkgs-stable = nixpkgs-stable.legacyPackages."x86_64-linux";
           };
         };
       };
