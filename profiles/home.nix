@@ -3,6 +3,7 @@
 {
   home-manager.users.${username} = {
     home.packages = with pkgs; [
+      discord
       openjdk17
       opera
       steam-run
