@@ -111,5 +111,10 @@ in
         spack.symbol = "🅢 ";
       };
     };
+
+    programs.zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
   };
 }
