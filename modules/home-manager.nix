@@ -38,6 +38,7 @@
       pavucontrol
       polkit
       polkit-kde-agent
+      ranger
       spotifywm
       unzip
       vlc
