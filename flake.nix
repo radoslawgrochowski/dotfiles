@@ -16,8 +16,10 @@
 
   outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, config-wp, agenix, hyprland, ... }:
     let
+      node16Overlay = import ./overlays/node_16.nix;
       overlays = [ /* inputs.neovim-nightly-overlay.overlay */ ];
       username = "radoslawgrochowski";
+      pkgs-stable = nixpkgs-stable;
     in
     {
       nixosConfigurations = {
@@ -68,7 +70,7 @@
           specialArgs = {
             inherit inputs;
             inherit username;
-            pkgs-stable = nixpkgs-stable.legacyPackages."x86_64-linux";
+            pkgs-stable = (nixpkgs-stable.legacyPackages."x86_64-linux".extend node16Overlay);
           };
         };
       };
