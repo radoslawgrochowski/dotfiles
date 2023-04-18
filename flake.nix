@@ -66,6 +66,8 @@
             ./configuration.nix
             ./hosts/dell
             ./profiles/work.nix
+
+            ./modules/docker.nix
           ];
           specialArgs = {
             inherit inputs;
