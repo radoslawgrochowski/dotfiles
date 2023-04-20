@@ -134,7 +134,7 @@
 
         # Example windowrule v1
         # windowrule = float, ^(kitty)$
-        windowrule = opacity 0.95 0.9, ^(kitty)$
+        windowrule = opacity 0.98 0.93, ^(kitty)$
         # Example windowrule v2
         # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
