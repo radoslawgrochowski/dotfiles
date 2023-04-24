@@ -32,6 +32,7 @@
       jq
       keepassxc
       nixos-option
+      nodePackages.pnpm 
       nodePackages.typescript
       nodejs
       pavucontrol
@@ -41,11 +42,7 @@
       spotifywm
       unzip
       vlc
-    ]
-    ++
-    (with pkgs-stable; [
-      nodePackages.pnpm 
-    ]);
+    ];
 
     systemd.user.startServices = true;
 
