@@ -11,15 +11,42 @@
     config-wp.url =
       "git+ssh://git@github.com/radoslawgrochowski/nixos-config-wp.git";
     hyprland.url = "github:hyprwm/Hyprland";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    other-nvim = {
+      url = "github:rgroli/other.nvim";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, config-wp, agenix, hyprland, ... }:
+  outputs =
+    inputs@{ nixpkgs
+    , nixpkgs-stable
+    , home-manager
+    , config-wp
+    , agenix
+    , hyprland
+    , ...
+    }:
     let
-      node16Overlay = import ./overlays/node_16.nix;
-      overlays = [ /* inputs.neovim-nightly-overlay.overlay */ ];
+      # vim-plugins = import ./overlays/vim-plugins.nix;
+
+      # FIXME: Can I move this to ./overlays/ ?
+      overlays = [
+        (self: super:
+          let
+            other-nvim = super.vimUtils.buildVimPlugin {
+              name = "other-nvim";
+              src = inputs.other-nvim;
+            };
+          in
+          {
+            vimPlugins =
+              super.vimPlugins // {
+                inherit other-nvim;
+              };
+          }
+        )
+      ];
       username = "radoslawgrochowski";
-      pkgs-stable = nixpkgs-stable;
     in
     {
       nixosConfigurations = {
@@ -72,7 +99,7 @@
           specialArgs = {
             inherit inputs;
             inherit username;
-            pkgs-stable = (nixpkgs-stable.legacyPackages."x86_64-linux".extend node16Overlay);
+            pkgs-stable = nixpkgs-stable.legacyPackages."x86_64-linux";
           };
         };
       };

@@ -91,7 +91,11 @@
             require("project_nvim").setup{}
           '';
         }
-        vim-projectionist
+        {
+          plugin = other-nvim;
+          type = "lua";
+          config = builtins.readFile (./other.lua);
+        }
         {
           plugin = vim-test;
           type = "lua";
