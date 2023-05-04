@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./dunst
     ./fd
     ./git
     ./hyprland
@@ -11,7 +12,6 @@
     ./nvim
     ./wallpapers-sync
     ./waybar
-    ./dunst.nix
     ./fish.nix
     ./fonts.nix
     ./home-manager.nix
