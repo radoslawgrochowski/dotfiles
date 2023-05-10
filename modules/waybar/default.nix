@@ -52,7 +52,8 @@
               fi
             '';
             "exec-on-event" = true;
-            "on-click" = "${pkgs.kitty}/bin/kitty --hold /bin/sh -c '${pkgs.vim}/bin/vim ~/.config/.task'";
+            "on-click" =
+              "${pkgs.kitty}/bin/kitty --hold /bin/sh -c '/etc/profiles/per-user/${username}/bin/nvim ~/.config/.task'";
             "interval" = 10;
           };
 
