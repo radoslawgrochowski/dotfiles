@@ -43,10 +43,9 @@
           "custom/task" = {
             "format" = " {}";
             exec = pkgs.writeShellScript "waybar-task" ''
-              #!/bin/sh
               FILE=$HOME/.config/.task
               if test -f "$FILE"; then
-                value=`${pkgs.coreutils}/bin/cat $FILE`
+                value=`${pkgs.coreutils}/bin/head -1 $FILE`
                 echo ''${value:-"-"}
               else
                 echo "-" 
