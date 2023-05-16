@@ -5,7 +5,7 @@ luasnip.config.set_config {
 }
 
 vim.keymap.set("i", "<C-n>", function() luasnip.jump(1) end)
-vim.keymap.set("i", "<C-p>", function() luasnip.jump( -1) end)
+vim.keymap.set("i", "<C-p>", function() luasnip.jump(-1) end)
 
 luasnip.snippets = {}
 
@@ -89,6 +89,15 @@ local typescriptreact = {
         }})
       ]],
       { i(1), f(function(args) return args[1] end, { 1 }), i(2) })
+  ),
+  snippet('jma',
+    fmt(
+      [[
+        jest.mock('{1}', () => ({{
+          ...jest.requireActual('{2}'),
+        }}))
+      ]],
+      { i(1), f(function(args) return args[1] end, { 1 }) })
   ),
 }
 
