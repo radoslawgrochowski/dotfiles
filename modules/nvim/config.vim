@@ -49,6 +49,12 @@ keymap('v', '<leader>P', '"+P')
 keymap('n', '<leader>p', '"+p')
 keymap('n', '<leader>P', '"+P')
 
+-- delete without yanking
+keymap('n', '<leader>D', '"_D')
+keymap('n', '<leader>d', '"_d')
+keymap('v', '<leader>D', '"_D')
+keymap('v', '<leader>d', '"_d')
+
 -- reselect visual selection after indenting
 keymap('v', '<', '<gv')
 keymap('v', '>', '>gv')
