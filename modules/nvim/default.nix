@@ -129,7 +129,11 @@
         }
 
         # UI
-        lualine-nvim
+        {
+          plugin = lualine-nvim;
+          type = "lua";
+          config = builtins.readFile (./lualine.lua);
+        }
         lsp-status-nvim
         {
           plugin = tokyonight-nvim;
