@@ -103,7 +103,6 @@
         }
         telescope-fzf-native-nvim
         nvim-web-devicons
-        telescope-live-grep-args-nvim
         {
           plugin = telescope-nvim;
           type = "lua";
@@ -150,6 +149,8 @@
           type = "lua";
           config = builtins.readFile (./treesitter.lua);
         }
+
+        vim-lastplace
       ];
     };
   };
