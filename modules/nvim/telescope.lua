@@ -20,9 +20,7 @@ telescope.setup {
     },
     buffers = {
       previewer = false,
-      layout_config = {
-        width = 80,
-      },
+      layout_config = { width = 80 },
     },
     oldfiles = {
       prompt_title = 'History',
@@ -30,16 +28,7 @@ telescope.setup {
     lsp_references = {
       previewer = false,
     },
-  },
-  extensions = {
-    fzf = {
-      fuzzy = true, -- false will only do exact matching
-      override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true, -- override the file sorter
-      case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
-      -- the default case_mode is "smart_case"
-    },
-  },
+  }
 }
 
 function keymap(mode, lhs, rhs, opts)
@@ -51,13 +40,15 @@ function keymap(mode, lhs, rhs, opts)
   )
 end
 
-keymap('n', '<leader>f', '<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>')
-keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]])
-keymap('n', '<leader>R', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]])
-keymap('n', '<leader>r', [[<cmd>lua require('telescope').extensions.live_grep_args.live_grep_raw()<CR>]])
-keymap('n', '<leader>e', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
-keymap('n', '<leader>D', [[<cmd>lua require('telescope.builtin').diagnostics()<CR>]])
-keymap('n', '<leader>w', [[<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>]])
-keymap('n', '<leader>/', [[<cmd>lua require'telescope'.extensions.projects.projects{}<CR>]])
+keymap('n', '<leader>D', '<cmd>Telescope diagnostics<CR> theme=dropdown')
+keymap('n', '<leader>r', '<cmd>Telescope live_grep theme=dropdown<CR>')
+keymap('n', '<leader>b', '<cmd>Telescope buffers theme=dropdown<CR>')
+keymap('n', '<leader>e', '<cmd>Telescope oldfiles theme=dropdown<CR>')
+keymap('n', '<leader>f', '<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files theme=dropdown<CR>')
+keymap('n', '<leader>w', '<cmd>Telescope lsp_dynamic_workspace_symbols theme=dropdown<CR>')
+keymap('n', '<leader>/', '<cmd>Telescope projects theme=dropdown<CR>')
+
+keymap('n', '<leader>F', '<cmd>Telescope resume<CR>')
 
 require('telescope').load_extension('projects')
+require('telescope').load_extension('fzf')
