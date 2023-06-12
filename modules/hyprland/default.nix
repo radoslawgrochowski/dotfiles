@@ -152,6 +152,7 @@
         bind = $mainMod, N, exec, kitty fish -C 'nvim ~/Projects/notes/'
         bind = $mainMod SHIFT, N, exec, kitty fish -C 'sh ${./note.sh}'
         bind = $mainMod, T, togglefloating,
+        bind = $mainMod, Y, exec, kitty --hold /bin/sh -c '/etc/profiles/per-user/${username}/bin/nvim ~/.config/.task'
         bind = $mainMod, F, fullscreen
         bind = $mainMod, P, exec, sh ${./screenshot.sh}
         bind = $mainMod, S, togglespecialworkspace,
