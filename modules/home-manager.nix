@@ -31,6 +31,7 @@
       jc
       jq
       keepassxc
+      kooha
       nixos-option
       nodePackages.pnpm 
       nodePackages.typescript
