@@ -40,13 +40,13 @@ function keymap(mode, lhs, rhs, opts)
   )
 end
 
-keymap('n', '<leader>D', '<cmd>Telescope diagnostics<CR> theme=dropdown')
-keymap('n', '<leader>r', '<cmd>Telescope live_grep theme=dropdown<CR>')
-keymap('n', '<leader>b', '<cmd>Telescope buffers theme=dropdown<CR>')
-keymap('n', '<leader>e', '<cmd>Telescope oldfiles theme=dropdown<CR>')
-keymap('n', '<leader>f', '<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files theme=dropdown<CR>')
-keymap('n', '<leader>w', '<cmd>Telescope lsp_dynamic_workspace_symbols theme=dropdown<CR>')
-keymap('n', '<leader>/', '<cmd>Telescope projects theme=dropdown<CR>')
+keymap('n', '<leader>D', '<cmd>Telescope diagnostics<CR>')
+keymap('n', '<leader>r', '<cmd>Telescope live_grep<CR>')
+keymap('n', '<leader>b', '<cmd>Telescope buffers<CR>')
+keymap('n', '<leader>e', '<cmd>Telescope oldfiles<CR>')
+keymap('n', '<leader>f', '<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>')
+keymap('n', '<leader>w', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>')
+keymap('n', '<leader>/', '<cmd>Telescope projects<CR>')
 
 keymap('n', '<leader>F', '<cmd>Telescope resume<CR>')
 
