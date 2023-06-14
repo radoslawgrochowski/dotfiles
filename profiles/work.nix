@@ -14,4 +14,17 @@
       glibc
     ];
   };
+
+  networking.firewall = {
+    enable = true;
+    allowedUDPPortRanges = [
+      { from = 3000; to = 4000; }
+      { from = 8000; to = 9000; }
+    ];
+    allowedTCPPorts = [
+      3100
+      8081
+    ];
+
+  };
 }
