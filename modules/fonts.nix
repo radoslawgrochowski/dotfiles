@@ -5,11 +5,8 @@
     home.packages = [
       (pkgs.nerdfonts.override {
         fonts = [
-          "FiraCode"
-          "FiraMono"
           "NerdFontsSymbolsOnly"
           "IBMPlexMono"
-          "JetBrainsMono"
         ];
       })
     ];
