@@ -38,6 +38,7 @@
 
         exec = /bin/sh ${./random-bg.sh}
         exec-once = /bin/sh ${./google-drive.sh}
+        exec-once = wl-paste -p --watch wl-copy -pc
 
         # Source a file (multi-file configs)
         # source = ~/.config/hypr/myColors.conf
