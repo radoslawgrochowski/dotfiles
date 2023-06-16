@@ -4,13 +4,22 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
-    config-wp.url =
-      "git+ssh://git@github.com/radoslawgrochowski/nixos-config-wp.git";
-    hyprland.url = "github:hyprwm/Hyprland";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    config-wp = {
+      url = "git+ssh://git@github.com/radoslawgrochowski/nixos-config-wp.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     other-nvim = {
       url = "github:rgroli/other.nvim";
       flake = false;
@@ -60,7 +69,7 @@
             ./profiles/home.nix
 
             ./modules/docker.nix
-            ./modules/virtualbox.nix
+            # ./modules/virtualbox.nix
             ./modules/steam
             ./modules/printing.nix
             ./modules/samba.nix
