@@ -54,6 +54,7 @@
           system = "x86_64-linux";
           modules = [
             { nixpkgs.overlays = overlays; }
+            { nix.registry.nixpkgs.flake = nixpkgs-stable; }
             ./configuration.nix
             ./hosts/desktop
             ./profiles/home.nix
@@ -75,6 +76,7 @@
           system = "x86_64-linux";
           modules = [
             { nixpkgs.overlays = overlays; }
+            { nix.registry.nixpkgs.flake = nixpkgs-stable; }
             ./configuration.nix
             ./hosts/hp
             ./profiles/home.nix
@@ -90,6 +92,7 @@
           system = "x86_64-linux";
           modules = [
             { nixpkgs.overlays = overlays; }
+            { nix.registry.nixpkgs.flake = nixpkgs-stable; }
             ./configuration.nix
             ./hosts/dell
             ./profiles/work.nix
