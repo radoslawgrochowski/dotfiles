@@ -1,4 +1,4 @@
-{ username, pkgs, ... }:
+{ username, pkgs, pkgs-stable, ... }:
 
 {
   home-manager.users.${username} = {
@@ -71,7 +71,7 @@
         nvim-code-action-menu
         lsp-colors-nvim
         {
-          plugin = fidget-nvim;
+          plugin = pkgs-stable.vimPlugins.fidget-nvim;
           type = "lua";
           config = builtins.readFile (./fidget.lua);
         }
