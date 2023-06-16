@@ -69,7 +69,7 @@
             ./profiles/home.nix
 
             ./modules/docker.nix
-            # ./modules/virtualbox.nix
+            ./modules/virtualbox.nix
             ./modules/steam
             ./modules/printing.nix
             ./modules/samba.nix
