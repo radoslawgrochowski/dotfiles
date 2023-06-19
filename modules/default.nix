@@ -14,6 +14,7 @@
     ./waybar
     ./fish.nix
     ./fonts.nix
+    ./gnupg.nix
     ./home-manager.nix
     ./rofi.nix
   ];
