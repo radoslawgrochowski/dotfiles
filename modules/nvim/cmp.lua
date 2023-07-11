@@ -1,8 +1,8 @@
 vim.o.completeopt = 'menuone,longest,preview'
 
+local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
 local cmp = require 'cmp'
 local lspkind = require 'lspkind'
-
 cmp.setup({
   experimental = {
     ghost_text = true,
@@ -42,15 +42,15 @@ cmp.setup({
     end, { "i", "s", "c", }),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'nvim_lsp_signature_help' },
-    { name = 'treesitter' },
-    { name = 'luasnip' },
-  },
+      { name = 'nvim_lsp' },
+      { name = 'nvim_lsp_signature_help' },
+      { name = 'treesitter' },
+      { name = 'luasnip' },
+    },
     {
-    { name = 'buffer' },
-    { name = 'path' },
-  }
+      { name = 'buffer' },
+      { name = 'path' },
+    }
   ),
   formatting = {
     format = lspkind.cmp_format {

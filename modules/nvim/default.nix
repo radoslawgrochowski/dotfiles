@@ -44,6 +44,11 @@
           type = "lua";
           config = builtins.readFile (./snippets.lua);
         }
+        {
+          plugin = nvim-autopairs;
+          type = "lua";
+          config = "require('nvim-autopairs').setup()";
+        }
         cmp-buffer
         cmp-cmdline
         cmp-nvim-lsp

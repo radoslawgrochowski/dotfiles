@@ -53,11 +53,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681804718,
-        "narHash": "sha256-h/rwvX2i508yayqdQmlkDtJXVuJ9T+ZRMnYSrfi9d+U=",
+        "lastModified": 1688108352,
+        "narHash": "sha256-jqS0YF+dhWCl/+qF3y4ePf1u3AzaNxlDpnVsrMYsstg=",
         "ref": "refs/heads/master",
-        "rev": "99354017f76ca5e59ac0c27bfdb4d0f32fee5580",
-        "revCount": 14,
+        "rev": "78ea955e8488fd9efe8dba84696c7fbeb2ef83ee",
+        "revCount": 15,
         "type": "git",
         "url": "ssh://git@github.com/radoslawgrochowski/nixos-config-wp.git"
       },
