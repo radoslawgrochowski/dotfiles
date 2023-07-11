@@ -149,6 +149,7 @@
         nvim-treesitter-context
         nvim-treesitter-textobjects
         nvim-ts-context-commentstring
+        nvim-ts-autotag
         {
           plugin = nvim-treesitter.withAllGrammars;
           type = "lua";
