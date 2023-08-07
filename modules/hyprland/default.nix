@@ -24,6 +24,8 @@
       swaylock
       wdisplays
       wireplumber
+      pamixer
+      libnotify
     ];
     wayland.windowManager.hyprland = {
       enable = true;
@@ -156,6 +158,7 @@
         bind = $mainMod, Y, exec, kitty --hold /bin/sh -c '/etc/profiles/per-user/${username}/bin/nvim ~/.config/.task'
         bind = $mainMod, F, fullscreen
         bind = $mainMod, P, exec, sh ${./screenshot.sh}
+        bind = $mainMod, M, exec, sh ${./mute.sh}
         bind = $mainMod, S, togglespecialworkspace,
         bind = $mainMod SHIFT, S, movetoworkspace, special
 
