@@ -12,6 +12,7 @@
         ltex-ls
         lua-language-server
         marksman
+        nil
         ripgrep
         rnix-lsp
         tree-sitter

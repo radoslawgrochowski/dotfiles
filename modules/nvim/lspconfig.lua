@@ -31,9 +31,6 @@ local on_lsp_attach = function(client, bufnr)
     -- vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format{ async = true } ]]
 end
 
-
-
-
 local border = {
     { "╭", "FloatBorder" },
     { "─", "FloatBorder" },
@@ -58,7 +55,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 -- map buffer local keybindings when the language server attaches
 local servers = {
     'tsserver',
-    'ansiblels',
     'bashls',
     'gopls',
     'rnix',
@@ -177,6 +173,13 @@ lspconfig.jsonls.setup {
     },
 }
 
+-- nix
+lspconfig.nil_ls.setup {
+    formatting = {
+        command = { "nixpkgs-fmt" },
+    },
+}
+
 -- marksman
 lspconfig.marksman.setup {}
 
@@ -185,10 +188,10 @@ vim.api.nvim_create_user_command('LspSetupLtexEn', function()
     lspconfig.ltex.setup {
         settings = { ltex = { language = 'en-US', } }
     }
-end, { desc = 'Setups ltex-lsp with en-US language'})
+end, { desc = 'Setups ltex-lsp with en-US language' })
 
 vim.api.nvim_create_user_command('LspSetupLtexPl', function()
     lspconfig.ltex.setup {
         settings = { ltex = { language = 'pl-PL', } }
     }
-end, { desc = 'Setups ltex-lsp with pl-PL language'})
+end, { desc = 'Setups ltex-lsp with pl-PL language' })
