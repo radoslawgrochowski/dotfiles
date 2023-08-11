@@ -58,6 +58,7 @@ local servers = {
     'bashls',
     'gopls',
     'rnix',
+    'nil_ls',
 }
 
 for _, lsp in pairs(servers) do
