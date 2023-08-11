@@ -46,9 +46,9 @@ keymap('n', '<leader>b', '<cmd>Telescope buffers<CR>')
 keymap('n', '<leader>e', '<cmd>Telescope oldfiles<CR>')
 keymap('n', '<leader>f', '<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>')
 keymap('n', '<leader>w', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>')
-keymap('n', '<leader>/', '<cmd>Telescope projects<CR>')
+-- keymap('n', '<leader>/', '<cmd>Telescope projects<CR>')
 
 keymap('n', '<leader>F', '<cmd>Telescope resume<CR>')
 
-require('telescope').load_extension('projects')
+-- require('telescope').load_extension('projects')
 require('telescope').load_extension('fzf')
