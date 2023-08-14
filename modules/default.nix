@@ -12,7 +12,7 @@
     ./nvim
     ./wallpapers-sync
     ./waybar
-    ./ananicy.nix
+    ./system76-scheduler.nix
     ./fish.nix
     ./fonts.nix
     ./gnupg.nix
