@@ -1,4 +1,4 @@
-{ username, pkgs-stable, ... }:
+{ pkgs-stable, ... }:
 {
   programs.gnupg = {
     package = pkgs-stable.gnupg;

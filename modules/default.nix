@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -12,6 +12,7 @@
     ./nvim
     ./wallpapers-sync
     ./waybar
+    ./ananicy.nix
     ./fish.nix
     ./fonts.nix
     ./gnupg.nix
