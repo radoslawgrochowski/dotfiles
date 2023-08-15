@@ -10,7 +10,11 @@
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   hardware.nvidia.modesetting.enable = true;
-  
+
   swapDevices = [{ device = "/swapfile"; size = 8192; }];
+
+  fileSystems."/media/secondary" = {
+    device = "/dev/nvme0n1p3";
+  };
 }
 
