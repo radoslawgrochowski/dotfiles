@@ -4,7 +4,6 @@
   imports = [
     ./hardware-configuration.nix
   ];
-  services.tlp.enable = true;
   services.xserver.libinput = {
     enable = true;
     touchpad = {
@@ -23,6 +22,14 @@
   # FIXME: refactor to be able to move this to <root>/users
   environment.sessionVariables = {
     NODE_OPTIONS = "--max-old-space-size=4096";
+  };
+
+  services.tlp = {
+    enable = true;
+    extraConfig = ''
+      CPU_SCALING_GOVERNOR_ON_AC=performance
+      CPU_SCALING_GOVERNOR_ON_BAT=powersave
+    '';
   };
 
   swapDevices = [{ device = "/swapfile"; size = 8192; }];
