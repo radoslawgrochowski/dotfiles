@@ -1,16 +1,14 @@
 { username, pkgs, inputs, ... }:
 
 {
-  imports = [ inputs.hyprland.nixosModules.default ];
-
   nixpkgs.overlays = [
     (import ../../overlays/waybar.nix)
   ];
 
   hardware.opengl.enable = true;
   programs.hyprland = {
+    enableNvidiaPatches = true;
     enable = true;
-    nvidiaPatches = true;
   };
   programs.xwayland.enable = true;
   services.xserver.displayManager.gdm.wayland = true;
@@ -29,7 +27,7 @@
     ];
     wayland.windowManager.hyprland = {
       enable = true;
-      nvidiaPatches = true;
+      enableNvidiaPatches = true;
       extraConfig = ''
         # See https://wiki.hyprland.org/Configuring/Monitors/
         monitor=,preferred,auto,auto
