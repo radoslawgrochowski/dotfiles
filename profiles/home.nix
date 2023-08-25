@@ -10,5 +10,7 @@
     ];
     services.udiskie.enable = true;
   };
+
+  services.flatpak.enable = true;
 }
 
