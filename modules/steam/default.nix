@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs-stable, ... }:
 {
   programs.steam = {
     enable = true;
