@@ -1,5 +1,8 @@
 { config, lib, pkgs, modulesPath, ... }:
 
+let
+  MHz = x: x * 1000;
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -24,14 +27,19 @@
     NODE_OPTIONS = "--max-old-space-size=4096";
   };
 
-  services.tlp = {
-    enable = true;
-    extraConfig = ''
-      CPU_SCALING_GOVERNOR_ON_AC=performance
-      CPU_SCALING_GOVERNOR_ON_BAT=powersave
-    '';
-  };
-
+  powerManagement.cpuFreqGovernor = null;
   swapDevices = [{ device = "/swapfile"; size = 8192; }];
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      scaling_min_freq = MHz 1000;
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
 }
 
