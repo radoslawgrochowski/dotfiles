@@ -6,6 +6,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    ./wfhsetup.nix
   ];
   services.xserver.libinput = {
     enable = true;
