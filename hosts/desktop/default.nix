@@ -5,10 +5,9 @@
     ./hardware-configuration.nix
   ];
   networking.hostName = "radoslawgrochowski-desktop";
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl = {
     enable = true;
-    driSupport = true;
     driSupport32Bit = true;
   };
 
