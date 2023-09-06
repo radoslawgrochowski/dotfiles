@@ -90,13 +90,13 @@
         # Movement
 
         ## need to test this more, it seems broken a bit
-        # {
-        #   plugin = project-nvim;
-        #   type = "lua";
-        #   config = ''
-        #     require("project_nvim").setup{}
-        #   '';
-        # }
+        {
+          plugin = project-nvim;
+          type = "lua";
+          config = ''
+            require("project_nvim").setup{}
+          '';
+        }
         {
           plugin = other-nvim;
           type = "lua";
