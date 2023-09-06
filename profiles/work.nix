@@ -4,6 +4,7 @@
   imports = [
     inputs.config-wp.nixosModules.wp
     inputs.agenix.nixosModules.age
+    ../modules/browserstack.nix
   ];
 
   age.identityPaths = [ "/home/${username}/.ssh/id_ed25519" ];
