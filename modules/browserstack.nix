@@ -21,7 +21,6 @@ let
   browserstacklocal = pkgs.buildFHSUserEnv {
     name = "BrowserStackLocal";
     targetPkgs = pkgs: [ unwrapped ];
-    multiPkgs = pkgs: [ pkgs.dpkg ];
     runScript = "BrowserStackLocal";
   };
 in
