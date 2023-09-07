@@ -5,24 +5,21 @@
 
 {
   imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/81533460-9298-48f3-8e11-b731d24ea792";
+    { device = "/dev/disk/by-uuid/4437c547-117f-4068-a046-ed3518144da4";
       fsType = "ext4";
     };
 
-  fileSystems."/boot/efi" =
-    {
-      device = "/dev/disk/by-uuid/0A81-2255";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/C11A-C994";
       fsType = "vfat";
     };
 
@@ -33,13 +30,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp30s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp16s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  environment.sessionVariables = {
-    # this makes cursors appear on wayland 
-    WLR_NO_HARDWARE_CURSORS = "1";
-  };
 }

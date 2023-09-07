@@ -1,23 +1,25 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ pkgs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports =
+    [
+      # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
+
   networking.hostName = "radoslawgrochowski-desktop";
-  services.xserver.videoDrivers = [ "nvidia" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   hardware.opengl = {
     enable = true;
+    driSupport = true;
     driSupport32Bit = true;
   };
 
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.modesetting.enable = true;
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   swapDevices = [{ device = "/swapfile"; size = 8192; }];
-
-  fileSystems."/media/secondary" = {
-    device = "/dev/nvme0n1p3";
-  };
+  system.stateVersion = "23.05";
 }
 

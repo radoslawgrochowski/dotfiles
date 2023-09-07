@@ -21,7 +21,7 @@ NixOS system configuration for my machines
 ### nix
 
 ```sh
-$ git clone git@github.com:radoslawgrochowski/dotfiles.git $HOME/Projects/dotfiles
+$ git clone https://github.com/radoslawgrochowski/dotfiles.git $HOME/Projects/dotfiles
 $ sudo nixos-rebuild --install-bootloader switch --flake '$HOME/Projects/dotfiles#radoslawgrochowski-desktop'
 ```
 

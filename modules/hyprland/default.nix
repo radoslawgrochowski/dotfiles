@@ -225,5 +225,10 @@
       '';
     };
   };
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+
+    # this makes cursors appear on wayland 
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
 }
