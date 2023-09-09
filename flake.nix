@@ -56,6 +56,10 @@
         )
       ];
       username = "radoslawgrochowski";
+      pkgs-stable = import nixpkgs-stable {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
     in
     {
       nixosConfigurations = {
@@ -77,7 +81,7 @@
           specialArgs = {
             inherit inputs;
             inherit username;
-            pkgs-stable = nixpkgs-stable.legacyPackages."x86_64-linux";
+            inherit pkgs-stable;
           };
         };
 
@@ -93,7 +97,7 @@
           specialArgs = {
             inherit inputs;
             inherit username;
-            pkgs-stable = nixpkgs-stable.legacyPackages."x86_64-linux";
+            inherit pkgs-stable;
           };
         };
 
@@ -111,7 +115,7 @@
           specialArgs = {
             inherit inputs;
             inherit username;
-            pkgs-stable = nixpkgs-stable.legacyPackages."x86_64-linux";
+            inherit pkgs-stable;
           };
         };
       };
