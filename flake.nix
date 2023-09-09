@@ -75,6 +75,7 @@
             ./modules/docker.nix
             ./modules/virtualbox.nix
             ./modules/steam
+            ./modules/path-of-exile
             ./modules/printing.nix
             ./modules/samba.nix
           ];
