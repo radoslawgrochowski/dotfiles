@@ -5,6 +5,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./displays.nix
     ];
 
   networking.hostName = "radoslawgrochowski-desktop";
