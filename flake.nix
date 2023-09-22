@@ -17,7 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/v0.29.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     other-nvim = {

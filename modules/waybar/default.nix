@@ -16,7 +16,7 @@
           modules-center = [ ];
           modules-right = [
             "custom/task"
-            "wlr/workspaces"
+            "hyprland/workspaces"
             # "mpd"
             "hyprland/submap"
             # "idle_inhibitor"
@@ -33,11 +33,10 @@
             "tray"
           ];
 
-          "wlr/workspaces" = {
-            "format" = "{icon}";
-            "on-click" = "activate";
-            "format-active" = " {icon} ";
-            "sort-by-number" = true;
+          "hyprland/workspaces" = {
+            "format" = "{id}";
+            "on-scroll-up" = "hyprctl dispatch workspace e+1";
+            "on-scroll-down" = "hyprctl dispatch workspace e-1";
           };
 
           "custom/task" = {
@@ -66,7 +65,6 @@
           "hyprland/submap" = {
             "format" = " {}";
             "max-length" = 8;
-            "tooltip" = false;
           };
           "memory" = {
             "format" = " {}%";
