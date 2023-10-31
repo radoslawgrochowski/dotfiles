@@ -41,6 +41,7 @@
       polkit-kde-agent
       ranger
       spotifywm
+      tldr
       unzip
       vlc
     ];
