@@ -44,20 +44,24 @@ in
     NODE_OPTIONS = "--max-old-space-size=4096";
   };
 
-  powerManagement.cpuFreqGovernor = null;
   swapDevices = [{ device = "/swapfile"; size = 8192; }];
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
-    charger = {
-      scaling_min_freq = MHz 1000;
-      governor = "performance";
-      turbo = "auto";
-    };
-  };
+
+  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.cpufreq.min = MHz 2000;
+  services.thermald.enable = true;
+
+  # services.auto-cpufreq.enable = true;
+  # services.auto-cpufreq.settings = {
+  #   battery = {
+  #     governor = "powersave";
+  #     turbo = "never";
+  #   };
+  #   charger = {
+  #     scaling_min_freq = MHz 1000;
+  #     governor = "performance";
+  #     turbo = "auto";
+  #   };
+  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
