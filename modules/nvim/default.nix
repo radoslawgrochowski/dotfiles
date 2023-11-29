@@ -1,5 +1,6 @@
-{ username, pkgs, ... }:
+{ config, lib, username, pkgs, ... }:
 {
+  config = {
   home-manager.users.${username} = {
     home.packages = with pkgs;[
       (unstable.neovim.override {
@@ -21,7 +22,10 @@
     };
   };
 
-  homebrew.brews = [
-    "gnu-sed" # needed for spectre plugin
-  ];
+  }# // (lib.mkIf (config.system == "darwin") {
+   #  	# needed for spectre plugin
+   #  	homebrew.brews = [ "gnu-sed" ]; 
+   #     });
+   # } 
+   ;
 }

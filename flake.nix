@@ -11,6 +11,10 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -20,33 +24,13 @@
   outputs =
     inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, nixpkgs-stable, home-manager, ... }:
     let
-      inherit (self) outputs;
+      inherit (self) outputs inputs;
       lib = nixpkgs.lib;
       # merge it with configuration.nix
       commonModules = [
         ./modules/fonts.nix
-        ({ username, ... }: {
-          # Auto upgrade nix package and the daemon service.
-          services.nix-daemon.enable = true;
-
-          nix = {
-            registry.nixpkgs.flake = nixpkgs-stable;
-            settings = {
-              experimental-features = "nix-command flakes";
-              trusted-users = [ "@admin" "${username}" ];
-            };
-            gc = {
-              user = "root";
-              automatic = true;
-              interval = { Weekday = 0; Hour = 2; Minute = 0; };
-              options = "--delete-older-than 30d";
-            };
-          };
-        })
+        ./modules/nix.nix
         ({ overlays, ... }: { nixpkgs.overlays = overlays; })
-        ({ pkgs, username, ... }: {
-          users.users."${username}".name = username;
-        })
       ];
       commonSpecialArgs = {
         inherit outputs;
@@ -66,7 +50,6 @@
               nix.settings.extra-platforms = [ "aarch64-darwin" "x86_64-darwin" ];
             }
             ./hosts/macaron
-            ./modules/nvim
             ./presets/darwin.nix
             ./presets/work.nix
 
@@ -81,13 +64,6 @@
               ];
             })
 
-            # spotify
-            # ({ pkgs, username, ... }: {
-            #   nixpkgs.config.allowUnfree = true;
-            #   home-manager.users."${username}".home.packages = [
-            #     pkgs.spotify
-            #   ];
-            # })
           ];
 
           specialArgs = lib.attrsets.mergeAttrsList [
@@ -102,33 +78,20 @@
       darwinPackages = lib.lists.flatten map (c: c.pkgs) self.darwinConfigurations;
 
       nixosConfigurations = {
-        radoslawgrochowski-desktop = nixpkgs.lib.nixosSystem {
+        radoslawgrochowski-wsl = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [
-            ./configuration.nix
+          modules = commonModules ++ [
+            ./hosts/wsl
+            ./modules/nvim
+            ./presets/wsl.nix
             ./presets/nixos.nix
-            ./hosts/desktop
-            inputs.home-manager.nixosModules.home-manager
-            ./profiles/home.nix
-
-            ./modules/docker.nix
-            ./modules/virtualbox.nix
-            ./modules/steam
-            ./modules/path-of-exile
-            ./modules/printing.nix
-            ./modules/samba.nix
-          ];
-          specialArgs = commonSpecialArgs;
-        };
-
-        radoslawgrochowski-hp = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            inputs.home-manager.nixosModules.home-manager
-            ./configuration.nix
-            ./presets/nixos.nix
-            ./hosts/hp
-            ./profiles/home.nix
+            ./presets/terminal.nix
+            ({ pkgs, username, ... }: {
+              home-manager.users."${username}".home.packages = with pkgs; [
+                # this is needed for neovim
+                clang
+              ];
+            })
           ];
           specialArgs = commonSpecialArgs;
         };
