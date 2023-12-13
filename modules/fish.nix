@@ -32,6 +32,8 @@ let
 in
 {
   programs.fish.enable = true;
+  users.users.${username}.shell = pkgs.fish;
+  environment.shells = with pkgs; [ fish ];
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       fd
@@ -114,6 +116,10 @@ in
 
     programs.zoxide = {
       enable = true;
+      enableFishIntegration = true;
+    };
+
+    programs.nix-index = {
       enableFishIntegration = true;
     };
   };

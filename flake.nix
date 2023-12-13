@@ -1,75 +1,110 @@
+# TODO: remove my username from hostnames
 {
-  description = "radoslawgrochowski workstation";
+  description = "radoslawgrochowski workstation configuration";
 
   inputs = {
+    # TODO: make stable as default when 24.04 comes up
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-darwin.url = "github:LnL7/nix-darwin";
     home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    config-wp = {
-      url = "git+ssh://git@github.com/radoslawgrochowski/nixos-config-wp.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland = {
-      url = "github:hyprwm/Hyprland/v0.29.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    other-nvim = {
-      url = "github:rgroli/other.nvim";
-      flake = false;
+      url = "github:nix-community/home-manager/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };
 
   outputs =
-    inputs@{ nixpkgs
-    , nixpkgs-stable
-    , home-manager
-    , config-wp
-    , agenix
-    , hyprland
-    , ...
-    }:
+    inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, nixpkgs-stable, home-manager, ... }:
     let
-      # vim-plugins = import ./overlays/vim-plugins.nix;
+      inherit (self) outputs;
+      lib = nixpkgs.lib;
+      # merge it with configuration.nix
+      commonModules = [
+        ./modules/fonts.nix
+        ({ username, ... }: {
+          # Auto upgrade nix package and the daemon service.
+          services.nix-daemon.enable = true;
 
-      # FIXME: Can I move this to ./overlays/ ?
-      overlays = [
-        (self: super:
-          let
-            other-nvim = super.vimUtils.buildVimPlugin {
-              name = "other-nvim";
-              src = inputs.other-nvim;
+          nix = {
+            registry.nixpkgs.flake = nixpkgs-stable;
+            settings = {
+              experimental-features = "nix-command flakes";
+              trusted-users = [ "@admin" "${username}" ];
             };
-          in
-          {
-            vimPlugins =
-              super.vimPlugins // {
-                inherit other-nvim;
-              };
-          }
-        )
+            gc = {
+              user = "root";
+              automatic = true;
+              interval = { Weekday = 0; Hour = 2; Minute = 0; };
+              options = "--delete-older-than 30d";
+            };
+          };
+        })
+        ({ overlays, ... }: { nixpkgs.overlays = overlays; })
+        ({ pkgs, username, ... }: {
+          users.users."${username}" = {
+            name = username;
+            home = "/Users/${username}/";
+          };
+        })
       ];
-      username = "radoslawgrochowski";
-      pkgs-stable = import nixpkgs-stable {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
+      commonSpecialArgs = {
+        inherit outputs;
+        inherit inputs;
+        overlays = lib.attrValues outputs.overlays;
+        username = "radoslawgrochowski";
       };
     in
     {
+      darwinConfigurations = {
+        macaron = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = commonModules ++ [
+            {
+              # The platform the configuration will be used on.
+              nixpkgs.hostPlatform = "aarch64-darwin";
+              nix.settings.extra-platforms = [ "aarch64-darwin" "x86_64-darwin" ];
+            }
+            ./hosts/macaron
+            ./presets/darwin.nix
+            ./presets/work.nix
+
+            # for lsps for nvim
+            ({ pkgs, username, ... }: {
+              home-manager.users."${username}".home.packages = [
+                pkgs.cargo
+                pkgs.rustc
+              ];
+            })
+
+            # spotify
+            # ({ pkgs, username, ... }: {
+            #   nixpkgs.config.allowUnfree = true;
+            #   home-manager.users."${username}".home.packages = [
+            #     pkgs.spotify
+            #   ];
+            # })
+          ];
+
+          specialArgs = lib.attrsets.mergeAttrsList [
+            commonSpecialArgs
+            { username = "radoslaw.grochowski"; }
+          ];
+        };
+      };
+
+      overlays = (import ./overlays { inherit inputs; });
+
+      darwinPackages = lib.lists.flatten map (c: c.pkgs) self.darwinConfigurations;
+
       nixosConfigurations = {
         radoslawgrochowski-desktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            { nixpkgs.overlays = overlays; }
-            { nix.registry.nixpkgs.flake = nixpkgs-stable; }
             ./configuration.nix
             ./hosts/desktop
+            inputs.home-manager.nixosModules.home-manager
             ./profiles/home.nix
 
             ./modules/docker.nix
@@ -79,45 +114,18 @@
             ./modules/printing.nix
             ./modules/samba.nix
           ];
-          specialArgs = {
-            inherit inputs;
-            inherit username;
-            inherit pkgs-stable;
-          };
+          specialArgs = commonSpecialArgs;
         };
 
         radoslawgrochowski-hp = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            { nixpkgs.overlays = overlays; }
-            { nix.registry.nixpkgs.flake = nixpkgs-stable; }
+            inputs.home-manager.nixosModules.home-manager
             ./configuration.nix
             ./hosts/hp
             ./profiles/home.nix
           ];
-          specialArgs = {
-            inherit inputs;
-            inherit username;
-            inherit pkgs-stable;
-          };
-        };
-
-        radoslawgrochowski-dell = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            { nixpkgs.overlays = overlays; }
-            { nix.registry.nixpkgs.flake = nixpkgs-stable; }
-            ./configuration.nix
-            ./hosts/dell
-            ./profiles/work.nix
-
-            ./modules/docker.nix
-          ];
-          specialArgs = {
-            inherit inputs;
-            inherit username;
-            inherit pkgs-stable;
-          };
+          specialArgs = commonSpecialArgs;
         };
       };
     };

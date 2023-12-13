@@ -13,8 +13,8 @@
         lua-language-server
         marksman
         nil
-        ripgrep
         rnix-lsp
+        ripgrep
         tree-sitter
         wget
 
