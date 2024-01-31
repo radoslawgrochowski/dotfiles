@@ -1,5 +1,5 @@
 # Configuration common to all macOS systems
-{ pkgs, inputs, outputs, ... }: {
+{ pkgs, inputs, username, outputs, ... }: {
   imports = [
     inputs.home-manager.darwinModules.home-manager
     ../modules/home-manager.nix
@@ -7,6 +7,8 @@
     ../modules/skhd.nix
     ../modules/yabai.nix
   ];
+
+  users.users."${username}".home = "/Users/${username}/";
   services.nix-daemon.enable = true;
   programs.bash.enable = true;
   programs.zsh.enable = true;

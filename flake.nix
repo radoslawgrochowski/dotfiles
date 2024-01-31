@@ -43,10 +43,7 @@
         })
         ({ overlays, ... }: { nixpkgs.overlays = overlays; })
         ({ pkgs, username, ... }: {
-          users.users."${username}" = {
-            name = username;
-            home = "/Users/${username}/";
-          };
+          users.users."${username}".name = username;
         })
       ];
       commonSpecialArgs = {
@@ -103,6 +100,7 @@
           system = "x86_64-linux";
           modules = [
             ./configuration.nix
+            ./presets/nixos.nix
             ./hosts/desktop
             inputs.home-manager.nixosModules.home-manager
             ./profiles/home.nix
@@ -122,6 +120,7 @@
           modules = [
             inputs.home-manager.nixosModules.home-manager
             ./configuration.nix
+            ./presets/nixos.nix
             ./hosts/hp
             ./profiles/home.nix
           ];
