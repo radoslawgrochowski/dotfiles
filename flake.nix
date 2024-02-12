@@ -9,7 +9,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
@@ -69,11 +69,22 @@
             ./presets/darwin.nix
             ./presets/work.nix
 
-            # for lsps for nvim
             ({ pkgs, username, ... }: {
+              nixpkgs.config.allowUnfreePredicate =
+                pkg: builtins.elem (lib.getName pkg) [
+                  "spotify"
+                ];
+
+              homebrew.brews = [
+                "gnu-sed" # needed for neovim's spectre plugin
+              ];
+
               home-manager.users."${username}".home.packages = [
+                pkgs.neovim
+                pkgs.spotify
                 pkgs.cargo
                 pkgs.rustc
+                pkgs.ripgrep
               ];
             })
 
