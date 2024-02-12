@@ -10,6 +10,7 @@
 
   users.users."${username}".home = "/Users/${username}/";
   services.nix-daemon.enable = true;
+  programs.nix-index.enable = true;
   programs.bash.enable = true;
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ bashInteractive zsh ];
