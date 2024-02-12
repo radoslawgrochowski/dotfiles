@@ -41,3 +41,4 @@ see also:
 - https://github.com/tiagovla/.dotfiles
 - https://github.com/ThePrimeagen/.dotfiles
 - https://github.com/pmizio/vim-react-config
+- https://github.com/breuerfelix/dotfiles
