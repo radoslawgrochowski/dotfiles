@@ -66,6 +66,7 @@
               nix.settings.extra-platforms = [ "aarch64-darwin" "x86_64-darwin" ];
             }
             ./hosts/macaron
+            ./modules/nvim
             ./presets/darwin.nix
             ./presets/work.nix
 
@@ -75,16 +76,8 @@
                   "spotify"
                 ];
 
-              homebrew.brews = [
-                "gnu-sed" # needed for neovim's spectre plugin
-              ];
-
               home-manager.users."${username}".home.packages = [
-                pkgs.neovim
                 pkgs.spotify
-                pkgs.cargo
-                pkgs.rustc
-                pkgs.ripgrep
               ];
             })
 
