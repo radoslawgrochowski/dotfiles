@@ -39,6 +39,7 @@ in
       fd
       bat
     ];
+
     programs.fish = {
       enable = true;
       plugins = [
@@ -122,5 +123,5 @@ in
     programs.nix-index = {
       enableFishIntegration = true;
     };
-  };
+   };
 }

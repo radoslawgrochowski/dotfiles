@@ -1,14 +1,20 @@
 # Configuration common to all macOS systems
-{ pkgs, inputs, username, outputs, ... }: {
+{ pkgs, inputs, outputs, username, ... }: {
   imports = [
     inputs.home-manager.darwinModules.home-manager
     ../modules/home-manager.nix
     ../modules/homebrew.nix
     ../modules/skhd.nix
     ../modules/yabai.nix
+    # TODO: add
+    # ../modules/git
   ];
 
-  users.users."${username}".home = "/Users/${username}/";
+  users.users."${username}" = {
+    name = username;
+    home = "/Users/${username}/";
+  };
+
   services.nix-daemon.enable = true;
   programs.nix-index.enable = true;
   programs.bash.enable = true;

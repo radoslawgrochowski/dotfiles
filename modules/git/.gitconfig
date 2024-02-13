@@ -14,8 +14,6 @@
 	insteadOf = https://github.com/
 [push]
 	default = current
-  autoSetupRemote = true
+	autoSetupRemote = true
 [fetch]
 	prune = true
-[include]
-	path = ~/.wp.gitconfig
