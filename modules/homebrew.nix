@@ -1,7 +1,6 @@
 { ... }: {
   homebrew = {
     enable = true;
-    casks = [
-    ];
+    casks = [ ];
   };
 }

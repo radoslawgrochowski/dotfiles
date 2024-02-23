@@ -45,25 +45,13 @@
           system = "aarch64-darwin";
           modules = commonModules ++ [
             {
-              # The platform the configuration will be used on.
               nixpkgs.hostPlatform = "aarch64-darwin";
               nix.settings.extra-platforms = [ "aarch64-darwin" "x86_64-darwin" ];
             }
             ./hosts/macaron
             ./presets/darwin.nix
             ./presets/work.nix
-
-            ({ pkgs, username, ... }: {
-              nixpkgs.config.allowUnfreePredicate =
-                pkg: builtins.elem (lib.getName pkg) [
-                  "spotify"
-                ];
-
-              home-manager.users."${username}".home.packages = [
-                pkgs.spotify
-              ];
-            })
-
+            ./modules/spotify
           ];
 
           specialArgs = lib.attrsets.mergeAttrsList [
@@ -82,16 +70,9 @@
           system = "x86_64-linux";
           modules = commonModules ++ [
             ./hosts/wsl
-            ./modules/nvim
             ./presets/wsl.nix
             ./presets/nixos.nix
             ./presets/terminal.nix
-            ({ pkgs, username, ... }: {
-              home-manager.users."${username}".home.packages = with pkgs; [
-                # this is needed for neovim
-                clang
-              ];
-            })
           ];
           specialArgs = commonSpecialArgs;
         };

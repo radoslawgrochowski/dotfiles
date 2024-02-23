@@ -1,7 +1,6 @@
-{ ... }:
+{ username, ... }:
 
 {
-
   services.printing.enable = true;
 
   # Use CUPS `localhost:631/admin` web gui to add printer,
@@ -11,5 +10,5 @@
     nssmdns = true;
   };
 
-  users.groups.lpadmin.members = [ "radoslawgrochowski" ];
+  users.groups.lpadmin.members = [ username ];
 }

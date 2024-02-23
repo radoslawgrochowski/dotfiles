@@ -11,6 +11,7 @@
             prompt-toolkit
           ]);
         })
+        clang
         cargo
         rustc
         ripgrep

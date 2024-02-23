@@ -1,4 +1,4 @@
-{ username, pkgs, inputs, ... }:
+{ username, pkgs, ... }:
 let
   # source https://github.com/folke/tokyonight.nvim/blob/main/extras/fish/tokyonight_night.fish
   tokyoNight = ''
@@ -123,5 +123,5 @@ in
     programs.nix-index = {
       enableFishIntegration = true;
     };
-   };
+  };
 }
