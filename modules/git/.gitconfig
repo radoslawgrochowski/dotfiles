@@ -1,8 +1,8 @@
 [user]
-	email = rg@fard.pl
-	name = Radosław Grochowski
+  name = Radosław Grochowski
 [core]
-	editor = vi
+  editor = vi
+  excludesFile = ~/.gitignore
 [diff]
 	tool = vimdiff
 	colorMoved = zebra
@@ -16,4 +16,6 @@
 	default = current
 	autoSetupRemote = true
 [fetch]
-	prune = true
+  prune = true
+[include]
+  path = ~/.gitconfig.local
