@@ -4,6 +4,7 @@ let
   yabai = "${package}/bin/yabai";
 in
 {
+  # source = https://github.com/LnL7/nix-darwin/blob/master/modules/services/yabai/default.nix
   services.yabai = {
     enable = true;
     package = package;
@@ -38,6 +39,9 @@ in
       ''
     ;
   };
+
+  # TODO: swap hyper to use right modifiers so I can combo it with left modifiers e.g. for 
+  # moving windows to other spaces
   services.skhd = {
     enable = true;
     skhdConfig = '' 
@@ -52,5 +56,24 @@ in
       shift + hyper - k : ${yabai} -m window --swap north 
       shift + hyper - l : ${yabai} -m window --swap east 
     '';
+  };
+
+  launchd.user.agents.yabai.serviceConfig = {
+    ProcessType = "Interactive";
+    StandardOutPath = "/tmp/yabai.log";
+    StandardErrorPath = "/tmp/yabai.log";
+  };
+
+  system.defaults.CustomUserPreferences = {
+    "com.apple.dock" = {
+      # Automatically rearrange Spaces based on most recent use -> [ ]
+      mru-spaces = 0;
+    };
+    "com.apple.WindowManager" = {
+      # Show Items -> On Desktop -> [x]
+      StandardHideDesktopIcons = 0;
+      # Click wallpaper to reveal Desktop -> Only in Stage Manager
+      EnableStandardClickToShowDesktop = 0;
+    };
   };
 }

@@ -6,8 +6,7 @@
     ../modules/homebrew.nix
     ../modules/skhd.nix
     ../modules/yabai.nix
-    # TODO: add
-    # ../modules/git
+    ../modules/karabiner.nix
   ];
 
   users.users."${username}" = {

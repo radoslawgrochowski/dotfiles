@@ -8,24 +8,6 @@
       enable = true;
       skhdConfig = '' 
       hyper - d : ${skhd} -k "cmd - space"
-      ctrl - v [
-        "Google Chrome" : ${skhd} -k "cmd - v"
-      ]
-      ctrl - c [
-        "Google Chrome" : ${skhd} -k "cmd - c"
-      ]
-      ctrl - w [
-        "Google Chrome" : ${skhd} -k "cmd - w"
-      ]
-      ctrl - t [
-        "Google Chrome" : ${skhd} -k "cmd - t"
-      ]
-      ctrl + shift - t [
-        "Google Chrome" : ${skhd} -k "cmd + shift - t"
-      ]
-      ctrl + shift - i [
-        "Google Chrome" : ${skhd} -k "cmd + alt - i"
-      ]
     '';
     };
 
@@ -34,5 +16,7 @@
       EnvironmentVariables = {
         SHELL = "/bin/bash";
       };
+      StandardOutPath = "/tmp/skhd.log";
+      StandardErrorPath = "/tmp/skhd.log";
     };
   })

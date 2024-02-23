@@ -12,8 +12,8 @@ in
     home.file."./.config/kitty/kitty.conf".source = ./kitty.conf;
   };
 
-  #services.skhd.skhdConfig = lib.mkIf (config.services.skhd.enable) '' 
-  #  hyper - return : ${kitty} --single-instance -d ~
-  #  hyper - n : ${kitty} --single-instance -T notebook -d ${notebookPath} nvim ${notebookPath}
-  #'';
+  services.skhd.skhdConfig = lib.mkIf (config.services.skhd.enable) ''
+    hyper - return : ${kitty} --single-instance -d ~
+    hyper - n : ${kitty} --single-instance -T notebook -d ${notebookPath} nvim ${notebookPath}
+  '';
 }
