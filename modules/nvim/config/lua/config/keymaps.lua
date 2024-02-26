@@ -51,11 +51,6 @@ keymap("v", ">", ">gv")
 -- allow gf to open non-existent files
 keymap("", "gF", ":edit %:p:h/<cfile><CR>")
 
--- Maintain the cursor position when yanking a visual selection
--- http://ddrscott.github.io/blog/2016/yank-without-jank/
-keymap("v", "y", "myy`hay")
-keymap("v", "Y", "myY`y")
-
 -- disable annoying command line thing
 keymap("n", "q:", ":q<CR>")
 
@@ -65,3 +60,6 @@ keymap("n", "<leader>j", "<C-W>j")
 keymap("n", "<leader>k", "<C-W>k")
 keymap("n", "<leader>l", "<C-W>l")
 keymap("n", "<leader>o", "<C-W>o")
+
+-- match :qw as :wq
+keymap("c", "qw", ":wq<CR>")
