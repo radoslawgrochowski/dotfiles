@@ -12,9 +12,12 @@ darwin-switch: && darwin-restart-skhd
 darwin-restart-skhd:
   launchctl stop org.nixos.skhd && launchctl start org.nixos.skhd
 
+nixos-switch:
+  sudo nixos-rebuild switch --flake .
+
 switch:
-    @if [ "{{os}}" == "Darwin" ]; then \
-        just darwin-switch; \
-    else \
-        echo "Unknown operating system"; \
-    fi
+  @if [ "{{os}}" == "Darwin" ]; then \
+    just darwin-switch; \
+  else \
+    just nixos-switch; \
+  fi
