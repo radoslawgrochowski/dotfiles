@@ -1,4 +1,4 @@
-{ username, pkgs, lib, config, ... }:
+{ username, pkgs, lib, config, options, ... }:
 let
   package = pkgs.kitty;
   kitty = "${package}/bin/kitty";
@@ -7,13 +7,17 @@ let
   notebookPath = "${userHome}/Projects/notebook";
 in
 {
-  home-manager.users.${username} = {
-    home.packages = [ pkgs.kitty ];
-    home.file."./.config/kitty/kitty.conf".source = ./kitty.conf;
+  config = {
+    home-manager.users.${username} = {
+      home.packages = [ pkgs.kitty ];
+      home.file."./.config/kitty/kitty.conf".source = ./kitty.conf;
+    };
+  } // lib.optionalAttrs (builtins.hasAttr "skhd" options.services) {
+    services.skhd.skhdConfig = ''
+      hyper - return : ${kitty} --single-instance -d ~
+      hyper - n : ${kitty} --single-instance -T notebook -d ${notebookPath} nvim ${notebookPath}
+    '';
   };
-
-  services.skhd.skhdConfig = lib.mkIf (config.services.skhd.enable) ''
-    hyper - return : ${kitty} --single-instance -d ~
-    hyper - n : ${kitty} --single-instance -T notebook -d ${notebookPath} nvim ${notebookPath}
-  '';
 }
+
+      
