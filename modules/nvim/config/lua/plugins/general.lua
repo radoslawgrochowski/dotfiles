@@ -89,6 +89,23 @@ return {
       window = {
         mappings = {
           ["<space>"] = "none",
+          ["O"] = {
+            command = function(state)
+              local filepath = state.tree:get_node().path
+              local osType = vim.loop.os_uname().sysname
+              local command
+
+              if osType == "Windows_NT" then
+                command = "start " .. filepath
+              elseif osType == "Darwin" then
+                command = "open " .. filepath
+              else
+                command = "xdg-open " .. filepath
+              end
+              os.execute(command)
+            end,
+            desc = "open_with_system_defaults",
+          },
         },
       },
       default_component_configs = {
