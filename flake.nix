@@ -28,9 +28,10 @@
       lib = nixpkgs.lib;
       # merge it with configuration.nix
       commonModules = [
+        ({ overlays, ... }: { nixpkgs.overlays = overlays; })
         ./modules/fonts.nix
         ./modules/nix.nix
-        ({ overlays, ... }: { nixpkgs.overlays = overlays; })
+        ./modules/just
       ];
       commonSpecialArgs = {
         inherit outputs;
