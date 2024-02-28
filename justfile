@@ -7,7 +7,7 @@ update:
   nix flake update
 
 darwin-switch: && darwin-restart-skhd
-  nix run nix-darwin -- switch --flake .
+  nix run nix-darwin -- switch --flake .#macaron
 
 darwin-restart-skhd:
   launchctl stop org.nixos.skhd && launchctl start org.nixos.skhd
