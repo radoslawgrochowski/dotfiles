@@ -16,6 +16,8 @@
       jq
       ranger
       tldr
+      direnv
+      nix-direnv
     ];
   };
 }
