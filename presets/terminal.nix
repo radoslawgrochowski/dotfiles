@@ -1,7 +1,8 @@
 { username, pkgs, ... }: {
   imports = [
-    ../modules/git
+    ../modules/direnv
     ../modules/fish.nix
+    ../modules/git
     ../modules/kitty
     ../modules/nvim
   ];
@@ -16,8 +17,6 @@
       jq
       ranger
       tldr
-      direnv
-      nix-direnv
     ];
   };
 }
