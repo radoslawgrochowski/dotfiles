@@ -15,7 +15,7 @@
       comma
       jc
       jq
-      nix-search
+      nix-search-cli
       ranger
       tldr
     ];
