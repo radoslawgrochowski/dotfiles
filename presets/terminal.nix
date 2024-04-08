@@ -15,6 +15,7 @@
       comma
       jc
       jq
+      nix-search
       ranger
       tldr
     ];
