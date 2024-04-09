@@ -19,10 +19,11 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
-    inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, nixpkgs-stable, home-manager, ... }:
+    inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, nixpkgs-stable, home-manager, flake-utils, ... }:
     let
       inherit (self) outputs inputs;
       lib = nixpkgs.lib;
@@ -31,7 +32,6 @@
         ({ overlays, ... }: { nixpkgs.overlays = overlays; })
         ./modules/fonts.nix
         ./modules/nix.nix
-        ./modules/just
       ];
       commonSpecialArgs = {
         inherit outputs;
@@ -79,5 +79,13 @@
           specialArgs = commonSpecialArgs;
         };
       };
-    };
+
+
+    } // flake-utils.lib.eachDefaultSystem
+      (system:
+      let
+        overlays = [ (final: prev: { nodejs = prev.nodejs_20; }) ];
+        pkgs = import nixpkgs { inherit system overlays; };
+      in
+      { devShells.default = pkgs.mkShell { packages = with pkgs; [ just ]; }; });
 }
