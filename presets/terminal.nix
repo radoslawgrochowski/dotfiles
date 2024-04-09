@@ -4,7 +4,7 @@
     ../modules/fish.nix
     ../modules/git
     ../modules/kitty
-    ../modules/nvim
+    ../modules/lazyvim
   ];
 
   home-manager.users.${username} = {
