@@ -19,3 +19,7 @@
   prune = true
 [include]
   path = ~/.gitconfig.local
+[alias]
+  master-branch-name = "!f() { git symbolic-ref refs/remotes/origin/HEAD | sed \"s@^refs/remotes/origin/@@\" ; }; f"
+  fomo = !git fetch origin $(git master-branch-name) && git rebase origin/$(git master-branch-name)
+  fopo = !git fetch origin $(git master-branch-name) && git pull origin $(git master-branch-name) --no-rebase
