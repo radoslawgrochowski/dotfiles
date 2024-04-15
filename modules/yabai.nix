@@ -31,6 +31,9 @@ in
       '' 
         yabai -m rule --add app="^System Settings$" manage=off
         yabai -m rule --add app="^Calculator$" manage=off
+
+        # Android simulator 
+        yabai -m rule --add app="^qemu-system" manage=off
       ''
       + # https://github.com/koekeishiya/yabai/issues/1012#issuecomment-922885932
       ''
