@@ -27,16 +27,17 @@
     let
       inherit (self) outputs inputs;
       lib = nixpkgs.lib;
-      # merge it with configuration.nix
       commonModules = [
         ({ overlays, ... }: { nixpkgs.overlays = overlays; })
         ./modules/fonts.nix
         ./modules/nix.nix
       ];
+      neovim-overlay = import ./modules/nvim/overlay.nix { inherit inputs; };
+      overlays = (lib.attrValues outputs.overlays) ++ [ neovim-overlay ];
       commonSpecialArgs = {
         inherit outputs;
         inherit inputs;
-        overlays = lib.attrValues outputs.overlays;
+        inherit overlays;
         username = "radoslawgrochowski";
       };
     in
@@ -65,7 +66,10 @@
 
       overlays = (import ./overlays { inherit inputs; });
 
-      darwinPackages = lib.lists.flatten map (c: c.pkgs) self.darwinConfigurations;
+      darwinPackages = lib.lists.flatten
+        map
+        (c: c.pkgs)
+        self.darwinConfigurations;
 
       nixosConfigurations = {
         radoslawgrochowski-wsl = nixpkgs.lib.nixosSystem {
@@ -79,13 +83,15 @@
           specialArgs = commonSpecialArgs;
         };
       };
-
-
     } // flake-utils.lib.eachDefaultSystem
       (system:
       let
-        overlays = [ (final: prev: { nodejs = prev.nodejs_20; }) ];
         pkgs = import nixpkgs { inherit system overlays; };
       in
-      { devShells.default = pkgs.mkShell { packages = with pkgs; [ just ]; }; });
+      {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [ just ];
+        };
+        packages = { nvim-rg = pkgs.nvim-rg; };
+      });
 }
