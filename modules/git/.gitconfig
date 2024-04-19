@@ -1,7 +1,7 @@
 [user]
   name = Radosław Grochowski
 [core]
-  editor = vi
+  editor = nvim
   excludesFile = ~/.gitignore
 [diff]
 	tool = vimdiff
@@ -23,3 +23,4 @@
   master-branch-name = "!f() { git symbolic-ref refs/remotes/origin/HEAD | sed \"s@^refs/remotes/origin/@@\" ; }; f"
   fomo = !git fetch origin $(git master-branch-name) && git rebase origin/$(git master-branch-name)
   fopo = !git fetch origin $(git master-branch-name) && git pull origin $(git master-branch-name) --no-rebase
+  shove = !git push --force-with-lease --force-if-includes
