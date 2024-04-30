@@ -22,7 +22,6 @@
 [advice]
   macheteEditorSelection = false
 [alias]
-  master-branch-name = "!f() { git symbolic-ref refs/remotes/origin/HEAD | sed \"s@^refs/remotes/origin/@@\" ; }; f"
-  fomo = !git fetch origin $(git master-branch-name) && git rebase origin/$(git master-branch-name)
-  fopo = !git fetch origin $(git master-branch-name) && git pull origin $(git master-branch-name) --no-rebase
+  fomo = !git fetch origin master && git rebase origin/master
+  fopo = !git fetch origin master && git pull origin master --no-rebase
   shove = !git push --force-with-lease --force-if-includes
