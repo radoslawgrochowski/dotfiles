@@ -24,4 +24,5 @@
 [alias]
   fomo = !git fetch origin master && git rebase origin/master
   fopo = !git fetch origin master && git pull origin master --no-rebase
-  shove = !git push --force-with-lease --force-if-includes
+  shove = !git commit --no-edit --amend && git push --force-with-lease --force-if-includes
+  m = !git machete
