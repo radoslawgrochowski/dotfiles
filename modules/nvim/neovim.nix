@@ -11,14 +11,18 @@ with lib; let
       (map (pkg: (getModule pkg).config or "") packages);
   };
 
+  mainConfig = builtins.readFile ./config.lua;
   modules = concatModules [
+    ./plugins/fugitive
+    ./plugins/oil
+    ./plugins/telescope
     ./plugins/treesitter
     ./plugins/utility
   ];
 
   plugins = modules.allPlugins;
   extraPackages = modules.allExtraPackages;
-  config = modules.allConfigs;
+  config = mainConfig + modules.allConfigs;
 in
 {
   nvim-rg = mkNeovim {
