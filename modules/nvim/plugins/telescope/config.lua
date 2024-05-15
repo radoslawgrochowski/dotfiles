@@ -1,18 +1,81 @@
 local wk = require("which-key")
 local telescope = require("telescope")
+local builtin = require("telescope.builtin")
 
-telescope.load_extension("frecency")
+local defaults = {
+	path_display = { "smart" },
+}
+
+vim.o.timeoutlen = 200
+
 telescope.load_extension("fzf")
+telescope.setup({ defaults })
 
 wk.register({
-	["<leader>"] = {
-		["<space>"] = {
-			function()
-				telescope.extensions.frecency.frecency({
-					workspace = "CWD",
-				})
-			end,
-			"Find Files",
-		},
+	["<space>"] = { builtin.find_files, "Find Files (root)" },
+	[","] = {
+		function()
+			builtin.buffers({ sort_mru = true, sort_lastused = true })
+		end,
+		"Switch Buffers",
 	},
-})
+}, { prefix = "<leader>" })
+
+wk.register({
+	["f"] = {
+		["f"] = { builtin.resume, "Resume" },
+		["r"] = { builtin.oldfiles, "Recent" },
+		["g"] = { builtin.live_grep, "Grep (root)" },
+		["G"] = {
+			function()
+				builtin.live_grep({ cwd = false })
+			end,
+			"Grep (cwd)",
+		},
+		["<space>"] = { builtin.find_files, "Files (root)" },
+		["k"] = { builtin.keymaps, "Keymaps" },
+		["w"] = {
+			function()
+				builtin.grep_string({ word_match = "-w" })
+			end,
+			"Current word",
+		},
+		["W"] = {
+			function()
+				builtin.grep_string({ word_match = "-w", cwd = false })
+			end,
+			"Current word (cwd)",
+		},
+		["d"] = {
+			function()
+				builtin.diagnostics()
+			end,
+			"Diagnostics (root)",
+		},
+		desc = "Find",
+	},
+	["s"] = {
+		["c"] = {
+			function()
+				builtin.colorscheme({ enable_preview = true })
+			end,
+			"Colorscheme",
+		},
+		desc = "Settings",
+	},
+}, { prefix = "<leader>f" })
+
+wk.register({
+	["w"] = {
+		function()
+			builtin.grep_string()
+		end,
+		"Current selection (root)",
+	},
+	["W"] = {
+		function()
+			builtin.grep_string({ cwd = false })
+		end,
+		"Current selection (cwd)",
+	},
+}, { mode = "v", prefix = "<leader>f" })

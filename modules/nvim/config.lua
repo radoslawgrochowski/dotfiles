@@ -62,4 +62,3 @@ wk.register({
 	l = { "<C-W>l", "jump to right pane" },
 	o = { "<C-W>o", "remove other panes" },
 }, { prefix = "<leader>" })
-

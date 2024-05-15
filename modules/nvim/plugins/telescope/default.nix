@@ -3,7 +3,6 @@
   plugins = with pkgs.vimPlugins; [
     telescope-nvim
     telescope-fzf-native-nvim
-    telescope-frecency-nvim
   ];
   extraPackages = with pkgs; [
     ripgrep

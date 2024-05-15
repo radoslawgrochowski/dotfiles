@@ -16,6 +16,7 @@ with lib; let
     ./plugins/fugitive
     ./plugins/oil
     ./plugins/telescope
+    ./plugins/theme
     ./plugins/treesitter
     ./plugins/utility
   ];
