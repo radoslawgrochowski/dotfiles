@@ -19,9 +19,6 @@ wk.register({
 		end,
 		"Switch Buffers",
 	},
-}, { prefix = "<leader>" })
-
-wk.register({
 	["f"] = {
 		["f"] = { builtin.resume, "Resume" },
 		["r"] = { builtin.oldfiles, "Recent" },
@@ -54,16 +51,7 @@ wk.register({
 		},
 		desc = "Find",
 	},
-	["s"] = {
-		["c"] = {
-			function()
-				builtin.colorscheme({ enable_preview = true })
-			end,
-			"Colorscheme",
-		},
-		desc = "Settings",
-	},
-}, { prefix = "<leader>f" })
+}, { prefix = "<leader>" })
 
 wk.register({
 	["w"] = {

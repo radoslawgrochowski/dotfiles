@@ -1,8 +1,7 @@
 { pkgs }: {
   plugins = with pkgs.vimPlugins; [
     tokyonight-nvim
+    telescope-nvim
   ];
-  config = ''
-    vim.cmd.colorscheme "tokyonight-night"
-  '';
+  config = builtins.readFile ./config.lua;
 }
