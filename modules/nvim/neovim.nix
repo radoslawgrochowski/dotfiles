@@ -14,6 +14,7 @@ with lib; let
   mainConfig = builtins.readFile ./config.lua;
   modules = concatModules [
     ./plugins/fugitive
+    ./plugins/lsp
     ./plugins/oil
     ./plugins/telescope
     ./plugins/theme
