@@ -1,12 +1,12 @@
-local wk = require('which-key');
+local wk = require 'which-key'
 
-vim.cmd.colorscheme "tokyonight-night"
+vim.cmd.colorscheme 'tokyonight-night'
 
 wk.register({
-  ["c"] = {
+  ['c'] = {
     function()
-      require('telescope.builtin').colorscheme({ enable_preview = true })
+      require('telescope.builtin').colorscheme { enable_preview = true }
     end,
-    "Colorscheme",
+    'Colorscheme',
   },
-}, { prefix = "<leader>s", desc = "Settings" })
+}, { prefix = '<leader>s', desc = 'Settings' })
