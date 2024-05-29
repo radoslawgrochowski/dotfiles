@@ -1,4 +1,5 @@
 local wk = require 'which-key'
+local lspconfig = require 'lspconfig'
 
 -- TODO: come up with better mappings for those
 wk.register {
@@ -27,9 +28,10 @@ wk.register({
   ['ga'] = { vim.lsp.buf.code_action, 'Code actions' },
 }, { mode = 'x' })
 
-require('lspconfig').nil_ls.setup {}
-require('lspconfig').lua_ls.setup {}
-require('lspconfig').efm.setup {
+lspconfig.nil_ls.setup {}
+lspconfig.lua_ls.setup {}
+lspconfig.tsserver.setup {}
+lspconfig.efm.setup {
   init_options = { documentFormatting = true },
   settings = {
     rootMarkers = { '.git/' },
