@@ -1,5 +1,8 @@
 local wk = require 'which-key'
 local lspconfig = require 'lspconfig'
+local lspformat = require 'lsp-format'
+lspformat.setup {}
+
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- TODO: come up with better mappings for those
@@ -29,11 +32,22 @@ wk.register({
   ['ga'] = { vim.lsp.buf.code_action, 'Code actions' },
 }, { mode = 'x' })
 
-lspconfig.nil_ls.setup { capabilities }
-lspconfig.lua_ls.setup { capabilities }
-lspconfig.tsserver.setup { capabilities }
-lspconfig.efm.setup {
+lspconfig.nil_ls.setup {
   capabilities,
+  on_attach = lspformat.on_attach,
+  settings = {
+    ['nil'] = {
+      formatting = {
+        command = { 'nixpkgs-fmt' },
+      },
+    },
+  },
+}
+lspconfig.lua_ls.setup { capabilites, on_attach = lspformat.on_attach }
+lspconfig.tsserver.setup { capabilites, on_attach = lspformat.on_attach }
+lspconfig.efm.setup {
+  capabilites,
+  on_attach = lspformat.on_attach,
   init_options = { documentFormatting = true },
   settings = {
     rootMarkers = { '.git/' },

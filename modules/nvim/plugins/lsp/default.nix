@@ -4,6 +4,7 @@
     efmls-configs-nvim
     fidget-nvim
     nvim-lspconfig
+    lsp-format-nvim
   ];
   extraPackages = with pkgs; [
     efm-langserver
@@ -11,6 +12,7 @@
     nil
     nodePackages.typescript
     nodePackages.typescript-language-server
+    nixpkgs-fmt
     stylua
   ];
   config = builtins.readFile ./config.lua;
