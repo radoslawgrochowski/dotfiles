@@ -79,7 +79,7 @@ let
 in
 # wrapNeovimUnstable is the nixpkgs utility function for building a Neovim derivation.
 pkgs.unstable.wrapNeovimUnstable
-  pkgs.neovim-unwrapped
+  pkgs.unstable.neovim-unwrapped
   (neovimConfig
     // {
     luaRcContent = config;
