@@ -1,5 +1,6 @@
 local wk = require 'which-key'
 local lspconfig = require 'lspconfig'
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- TODO: come up with better mappings for those
 wk.register {
@@ -28,10 +29,11 @@ wk.register({
   ['ga'] = { vim.lsp.buf.code_action, 'Code actions' },
 }, { mode = 'x' })
 
-lspconfig.nil_ls.setup {}
-lspconfig.lua_ls.setup {}
-lspconfig.tsserver.setup {}
+lspconfig.nil_ls.setup { capabilities }
+lspconfig.lua_ls.setup { capabilities }
+lspconfig.tsserver.setup { capabilities }
 lspconfig.efm.setup {
+  capabilities,
   init_options = { documentFormatting = true },
   settings = {
     rootMarkers = { '.git/' },

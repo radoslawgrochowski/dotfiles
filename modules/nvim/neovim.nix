@@ -13,13 +13,14 @@ with lib; let
 
   mainConfig = builtins.readFile ./config.lua;
   modules = concatModules [
+    ./plugins/utility
+    ./plugins/treesitter
     ./plugins/fugitive
     ./plugins/lsp
     ./plugins/oil
     ./plugins/telescope
     ./plugins/theme
-    ./plugins/treesitter
-    ./plugins/utility
+    ./plugins/cmp
   ];
 
   plugins = modules.allPlugins;
