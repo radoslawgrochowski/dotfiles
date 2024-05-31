@@ -4,8 +4,7 @@
     inputs.home-manager.darwinModules.home-manager
     ../modules/home-manager.nix
     ../modules/homebrew.nix
-    ../modules/skhd.nix
-    ../modules/yabai.nix
+    ../modules/aerospace
     ../modules/karabiner.nix
   ];
 
