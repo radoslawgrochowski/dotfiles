@@ -19,6 +19,8 @@
   prune = true
 [include]
   path = ~/.gitconfig.local
+[rerere]
+  enabled = true
 [advice]
   macheteEditorSelection = false
 [alias]
