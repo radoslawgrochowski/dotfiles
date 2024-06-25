@@ -1,17 +1,15 @@
-env:
-  NIX_CONFIG: "accept-flake-config = true"
+name: check
+
+on:
+  push:
+  pull_request:
+
 jobs:
   check:
-    "runs-on": "ubuntu-latest"
+    runs-on: ubuntu-latest
     steps:
-    - uses: "actions/checkout@v4.1.7"
-    - uses: "DeterminateSystems/flake-checker-action@v8"
-    - uses: "DeterminateSystems/nix-installer-action@v12"
-    - uses: "DeterminateSystems/magic-nix-cache-action@v7"
-    - run: "nix flake check --show-trace"
-name: check
-'on':
-  push:
-    paths:
-    - "**.nix"
-    - "**.lock"
+    - uses: actions/checkout@v4.1.7
+    - uses: DeterminateSystems/flake-checker-action@v8
+    - uses: DeterminateSystems/nix-installer-action@v12
+    - uses: DeterminateSystems/magic-nix-cache-action@v7
+    - run: nix flake check --show-trace
