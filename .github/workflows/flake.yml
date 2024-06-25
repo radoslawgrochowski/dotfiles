@@ -38,4 +38,4 @@ jobs:
       with:
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
         name: radoslawgrochowski-dotfiles
-    - run: nix build ${{ matrix.output }} -L --show-trace
+    - run: nix build ${{ matrix.output }} -L --show-trace --accept-flake-config
