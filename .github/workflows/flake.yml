@@ -25,9 +25,10 @@ jobs:
           - name: radoslawgrochowski-wsl
             os: ubuntu-latest
             output: ".#nixosConfigurations.radoslawgrochowski-wsl.config.system.build.toplevel"
-          - name: macaron
-            os: macos-latest
-            output: ".#darwinConfigurations.macaron.config.system.build.toplevel"
+          # # FIXME: handle ca_cert updates in CI 
+          # - name: macaron
+          #   os: macos-latest
+          #   output: ".#darwinConfigurations.macaron.config.system.build.toplevel"
     name: ${{ matrix.name }}-build
     runs-on: ${{ matrix.os }}
     steps:
