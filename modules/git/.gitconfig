@@ -1,6 +1,7 @@
 [user]
   name = Radosław Grochowski
 [core]
+  autocrlf = input 
   editor = nvim
   excludesFile = ~/.gitignore
 [diff]
