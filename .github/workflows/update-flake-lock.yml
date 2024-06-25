@@ -11,5 +11,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@v12
       - uses: DeterminateSystems/update-flake-lock@v22
-        commit-msg: "chore(nix): update lockfile"
-        pr-title: "chore(nix): update lockfile"
+        with: 
+          commit-msg: "chore(nix): update lockfile"
+          pr-title: "chore(nix): update lockfile"
