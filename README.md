@@ -44,7 +44,7 @@ sudo cp /home/$USER/.ssh/id_ed* /root/.ssh/
 ### updating single flake input
 
 ```sh
-sudo nix flake lock --update-input config-wp
+sudo nix flake lock --update-input flake-utils
 ```
 
 ## inspiration
