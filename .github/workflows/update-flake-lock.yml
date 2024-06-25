@@ -9,5 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/update-flake-lock@main
+      - uses: DeterminateSystems/nix-installer-action@v12
+      - uses: DeterminateSystems/update-flake-lock@v22
+        commit-msg: "chore(nix): update lockfile"
+        pr-title: "chore(nix): update lockfile"
