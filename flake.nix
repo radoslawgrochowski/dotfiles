@@ -66,10 +66,8 @@
 
       overlays = (import ./overlays { inherit inputs; });
 
-      darwinPackages = lib.lists.flatten
-        map
-        (c: c.pkgs)
-        self.darwinConfigurations;
+      # Expose the package set, including overlays, for convenience.
+      darwinPackages = builtins.mapAttrs (hostname: config: config.pkgs) self.darwinConfigurations;
 
       nixosConfigurations = {
         radoslawgrochowski-wsl = nixpkgs.lib.nixosSystem {
