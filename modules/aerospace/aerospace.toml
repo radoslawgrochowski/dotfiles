@@ -89,10 +89,10 @@ cmd-ctrl-alt-shift-f = 'layout floating tiling'
 cmd-ctrl-alt-shift-a = 'layout tiles accordion'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-cmd-ctrl-alt-shift-h = 'focus left'
-cmd-ctrl-alt-shift-j = 'focus down'
-cmd-ctrl-alt-shift-k = 'focus up'
-cmd-ctrl-alt-shift-l = 'focus right'
+cmd-ctrl-alt-shift-h = 'focus --boundaries all-monitors-outer-frame left'
+cmd-ctrl-alt-shift-j = 'focus --boundaries all-monitors-outer-frame down'
+cmd-ctrl-alt-shift-k = 'focus --boundaries all-monitors-outer-frame up'
+cmd-ctrl-alt-shift-l = 'focus --boundaries all-monitors-outer-frame right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 # cmd-ctrl-alt-shift-shift-h = 'move left'
