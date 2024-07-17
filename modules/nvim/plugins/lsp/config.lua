@@ -5,22 +5,23 @@ lspformat.setup {}
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- TODO: come up with better mappings for those
 wk.register {
-  ['gD'] = { vim.lsp.buf.declaration, 'Go to declaration' },
   ['gd'] = { vim.lsp.buf.definition, 'Go to definition' },
+  ['gr'] = { vim.lsp.buf.references, 'Find references' },
   ['gi'] = { vim.lsp.buf.implementation, 'Go to implementation' },
+  -- TODO: gy - Go to type definition
+  ['gD'] = { vim.lsp.buf.declaration, 'Go to declaration' },
   ['g;'] = {
     function()
       vim.lsp.buf.format { async = false }
     end,
     'Format',
   },
-  ['gr'] = { vim.lsp.buf.references, 'Find references' },
-  ['gh'] = { vim.lsp.buf.hover, 'Hover help' },
-  ['gs'] = { vim.lsp.buf.signature_help, 'Signature help' },
+  ['K'] = { vim.lsp.buf.hover, 'Hover help' },
+  ['gK'] = { vim.lsp.buf.signature_help, 'Signature help' },
   ['gR'] = { vim.lsp.buf.rename, 'Rename' },
-  ['ga'] = { vim.lsp.buf.code_action, 'Code actions' },
+
+  ['<leader>ca'] = { vim.lsp.buf.code_action, 'Code actions' },
 
   ['[d'] = { vim.diagnostic.goto_prev, 'Previous diagnostic' },
   [']d'] = { vim.diagnostic.goto_next, 'Next diagnostic' },
@@ -30,7 +31,7 @@ wk.register {
 
 wk.register({
   ['ga'] = { vim.lsp.buf.code_action, 'Code actions' },
-}, { mode = 'x' })
+}, { mode = 'v' })
 
 lspconfig.nil_ls.setup {
   capabilities,
@@ -43,6 +44,7 @@ lspconfig.nil_ls.setup {
     },
   },
 }
+
 lspconfig.lua_ls.setup { capabilites, on_attach = lspformat.on_attach }
 lspconfig.tsserver.setup { capabilites, on_attach = lspformat.on_attach }
 lspconfig.efm.setup {
