@@ -3,16 +3,21 @@ local telescope = require 'telescope'
 local builtin = require 'telescope.builtin'
 
 local defaults = {
-  path_display = { 'smart' },
+  path_display = { 'truncate' },
 }
 
 vim.o.timeoutlen = 200
 
 telescope.load_extension 'fzf'
-telescope.setup { defaults }
+telescope.setup { defaults = defaults }
 
 wk.register({
-  ['<space>'] = { builtin.find_files, 'Find Files (root)' },
+  ['<space>'] = {
+    function()
+      builtin.find_files(defaults)
+    end,
+    'Find Files (root)',
+  },
   [','] = {
     function()
       builtin.buffers { sort_mru = true, sort_lastused = true }
