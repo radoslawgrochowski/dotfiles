@@ -4,6 +4,7 @@
     nvim-cmp
 
     cmp-buffer
+    cmp-cmdline
     cmp-emoji
     cmp-nvim-lsp
     cmp-nvim-lsp-signature-help
