@@ -12,6 +12,9 @@ darwin-switch:
 nixos-switch:
   sudo nixos-rebuild switch --flake .
 
+update-node-packages:
+  (cd ./overlays/node-packages/; node2nix -i node-packages.json)
+
 switch:
  @if [ "{{os}}" == "Darwin" ]; then \
    just darwin-switch; \

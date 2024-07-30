@@ -12,6 +12,7 @@
     nil
     nodePackages.typescript
     nodePackages.typescript-language-server
+    localNodePackages."@vtsls/language-server"
     nixpkgs-fmt
     stylua
   ];

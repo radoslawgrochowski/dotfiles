@@ -89,7 +89,10 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [ just ];
+          packages = with pkgs; [
+            just
+            node2nix
+          ];
         };
         packages = { nvim-rg = pkgs.nvim-rg; };
       });

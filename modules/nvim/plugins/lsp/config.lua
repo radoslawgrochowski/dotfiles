@@ -45,10 +45,47 @@ lspconfig.nil_ls.setup {
   },
 }
 
-lspconfig.lua_ls.setup { capabilites, on_attach = lspformat.on_attach }
-lspconfig.tsserver.setup { capabilites, on_attach = lspformat.on_attach }
+lspconfig.lua_ls.setup { capabilites = capabilities, on_attach = lspformat.on_attach }
+local vtslsSettings = {
+  updateImportsOnFileMove = { enabled = "always" },
+  suggest = { completeFunctionCalls = true, },
+  inlayHints = {
+    enumMemberValues = { enabled = true },
+    functionLikeReturnTypes = { enabled = true },
+    parameterNames = { enabled = "literals" },
+    parameterTypes = { enabled = true },
+    propertyDeclarationTypes = { enabled = true },
+    variableTypes = { enabled = false },
+  },
+};
+
+lspconfig.vtsls.setup {
+  capabilities = capabilities,
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+  },
+  settings = {
+    complete_function_calls = true,
+    vtsls = {
+      enableMoveToFileCodeAction = true,
+      autoUseWorkspaceTsdk = true,
+      experimental = {
+        completion = {
+          enableServerSideFuzzyMatch = true,
+        },
+      },
+    },
+    typescript = vtslsSettings,
+    javascript = vtslsSettings,
+  },
+}
 lspconfig.efm.setup {
-  capabilites,
+  capabilites = capabilities,
   on_attach = lspformat.on_attach,
   init_options = { documentFormatting = true },
   settings = {
