@@ -3,7 +3,7 @@ local telescope = require 'telescope'
 local builtin = require 'telescope.builtin'
 
 local defaults = {
-  path_display = { 'truncate' },
+  path_display = { 'filename_first' },
 }
 
 vim.o.timeoutlen = 200
