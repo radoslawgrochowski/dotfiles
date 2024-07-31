@@ -13,6 +13,7 @@
     nodePackages.typescript
     nodePackages.typescript-language-server
     localNodePackages."@vtsls/language-server"
+    localNodePackages.vscode-langservers-extracted
     nixpkgs-fmt
     stylua
   ];

@@ -34,8 +34,6 @@ wk.register({
 }, { mode = 'v' })
 
 lspconfig.nil_ls.setup {
-  capabilities,
-  on_attach = lspformat.on_attach,
   settings = {
     ['nil'] = {
       formatting = {
@@ -43,32 +41,40 @@ lspconfig.nil_ls.setup {
       },
     },
   },
+
+  capabilities = capabilities,
+  on_attach = lspformat.on_attach,
 }
 
-lspconfig.lua_ls.setup { capabilites = capabilities, on_attach = lspformat.on_attach }
+lspconfig.lua_ls.setup {
+  capabilites = capabilities,
+  on_attach = lspformat.on_attach,
+}
+
 local vtslsSettings = {
-  updateImportsOnFileMove = { enabled = "always" },
-  suggest = { completeFunctionCalls = true, },
+  updateImportsOnFileMove = { enabled = 'always' },
+  suggest = { completeFunctionCalls = true },
   inlayHints = {
     enumMemberValues = { enabled = true },
     functionLikeReturnTypes = { enabled = true },
-    parameterNames = { enabled = "literals" },
+    parameterNames = { enabled = 'literals' },
     parameterTypes = { enabled = true },
     propertyDeclarationTypes = { enabled = true },
     variableTypes = { enabled = false },
   },
-};
+}
+
+local jsFiletypes = {
+  'javascript',
+  'javascriptreact',
+  'javascript.jsx',
+  'typescript',
+  'typescriptreact',
+  'typescript.tsx',
+}
 
 lspconfig.vtsls.setup {
-  capabilities = capabilities,
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "typescript",
-    "typescriptreact",
-    "typescript.tsx",
-  },
+  filetypes = jsFiletypes,
   settings = {
     complete_function_calls = true,
     vtsls = {
@@ -83,11 +89,29 @@ lspconfig.vtsls.setup {
     typescript = vtslsSettings,
     javascript = vtslsSettings,
   },
+
+  capabilities = capabilities,
 }
+
+lspconfig.eslint.setup {
+  filetypes = jsFiletypes,
+  capabilites = capabilities,
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      buffer = bufnr,
+      command = 'EslintFixAll',
+    })
+  end,
+}
+
 lspconfig.efm.setup {
   capabilites = capabilities,
   on_attach = lspformat.on_attach,
-  init_options = { documentFormatting = true },
+  init_options = {
+    documentFormatting = true,
+    documentRangeFormatting = true,
+  },
+  filetypes = { 'lua' },
   settings = {
     rootMarkers = { '.git/' },
     languages = {

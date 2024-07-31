@@ -1,3 +1,4 @@
 [
-  "@vtsls/language-server"
+  "@vtsls/language-server",
+  "vscode-langservers-extracted"
 ]
