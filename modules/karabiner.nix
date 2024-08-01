@@ -1,6 +1,6 @@
 { username, pkgs, ... }:
 let
-  swap = from: to: {
+  terminalSwap = from: to: {
     type = "basic";
     from = {
       key_code = from;
@@ -16,25 +16,51 @@ let
       file_paths = [ "\\.kitty-wrapped$" ];
     }];
   };
+
+  disable = key: modifiers: {
+    type = "basic";
+    from = {
+      key_code = key;
+      modifiers = { mandatory = modifiers; };
+    };
+    to = [{ key_code = "vk_none"; }];
+  };
+
 in
 {
   services.karabiner-elements.enable = true;
   home-manager.users.${username} = {
     home.packages = [ pkgs.unstable.karabiner-elements ];
 
-    # Karabiner Elements need to be set up manually 
-    # this just installs preset for the key swap
-    home.file.karabiner = {
-      target = ".config/karabiner/assets/complex_modifications/control-command.json";
+    # Karabiner Elements still need to be set up manually 
+    # this just adds local presets
+    home.file.karabiner-control = {
+      target = ".config/karabiner/assets/complex_modifications/terminal.json";
       text = builtins.toJSON {
-        title = "Control <-> Command";
-        rules = [{
-          description = "Swap Left Command and Left Control unless in Terminal";
-          manipulators = [
-            (swap "left_command" "left_control")
-            (swap "left_control" "left_command")
-          ];
-        }];
+        title = "my terminal rules";
+        rules = [
+          {
+            description = "Swap Left Command and Left Control unless in Terminal";
+            manipulators = [
+              (terminalSwap "left_command" "left_control")
+              (terminalSwap "left_control" "left_command")
+            ];
+          }
+        ];
+      };
+    };
+    home.file.karabiner-huddle = {
+      target = ".config/karabiner/assets/complex_modifications/slack.json";
+      text = builtins.toJSON {
+        title = "my slack rules";
+        rules = [
+          {
+            description = "Disable Command + Shift + H (Slack Huddle)";
+            manipulators = [
+              (disable "h" [ "left_command" "left_shift" ])
+            ];
+          }
+        ];
       };
     };
   };
