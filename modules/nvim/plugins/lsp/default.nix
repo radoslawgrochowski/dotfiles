@@ -5,6 +5,7 @@
     fidget-nvim
     nvim-lspconfig
     lsp-format-nvim
+    pkgs.localVimPlugins.vtsls-nvim
   ];
   extraPackages = with pkgs; [
     efm-langserver
