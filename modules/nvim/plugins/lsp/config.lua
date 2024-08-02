@@ -6,27 +6,25 @@ lspformat.setup {}
 vim.lsp.inlay_hint.enable(true)
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+local lspFormat = function()
+  vim.lsp.buf.format { async = false }
+end
+
 wk.register {
-  ['gd'] = { vim.lsp.buf.definition, 'Go to definition' },
-  ['gr'] = { vim.lsp.buf.references, 'Find references' },
-  ['gi'] = { vim.lsp.buf.implementation, 'Go to implementation' },
-  -- TODO: gy - Go to type definition
-  ['gD'] = { vim.lsp.buf.declaration, 'Go to declaration' },
-  ['g;'] = {
-    function()
-      vim.lsp.buf.format { async = false }
-    end,
-    'Format',
-  },
+  -- tries to match  efault keymaps from https://lsp-zero.netlify.app/v3.x/language-server-configuration.html#default-keybindings
   ['K'] = { vim.lsp.buf.hover, 'Hover help' },
-  ['gK'] = { vim.lsp.buf.signature_help, 'Signature help' },
+  ['gd'] = { vim.lsp.buf.definition, 'Go to definition' },
+  ['gD'] = { vim.lsp.buf.declaration, 'Go to declaration' },
+  ['gi'] = { vim.lsp.buf.implementation, 'Go to implementation' },
+  ['go'] = { vim.lsp.buf.type_definition, 'Go to type definition' },
+  ['gr'] = { vim.lsp.buf.references, 'Find references' },
+  ['gs'] = { vim.lsp.buf.signature_help, 'Signature help' },
   ['gR'] = { vim.lsp.buf.rename, 'Rename' },
-
-  ['<leader>ca'] = { vim.lsp.buf.code_action, 'Code actions' },
-
+  ['g;'] = { lspFormat, 'Format' },
+  ['ga'] = { vim.lsp.buf.code_action, 'Code actions' },
+  ['gl'] = { vim.diagnostic.open_float, 'Show diagnostic in floating window' },
   ['[d'] = { vim.diagnostic.goto_prev, 'Previous diagnostic' },
   [']d'] = { vim.diagnostic.goto_next, 'Next diagnostic' },
-  ['go'] = { vim.diagnostic.open_float, '' },
   ['gq'] = { vim.diagnostic.setloclist, 'Diagnostic quicklist' },
 }
 
@@ -96,7 +94,6 @@ lspconfig.vtsls.setup {
   capabilities = capabilities,
   on_attach = function(client, buffer)
     client.commands['_typescript.moveToFileRefactoring'] = function(command, ctx)
-      ---@type string, string, lsp.Range
       local action, uri, range = unpack(command.arguments)
 
       local function move(newf)
