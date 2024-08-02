@@ -3,7 +3,7 @@ let
   nvim-rg = "${pkgs.nvim-rg}/bin/nvim";
   aliases = {
     vimdiff = "${nvim-rg} -d";
-    nvim-rg = nvim-rg;
+    nvim = nvim-rg;
   };
 in
 {
