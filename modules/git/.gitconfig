@@ -2,7 +2,7 @@
   name = Radosław Grochowski
 [core]
   autocrlf = input 
-  editor = nvim
+  editor = vi
   excludesFile = ~/.gitignore
 [diff]
 	tool = vimdiff
