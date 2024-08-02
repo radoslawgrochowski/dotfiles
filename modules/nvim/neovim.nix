@@ -38,7 +38,4 @@ in
     inherit plugins;
   };
 
-  programs.bash.shellAliases = { vimdiff = "nvim -d"; };
-  programs.fish.shellAliases = { vimdiff = "nvim -d"; };
-  programs.zsh.shellAliases = { vimdiff = "nvim -d"; };
 }

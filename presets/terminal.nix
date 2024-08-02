@@ -5,6 +5,7 @@
     ../modules/git
     ../modules/kitty
     ../modules/lazyvim
+    ../modules/nvim
   ];
 
   home-manager.users.${username} = {
