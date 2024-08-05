@@ -34,7 +34,7 @@ in
 
     # Karabiner Elements still need to be set up manually 
     # this just adds local presets
-    home.file.karabiner-control = {
+    home.file.karabiner-terminal = {
       target = ".config/karabiner/assets/complex_modifications/terminal.json";
       text = builtins.toJSON {
         title = "my terminal rules";
@@ -49,7 +49,7 @@ in
         ];
       };
     };
-    home.file.karabiner-huddle = {
+    home.file.karabiner-slack = {
       target = ".config/karabiner/assets/complex_modifications/slack.json";
       text = builtins.toJSON {
         title = "my slack rules";
@@ -58,6 +58,20 @@ in
             description = "Disable Command + Shift + H (Slack Huddle)";
             manipulators = [
               (disable "h" [ "left_command" "left_shift" ])
+            ];
+          }
+        ];
+      };
+    };
+    home.file.karabiner-darwin = {
+      target = ".config/karabiner/assets/complex_modifications/dariwn.json";
+      text = builtins.toJSON {
+        title = "my chrome rules";
+        rules = [
+          {
+            description = "Disable Command + Shift + I (Email current page)";
+            manipulators = [
+              (disable "i" [ "left_command" "left_shift" ])
             ];
           }
         ];
