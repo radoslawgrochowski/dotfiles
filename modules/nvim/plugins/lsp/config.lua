@@ -6,9 +6,7 @@ lspformat.setup {}
 vim.lsp.inlay_hint.enable(true)
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local lspFormat = function()
-  vim.lsp.buf.format { async = false }
-end
+local lspFormat = function() vim.lsp.buf.format { async = false } end
 
 wk.register {
   -- tries to match  efault keymaps from https://lsp-zero.netlify.app/v3.x/language-server-configuration.html#default-keybindings
@@ -27,6 +25,13 @@ wk.register {
   [']d'] = { vim.diagnostic.goto_next, 'Next diagnostic' },
   ['gq'] = { vim.diagnostic.setloclist, 'Diagnostic quicklist' },
 }
+
+wk.register({
+  desc = 'LSP',
+  ['r'] = { '<cmd>LspRestart<cr>', 'Restart' },
+  ['i'] = { '<cmd>LspInfo<cr>', 'Info' },
+  ['l'] = { '<cmd>LspLog<cr>', 'Log' },
+}, { prefix = '<leader>l' })
 
 wk.register({
   ['ga'] = { vim.lsp.buf.code_action, 'Code actions' },
@@ -122,18 +127,14 @@ lspconfig.vtsls.setup {
         table.insert(files, 1, 'Enter new path...')
         vim.ui.select(files, {
           prompt = 'Select move destination:',
-          format_item = function(f)
-            return vim.fn.fnamemodify(f, ':~:.')
-          end,
+          format_item = function(f) return vim.fn.fnamemodify(f, ':~:.') end,
         }, function(f)
           if f and f:find '^Enter new path' then
             vim.ui.input({
               prompt = 'Enter move destination:',
               default = vim.fn.fnamemodify(fname, ':h') .. '/',
               completion = 'file',
-            }, function(newf)
-              return newf and move(newf)
-            end)
+            }, function(newf) return newf and move(newf) end)
           elseif f then
             move(f)
           end
