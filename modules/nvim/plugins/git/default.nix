@@ -8,6 +8,8 @@
 
     # Github extensions for fugitive
     vim-rhubarb
+
+    gitsigns-nvim
   ];
   config = builtins.readFile ./config.lua;
 } 

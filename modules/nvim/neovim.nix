@@ -15,7 +15,7 @@ with lib; let
   modules = concatModules [
     ./plugins/utility
     ./plugins/treesitter
-    ./plugins/fugitive
+    ./plugins/git
     ./plugins/lsp
     ./plugins/oil
     ./plugins/telescope
