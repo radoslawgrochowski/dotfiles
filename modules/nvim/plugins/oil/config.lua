@@ -4,7 +4,6 @@ local wk = require 'which-key'
 oil.setup {
   keymaps = {
     ['<BS>'] = 'actions.parent',
-    ['<C-o>'] = 'actions.open_external',
   },
 }
 
