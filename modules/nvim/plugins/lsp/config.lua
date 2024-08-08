@@ -162,15 +162,26 @@ lspconfig.efm.setup {
     documentFormatting = true,
     documentRangeFormatting = true,
   },
-  filetypes = { 'lua' },
+  filetypes = { 'lua', 'markdown' },
   settings = {
     rootMarkers = { '.git/' },
     languages = {
       lua = {
         require 'efmls-configs.formatters.stylua',
       },
+      markdown = {
+        require 'efmls-configs.formatters.prettier',
+      },
     },
   },
 }
 
+require('lspconfig').ltex.setup {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    lspformat.on_attach(client, bufnr)
+    require('ltex_extra').setup {}
+  end,
+  settings = { ltex = {} },
+}
 require('fidget').setup {}
