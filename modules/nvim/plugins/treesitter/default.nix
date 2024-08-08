@@ -4,8 +4,9 @@
     [
       nvim-treesitter-context
       nvim-treesitter-textobjects
-      nvim-ts-context-commentstring
       nvim-treesitter.withAllGrammars
+      nvim-ts-autotag
+      nvim-ts-context-commentstring
     ];
   config = builtins.readFile ./config.lua;
 } 
