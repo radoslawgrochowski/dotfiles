@@ -10,7 +10,8 @@
     "_G",
     "string",
     "loadstring",
-    "type"
+    "type",
+    "JS_DEBUG_PATH"
   ],
   "Lua.workspace.checkThirdParty": false
 }

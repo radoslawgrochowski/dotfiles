@@ -21,6 +21,8 @@ with lib; let
     ./plugins/telescope
     ./plugins/theme
     ./plugins/cmp
+    ./plugins/test
+    ./plugins/dap
   ];
 
   plugins = modules.allPlugins;
