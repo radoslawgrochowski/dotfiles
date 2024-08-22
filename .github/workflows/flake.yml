@@ -33,10 +33,9 @@ jobs:
           - name: radoslawgrochowski-wsl
             os: ubuntu-latest
             output: ".#nixosConfigurations.radoslawgrochowski-wsl.config.system.build.toplevel"
-          # # FIXME: handle ca_cert updates in CI 
-          # - name: macaron
-          #   os: macos-latest
-          #   output: ".#darwinConfigurations.macaron.config.system.build.toplevel"
+          - name: macaron
+            os: macos-latest
+            output: ".#darwinConfigurations.macaron.config.system.build.toplevel"
     name: ${{ matrix.name }}-build
     runs-on: ${{ matrix.os }}
     steps:
@@ -48,4 +47,5 @@ jobs:
       with:
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
         name: radoslawgrochowski-dotfiles
+    - run: sudo touch /etc/nix/ca_cert.pem 
     - run: nix build ${{ matrix.output }} -L --show-trace --accept-flake-config
