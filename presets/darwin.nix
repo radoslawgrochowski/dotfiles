@@ -32,6 +32,11 @@
 
       # Accelerated playback when adjusting the window size.
       NSWindowResizeTime = 0.001;
+
+      # Holding a keyboard key down will repeat that key continuously,
+      # after a delay, until the key is released
+      # https://stackoverflow.com/a/70911250
+      ApplePressAndHoldEnabled = false;
     };
   };
 
