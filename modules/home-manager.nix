@@ -9,14 +9,8 @@
 
   home-manager.users.${username} = {
     programs.home-manager.enable = true;
-
     systemd.user.startServices = true;
-
-    programs.nix-index = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
+    programs.nix-index.enable = true;
     home.stateVersion = "23.11";
   };
 }
