@@ -11,7 +11,6 @@ vim.o.timeoutlen = 200
 telescope.load_extension 'fzf'
 telescope.setup { defaults = defaults }
 
--- keybinds initialy based on https://www.lazyvim.org/extras/editor/telescope
 wk.register({
   [','] = {
     function() builtin.buffers { sort_mru = true, sort_lastused = true } end,

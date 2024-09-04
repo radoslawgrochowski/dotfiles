@@ -4,7 +4,6 @@
     ../modules/fish.nix
     ../modules/git
     ../modules/kitty
-    ../modules/lazyvim
     ../modules/nvim
   ];
 
