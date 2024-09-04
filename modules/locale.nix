@@ -1,4 +1,4 @@
-{ config, lib, pkgs, username, inputs, options, ... }:
+{ ... }:
 {
   time.timeZone = "Europe/Warsaw";
 
