@@ -39,20 +39,10 @@ sudo cp /home/$USER/.ssh/id_ed* /root/.ssh/
 
 - Github keys can be updated here: https://github.com/settings/keys
 
-## cheatsheet
-
-### updating single flake input
-
-```sh
-sudo nix flake lock --update-input flake-utils
-```
-
 ## inspiration
 
 see also:
 
-- https://github.com/jessarcher/dotfiles
 - https://github.com/tiagovla/.dotfiles
-- https://github.com/ThePrimeagen/.dotfiles
 - https://github.com/pmizio/vim-react-config
 - https://github.com/breuerfelix/dotfiles
