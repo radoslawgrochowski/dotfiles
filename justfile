@@ -6,6 +6,9 @@ _default:
 update: 
   nix flake update
 
+check: 
+  nix flake check --show-trace
+
 darwin-switch: 
   nix run nix-darwin -- switch --flake .#macaron
 

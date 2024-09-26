@@ -77,7 +77,7 @@
             ./presets/wsl.nix
             ./presets/nixos.nix
             ./presets/terminal.nix
-            ./modules/docker.nix
+            ./modules/docker
           ];
           specialArgs = commonSpecialArgs;
         };
