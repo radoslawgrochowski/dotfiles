@@ -51,19 +51,30 @@ keymap('v', '<leader>d', '"_d')
 keymap('v', '<', '<gv')
 keymap('v', '>', '>gv')
 
--- allow gf to open non-existent files
+-- allow gF to open non-existent files in gf manner
 keymap('', 'gF', ':edit %:p:h/<cfile><CR>')
 
--- disable annoying command line thing
+-- match q: as :q
 keymap('n', 'q:', ':q<CR>')
 
 -- match :qw as :wq
 keymap('c', 'qw', ':wq<CR>')
 
+-- panes
 wk.register({
   h = { '<C-W>h', 'jump to left pane' },
   j = { '<C-W>j', 'jump to down pane' },
   k = { '<C-W>k', 'jump to upper pane' },
   l = { '<C-W>l', 'jump to right pane' },
-  o = { '<C-W>o', 'remove other panes' },
+  o = { '<C-W>o', 'delete other panes' },
 }, { prefix = '<leader>' })
+
+-- buffers
+wk.register {
+  ['[b'] = { '<cmd>bprevious<cr>', 'Prev buffer' },
+  [']b'] = { '<cmd>bnext<cr>', 'Next buffer' },
+  ['<leader>bb'] = { '<cmd>e #<cr>', 'Switch to other buffer' },
+  ['<leader>bo'] = { '<cmd>%bdelete|edit #|bdelete #<cr>', 'Delete other buffers' },
+  ['<leader>bd'] = { '<cmd>bdelete<cr>', 'Delete current buffer' },
+  ['<leader>bD'] = { '<cmd>:bd<cr>', 'Delete buffer and window' },
+}
