@@ -1,9 +1,9 @@
 { inputs, username, pkgs, ... }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    ../modules/home-manager.nix
+    ../modules/home-manager
 
-    ../modules/locale.nix
+    ../modules/locale
     ./terminal.nix
   ];
 

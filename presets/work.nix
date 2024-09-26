@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
-    ../modules/custom_ca_cert.nix
+    ../modules/custom-ca-cert
     ./terminal.nix
   ];
 }

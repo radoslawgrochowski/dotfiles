@@ -2,10 +2,10 @@
 { pkgs, inputs, outputs, username, ... }: {
   imports = [
     inputs.home-manager.darwinModules.home-manager
-    ../modules/home-manager.nix
-    ../modules/homebrew.nix
+    ../modules/home-manager
+    ../modules/homebrew
     ../modules/aerospace
-    ../modules/karabiner.nix
+    ../modules/karabiner
   ];
 
   users.users."${username}" = {

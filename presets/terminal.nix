@@ -1,7 +1,7 @@
 { username, pkgs, ... }: {
   imports = [
     ../modules/direnv
-    ../modules/fish.nix
+    ../modules/fish
     ../modules/git
     ../modules/kitty
     ../modules/nvim
