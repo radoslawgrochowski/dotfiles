@@ -29,7 +29,7 @@
       lib = nixpkgs.lib;
       commonModules = [
         ({ overlays, ... }: { nixpkgs.overlays = overlays; })
-        ./modules/fonts.nix
+        ./modules/fonts
         ./modules/nix.nix
       ];
       neovim-overlay = import ./modules/nvim/overlay.nix { inherit inputs; };
