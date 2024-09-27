@@ -3,8 +3,7 @@
     pkg: builtins.elem (lib.getName pkg) [
       "spotify"
     ];
-
-  home-manager.users."${username}".home.packages = [
+  users.users.${username}.packages = [
     pkgs.spotify
   ];
 })
