@@ -7,6 +7,7 @@ let
   };
 in
 {
+  environment.variables.EDITOR = nvim-rg;
   home-manager.users."${username}" = {
     programs.bash.shellAliases = aliases;
     programs.fish.shellAliases = aliases;

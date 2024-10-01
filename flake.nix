@@ -78,6 +78,7 @@
             ./presets/nixos.nix
             ./presets/terminal.nix
             ./modules/docker
+            ./modules/video
           ];
           specialArgs = commonSpecialArgs;
         };
