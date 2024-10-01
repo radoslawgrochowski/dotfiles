@@ -176,7 +176,7 @@ lspconfig.efm.setup {
   },
 }
 
-require('lspconfig').ltex.setup {
+lspconfig.ltex.setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     lspformat.on_attach(client, bufnr)
@@ -184,4 +184,28 @@ require('lspconfig').ltex.setup {
   end,
   settings = { ltex = {} },
 }
+
+local schemastore = require 'schemastore'
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+lspconfig.jsonls.setup {
+  capabilities = capabilities,
+  settings = {
+    json = {
+      schemas = schemastore.json.schemas(),
+      validate = { enable = true },
+    },
+  },
+}
+require('lspconfig').yamlls.setup {
+  settings = {
+    yaml = {
+      schemaStore = {
+        enable = false,
+        url = '',
+      },
+      schemas = schemastore.json.schemas(),
+    },
+  },
+}
+
 require('fidget').setup {}
