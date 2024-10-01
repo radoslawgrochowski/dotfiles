@@ -4,9 +4,7 @@ require('cmp-npm').setup {}
 
 cmp.setup {
   snippet = {
-    expand = function(args)
-      vim.snippet.expand(args.body)
-    end,
+    expand = function(args) vim.snippet.expand(args.body) end,
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -22,7 +20,7 @@ cmp.setup {
   }, {
     { name = 'buffer' },
     { name = 'path' },
-    { name = 'rg',    keyword_length = 4 },
+    { name = 'rg', keyword_length = 4 },
   }, {
     { name = 'emoji' },
   }),
