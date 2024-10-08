@@ -196,7 +196,7 @@ lspconfig.jsonls.setup {
     },
   },
 }
-require('lspconfig').yamlls.setup {
+lspconfig.yamlls.setup {
   settings = {
     yaml = {
       schemaStore = {
@@ -207,5 +207,6 @@ require('lspconfig').yamlls.setup {
     },
   },
 }
+lspconfig.bashls.setup {}
 
 require('fidget').setup {}

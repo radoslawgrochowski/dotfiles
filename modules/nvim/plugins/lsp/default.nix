@@ -11,16 +11,19 @@
   ];
   extraPackages = with pkgs; [
     efm-langserver
+    localNodePackages."@vtsls/language-server"
+    localNodePackages.vscode-langservers-extracted
+    ltex-ls
     lua-language-server
     nil
-    ltex-ls
+    nixpkgs-fmt
+    nodePackages.bash-language-server
     nodePackages.prettier
     nodePackages.typescript
     nodePackages.typescript-language-server
     nodePackages.yaml-language-server
-    localNodePackages."@vtsls/language-server"
-    localNodePackages.vscode-langservers-extracted
-    nixpkgs-fmt
+    shellcheck
+    shfmt
     stylua
   ];
   config = builtins.readFile ./config.lua;
