@@ -24,3 +24,6 @@ require('treesitter-context').setup {
 }
 
 require('nvim-ts-autotag').setup {}
+
+vim.filetype.add { extension = { mdx = 'markdown.mdx' } }
+vim.treesitter.language.register('markdown', 'markdown.mdx')

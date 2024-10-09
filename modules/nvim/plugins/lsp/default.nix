@@ -13,6 +13,7 @@
     efm-langserver
     localNodePackages."@vtsls/language-server"
     localNodePackages.vscode-langservers-extracted
+    localNodePackages."@mdx-js/language-server"
     ltex-ls
     lua-language-server
     nil

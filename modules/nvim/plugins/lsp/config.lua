@@ -197,6 +197,7 @@ lspconfig.jsonls.setup {
   },
 }
 lspconfig.yamlls.setup {
+  capabilities = capabilities,
   settings = {
     yaml = {
       schemaStore = {
@@ -207,6 +208,12 @@ lspconfig.yamlls.setup {
     },
   },
 }
-lspconfig.bashls.setup {}
+lspconfig.bashls.setup {
+  capabilities = capabilities,
+}
+lspconfig.mdx_analyzer.setup {
+  capabilities = capabilities,
+  root_dir = require('lspconfig.util').root_pattern('.git', 'package.json'),
+}
 
 require('fidget').setup {}
