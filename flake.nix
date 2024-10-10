@@ -20,17 +20,26 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     flake-utils.url = "github:numtide/flake-utils";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, nixpkgs-stable, home-manager, flake-utils, ... }:
+    inputs@{ self
+    , nix-darwin
+    , nixpkgs
+    , nixpkgs-unstable
+    , nixpkgs-stable
+    , flake-utils
+    , ...
+    }:
     let
       inherit (self) outputs inputs;
       lib = nixpkgs.lib;
       commonModules = [
         ({ overlays, ... }: { nixpkgs.overlays = overlays; })
-        ./modules/fonts
-        ./modules/nix
       ];
       neovim-overlay = import ./modules/nvim/overlay.nix { inherit inputs; };
       overlays = (lib.attrValues outputs.overlays) ++ [ neovim-overlay ];
@@ -75,8 +84,6 @@
           modules = commonModules ++ [
             ./hosts/wsl
             ./presets/wsl.nix
-            ./presets/nixos.nix
-            ./presets/terminal.nix
             ./modules/docker
             ./modules/video
           ];

@@ -1,11 +1,15 @@
 # Configuration common to all macOS systems
 { pkgs, inputs, outputs, username, ... }: {
   imports = [
+    ./common.nix
     inputs.home-manager.darwinModules.home-manager
     ../modules/home-manager
     ../modules/homebrew
     ../modules/aerospace
     ../modules/karabiner
+
+    inputs.nix-index-database.darwinModules.nix-index
+    { programs.nix-index-database.comma.enable = true; }
   ];
 
   users.users."${username}" = {

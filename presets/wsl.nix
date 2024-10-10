@@ -1,9 +1,7 @@
-{ inputs, username, pkgs, ... }: {
+{ username, pkgs, ... }: {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
-    ../modules/home-manager
-
-    ../modules/locale
+    ./common.nix
+    ./nixos.nix
     ./terminal.nix
   ];
 
