@@ -79,10 +79,8 @@ PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
-# You can uncomment this line to open up terminal with alt + enter shortcut
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-# cmd-ctrl-alt-shift-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
-cmd-ctrl-alt-shift-d = 'exec-and-forget choose-app'
+cmd-ctrl-alt-shift-d = 'exec-and-forget /etc/profiles/per-user/radoslaw.grochowski/bin/choose-app'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
