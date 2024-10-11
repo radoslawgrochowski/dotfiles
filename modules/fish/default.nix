@@ -81,37 +81,44 @@ in
           pink = "#bb9af7";
         };
 
-        aws.symbol = "  ";
+        battery.display = [{ threshold = 80; }];
+        git_metrics.disabled = false;
+
+        # https://github.com/starship/starship/issues/6188
+        nix_shell.format = "via [$symbol ($name)]($style) ";
+
+        aws.symbol = " ";
         buf.symbol = " ";
         c.symbol = " ";
         conda.symbol = " ";
         dart.symbol = " ";
-        directory.read_only = " ";
+        directory.read_only = " 󰌾";
         docker_context.symbol = " ";
         elixir.symbol = " ";
         elm.symbol = " ";
+        gcloud.symbol = " ";
         git_branch.symbol = " ";
         golang.symbol = " ";
         guix_shell.symbol = " ";
         haskell.symbol = " ";
         haxe.symbol = "⌘ ";
         hg_branch.symbol = " ";
+        hostname.ssh_symbol = " ";
         java.symbol = " ";
         julia.symbol = " ";
         lua.symbol = " ";
-        memory_usage.symbol = " ";
-        meson.symbol = "喝 ";
-        nim.symbol = " ";
+        memory_usage.symbol = "󰍛 ";
+        meson.symbol = "󰔷 ";
+        nim.symbol = "󰆥 ";
         nix_shell.symbol = " ";
         nodejs.symbol = " ";
-        os.symbols.NixOS = " ";
-        package.symbol = " ";
+        ocaml.symbol = " ";
+        package.symbol = "󰏗 ";
         python.symbol = " ";
-        rlang.symbol = "ﳒ ";
+        rlang.symbol = "󰟔 ";
         ruby.symbol = " ";
         rust.symbol = " ";
         scala.symbol = " ";
-        spack.symbol = "🅢 ";
       };
     };
 
