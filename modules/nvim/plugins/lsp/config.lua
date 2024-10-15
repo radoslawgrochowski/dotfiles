@@ -215,5 +215,8 @@ lspconfig.mdx_analyzer.setup {
   capabilities = capabilities,
   root_dir = require('lspconfig.util').root_pattern('.git', 'package.json'),
 }
+lspconfig.tailwindcss.setup {
+  capabilities = capabilities,
+}
 
 require('fidget').setup {}

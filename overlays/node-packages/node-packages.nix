@@ -2488,4 +2488,22 @@ in
     bypassCache = true;
     reconstructLock = true;
   };
+  "@tailwindcss/language-server" = nodeEnv.buildNodePackage {
+    name = "_at_tailwindcss_slash_language-server";
+    packageName = "@tailwindcss/language-server";
+    version = "0.0.25";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@tailwindcss/language-server/-/language-server-0.0.25.tgz";
+      sha512 = "50zth1SuTo+auL7g0e5O+k2EBn/wk1Xn2Ya+NNiYruOjqOMFfyITKwlzVDzaHUEbmCwY3fhXDL3T41rH4xx2+Q==";
+    };
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "Tailwind CSS Language Server";
+      homepage = "https://github.com/tailwindlabs/tailwindcss-intellisense/tree/HEAD/packages/tailwindcss-language-server#readme";
+      license = "MIT";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
 }

@@ -14,6 +14,7 @@
     localNodePackages."@vtsls/language-server"
     localNodePackages.vscode-langservers-extracted
     localNodePackages."@mdx-js/language-server"
+    localNodePackages."@tailwindcss/language-server"
     ltex-ls
     lua-language-server
     nil
@@ -29,3 +30,4 @@
   ];
   config = builtins.readFile ./config.lua;
 } 
+
