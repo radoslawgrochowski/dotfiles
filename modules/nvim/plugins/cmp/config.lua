@@ -1,6 +1,7 @@
 local cmp = require 'cmp'
 
 require('cmp-npm').setup {}
+require('supermaven-nvim').setup {}
 
 cmp.setup {
   snippet = {
@@ -14,10 +15,11 @@ cmp.setup {
     ['<CR>'] = cmp.mapping.confirm { select = true }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
   sources = cmp.config.sources({
+    { name = 'supermaven' },
     { name = 'nvim_lsp' },
-    { name = 'npm' },
     { name = 'nvim_lsp_signature_help' },
   }, {
+    { name = 'npm' },
     { name = 'buffer' },
     { name = 'path' },
     { name = 'rg', keyword_length = 4 },

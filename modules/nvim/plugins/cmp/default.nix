@@ -15,6 +15,7 @@
 
     cmp-npm
 
+    pkgs.localVimPlugins.supermaven-nvim
   ];
   config = builtins.readFile ./config.lua;
 } 
