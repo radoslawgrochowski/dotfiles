@@ -3,7 +3,7 @@ local lspconfig = require 'lspconfig'
 local lspformat = require 'lsp-format'
 lspformat.setup {}
 
-vim.lsp.inlay_hint.enable(true)
+vim.lsp.inlay_hint.enable(false)
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspFormat = function() vim.lsp.buf.format { async = false } end
