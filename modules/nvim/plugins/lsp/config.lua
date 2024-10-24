@@ -97,7 +97,7 @@ lspconfig.vtsls.setup {
   },
 
   capabilities = capabilities,
-  on_attach = function(client, buffer)
+  on_attach = function(client)
     client.commands['_typescript.moveToFileRefactoring'] = function(command, ctx)
       local action, uri, range = unpack(command.arguments)
 
