@@ -1,6 +1,7 @@
 [
+  "@astrojs/language-server",
   "@mdx-js/language-server",
+  "@tailwindcss/language-server",
   "@vtsls/language-server",
-  "vscode-langservers-extracted",
-  "@tailwindcss/language-server"
+  "vscode-langservers-extracted"
 ]

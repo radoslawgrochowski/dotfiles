@@ -218,5 +218,8 @@ lspconfig.mdx_analyzer.setup {
 lspconfig.tailwindcss.setup {
   capabilities = capabilities,
 }
+lspconfig.astro.setup {
+  capabilities = capabilities,
+}
 
 require('fidget').setup {}

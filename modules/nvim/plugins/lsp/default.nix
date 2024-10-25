@@ -15,6 +15,7 @@
     localNodePackages.vscode-langservers-extracted
     localNodePackages."@mdx-js/language-server"
     localNodePackages."@tailwindcss/language-server"
+    localNodePackages."@astrojs/language-server"
     ltex-ls
     lua-language-server
     nil
@@ -23,6 +24,7 @@
     nodePackages.prettier
     nodePackages.typescript
     nodePackages.typescript-language-server
+    nodePackages.yaml-language-server
     nodePackages.yaml-language-server
     shellcheck
     shfmt
