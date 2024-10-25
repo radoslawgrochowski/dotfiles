@@ -75,6 +75,7 @@ local jsFiletypes = {
   'typescript',
   'typescriptreact',
   'typescript.tsx',
+  'astro',
 }
 
 require('lspconfig.configs').vtsls = require('vtsls').lspconfig
