@@ -222,5 +222,8 @@ lspconfig.tailwindcss.setup {
 lspconfig.astro.setup {
   capabilities = capabilities,
 }
+lspconfig.elixirls.setup {
+  capabilities = capabilities,
+}
 
 require('fidget').setup {}

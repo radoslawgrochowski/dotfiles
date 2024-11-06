@@ -29,6 +29,7 @@
     shellcheck
     shfmt
     stylua
+    pkgs.unstable.elixir-ls
   ];
   config = builtins.readFile ./config.lua;
 } 
