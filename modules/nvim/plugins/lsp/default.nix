@@ -29,8 +29,12 @@
     shellcheck
     shfmt
     stylua
+    pkgs.unstable.elixir
     pkgs.unstable.elixir-ls
   ];
-  config = builtins.readFile ./config.lua;
+  config = /* lua */''
+    ELIXIR_LS_PATH = '${"${pkgs.unstable.elixir-ls}"}/bin/elixir-ls';
+    ${builtins.readFile ./config.lua}
+  '';
 } 
 

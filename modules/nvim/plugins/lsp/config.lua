@@ -224,6 +224,7 @@ lspconfig.astro.setup {
 }
 lspconfig.elixirls.setup {
   capabilities = capabilities,
+  cmd = { ELIXIR_LS_PATH },
 }
 
 require('fidget').setup {}
