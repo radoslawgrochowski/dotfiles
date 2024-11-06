@@ -35,12 +35,12 @@ cmp.setup {
     },
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp', max_item_count = 5 },
-    { name = 'nvim_lsp_signature_help', max_item_count = 5 },
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
   }, {
-    { name = 'buffer', max_item_count = 3 },
-    { name = 'path', max_item_count = 3 },
-    { name = 'rg', keyword_length = 4, max_item_count = 3 },
+    { name = 'buffer', max_item_count = 5 },
+    { name = 'path', max_item_count = 5 },
+    { name = 'rg', keyword_length = 3, max_item_count = 3 },
   }),
   experimental = {
     ghost_text = {
