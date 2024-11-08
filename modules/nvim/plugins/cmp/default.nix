@@ -1,7 +1,7 @@
 { pkgs }:
 {
   plugins = with pkgs.vimPlugins; [
-    nvim-cmp
+    pkgs.localVimPlugins.nvim-cmp
 
     cmp-buffer
     cmp-cmdline

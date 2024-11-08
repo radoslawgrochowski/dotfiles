@@ -3,8 +3,20 @@ local lspconfig = require 'lspconfig'
 local lspformat = require 'lsp-format'
 lspformat.setup {}
 
+-- Reserve a space in the gutter
+-- This will avoid an annoying layout shift in the screen
+vim.opt.signcolumn = 'yes'
+
+-- Add cmp_nvim_lsp capabilities settings to lspconfig
+-- This should be executed before you configure any language server
+local lspconfig_defaults = require('lspconfig').util.default_config
+lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+  'force',
+  lspconfig_defaults.capabilities,
+  require('cmp_nvim_lsp').default_capabilities()
+)
+
 vim.lsp.inlay_hint.enable(true)
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspFormat = function() vim.lsp.buf.format { async = false } end
 
@@ -46,12 +58,10 @@ lspconfig.nil_ls.setup {
     },
   },
 
-  capabilities = capabilities,
   on_attach = lspformat.on_attach,
 }
 
 lspconfig.lua_ls.setup {
-  capabilites = capabilities,
   on_attach = lspformat.on_attach,
 }
 
@@ -78,8 +88,6 @@ local jsFiletypes = {
   'astro',
 }
 
-require('lspconfig.configs').vtsls = require('vtsls').lspconfig
-
 lspconfig.vtsls.setup {
   filetypes = jsFiletypes,
   settings = {
@@ -97,9 +105,8 @@ lspconfig.vtsls.setup {
     javascript = vtslsSettings,
   },
 
-  capabilities = capabilities,
   on_attach = function(client)
-    client.commands['_typescript.moveToFileRefactoring'] = function(command, ctx)
+    client.commands['_typescript.moveToFileRefactoring'] = function(command)
       local action, uri, range = unpack(command.arguments)
 
       local function move(newf)
@@ -147,7 +154,6 @@ lspconfig.vtsls.setup {
 
 lspconfig.eslint.setup {
   filetypes = jsFiletypes,
-  capabilites = capabilities,
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd('BufWritePre', {
       buffer = bufnr,
@@ -157,7 +163,6 @@ lspconfig.eslint.setup {
 }
 
 lspconfig.efm.setup {
-  capabilites = capabilities,
   on_attach = lspformat.on_attach,
   init_options = {
     documentFormatting = true,
@@ -178,7 +183,6 @@ lspconfig.efm.setup {
 }
 
 lspconfig.ltex.setup {
-  capabilities = capabilities,
   on_attach = function(client, bufnr)
     lspformat.on_attach(client, bufnr)
     require('ltex_extra').setup {}
@@ -187,9 +191,7 @@ lspconfig.ltex.setup {
 }
 
 local schemastore = require 'schemastore'
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 lspconfig.jsonls.setup {
-  capabilities = capabilities,
   settings = {
     json = {
       schemas = schemastore.json.schemas(),
@@ -198,7 +200,6 @@ lspconfig.jsonls.setup {
   },
 }
 lspconfig.yamlls.setup {
-  capabilities = capabilities,
   settings = {
     yaml = {
       schemaStore = {
@@ -209,21 +210,13 @@ lspconfig.yamlls.setup {
     },
   },
 }
-lspconfig.bashls.setup {
-  capabilities = capabilities,
-}
+lspconfig.bashls.setup {}
 lspconfig.mdx_analyzer.setup {
-  capabilities = capabilities,
   root_dir = require('lspconfig.util').root_pattern('.git', 'package.json'),
 }
-lspconfig.tailwindcss.setup {
-  capabilities = capabilities,
-}
-lspconfig.astro.setup {
-  capabilities = capabilities,
-}
+lspconfig.tailwindcss.setup {}
+lspconfig.astro.setup {}
 lspconfig.elixirls.setup {
-  capabilities = capabilities,
   cmd = { ELIXIR_LS_PATH },
 }
 

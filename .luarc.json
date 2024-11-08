@@ -11,7 +11,8 @@
     "string",
     "loadstring",
     "type",
-    "JS_DEBUG_PATH"
+    "JS_DEBUG_PATH",
+    "ELIXIR_LS_PATH"
   ],
   "Lua.workspace.checkThirdParty": false
 }

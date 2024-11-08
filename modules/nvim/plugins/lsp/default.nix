@@ -6,7 +6,6 @@
     nvim-lspconfig
     lsp-format-nvim
     ltex_extra-nvim
-    pkgs.localVimPlugins.vtsls-nvim
     SchemaStore-nvim
   ];
   extraPackages = with pkgs; [
