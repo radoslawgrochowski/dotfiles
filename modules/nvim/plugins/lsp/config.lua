@@ -85,7 +85,6 @@ local jsFiletypes = {
   'typescript',
   'typescriptreact',
   'typescript.tsx',
-  'astro',
 }
 
 lspconfig.vtsls.setup {
@@ -153,7 +152,15 @@ lspconfig.vtsls.setup {
 }
 
 lspconfig.eslint.setup {
-  filetypes = jsFiletypes,
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'javascript.jsx',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+    'astro',
+  },
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd('BufWritePre', {
       buffer = bufnr,
