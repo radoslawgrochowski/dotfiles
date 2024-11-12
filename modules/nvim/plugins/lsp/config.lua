@@ -162,23 +162,27 @@ lspconfig.eslint.setup {
   end,
 }
 
+local prettier = require 'efmls-configs.formatters.prettier'
+local stylua = require 'efmls-configs.formatters.stylua'
+local efmlanguages = {
+  lua = { stylua },
+  markdown = { prettier },
+  json = { prettier },
+  html = { prettier },
+  css = { prettier },
+  yaml = { prettier },
+}
+
 lspconfig.efm.setup {
   on_attach = lspformat.on_attach,
   init_options = {
     documentFormatting = true,
     documentRangeFormatting = true,
   },
-  filetypes = { 'lua', 'markdown' },
+  filetypes = vim.tbl_keys(efmlanguages),
   settings = {
     rootMarkers = { '.git/' },
-    languages = {
-      lua = {
-        require 'efmls-configs.formatters.stylua',
-      },
-      markdown = {
-        require 'efmls-configs.formatters.prettier',
-      },
-    },
+    languages = efmlanguages,
   },
 }
 
