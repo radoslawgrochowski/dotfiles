@@ -4,6 +4,8 @@ let
   aliases = {
     vimdiff = "${nvim-rg} -d";
     nvim = nvim-rg;
+    vim = nvim-rg;
+    vi = nvim-rg;
   };
 in
 {
