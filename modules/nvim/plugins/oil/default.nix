@@ -1,5 +1,5 @@
 { pkgs }:
 {
-  plugins = with pkgs.vimPlugins; [ oil-nvim ];
+  plugins = with pkgs.unstable.vimPlugins; [ oil-nvim ];
   config = builtins.readFile ./config.lua;
 } 
