@@ -14,6 +14,7 @@ with lib; let
   mainConfig = builtins.readFile ./config.lua;
   modules = concatModules [
     ./plugins/utility
+    ./plugins/mini
     ./plugins/treesitter
     ./plugins/git
     ./plugins/lsp
