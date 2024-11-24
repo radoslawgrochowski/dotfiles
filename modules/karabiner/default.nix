@@ -30,7 +30,7 @@ in
 {
   services.karabiner-elements.enable = true;
   home-manager.users.${username} = {
-    home.packages = [ pkgs.unstable.karabiner-elements ];
+    home.packages = [ pkgs.karabiner-elements ];
 
     # Karabiner Elements still need to be set up manually 
     # this just adds local presets
