@@ -1,4 +1,7 @@
 { pkgs }:
+let
+  unstable = pkgs.unstable.vimPlugins;
+in
 {
   plugins = with pkgs.vimPlugins; [
     # dependencies
@@ -6,8 +9,8 @@
     plenary-nvim
     FixCursorHold-nvim
 
-    neotest
-    neotest-jest
+    unstable.neotest
+    unstable.neotest-jest
   ];
   config = builtins.readFile ./config.lua;
 } 

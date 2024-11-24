@@ -3,6 +3,7 @@ local neotest = require 'neotest'
 local neotestJest = require 'neotest-jest'
 
 -- TODO: recheck if this workaround is still needed
+-- TODO: make it somehow compatibile with neotest-playwright
 neotestJest.is_test_file = function(file_path)
   for _, x in ipairs { 'spec', 'test', 'unit' } do
     for _, ext in ipairs { 'js', 'jsx', 'ts', 'tsx' } do
