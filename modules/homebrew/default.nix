@@ -1,6 +1,6 @@
 { username, ... }: {
   homebrew = {
-    enable = true;
+    enable = false;
     casks = [ ];
   };
   home-manager.users."${username}".programs.fish.interactiveShellInit = ''

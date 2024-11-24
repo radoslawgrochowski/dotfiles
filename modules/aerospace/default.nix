@@ -24,12 +24,10 @@ let
   };
 in
 {
-  homebrew = {
-    casks = [ "aerospace" ];
-    taps = [ "nikitabobko/tap" ];
-  };
-
-  users.users."${username}".packages = [ chooseApp ];
+  users.users."${username}".packages = [
+    chooseApp
+    pkgs.unstable.aerospace
+  ];
 
   home-manager.users.${username} = {
     home.file."./.aerospace.toml".source = ./aerospace.toml;
