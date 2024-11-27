@@ -1,0 +1,20 @@
+[notebook]
+dir = "~/Notes"
+
+[note]
+language = "en"
+filename = "{{slug title}}"
+# MARKDOWN SETTINGS
+[format.markdown]
+# Enable support for #hashtags
+hashtags = true
+# Enable support for :colon:separated:tags:
+colon-tags = false 
+
+# NAMED FILTERS
+[filter]
+recents = "--sort created- --created-after 'last two weeks'"
+
+# COMMAND ALIASES
+[alias]
+recent = "zk edit --sort created- --created-after 'last two weeks' --interactive"
