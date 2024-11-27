@@ -4,6 +4,7 @@ local builtin = require 'telescope.builtin'
 
 local defaults = {
   path_display = { 'filename_first' },
+  hidden = true,
 }
 
 vim.o.timeoutlen = 200
