@@ -171,6 +171,13 @@ lspconfig.eslint.setup {
 
 local prettier = require 'efmls-configs.formatters.prettier'
 local stylua = require 'efmls-configs.formatters.stylua'
+local credo = {
+  lintCommand = 'mix credo suggest --format=flycheck --read-from-stdin ${INPUT}',
+  lintIgnoreExitCode = true,
+  lintStdin = true,
+  lintFormats = { '%f:%l:%c: %m' },
+  rootMarkers = { 'mix.exs', 'mix.lock' },
+}
 local efmlanguages = {
   lua = { stylua },
   markdown = { prettier },
@@ -178,8 +185,8 @@ local efmlanguages = {
   html = { prettier },
   css = { prettier },
   yaml = { prettier },
+  elixir = { credo },
 }
-
 lspconfig.efm.setup {
   on_attach = lspformat.on_attach,
   init_options = {
@@ -229,6 +236,7 @@ lspconfig.tailwindcss.setup {}
 lspconfig.astro.setup {}
 lspconfig.elixirls.setup {
   cmd = { ELIXIR_LS_PATH },
+  on_attach = lspformat.on_attach,
 }
 
 require('fidget').setup {}
