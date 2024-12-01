@@ -11,6 +11,6 @@
     programs.home-manager.enable = true;
     systemd.user.startServices = true;
     programs.nix-index.enable = true;
-    home.stateVersion = "23.11";
+    home.stateVersion = "24.11";
   };
 }

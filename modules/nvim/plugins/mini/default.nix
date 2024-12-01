@@ -1,5 +1,5 @@
 { pkgs }:
 {
-  plugins = [ pkgs.unstable.vimPlugins.mini-nvim ];
+  plugins = [ pkgs.vimPlugins.mini-nvim ];
   config = builtins.readFile ./config.lua;
 } 
