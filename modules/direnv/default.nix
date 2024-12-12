@@ -1,10 +1,13 @@
-{ username, pkgs, ... }: {
-
-  home-manager.users.${username} = {
-    home.packages = with pkgs; [
-      direnv
-      nix-direnv
-    ];
-    home.file."./.config/direnv/direnv.toml".source = ./direnv.toml;
+{ ... }: {
+  programs.direnv = {
+    enable = true;
+    silent = true;
+    loadInNixShell = true;
+    nix-direnv = {
+      enable = true;
+    };
+    # TODO: Update and enable shell integrations:
+    # enableBashIntegration = true;
+    # enableFishIntegration = true;
   };
 }
