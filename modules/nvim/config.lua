@@ -41,6 +41,7 @@ local function keymap(mode, lhs, rhs, opts)
   )
 end
 
+-- FIXME: switch to which-key
 -- delete without yanking
 keymap('n', '<leader>D', '"_D')
 keymap('n', '<leader>d', '"_d')
@@ -60,21 +61,18 @@ keymap('n', 'q:', ':q<CR>')
 -- match :qw as :wq
 keymap('c', 'qw', ':wq<CR>')
 
--- panes
-wk.register({
-  h = { '<C-W>h', 'jump to left pane' },
-  j = { '<C-W>j', 'jump to down pane' },
-  k = { '<C-W>k', 'jump to upper pane' },
-  l = { '<C-W>l', 'jump to right pane' },
-  o = { '<C-W>o', 'delete other panes' },
-}, { prefix = '<leader>' })
+wk.add {
+  { '<leader>h', '<C-W>h', desc = 'jump to left pane' },
+  { '<leader>j', '<C-W>j', desc = 'jump to down pane' },
+  { '<leader>k', '<C-W>k', desc = 'jump to upper pane' },
+  { '<leader>l', '<C-W>l', desc = 'jump to right pane' },
+  { '<leader>o', '<C-W>o', desc = 'delete other panes' },
 
--- buffers
-wk.register {
-  ['[b'] = { '<cmd>bprevious<cr>', 'Prev buffer' },
-  [']b'] = { '<cmd>bnext<cr>', 'Next buffer' },
-  ['<leader>bb'] = { '<cmd>e #<cr>', 'Switch to other buffer' },
-  ['<leader>bo'] = { '<cmd>%bdelete|edit #|bdelete #<cr>', 'Delete other buffers' },
-  ['<leader>bd'] = { '<cmd>bdelete<cr>', 'Delete current buffer' },
-  ['<leader>bD'] = { '<cmd>:bd<cr>', 'Delete buffer and window' },
+  { '<leader>b', group = 'buffers' },
+  { '<leader>bD', '<cmd>:bd<cr>', desc = 'Delete buffer and window' },
+  { '<leader>bb', '<cmd>e #<cr>', desc = 'Switch to other buffer' },
+  { '<leader>bd', '<cmd>bdelete<cr>', desc = 'Delete current buffer' },
+  { '<leader>bo', '<cmd>%bdelete|edit #|bdelete #<cr>', desc = 'Delete other buffers' },
+  { '[b', '<cmd>bprevious<cr>', desc = 'Prev buffer' },
+  { ']b', '<cmd>bnext<cr>', desc = 'Next buffer' },
 }

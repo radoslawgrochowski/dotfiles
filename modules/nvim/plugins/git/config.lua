@@ -16,33 +16,34 @@ gitsigns.setup {
   -- current_line_blame = true,
 }
 
-wk.register({
-  ['g'] = {
-    desc = 'Git',
-    ['g'] = { '<cmd>G<cr>', 'Status' },
-    ['a'] = { '<cmd>G blame<cr>', 'Blame' },
-    ['A'] = { '<cmd>G blame -C -C -C<cr>', 'Blame (deep)' },
-    ['B'] = { '<cmd>GBrowse<cr>', 'Browse' },
-    ['h'] = {
-      ['s'] = { gitsigns.stage_hunk, 'Stage hunk' },
-      ['r'] = { gitsigns.reset_hunk, 'Reset hunk' },
-      ['S'] = { gitsigns.stage_buffer, 'Stage buffer' },
-      ['u'] = { gitsigns.undo_stage_hunk, 'Undo stage hunk' },
-      ['R'] = { gitsigns.reset_buffer, 'Reset buffer' },
-      ['p'] = { gitsigns.preview_hunk, 'Preview hunk' },
-      ['b'] = { function() gitsigns.blame_line { full = true } end, 'Blame line' },
-      ['d'] = { gitsigns.diffthis, 'Diff this' },
-      ['D'] = { function() gitsigns.diffthis '~' end, 'Diff this' },
-    },
-    ['t'] = {
-      ['b'] = { gitsigns.toggle_current_line_blame, 'Toggle current line blame' },
-      ['d'] = { gitsigns.toggle_deleted, 'Toggle deleted' },
-    },
-  },
-}, { prefix = '<leader>' })
+wk.add {
+  { '<leader>g', group = 'Git' },
+  { '<leader>gg', '<cmd>G<cr>', desc = 'Status' },
+  { '<leader>ga', '<cmd>G blame<cr>', desc = 'Blame' },
+  { '<leader>gA', '<cmd>G blame -C -C -C<cr>', desc = 'Blame (deep)' },
+  { '<leader>gB', '<cmd>GBrowse<cr>', desc = 'Browse' },
 
-wk.register {
-  [']c'] = {
+  { '<leader>gh', group = 'Hunks' },
+  { '<leader>ghs', gitsigns.stage_hunk, desc = 'Stage hunk' },
+  { '<leader>ghr', gitsigns.reset_hunk, desc = 'Reset hunk' },
+  { '<leader>ghS', gitsigns.stage_buffer, desc = 'Stage buffer' },
+  { '<leader>ghu', gitsigns.undo_stage_hunk, desc = 'Undo stage hunk' },
+  { '<leader>ghR', gitsigns.reset_buffer, desc = 'Reset buffer' },
+  { '<leader>ghp', gitsigns.preview_hunk, desc = 'Preview hunk' },
+  { '<leader>ghb', function() gitsigns.blame_line { full = true } end, desc = 'Blame line' },
+  { '<leader>ghd', gitsigns.diffthis, desc = 'Diff this' },
+  { '<leader>ghD', function() gitsigns.diffthis '~' end, desc = 'Diff this' },
+  {
+    '<leader>gtb',
+    gitsigns.toggle_current_line_blame,
+    desc = 'Toggle current line blame',
+  },
+  { '<leader>gtd', gitsigns.toggle_deleted, desc = 'Toggle deleted' },
+}
+
+wk.add {
+  {
+    ']c',
     function()
       if vim.wo.diff then
         vim.cmd.normal { ']c', bang = true }
@@ -50,9 +51,10 @@ wk.register {
         gitsigns.nav_hunk 'next'
       end
     end,
-    'Select next hunk',
+    desc = 'Select next hunk',
   },
-  ['[c'] = {
+  {
+    '[c',
     function()
       if vim.wo.diff then
         vim.cmd.normal { '[c', bang = true }
@@ -60,22 +62,22 @@ wk.register {
         gitsigns.nav_hunk 'prev'
       end
     end,
-    'Select prev hunk',
+    desc = 'Select prev hunk',
   },
-  ['ih'] = { ':<C-U>Gitsigns select_hunk<CR>', mode = { 'o', 'x' } },
+  { 'ih', ':<C-U>Gitsigns select_hunk<CR>', mode = { 'o', 'x' } },
 }
 
-wk.register({
-  ['g'] = {
-    ['h'] = {
-      ['s'] = {
-        function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
-        'Stage hunk',
-      },
-      ['r'] = {
-        function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
-        'Reset hunk',
-      },
-    },
+wk.add {
+  {
+    '<leader>ghs',
+    function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
+    desc = 'Stage hunk',
+    mode = 'v',
   },
-}, { prefix = '<leader>', mode = 'v' })
+  {
+    '<leader>ghr',
+    function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
+    desc = 'Reset hunk',
+    mode = 'v',
+  },
+}

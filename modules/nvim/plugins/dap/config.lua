@@ -58,60 +58,70 @@ dapui.setup()
 
 local widgets = require 'dap.ui.widgets'
 
-wk.register({
-  ['d'] = {
-    desc = 'Debugging',
-    ['b'] = {
-      function() dap.toggle_breakpoint() end,
-      'Toggle breakpoint',
-    },
-    ['c'] = {
-      function() dap.continue() end,
-      'Continue',
-    },
-    ['d'] = {
-      function() dapui.toggle() end,
-      'Toggle full UI',
-    },
-    ['o'] = { function() dap.step_over() end, 'Step over' },
-    ['i'] = { function() dap.step_into() end, 'Step into' },
-    ['e'] = {
-      function() dapui.eval() end,
-      'Evaluate expression (hover)',
-    },
-    ['s'] = {
-      function()
-        local scopesFloat = widgets.centered_float(widgets.scopes)
-        scopesFloat.open()
-      end,
-      'Scopes',
-    },
-    ['f'] = {
-      function()
-        local framesFloat = widgets.centered_float(widgets.frames)
-        framesFloat.open()
-      end,
-      'Frames',
-    },
-    ['r'] = {
-      function() dap.repl.toggle() end,
-      'REPL',
-    },
-    ['C'] = {
-      function() dapui.float_element 'console' end,
-      'Console',
-    },
+wk.add {
+  { '<leader>d', group = 'DAP' },
+  {
+    '<leader>db',
+    function() dap.toggle_breakpoint() end,
+    desc = 'Toggle breakpoint',
   },
-}, { prefix = '<leader>' })
-
-wk.register({
-  ['d'] = {
-    desc = 'Debugging',
-    ['e'] = {
-      function() dapui.eval() end,
-      'Evaluate expression (selected)',
-    },
+  {
+    '<leader>dc',
+    function() dap.continue() end,
+    desc = 'Continue',
   },
-}, { mode = 'v', prefix = '<leader>' })
+  {
+    '<leader>dd',
+    function() dapui.toggle() end,
+    desc = 'Toggle full UI',
+  },
+  {
+    '<leader>do',
+    function() dap.step_over() end,
+    desc = 'Step over',
+  },
+  {
+    '<leader>di',
+    function() dap.step_into() end,
+    desc = 'Step into',
+  },
+  {
+    '<leader>de',
+    function() dapui.eval() end,
+    desc = 'Evaluate expression (hover)',
+  },
+  {
+    '<leader>ds',
+    function()
+      local scopesFloat = widgets.centered_float(widgets.scopes)
+      scopesFloat.open()
+    end,
+    desc = 'Scopes',
+  },
+  {
+    '<leader>df',
+    function()
+      local framesFloat = widgets.centered_float(widgets.frames)
+      framesFloat.open()
+    end,
+    desc = 'Frames',
+  },
+  {
+    '<leader>dr',
+    dap.repl.toggle,
+    desc = 'REPL',
+  },
+  {
+    '<leader>dC',
+    function() dapui.float_element 'console' end,
+    desc = 'Console',
+  },
+  {
+    '<leader>de',
+    function() dapui.eval() end,
+    desc = 'Evaluate expression (selected)',
+    mode = 'v',
+  },
+}
 
 -- TODO: Consider using something like https://github.com/theHamsta/nvim-dap-virtual-text

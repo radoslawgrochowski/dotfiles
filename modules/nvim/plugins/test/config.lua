@@ -29,44 +29,51 @@ neotest.setup {
   discovery = { enabled = false },
 }
 
-wk.register({
-  ['t'] = {
-    desc = 'Test',
-    ['f'] = {
-      function() neotest.run.run(vim.fn.expand '%') end,
-      'Test file',
-    },
-    ['n'] = {
-      function() neotest.run.run() end,
-      'Test nearest',
-    },
-    ['s'] = {
-      function() neotest.summary.toggle() end,
-      'Toggle summary',
-    },
-    ['o'] = {
-      function() neotest.output.open { enter = true, auto_close = true } end,
-      'Show output',
-    },
-    ['O'] = {
-      function() neotest.output_panel.toggle() end,
-      'Toggle output panel',
-    },
-    ['S'] = {
-      function() neotest.run.stop() end,
-      'Stop nearest test',
-    },
-    ['a'] = {
-      function() neotest.run.attach() end,
-      'Attach to nearest test',
-    },
-    ['l'] = {
-      function() neotest.run.run_last() end,
-      'Re-run last test',
-    },
-    ['d'] = {
-      function() neotest.run.run { strategy = 'dap' } end,
-      'Debug nearest test',
-    },
+wk.add {
+  { '<leader>t', group = 'Test' },
+  {
+    '<leader>tf',
+    function() neotest.run.run(vim.fn.expand '%') end,
+    desc = 'Test file',
   },
-}, { prefix = '<leader>' })
+  {
+    '<leader>tn',
+    neotest.run.run,
+    desc = 'Test nearest',
+  },
+  {
+    '<leader>ts',
+    neotest.summary.toggle,
+    desc = 'Toggle summary',
+  },
+  {
+    '<leader>to',
+    function() neotest.output.open { enter = true, auto_close = true } end,
+    desc = 'Show output',
+  },
+  {
+    '<leader>tO',
+    neotest.output_panel.toggle,
+    desc = 'Toggle output panel',
+  },
+  {
+    '<leader>tS',
+    neotest.run.stop,
+    desc = 'Stop nearest test',
+  },
+  {
+    '<leader>ta',
+    neotest.run.attach,
+    desc = 'Attach to nearest test',
+  },
+  {
+    '<leader>tl',
+    neotest.run.run_last,
+    desc = 'Re-run last test',
+  },
+  {
+    '<leader>td',
+    function() neotest.run.run { strategy = 'dap' } end,
+    desc = 'Debug nearest test',
+  },
+}

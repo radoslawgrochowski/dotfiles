@@ -20,34 +20,35 @@ vim.lsp.inlay_hint.enable(true)
 
 local lspFormat = function() vim.lsp.buf.format { async = false } end
 
-wk.register {
-  -- tries to match  efault keymaps from https://lsp-zero.netlify.app/v3.x/language-server-configuration.html#default-keybindings
-  ['K'] = { vim.lsp.buf.hover, 'Hover help' },
-  ['gd'] = { vim.lsp.buf.definition, 'Go to definition' },
-  ['gD'] = { vim.lsp.buf.declaration, 'Go to declaration' },
-  ['gi'] = { vim.lsp.buf.implementation, 'Go to implementation' },
-  ['go'] = { vim.lsp.buf.type_definition, 'Go to type definition' },
-  ['gr'] = { vim.lsp.buf.references, 'Find references' },
-  ['gs'] = { vim.lsp.buf.signature_help, 'Signature help' },
-  ['gR'] = { vim.lsp.buf.rename, 'Rename' },
-  ['g;'] = { lspFormat, 'Format' },
-  ['ga'] = { vim.lsp.buf.code_action, 'Code actions' },
-  ['gl'] = { vim.diagnostic.open_float, 'Show diagnostic in floating window' },
-  ['[d'] = { vim.diagnostic.goto_prev, 'Previous diagnostic' },
-  [']d'] = { vim.diagnostic.goto_next, 'Next diagnostic' },
-  ['gq'] = { vim.diagnostic.setloclist, 'Diagnostic quicklist' },
+wk.add {
+  -- tries to match default keymaps from https://lsp-zero.netlify.app/v3.x/language-server-configuration.html#default-keybindings
+  { 'K',  vim.lsp.buf.hover,           desc = 'Hover help' },
+  { 'gd', vim.lsp.buf.definition,      desc = 'Go to definition' },
+  { 'gD', vim.lsp.buf.declaration,     desc = 'Go to declaration' },
+  { 'gi', vim.lsp.buf.implementation,  desc = 'Go to implementation' },
+  { 'go', vim.lsp.buf.type_definition, desc = 'Go to type definition' },
+  { 'gr', vim.lsp.buf.references,      desc = 'Find references' },
+  { 'gs', vim.lsp.buf.signature_help,  desc = 'Signature help' },
+  { 'gR', vim.lsp.buf.rename,          desc = 'Rename' },
+  { 'g;', lspFormat,                   desc = 'Format' },
+  { 'ga', vim.lsp.buf.code_action,     desc = 'Code actions' },
+  { 'gl', vim.diagnostic.open_float,   desc = 'Show diagnostic in floating window' },
+  { '[d', vim.diagnostic.goto_prev,    desc = 'Previous diagnostic' },
+  { ']d', vim.diagnostic.goto_next,    desc = 'Next diagnostic' },
+  { 'gq', vim.diagnostic.setloclist,   desc = 'Diagnostic quicklist' },
+
+  {
+    'ga',
+    vim.lsp.buf.code_action,
+    desc = 'Code actions',
+    mode = 'v',
+  },
+
+  { '<leader>m',  group = 'LSP' },
+  { '<leader>mr', '<cmd>LspRestart<cr>', desc = 'Restart' },
+  { '<leader>mi', '<cmd>LspInfo<cr>',    desc = 'Info' },
+  { '<leader>ml', '<cmd>LspLog<cr>',     desc = 'Log' },
 }
-
-wk.register({
-  desc = 'LSP',
-  ['r'] = { '<cmd>LspRestart<cr>', 'Restart' },
-  ['i'] = { '<cmd>LspInfo<cr>', 'Info' },
-  ['l'] = { '<cmd>LspLog<cr>', 'Log' },
-}, { prefix = '<leader>l' })
-
-wk.register({
-  ['ga'] = { vim.lsp.buf.code_action, 'Code actions' },
-}, { mode = 'v' })
 
 lspconfig.nil_ls.setup {
   settings = {

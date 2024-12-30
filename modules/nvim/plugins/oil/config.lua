@@ -64,6 +64,6 @@ oil.setup {
   },
 }
 
-wk.register {
-  ['<leader>n'] = { '<cmd>Oil<cr>', 'Open oil' },
+wk.add {
+  { '<leader>n', '<cmd>Oil<cr>', desc = 'Open oil' },
 }

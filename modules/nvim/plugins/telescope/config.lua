@@ -12,59 +12,140 @@ vim.o.timeoutlen = 200
 telescope.load_extension 'fzf'
 telescope.setup { defaults = defaults }
 
-wk.register({
-  [','] = {
+wk.add {
+  {
+    '<leader>,',
     function() builtin.buffers { sort_mru = true, sort_lastused = true } end,
-    'Switch Buffers',
+    desc = 'Switch Buffers',
   },
-  ['/'] = { builtin.live_grep, 'Grep (root)' },
-  [':'] = { builtin.command_history, 'Command history' },
-  ['<space>'] = { builtin.find_files, 'Find Files (root)' },
-
-  ['f'] = {
-    desc = 'Files',
-    ['f'] = { builtin.find_files, 'Find (root)' },
-    ['F'] = { function() builtin.find_files { root = false } end, 'Find (cwd)' },
-    ['g'] = { builtin.git_files, 'Find (git)' },
-    ['r'] = { builtin.oldfiles, 'Recent' },
-    ['R'] = { function() builtin.oldfiles { cwd = vim.uv.cwd() } end, 'Recent (cwd)' },
+  {
+    '<leader>/',
+    builtin.live_grep,
+    desc = 'Grep (root)',
   },
-
-  ['g'] = {
-    desc = 'Git',
-    ['c'] = { builtin.git_commits, 'Commits' },
-    ['C'] = { builtin.git_bcommits, 'Commits for buffer' },
-    ['b'] = { builtin.git_branches, 'Branches' },
-    ['s'] = { builtin.git_stash, 'Stash' },
+  {
+    '<leader>:',
+    builtin.command_history,
+    desc = 'Command history',
+  },
+  {
+    '<leader><space>',
+    builtin.find_files,
+    desc = 'Find Files (root)',
   },
 
-  ['s'] = {
-    desc = 'Search',
-    ['c'] = {
-      function() require('telescope.builtin').colorscheme { enable_preview = true } end,
-      'Colorscheme',
-    },
-    ['d'] = { function() builtin.diagnostics { bufnr = 0 } end, 'Diagnostics (buffer)' },
-    ['D'] = { builtin.diagnostics, 'Diagnostics (root)' },
-    ['g'] = { builtin.live_grep, 'Grep (root)' },
-    ['G'] = { function() builtin.live_grep { root = false } end, 'Grep (cwd)' },
-    ['h'] = { builtin.help_tags, 'Search help tags word (cwd)' },
-    ['k'] = { builtin.keymaps, 'Keymaps' },
-    ['r'] = { builtin.resume, 'Resume' },
-    ['s'] = { builtin.lsp_workspace_symbols, 'Symbols (workspace)' },
-    ['S'] = { builtin.lsp_dynamic_workspace_symbols, 'Symbols (dynamic workspace)' },
-    ['w'] = { function() builtin.grep_string { word_match = '-w' } end, 'Current word' },
-    ['W'] = {
-      function() builtin.grep_string { word_match = '-w', root = false } end,
-      'Current word (cwd)',
-    },
+  { '<leader>f', group = 'Files' },
+  {
+    '<leader>ff',
+    builtin.find_files,
+    desc = 'Find (root)',
   },
-}, { prefix = '<leader>' })
+  {
+    '<leader>fF',
+    function() builtin.find_files { root = false } end,
+    desc = 'Find (cwd)',
+  },
+  {
+    '<leader>fg',
+    builtin.git_files,
+    desc = 'Find (git)',
+  },
+  {
+    '<leader>fr',
+    builtin.oldfiles,
+    desc = 'Recent',
+  },
+  {
+    '<leader>fR',
+    function() builtin.oldfiles { cwd = vim.uv.cwd() } end,
+    desc = 'Recent (cwd)',
+  },
 
-wk.register({
-  ['s'] = {
-    desc = 'Search',
-    ['w'] = { function() builtin.grep_string() end, 'Current selection (root)' },
-    ['W'] = { function() builtin.grep_string { root = false } end, 'Current selection (cwd)' },
+  { '<leader>g', group = 'Git' },
+  {
+    '<leader>gc',
+    builtin.git_commits,
+    desc = 'Commits',
   },
-}, { mode = 'v', prefix = '<leader>' })
+  {
+    '<leader>gC',
+    builtin.git_bcommits,
+    desc = 'Commits for buffer',
+  },
+  { '<leader>gb', builtin.git_branches, desc = 'Branches' },
+  { '<leader>gs', builtin.git_stash, desc = 'Stash' },
+
+  { '<leader>s', group = 'Search' },
+  {
+    '<leader>sc',
+    function() require('telescope.builtin').colorscheme { enable_preview = true } end,
+    desc = 'Colorscheme',
+  },
+  {
+    '<leader>sd',
+    function() builtin.diagnostics { bufnr = 0 } end,
+    desc = 'Diagnostics (buffer)',
+  },
+  {
+    '<leader>sD',
+    builtin.diagnostics,
+    desc = 'Diagnostics (root)',
+  },
+  {
+    '<leader>sg',
+    builtin.live_grep,
+    desc = 'Grep (root)',
+  },
+  {
+    '<leader>sG',
+    function() builtin.live_grep { root = false } end,
+    desc = 'Grep (cwd)',
+  },
+  {
+    '<leader>sh',
+    builtin.help_tags,
+    desc = 'Search help tags word (cwd)',
+  },
+  {
+    '<leader>sk',
+    builtin.keymaps,
+    desc = 'Keymaps',
+  },
+  {
+    '<leader>sr',
+    builtin.resume,
+    desc = 'Resume',
+  },
+  {
+    '<leader>ss',
+    builtin.lsp_workspace_symbols,
+    desc = 'Symbols (workspace)',
+  },
+  {
+    '<leader>sS',
+    builtin.lsp_dynamic_workspace_symbols,
+    desc = 'Symbols (dynamic workspace)',
+  },
+  {
+    '<leader>sw',
+    function() builtin.grep_string { word_match = '-w' } end,
+    desc = 'Current word',
+  },
+  {
+    '<leader>sW',
+    function() builtin.grep_string { word_match = '-w', root = false } end,
+    desc = 'Current word (cwd)',
+  },
+  {
+    '<leader>sw',
+    builtin.grep_string,
+    desc = 'Current selection (root)',
+    mode = 'v',
+  },
+  {
+    '<leader>sW',
+    function() builtin.grep_string { root = false } end,
+    desc = 'Current selection (cwd)',
+    mode = 'v',
+  },
+}
