@@ -2,15 +2,25 @@ local wk = require 'which-key'
 local telescope = require 'telescope'
 local builtin = require 'telescope.builtin'
 
-local defaults = {
-  path_display = { 'filename_first' },
-  hidden = true,
-}
-
 vim.o.timeoutlen = 200
 
 telescope.load_extension 'fzf'
-telescope.setup { defaults = defaults }
+telescope.setup {
+  defaults = {
+    path_display = { 'filename_first' },
+  },
+  pickers = {
+    find_files = {
+      find_command = { 'rg', '--files', '--hidden', '--g', '!**/.git/*' },
+    },
+    live_grep = {
+      additional_args = { '--hidden', '--glob', '!**/.git/*' },
+    },
+    grep_string = {
+      additional_args = { '--hidden', '--glob', '!**/.git/*' },
+    },
+  },
+}
 
 wk.add {
   {

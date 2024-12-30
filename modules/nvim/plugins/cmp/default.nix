@@ -10,7 +10,10 @@
     cmp-path
 
     cmp-rg
-    pkgs.ripgrep
+  ];
+
+  extraPackages = with pkgs; [
+    ripgrep
   ];
 
   config = builtins.readFile ./config.lua;
