@@ -236,7 +236,7 @@ lspconfig.mdx_analyzer.setup {
 lspconfig.tailwindcss.setup {}
 lspconfig.astro.setup {}
 lspconfig.elixirls.setup {
-  cmd = { ELIXIR_LS_PATH },
+  cmd = { vim.g.elixir_ls_path },
   on_attach = lspformat.on_attach,
 }
 

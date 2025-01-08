@@ -111,6 +111,10 @@
             just
             node2nix
           ];
+          shellHook = ''
+            # symlink the .luarc.json generated in the overlay
+            ln -fs ${pkgs.nvim-luarc-json} .luarc.json
+          '';
         };
         packages = { nvim-rg = pkgs.nvim-rg; };
       });

@@ -1,5 +1,8 @@
-# This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
 { inputs }: final: prev:
+let
+  packages = (final.callPackage ./neovim.nix { });
+in
 {
-  nvim-rg = (final.callPackage ./neovim.nix { }).nvim-rg;
+  nvim-rg = packages.nvim-rg;
+  nvim-luarc-json = packages.nvim-luarc-json;
 }
