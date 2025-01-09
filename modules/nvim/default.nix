@@ -10,6 +10,8 @@ let
 in
 {
   environment.variables.EDITOR = nvim-rg;
+  environment.variables.GIT_EDITOR = nvim-rg;
+  environment.variables.VISUAL = nvim-rg;
   home-manager.users."${username}" = {
     programs.bash.shellAliases = aliases;
     programs.fish.shellAliases = aliases;
