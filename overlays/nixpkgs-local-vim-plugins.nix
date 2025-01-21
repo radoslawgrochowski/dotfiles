@@ -27,6 +27,16 @@
               hash = "sha256-iNEoMl/X0nh2sAio1h+dkuobeOXRBXKFJCcElUyyW54=";
             };
           };
+        parrot-nvim = pkgs.vimUtils.buildVimPlugin
+          {
+            name = "parrot-nvim";
+            src = pkgs.fetchFromGitHub {
+              owner = "frankroeder";
+              repo = "parrot.nvim";
+              rev = "c5294031a41fea6e32b107d4140bcfb3ce574b4b";
+              hash = "sha256-/PKJRU712bln7OFkwN5GC5TURQ2kjbwqaO4L95QPe4I=";
+            };
+          };
       }
     );
   };
