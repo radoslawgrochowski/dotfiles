@@ -27,6 +27,26 @@
               hash = "sha256-iNEoMl/X0nh2sAio1h+dkuobeOXRBXKFJCcElUyyW54=";
             };
           };
+        neotest = pkgs.vimUtils.buildVimPlugin
+          {
+            name = "neotest";
+            src = pkgs.fetchFromGitHub {
+              owner = "nvim-neotest";
+              repo = "neotest";
+              rev = "d66cf4e05a116957f0d3a7755a24291c7d1e1f72";
+              hash = "sha256-OITV9BUgNZqJh2iJM7K57NkBPKjUaCrE9htbl3NWfSU=";
+            };
+          };
+        neotest-jest = pkgs.vimUtils.buildVimPlugin
+          {
+            name = "neotest-jest";
+            src = pkgs.fetchFromGitHub {
+              owner = "nvim-neotest";
+              repo = "neotest-jest";
+              rev = "514fd4eae7da15fd409133086bb8e029b65ac43f";
+              hash = "sha256-r4loKFm6gJbCmSPpybxLfFUQRMkXzpjVfg+2vxARv9I=";
+            };
+          };
       }
     );
   };
