@@ -1,3 +1,4 @@
 .idea
 packer_compiled.lua
 result
+.luarc.json
