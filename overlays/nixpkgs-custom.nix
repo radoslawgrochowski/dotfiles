@@ -4,8 +4,5 @@
     unstable = import inputs.nixpkgs-unstable {
       system = final.system;
     };
-    master = import inputs.nixpkgs-master {
-      system = final.system;
-    };
   };
 }
