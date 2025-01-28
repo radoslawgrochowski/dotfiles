@@ -19,6 +19,9 @@ telescope.setup {
     grep_string = {
       additional_args = { '--hidden', '--glob', '!**/.git/*' },
     },
+    oldfiles = {
+      cwd_only = true,
+    },
   },
 }
 
