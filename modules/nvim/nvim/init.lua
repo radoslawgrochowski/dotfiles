@@ -69,7 +69,7 @@ wk.add {
   { '<leader>o', '<C-W>o', desc = 'delete other panes' },
 
   { '<leader>b', group = 'buffers' },
-  { '<leader>bD', '<cmd>bdelete<cr>', desc = 'Delete current buffer (force)' },
+  { '<leader>bD', '<cmd>bdelete!<cr>', desc = 'Delete current buffer (force)' },
   { '<leader>bd', '<cmd>bdelete<cr>', desc = 'Delete current buffer' },
   { '<leader>bb', '<cmd>e #<cr>', desc = 'Switch to other buffer' },
   { '<leader>bo', '<cmd>%bdelete|edit #|bdelete #<cr>', desc = 'Delete other buffers' },
