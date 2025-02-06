@@ -34,7 +34,7 @@ with lib; let
 
     tokyonight-nvim
     telescope-nvim
-    markdown-nvim
+    render-markdown-nvim
 
     nvim-cmp
     cmp-buffer

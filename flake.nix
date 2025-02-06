@@ -109,6 +109,8 @@
           packages = with pkgs; [
             just
             node2nix
+            update-nix-fetchgit
+            fd
           ];
           shellHook = ''
             # symlink the .luarc.json generated in the overlay
