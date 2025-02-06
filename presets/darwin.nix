@@ -4,7 +4,6 @@
     ./common.nix
     inputs.home-manager.darwinModules.home-manager
     ../modules/home-manager
-    ../modules/homebrew
     ../modules/aerospace
     ../modules/karabiner
 
@@ -41,6 +40,9 @@
       # after a delay, until the key is released
       # https://stackoverflow.com/a/70911250
       ApplePressAndHoldEnabled = false;
+
+      AppleShowAllFiles = true;
+      AppleShowAllExtensions = true;
     };
   };
 
