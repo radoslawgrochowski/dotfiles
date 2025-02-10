@@ -4,11 +4,10 @@ dir = "~/Notes"
 [note]
 language = "en"
 filename = "{{slug title}}"
+
 # MARKDOWN SETTINGS
 [format.markdown]
-# Enable support for #hashtags
 hashtags = true
-# Enable support for :colon:separated:tags:
 colon-tags = false 
 
 # NAMED FILTERS
@@ -17,4 +16,11 @@ recents = "--sort created- --created-after 'last two weeks'"
 
 # COMMAND ALIASES
 [alias]
-recent = "zk edit --sort created- --created-after 'last two weeks' --interactive"
+edit = 'zk edit --interactive --no-input $argv'
+list = 'zk list --no-pager --format oneline $argv'
+new = 'zk new --title $argv'
+ls = 'zk list $argv'
+l = 'zk list $argv'
+ed = 'zk edit $argv'
+e = 'zk edit $argv'
+n = 'zk new $argv'
