@@ -27,6 +27,10 @@ neotest.setup {
     },
   },
   discovery = { enabled = false },
+  running = { concurrent = false },
+  summary = { enabled = false },
+  output_panel = { enabled = false },
+  watch = { enabled = false },
 }
 
 wk.add {
@@ -42,19 +46,9 @@ wk.add {
     desc = 'Test nearest',
   },
   {
-    '<leader>ts',
-    neotest.summary.toggle,
-    desc = 'Toggle summary',
-  },
-  {
     '<leader>to',
     function() neotest.output.open { enter = true, auto_close = true } end,
     desc = 'Show output',
-  },
-  {
-    '<leader>tO',
-    neotest.output_panel.toggle,
-    desc = 'Toggle output panel',
   },
   {
     '<leader>tS',
