@@ -4,6 +4,7 @@ with lib; let
   mkLuarcJson = pkgs.callPackage ./lib/mkLuarcJson.nix { };
 
   plugins = with pkgs.vimPlugins; with pkgs.localVimPlugins; [
+    nvim-nio
     plenary-nvim
     which-key-nvim
     nvim-web-devicons
@@ -44,8 +45,6 @@ with lib; let
     cmp-path
     cmp-rg
 
-    nvim-nio
-    plenary-nvim
     FixCursorHold-nvim
     neotest
     neotest-jest
