@@ -7,8 +7,7 @@ update:
   nix flake update
 
 fetchgit:
-  update-nix-fetchgit -v \
-    ./overlays/nixpkgs-local-vim-plugins.nix 
+  fd .nix --exec update-nix-fetchgit -v
 
 check: 
   nix flake check --show-trace
