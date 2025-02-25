@@ -11,7 +11,7 @@ ai.setup {
     t = ai.gen_spec.treesitter({
       a = '@tag.outer',
       i = '@tag.inner',
-    }, { search_method = 'cover' }),
+    }, { search_method = 'nearest' }),
   },
 
   mappings = {
@@ -31,6 +31,11 @@ ai.setup {
   silent = false,
 }
 
+local ts_input = require('mini.surround').gen_spec.input.treesitter
 surround.setup {
   n_lines = 500,
+  custom_surroundings = {
+    f = { input = ts_input { outer = '@function.outer', inner = '@function.inner' } },
+    t = { input = ts_input { outer = '@tag.outer', inner = '@tag.inner' } },
+  },
 }
