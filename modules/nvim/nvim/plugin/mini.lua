@@ -1,11 +1,17 @@
 local ai = require 'mini.ai'
+local surround = require 'mini.surround'
 local gen_ai_spec = require('mini.extra').gen_ai_spec
+
 ai.setup {
   custom_textobjects = {
     f = ai.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }, {}),
     g = gen_ai_spec.buffer(),
     i = gen_ai_spec.indent(),
     N = gen_ai_spec.number(),
+    t = ai.gen_spec.treesitter({
+      a = '@tag.outer',
+      i = '@tag.inner',
+    }, { search_method = 'cover' }),
   },
 
   mappings = {
@@ -21,9 +27,10 @@ ai.setup {
     goto_right = 'g]',
   },
   n_lines = 500,
-  search_method = 'cover_or_next',
+  search_method = 'cover_or_nearest',
   silent = false,
 }
-require('mini.surround').setup {
+
+surround.setup {
   n_lines = 500,
 }
