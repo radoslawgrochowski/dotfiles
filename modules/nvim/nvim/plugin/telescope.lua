@@ -5,6 +5,7 @@ local builtin = require 'telescope.builtin'
 vim.o.timeoutlen = 200
 
 telescope.load_extension 'fzf'
+telescope.load_extension 'ui-select'
 telescope.setup {
   defaults = {
     path_display = { 'filename_first' },

@@ -32,6 +32,7 @@ with lib; let
 
     telescope-nvim
     telescope-fzf-native-nvim
+    telescope-ui-select-nvim
 
     tokyonight-nvim
     telescope-nvim
