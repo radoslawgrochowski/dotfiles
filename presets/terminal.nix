@@ -13,7 +13,6 @@
 
     home.packages = with pkgs; [
       btop
-      comma
       jc
       jq
       nix-search-cli

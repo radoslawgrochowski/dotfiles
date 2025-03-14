@@ -8,7 +8,6 @@
     ../modules/karabiner
 
     inputs.nix-index-database.darwinModules.nix-index
-    { programs.nix-index-database.comma.enable = true; }
   ];
 
   users.users."${username}" = {
@@ -18,6 +17,7 @@
 
   services.nix-daemon.enable = true;
   programs.nix-index.enable = true;
+  programs.nix-index-database.comma.enable = true;
   programs.bash.enable = true;
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ bashInteractive zsh ];

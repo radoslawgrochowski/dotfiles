@@ -1,5 +1,9 @@
 ({ username, inputs, ... }: {
   nix = {
+    nixPath = [
+      "nixpkgs=${inputs.nixpkgs}"
+    ];
+    channel.enable = false;
     registry.nixpkgs.flake = inputs.nixpkgs;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
@@ -12,6 +16,8 @@
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "radoslawgrochowski-dotfiles.cachix.org-1:H4HOTwe9bPc+P2z/RVW3E8yBN6MwzRA4Xhv9RDpVu8c="
       ];
+      extra-nix-path = "";
+      use-xdg-base-directories = true;
     };
   };
 })

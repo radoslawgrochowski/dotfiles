@@ -10,7 +10,6 @@
   home-manager.users.${username} = {
     programs.home-manager.enable = true;
     systemd.user.startServices = true;
-    programs.nix-index.enable = true;
     home.stateVersion = "24.11";
   };
 }
