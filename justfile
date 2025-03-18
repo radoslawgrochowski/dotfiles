@@ -6,8 +6,8 @@ _default:
 update: 
   nix flake update
 
-fetchgit:
-  fd .nix --exec update-nix-fetchgit -v
+fetchgit *args:
+  fd .nix --exec update-nix-fetchgit -v {{args}}
 
 check: 
   nix flake check --show-trace

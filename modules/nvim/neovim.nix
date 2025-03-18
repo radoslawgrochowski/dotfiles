@@ -33,6 +33,7 @@ with lib; let
     telescope-nvim
     telescope-fzf-native-nvim
     telescope-ui-select-nvim
+    telescope-oil-nvim
 
     tokyonight-nvim
     telescope-nvim

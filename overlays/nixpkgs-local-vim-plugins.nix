@@ -47,6 +47,16 @@
             sha256 = "1lmz248bzdhggvarikhpr5210mbw9fycks93k719d05sb4l6i2dg";
           };
         };
+        telescope-oil-nvim = pkgs.vimUtils.buildVimPlugin {
+          name = "telescope-oil-nvim";
+          version = "unstable-2024-11-30";
+          src = pkgs.fetchFromGitHub {
+            owner = "albenisolmos";
+            repo = "telescope-oil.nvim";
+            rev = "1aaeb1a38a515498f1435d3d308049310b9a5f52";
+            sha256 = "0k0a2dsix6sjdv3p10vrxf19klkpgbyvlli16x7fskxnsnaav4mx";
+          };
+        };
       }
     );
   };

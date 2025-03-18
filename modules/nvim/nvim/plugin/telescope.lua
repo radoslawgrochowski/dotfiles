@@ -6,6 +6,7 @@ vim.o.timeoutlen = 200
 
 telescope.load_extension 'fzf'
 telescope.load_extension 'ui-select'
+telescope.load_extension 'oil'
 telescope.setup {
   defaults = {
     path_display = { 'filename_first' },
@@ -47,8 +48,12 @@ wk.add {
     builtin.find_files,
     desc = 'Find Files (root)',
   },
-
-  { '<leader>f', group = 'Files' },
+  { '<leader>f', group = 'Find' },
+  {
+    '<leader>fd',
+    function() telescope.extensions.oil.oil() end,
+    desc = 'Find Files (root)',
+  },
   {
     '<leader>ff',
     builtin.find_files,
