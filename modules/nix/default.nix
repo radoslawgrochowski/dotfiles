@@ -1,4 +1,4 @@
-({ username, inputs, ... }: {
+({ lib, username, inputs, ... }: {
   nix = {
     nixPath = [
       "nixpkgs=${inputs.nixpkgs}"
@@ -20,4 +20,10 @@
       use-xdg-base-directories = true;
     };
   };
+
+  nixpkgs.config.allowUnfreePredicate =
+    pkg: builtins.elem (lib.getName pkg) [
+      "spotify"
+      "claude"
+    ];
 })
