@@ -46,13 +46,13 @@ wk.add {
   {
     '<leader><space>',
     builtin.find_files,
-    desc = 'Find Files (root)',
+    desc = 'Find files (root)',
   },
   { '<leader>f', group = 'Find' },
   {
     '<leader>fd',
     function() telescope.extensions.oil.oil() end,
-    desc = 'Find Files (root)',
+    desc = 'Find directories',
   },
   {
     '<leader>ff',
