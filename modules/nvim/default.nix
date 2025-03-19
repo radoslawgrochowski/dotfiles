@@ -1,21 +1,19 @@
 { username, pkgs, ... }:
 let
   nvim-rg = "${pkgs.nvim-rg}/bin/nvim";
-  aliases = {
+in
+{
+  environment.variables = {
+    EDITOR = nvim-rg;
+    GIT_EDITOR = nvim-rg;
+    VISUAL = nvim-rg;
+  };
+  users.users."${username}".packages = [ pkgs.nvim-rg ];
+  environment.shellAliases = {
     vimdiff = "${nvim-rg} -d";
     nvim = nvim-rg;
     vim = nvim-rg;
     vi = nvim-rg;
-  };
-in
-{
-  environment.variables.EDITOR = nvim-rg;
-  environment.variables.GIT_EDITOR = nvim-rg;
-  environment.variables.VISUAL = nvim-rg;
-  home-manager.users."${username}" = {
-    programs.bash.shellAliases = aliases;
-    programs.fish.shellAliases = aliases;
-    programs.zsh.shellAliases = aliases;
   };
 }
 
