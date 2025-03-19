@@ -10,14 +10,14 @@
 
   home-manager.users.${username} = {
     programs.home-manager.enable = true;
-
-    home.packages = with pkgs; [
-      btop
-      jc
-      jq
-      nix-search-cli
-      ranger
-      tldr
-    ];
   };
+
+  users.users."${username}".packages = with pkgs;[
+    btop
+    jc
+    jq
+    nix-search-cli
+    ranger
+    tldr
+  ];
 }
