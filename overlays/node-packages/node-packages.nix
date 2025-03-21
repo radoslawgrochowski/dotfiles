@@ -2662,6 +2662,24 @@ let
   };
 in
 {
+  "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
+    name = "_at_anthropic-ai_slash_claude-code";
+    packageName = "@anthropic-ai/claude-code";
+    version = "0.2.52";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-0.2.52.tgz";
+      sha512 = "r+t2xAEoimXNJCytZ2uPGx3sP7dG6sA7kGoV16QtnAYjghB/k8YHB4Fq5sIumekYfHUWEp75CcwZ73cmIlrjYg==";
+    };
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "Use Claude, Anthropic's AI assistant, right from your terminal. Claude can understand your codebase, edit files, run terminal commands, and handle entire workflows for you.";
+      homepage = "https://github.com/anthropics/claude-code";
+      license = "SEE LICENSE IN README.md";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
   "@astrojs/language-server" = nodeEnv.buildNodePackage {
     name = "_at_astrojs_slash_language-server";
     packageName = "@astrojs/language-server";
@@ -3038,10 +3056,10 @@ in
   "@tailwindcss/language-server" = nodeEnv.buildNodePackage {
     name = "_at_tailwindcss_slash_language-server";
     packageName = "@tailwindcss/language-server";
-    version = "0.14.9";
+    version = "0.14.11";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@tailwindcss/language-server/-/language-server-0.14.9.tgz";
-      sha512 = "t9tXYWWkLdfd3PrOZD+xF+B2a1tE5GI6VJu5dVw6wI5mSR3gmUPXEx4QF1vd7Ox7/tP+5a3faGhrp0BjCawPtw==";
+      url = "https://registry.npmjs.org/@tailwindcss/language-server/-/language-server-0.14.11.tgz";
+      sha512 = "+XmN57O7/t6Oh4mBhzuTN5XILvr9LCVa84m5u1sK6EnKB+O8w/hkyVM/KyWlH5SyOUuaIUY/hu7uq6hRUgQpyg==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -3142,24 +3160,6 @@ in
       description = "HTML/CSS/JSON/ESLint language servers extracted from [vscode](https://github.com/Microsoft/vscode).";
       homepage = "https://github.com/hrsh7th/vscode-langservers-extracted#readme";
       license = "MIT";
-    };
-    production = true;
-    bypassCache = true;
-    reconstructLock = true;
-  };
-  "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
-    name = "_at_anthropic-ai_slash_claude-code";
-    packageName = "@anthropic-ai/claude-code";
-    version = "0.2.49";
-    src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-0.2.49.tgz";
-      sha512 = "65X8dOKwZxohHOk3T3m3udqDC7bMCQJIYcCOA704IH3dM6TvvgJANAYR3rAaIL3/eSOijOFjMUfDWifLNv/OCQ==";
-    };
-    buildInputs = globalBuildInputs;
-    meta = {
-      description = "Use Claude, Anthropic's AI assistant, right from your terminal. Claude can understand your codebase, edit files, run terminal commands, and handle entire workflows for you.";
-      homepage = "https://github.com/anthropics/claude-code";
-      license = "SEE LICENSE IN README.md";
     };
     production = true;
     bypassCache = true;
