@@ -9,12 +9,12 @@
       {
         nvim-cmp = pkgs.vimUtils.buildVimPlugin {
           name = "nvim-cmp";
-          version = "unstable-2025-01-23";
+          version = "unstable-2025-03-14";
           src = pkgs.fetchFromGitHub {
             owner = "hrsh7th";
             repo = "nvim-cmp";
-            rev = "12509903a5723a876abd65953109f926f4634c30";
-            sha256 = "0a592vvfbyv1y1j9bbiq7wxy0vp63bwngjav0qkm0czdf8y4b3kb";
+            rev = "1e1900b0769324a9675ef85b38f99cca29e203b3";
+            sha256 = "1yqg4gnzmlm9h5rcmzv7msjmqna0ffn7gllf5knfkps5ns0ynpyf";
           };
         };
         nvim-nio = pkgs.vimUtils.buildVimPlugin {
@@ -29,12 +29,12 @@
         };
         neotest = pkgs.vimUtils.buildVimPlugin {
           name = "neotest";
-          version = "unstable-2025-01-02";
+          version = "unstable-2025-02-25";
           src = pkgs.fetchFromGitHub {
             owner = "nvim-neotest";
             repo = "neotest";
-            rev = "d66cf4e05a116957f0d3a7755a24291c7d1e1f72";
-            sha256 = "09bxarrrfnqvyv22ls6lm0y03ngcp6r372b8hy4rld902psdb11q";
+            rev = "dddbe8fe358b05b2b7e54fe4faab50563171a76d";
+            sha256 = "0ji65yyfisr1fpfsx8kflb9fl17dmf168wwvqgvp7z24m9v9b3bb";
           };
         };
         neotest-jest = pkgs.vimUtils.buildVimPlugin {
