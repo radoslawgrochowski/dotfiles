@@ -54,6 +54,8 @@ with lib; let
     nvim-nio
     nvim-dap
     nvim-dap-ui
+
+    parrot-nvim
   ];
 
   extraPackages = with pkgs; [

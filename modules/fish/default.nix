@@ -32,6 +32,11 @@ in
         set fish_greeting ""
 
         ${tokyoNightFishTheme}
+        
+        # Load local env vars if file exists
+        if test -f "$HOME/.local/env.fish"
+          source "$HOME/.local/env.fish"
+        end
       '';
       shellAliases = {
         l = "ll";
