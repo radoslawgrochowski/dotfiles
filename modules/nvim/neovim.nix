@@ -38,6 +38,7 @@ with lib; let
     tokyonight-nvim
     telescope-nvim
     render-markdown-nvim
+    nvim-colorizer-lua
 
     nvim-cmp
     cmp-buffer
