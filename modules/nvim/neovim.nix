@@ -38,6 +38,7 @@ with lib; let
     telescope-nvim
     render-markdown-nvim
     nvim-colorizer-lua
+    image-nvim
 
     nvim-cmp
     cmp-buffer
@@ -84,6 +85,8 @@ with lib; let
     ripgrep
     fd
     vscode-js-debug
+
+    imagemagick
   ];
 
   luaPaths = /* lua */''
