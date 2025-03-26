@@ -201,14 +201,6 @@ lspconfig.efm.setup {
   },
 }
 
-lspconfig.ltex.setup {
-  on_attach = function(client, bufnr)
-    lspformat.on_attach(client, bufnr)
-    require('ltex_extra').setup {}
-  end,
-  settings = { ltex = {} },
-}
-
 local schemastore = require 'schemastore'
 lspconfig.jsonls.setup {
   settings = {
@@ -239,5 +231,6 @@ lspconfig.elixirls.setup {
   cmd = { vim.g.elixir_ls_path },
   on_attach = lspformat.on_attach,
 }
+lspconfig.harper_ls.setup {}
 
 require('fidget').setup {}

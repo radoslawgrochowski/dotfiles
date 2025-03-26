@@ -25,7 +25,6 @@ with lib; let
     fidget-nvim
     nvim-lspconfig
     lsp-format-nvim
-    ltex_extra-nvim
     SchemaStore-nvim
 
     oil-nvim
@@ -66,7 +65,7 @@ with lib; let
     localNodePackages."@mdx-js/language-server"
     localNodePackages."@tailwindcss/language-server"
     localNodePackages."@astrojs/language-server"
-    ltex-ls
+    harper
     lua-language-server
     nil
     nixpkgs-fmt
