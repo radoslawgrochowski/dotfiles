@@ -67,6 +67,16 @@
             sha256 = "0ras4vw435pjs5vvy2cfxiga8nlbil88l954ajq85d651wgi9gdj";
           };
         };
+        nvim-vtsls = pkgs.vimUtils.buildVimPlugin {
+          name = "nvim-vtsls";
+          version = "unstable-2024-06-28";
+          src = pkgs.fetchFromGitHub {
+            owner = "yioneko";
+            repo = "nvim-vtsls";
+            rev = "45c6dfea9f83a126e9bfc5dd63430562b3f8af16";
+            sha256 = "08ms4yg821dk1qvhs7i3qh51hhn43v4p55yi81bbvk6za7n68bgz";
+          };
+        };
       }
     );
   };
