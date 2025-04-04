@@ -35,6 +35,8 @@ with lib; let
     telescope-ui-select-nvim
     telescope-oil-nvim
 
+    nvim-spectre
+
     tokyonight-nvim
     telescope-nvim
     render-markdown-nvim
