@@ -22,6 +22,12 @@ wk.add {
   { '<leader>ga', '<cmd>G blame<cr>', desc = 'Blame' },
   { '<leader>gA', '<cmd>G blame -C -C -C<cr>', desc = 'Blame (deep)' },
   { '<leader>gB', '<cmd>GBrowse<cr>', desc = 'Browse' },
+  { '<leader>gd', '<cmd>Gvdiff HEAD~<cr>', desc = 'Diff versus HEAD' },
+  {
+    '<leader>gD',
+    '<cmd>Gvdiff origin/master<cr>',
+    desc = 'Diff versus master',
+  },
 
   { '<leader>gh', group = 'Hunks' },
   { '<leader>ghs', gitsigns.stage_hunk, desc = 'Stage hunk' },
