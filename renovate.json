@@ -1,14 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>radoslawgrochowski/renovate-config"],
-  "packageRules": [
-    {
-      "description": "Nix: Weekly flake.lock maintenance",
-      "matchPackageManagers": ["nix"],
-      "lockFileMaintenance": {
-        "schedule": ["before 4am on friday"],
-        "automerge": true
-      }
-    }
-  ]
+  "extends": ["local>radoslawgrochowski/renovate-config"]
 }
