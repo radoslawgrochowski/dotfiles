@@ -27,6 +27,7 @@ with lib; let
     lsp-format-nvim
     SchemaStore-nvim
     nvim-vtsls
+    tsc-nvim
 
     oil-nvim
 

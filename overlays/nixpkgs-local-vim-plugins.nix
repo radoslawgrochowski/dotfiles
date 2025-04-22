@@ -77,6 +77,16 @@
             sha256 = "08ms4yg821dk1qvhs7i3qh51hhn43v4p55yi81bbvk6za7n68bgz";
           };
         };
+        tsc-nvim = pkgs.vimUtils.buildVimPlugin {
+          name = "tsc-nvim";
+          version = "unstable-2025-03-12";
+          src = pkgs.fetchFromGitHub {
+            owner = "dmmulroy";
+            repo = "tsc.nvim";
+            rev = "5bd25bb5c399b6dc5c00392ade6ac6198534b53a";
+            sha256 = "1s47l4m741d7z9diicqn48b5avk1n3sxx64f8xjr6l0rn9518zsz";
+          };
+        };
       }
     );
   };
