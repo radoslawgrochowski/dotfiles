@@ -6,5 +6,6 @@
 
   users.users."${username}".packages = with pkgs; [
     localNodePackages."@anthropic-ai/claude-code"
+    localNodePackages."@openai/codex"
   ];
 }
