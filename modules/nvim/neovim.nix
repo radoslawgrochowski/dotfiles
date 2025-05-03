@@ -35,6 +35,7 @@ with lib; let
     telescope-fzf-native-nvim
     telescope-ui-select-nvim
     telescope-oil-nvim
+    dir-telescope-nvim
 
     nvim-spectre
 

@@ -7,6 +7,8 @@ vim.o.timeoutlen = 200
 telescope.load_extension 'fzf'
 telescope.load_extension 'ui-select'
 telescope.load_extension 'oil'
+telescope.load_extension 'dir'
+
 telescope.setup {
   defaults = {
     path_display = { 'filename_first' },
@@ -26,6 +28,8 @@ telescope.setup {
     },
   },
 }
+
+local dir = telescope.extensions.dir
 
 wk.add {
   {
@@ -101,12 +105,12 @@ wk.add {
     desc = 'Colorscheme',
   },
   {
-    '<leader>sd',
+    '<leader>sl',
     function() builtin.diagnostics { bufnr = 0 } end,
     desc = 'Diagnostics (buffer)',
   },
   {
-    '<leader>sD',
+    '<leader>sL',
     builtin.diagnostics,
     desc = 'Diagnostics (root)',
   },
@@ -154,6 +158,16 @@ wk.add {
     '<leader>sW',
     function() builtin.grep_string { word_match = '-w', root = false } end,
     desc = 'Current word (cwd)',
+  },
+  {
+    '<leader>sd',
+    function() dir.live_grep() end,
+    desc = 'Live grep (dir)',
+  },
+  {
+    '<leader>sD',
+    function() dir.find_files() end,
+    desc = 'Find files (dir)',
   },
   {
     '<leader>sw',

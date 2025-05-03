@@ -87,6 +87,16 @@
             sha256 = "1s47l4m741d7z9diicqn48b5avk1n3sxx64f8xjr6l0rn9518zsz";
           };
         };
+        dir-telescope-nvim = pkgs.vimUtils.buildVimPlugin {
+          name = "dir-telescope-nvim";
+          version = "unstable-2024-08-27";
+          src = pkgs.fetchFromGitHub {
+            owner = "princejoogie";
+            repo = "dir-telescope.nvim";
+            rev = "805405b9f98dc3470f8676773dc0e6151a9158ed";
+            sha256 = "1aqfvlg3p1kln8par7gaqdzra9lsb29c2hcairv2wmn09191kxq7";
+          };
+        };
       }
     );
   };
