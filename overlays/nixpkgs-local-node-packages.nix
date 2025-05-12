@@ -6,7 +6,7 @@
         let
           system = final.system;
           pkgs = import inputs.nixpkgs { inherit system; };
-          nodejs = pkgs.nodejs;
+          nodejs = pkgs.nodejs_22;
         in
         {
           inherit system pkgs nodejs;
