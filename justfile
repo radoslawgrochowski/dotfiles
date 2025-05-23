@@ -13,7 +13,7 @@ check:
   nix flake check --show-trace
 
 darwin-switch: 
-  nix run nix-darwin -- switch --flake .#macaron
+  sudo darwin-rebuild switch --flake .#macaron
 
 nixos-switch:
   sudo nixos-rebuild switch --flake .

@@ -1,30 +1,30 @@
 local wk = require 'which-key'
 local neotest = require 'neotest'
-local neotestJest = require 'neotest-jest'
+-- local neotestJest = require 'neotest-jest'
 
 -- TODO: recheck if this workaround is still needed
 -- TODO: make it somehow compatibile with neotest-playwright
-neotestJest.is_test_file = function(file_path)
-  for _, x in ipairs { 'spec', 'test', 'unit' } do
-    for _, ext in ipairs { 'js', 'jsx', 'ts', 'tsx' } do
-      if string.match(file_path, '%.' .. x .. '%.' .. ext .. '$') then return true end
-    end
-  end
-  return false
-end
+-- neotestJest.is_test_file = function(file_path)
+--   for _, x in ipairs { 'spec', 'test', 'unit' } do
+--     for _, ext in ipairs { 'js', 'jsx', 'ts', 'tsx' } do
+--       if string.match(file_path, '%.' .. x .. '%.' .. ext .. '$') then return true end
+--     end
+--   end
+--   return false
+-- end
 
 neotest.setup {
   adapters = {
-    neotestJest {
-      jestCommand = 'npm test -- --no-watch --no-watchAll',
-      env = { IS_CI = true },
-      cwd = function()
-        local file = vim.fn.expand '%:p'
-        if string.find(file, '/packages/') then return string.match(file, '(.-/[^/]+/)src') end
-        return vim.fn.getcwd()
-      end,
-      jest_test_discovery = true,
-    },
+    -- neotestJest {
+    --   jestCommand = 'npm test -- --no-watch --no-watchAll',
+    --   env = { IS_CI = true },
+    --   cwd = function()
+    --     local file = vim.fn.expand '%:p'
+    --     if string.find(file, '/packages/') then return string.match(file, '(.-/[^/]+/)src') end
+    --     return vim.fn.getcwd()
+    --   end,
+    --   jest_test_discovery = true,
+    -- },
   },
   discovery = { enabled = false },
   running = { concurrent = false },

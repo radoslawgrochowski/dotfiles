@@ -55,7 +55,7 @@ with lib; let
 
     FixCursorHold-nvim
     neotest
-    neotest-jest
+    # neotest-jest
 
     nvim-nio
     nvim-dap

@@ -15,15 +15,14 @@
     home = "/Users/${username}/";
   };
 
-  services.nix-daemon.enable = true;
   programs.nix-index.enable = true;
   programs.nix-index-database.comma.enable = true;
   programs.bash.enable = true;
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ bashInteractive zsh ];
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
   system.configurationRevision = outputs.rev or outputs.dirtyRev or null;
-
+  system.primaryUser = username;
   system.defaults = {
     "dock" = {
       autohide = true;
