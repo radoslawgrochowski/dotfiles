@@ -6,15 +6,6 @@ My NixOS and Nix-Darwin system configurations.
 
 This repository contains my personal dotfiles, managed using Nix, Nix-Darwin, and home-manager. It provides a reproducible and declarative configuration for my development environment across different machines.
 
-## Table of Contents
-
-- [Host Setup](#host-setup)
-  - [NixOS on WSL](#nixos-on-wsl)
-    - [Installation](#installation)
-    - [Configuration](#configuration)
-    - [SSH Setup](#ssh-setup)
-- [Inspiration](#inspiration)
-
 ## Host Setup
 
 ### NixOS on WSL
