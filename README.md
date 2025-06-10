@@ -1,12 +1,25 @@
-# dotfiles
+# Dotfiles
 
-nixos/nix-darwin system configuration for my machines
+My NixOS and Nix-Darwin system configurations.
 
-## Host setup
+## About
 
-### Nixos on Windows Subsystem for Linux (WSL)
+This repository contains my personal dotfiles, managed using Nix, Nix-Darwin, and home-manager. It provides a reproducible and declarative configuration for my development environment across different machines.
 
-Host based around https://github.com/nix-community/NixOS-WSL/tree/b4354a924111b7f09ba5a3d1ce38717c7f29a581
+## Table of Contents
+
+- [Host Setup](#host-setup)
+  - [NixOS on WSL](#nixos-on-wsl)
+    - [Installation](#installation)
+    - [Configuration](#configuration)
+    - [SSH Setup](#ssh-setup)
+- [Inspiration](#inspiration)
+
+## Host Setup
+
+### NixOS on WSL
+
+Host based around [NixOS-WSL](https://github.com/nix-community/NixOS-WSL/tree/b4354a924111b7f09ba5a3d1ce38717c7f29a581).
 
 #### Installation
 
@@ -17,19 +30,19 @@ Host based around https://github.com/nix-community/NixOS-WSL/tree/b4354a924111b7
 #### Configuration
 
 ```sh
-# Install git using Nix
+# Install git using Nix:
 nix shell nixpkgs#git --extra-experimental-features nix-command --extra-experimental-features flakes
 
-# Clone dotfiles repository
+# Clone dotfiles repository:
 git clone https://github.com/radoslawgrochowski/dotfiles.git $HOME/Projects/dotfiles
 
-# Create your user account
+# Create your user account:
 sudo adduser radoslawgrochowski
 
-# Switch to your user account
+# Switch to your user account:
 sudo su radoslawgrochowski
 
-# Apply NixOS configuration from the flake
+# Apply NixOS configuration from the flake:
 sudo nixos-rebuild switch --flake "$HOME/Projects/dotfiles#radoslawgrochowski-wsl"
 ```
 
@@ -50,8 +63,8 @@ sudo nixos-rebuild switch --flake "$HOME/Projects/dotfiles#radoslawgrochowski-ws
 
 ## Inspiration
 
-These repositories provided ideas for this configuration:
+These repositories provided inspiration for this configuration:
 
-- https://github.com/tiagovla/.dotfiles
-- https://github.com/pmizio/vim-react-config
-- https://github.com/breuerfelix/dotfiles
+- [tiagovla/.dotfiles](https://github.com/tiagovla/.dotfiles)
+- [pmizio/vim-react-config](https://github.com/pmizio/vim-react-config)
+- [breuerfelix/dotfiles](https://github.com/breuerfelix/dotfiles)
