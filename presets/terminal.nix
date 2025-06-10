@@ -13,6 +13,7 @@
   };
 
   users.users."${username}".packages = with pkgs;[
+    pkgs.unstable.aider-chat-full
     btop
     jc
     jq
