@@ -6,6 +6,7 @@
     ../modules/kitty
     ../modules/nvim
     ../modules/zk
+    ../modules/aider
   ];
 
   home-manager.users.${username} = {
@@ -13,7 +14,6 @@
   };
 
   users.users."${username}".packages = with pkgs;[
-    pkgs.unstable.aider-chat-full
     btop
     jc
     jq
