@@ -30,7 +30,7 @@ jobs:
 
   build-flake:
     needs: check-flake
-    timeout-minutes: 10
+    timeout-minutes: 30
     strategy:
       max-parallel: 1
       matrix:
