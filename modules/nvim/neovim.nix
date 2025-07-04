@@ -61,7 +61,6 @@ with lib; let
     nvim-dap
     nvim-dap-ui
 
-    # parrot-nvim
     codecompanion-nvim
   ];
 

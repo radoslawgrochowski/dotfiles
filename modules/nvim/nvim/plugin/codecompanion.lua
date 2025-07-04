@@ -36,10 +36,27 @@ require('codecompanion').setup {
       adapter = 'vertex',
     },
   },
+  display = {
+    chat = {
+      window = {
+        layout = 'buffer',
+      },
+    },
+  },
 }
 
 wk.add {
-  { '<leader>aa', '<cmd>CodeCompanion', desc = 'Prefill command' },
-  { '<leader>a<space>', '<cmd>CodeCompanionActions<CR>', desc = 'Open Codecompanion Actions' },
-  { '<leader>ac', '<cmd>CodeCompanionChat Toggle<CR>', desc = 'Toggle Codecompanion Chat' },
+  {
+    '<leader>a<space>',
+    '<cmd>CodeCompanionActions<CR>',
+    desc = 'Open Codecompanion Actions',
+  },
+  {
+    '<leader>ac',
+    '<cmd>CodeCompanionChat Toggle<CR>',
+    desc = 'Toggle Codecompanion Chat',
+  },
+  mode = { 'n', 'v' },
 }
+
+require('user/codecompanion-progress'):init()
