@@ -21,7 +21,6 @@ in
     programs.fish = {
       enable = true;
       plugins = [
-        { name = "sponge"; src = pkgs.fishPlugins.sponge.src; }
         { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
         { name = "done"; src = pkgs.fishPlugins.done.src; }
       ];
