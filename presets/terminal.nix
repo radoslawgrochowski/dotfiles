@@ -6,7 +6,6 @@
     ../modules/kitty
     ../modules/nvim
     ../modules/zk
-    ../modules/aider
   ];
 
   home-manager.users.${username} = {

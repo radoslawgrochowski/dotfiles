@@ -95,6 +95,7 @@
             ./presets/wsl.nix
             ./modules/docker
             ./modules/video
+            ./modules/aider
           ];
           specialArgs = commonSpecialArgs;
         };
