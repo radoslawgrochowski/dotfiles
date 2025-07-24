@@ -9,12 +9,12 @@
       {
         nvim-cmp = pkgs.vimUtils.buildVimPlugin {
           name = "nvim-cmp";
-          version = "unstable-2025-03-14";
+          version = "unstable-2025-04-13";
           src = pkgs.fetchFromGitHub {
             owner = "hrsh7th";
             repo = "nvim-cmp";
-            rev = "1e1900b0769324a9675ef85b38f99cca29e203b3";
-            sha256 = "1yqg4gnzmlm9h5rcmzv7msjmqna0ffn7gllf5knfkps5ns0ynpyf";
+            rev = "b5311ab3ed9c846b585c0c15b7559be131ec4be9";
+            sha256 = "07674djcyac9wlj08y9p5gsmdpsm8zxjfgk3fwyvvx8j7qyzx74p";
           };
           doCheck = false;
         };
@@ -31,67 +31,67 @@
         };
         neotest = pkgs.vimUtils.buildVimPlugin {
           name = "neotest";
-          version = "unstable-2025-02-25";
+          version = "unstable-2025-07-16";
           src = pkgs.fetchFromGitHub {
             owner = "nvim-neotest";
             repo = "neotest";
-            rev = "dddbe8fe358b05b2b7e54fe4faab50563171a76d";
-            sha256 = "0ji65yyfisr1fpfsx8kflb9fl17dmf168wwvqgvp7z24m9v9b3bb";
+            rev = "3c81345c28cd639fcc02843ed3653be462f47024";
+            sha256 = "1rqfxhy0c721hzz9azp1w403b8bccq6q24miynb42z4hc14qh8nm";
           };
           doCheck = false;
         };
         neotest-jest = pkgs.vimUtils.buildVimPlugin {
           name = "neotest-jest";
-          version = "unstable-2024-03-22";
+          version = "unstable-2025-06-30";
           src = pkgs.fetchFromGitHub {
             owner = "nvim-neotest";
             repo = "neotest-jest";
-            rev = "514fd4eae7da15fd409133086bb8e029b65ac43f";
-            sha256 = "1lmz248bzdhggvarikhpr5210mbw9fycks93k719d05sb4l6i2dg";
+            rev = "797515e113ac8e19c6855046d7f746d9c0c39c15";
+            sha256 = "09xq5dn9rjd37ab8nf85d26qhb0k8np1j17y6nk8pb7dc3l15w4j";
           };
           doCheck = false;
         };
         telescope-oil-nvim = pkgs.vimUtils.buildVimPlugin {
           name = "telescope-oil-nvim";
-          version = "unstable-2024-11-30";
+          version = "unstable-2025-04-30";
           src = pkgs.fetchFromGitHub {
             owner = "albenisolmos";
             repo = "telescope-oil.nvim";
-            rev = "1aaeb1a38a515498f1435d3d308049310b9a5f52";
-            sha256 = "0k0a2dsix6sjdv3p10vrxf19klkpgbyvlli16x7fskxnsnaav4mx";
+            rev = "5a86746e2803f67a98f9801ed4cf9c782d649a93";
+            sha256 = "09xw4s724gx6zcjk00af1iyczw35xjgq2w6k2z9fj5farl8wszq8";
           };
           doCheck = false;
         };
         parrot-nvim = pkgs.vimUtils.buildVimPlugin {
           name = "parrot-nvim";
-          version = "unstable-2025-03-18";
+          version = "unstable-2025-07-21";
           src = pkgs.fetchFromGitHub {
             owner = "frankroeder";
             repo = "parrot.nvim";
-            rev = "3027b481ef58245147408455a13b61608a86885c";
-            sha256 = "0ras4vw435pjs5vvy2cfxiga8nlbil88l954ajq85d651wgi9gdj";
+            rev = "6ad76a1b170b3fa49851504ab17cb39075b93b03";
+            sha256 = "1x6knk6n576zyk2927hy2xisp96vmqg5fa1pbq4m0f2vc8g7qiw0";
           };
           doCheck = false;
         };
         nvim-vtsls = pkgs.vimUtils.buildVimPlugin {
           name = "nvim-vtsls";
-          version = "unstable-2024-06-28";
+          version = "unstable-2025-07-16";
           src = pkgs.fetchFromGitHub {
             owner = "yioneko";
             repo = "nvim-vtsls";
-            rev = "45c6dfea9f83a126e9bfc5dd63430562b3f8af16";
-            sha256 = "08ms4yg821dk1qvhs7i3qh51hhn43v4p55yi81bbvk6za7n68bgz";
+            rev = "0b5f73c9e50ce95842ea07bb3f05c7d66d87d14a";
+            sha256 = "0cdc4a1g2gl6m5d0g1kggg2hpr7x078s499y7rwcii8r6yj48cxx";
           };
           doCheck = false;
         };
         tsc-nvim = pkgs.vimUtils.buildVimPlugin {
           name = "tsc-nvim";
-          version = "unstable-2025-03-12";
+          version = "unstable-2025-05-25";
           src = pkgs.fetchFromGitHub {
             owner = "dmmulroy";
             repo = "tsc.nvim";
-            rev = "5bd25bb5c399b6dc5c00392ade6ac6198534b53a";
-            sha256 = "1s47l4m741d7z9diicqn48b5avk1n3sxx64f8xjr6l0rn9518zsz";
+            rev = "8c1b4ec6a48d038a79ced8674cb15e7db6dd8ef0";
+            sha256 = "00irwjlm3r741i06w6qd6pmgqcs5zh1faz2fnqvlzgm7pyb4qz50";
           };
           doCheck = false;
         };
