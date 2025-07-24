@@ -70,10 +70,10 @@ local vtslsSettings = {
   updateImportsOnFileMove = { enabled = 'always' },
   suggest = { completeFunctionCalls = true },
   inlayHints = {
-    enumMemberValues = { enabled = true },
+    enumMemberValues = { enabled = false },
     functionLikeReturnTypes = { enabled = true },
     parameterNames = { enabled = 'literals' },
-    parameterTypes = { enabled = true },
+    parameterTypes = { enabled = false },
     propertyDeclarationTypes = { enabled = true },
     variableTypes = { enabled = false },
   },
