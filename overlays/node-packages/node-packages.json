@@ -2,7 +2,6 @@
   "@anthropic-ai/claude-code",
   "@astrojs/language-server",
   "@mdx-js/language-server",
-  "@openai/codex",
   "@tailwindcss/language-server",
   "@vtsls/language-server",
   "vscode-langservers-extracted"

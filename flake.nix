@@ -71,7 +71,8 @@
             }
             ./hosts/macaron
             ./presets/darwin.nix
-            ./presets/work.nix
+            ./modules/custom-ca-cert
+            ./presets/terminal.nix
             ./modules/spotify
           ];
 
@@ -95,7 +96,6 @@
             ./presets/wsl.nix
             ./modules/docker
             ./modules/video
-            ./modules/aider
           ];
           specialArgs = commonSpecialArgs;
         };
