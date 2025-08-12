@@ -96,6 +96,7 @@
             ./presets/wsl.nix
             ./modules/docker
             ./modules/video
+            ./modules/tailscale
           ];
           specialArgs = commonSpecialArgs;
         };
