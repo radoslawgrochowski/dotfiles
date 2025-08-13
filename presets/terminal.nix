@@ -20,5 +20,6 @@
     ranger
     tldr
     ripgrep
+    pkgs.unstable.opencode
   ];
 }
