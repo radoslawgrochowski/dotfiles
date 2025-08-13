@@ -19,5 +19,6 @@
     nix-search-cli
     ranger
     tldr
+    ripgrep
   ];
 }
