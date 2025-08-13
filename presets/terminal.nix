@@ -5,6 +5,7 @@
     ../modules/git
     ../modules/kitty
     ../modules/nvim
+    ../modules/opencode
     ../modules/zk
   ];
 
@@ -20,6 +21,5 @@
     ranger
     tldr
     ripgrep
-    pkgs.unstable.opencode
   ];
 }
