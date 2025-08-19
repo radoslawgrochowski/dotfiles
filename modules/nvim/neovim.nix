@@ -59,7 +59,8 @@ with lib; let
     nvim-dap
     nvim-dap-ui
 
-    codecompanion-nvim
+    pkgs.unstable.vimPlugins.snacks-nvim
+    pkgs.unstable.vimPlugins.opencode-nvim
   ];
 
   extraPackages = with pkgs; [
