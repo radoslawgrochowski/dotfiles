@@ -225,6 +225,5 @@ lspconfig.elixirls.setup {
   cmd = { vim.g.elixir_ls_path },
   on_attach = lspformat.on_attach,
 }
--- lspconfig.harper_ls.setup {}
 
 require('fidget').setup {}
