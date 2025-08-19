@@ -87,11 +87,16 @@ with lib; let
     elixir
     elixir-ls
 
+    pkgs.unstable.rust-analyzer
+
     ripgrep
     fd
     vscode-js-debug
 
     imagemagick
+
+    # needed for opencode
+    lsof
   ];
 
   luaPaths = /* lua */''
