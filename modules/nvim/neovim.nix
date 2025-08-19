@@ -67,10 +67,11 @@ with lib; let
   extraPackages = with pkgs; [
     efm-langserver
     localNodePackages."@vtsls/language-server"
-    localNodePackages.vscode-langservers-extracted
     localNodePackages."@mdx-js/language-server"
     localNodePackages."@tailwindcss/language-server"
     localNodePackages."@astrojs/language-server"
+    localNodePackages."eslint_d"
+
     harper
     lua-language-server
     nil
