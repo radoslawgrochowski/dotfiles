@@ -625,6 +625,15 @@ let
         sha512 = "/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==";
       };
     };
+    "core-js-3.45.1" = {
+      name = "core-js";
+      packageName = "core-js";
+      version = "3.45.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/core-js/-/core-js-3.45.1.tgz";
+        sha512 = "L4NPsJlCfZsPeXukyzHFlg/i7IIVwHSItR0wg0FLNqYClJ4MQYTYLbC7EkjKYRLZF2iof2MUgN0EGy7MdQFChg==";
+      };
+    };
     "cross-spawn-7.0.6" = {
       name = "cross-spawn";
       packageName = "cross-spawn";
@@ -2011,6 +2020,15 @@ let
         sha512 = "NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==";
       };
     };
+    "regenerator-runtime-0.13.11" = {
+      name = "regenerator-runtime";
+      packageName = "regenerator-runtime";
+      version = "0.13.11";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz";
+        sha512 = "kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==";
+      };
+    };
     "remark-frontmatter-5.0.0" = {
       name = "remark-frontmatter";
       packageName = "remark-frontmatter";
@@ -2234,6 +2252,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/typesafe-path/-/typesafe-path-0.2.2.tgz";
         sha512 = "OJabfkAg1WLZSqJAJ0Z6Sdt3utnbzr/jh+NAHoyWHJe8CMSy79Gm085094M9nvTPy22KzTVn5Zq5mbapCI/hPA==";
+      };
+    };
+    "typescript-4.9.5" = {
+      name = "typescript";
+      packageName = "typescript";
+      version = "4.9.5";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz";
+        sha512 = "1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==";
       };
     };
     "typescript-5.8.3" = {
@@ -2470,6 +2497,15 @@ let
         sha512 = "0vSpg6Xd9hfV+eZAaYN63xVVMOTmJ4GgHxXnkLCh+9RsQBkWKIghzLhW2B9ebfG+LQQg8uLtsQ2aUKjTgE+QOg==";
       };
     };
+    "vscode-json-languageservice-5.6.1" = {
+      name = "vscode-json-languageservice";
+      packageName = "vscode-json-languageservice";
+      version = "5.6.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/vscode-json-languageservice/-/vscode-json-languageservice-5.6.1.tgz";
+        sha512 = "IQIURBF2VMKBdWcMunbHSI3G2WmJ9H7613E1hRxIXX7YsAPSdBxnEiIUrTnsSW/3fk+QW1kfsvSigqgAFYIYtg==";
+      };
+    };
     "vscode-jsonrpc-6.0.0" = {
       name = "vscode-jsonrpc";
       packageName = "vscode-jsonrpc";
@@ -2495,6 +2531,24 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/vscode-jsonrpc/-/vscode-jsonrpc-8.2.1.tgz";
         sha512 = "kdjOSJ2lLIn7r1rtrMbbNCHjyMPfRnowdKjBQ+mGq6NAW5QY2bEZC/khaC5OR8svbbjvLEaIXkOq45e2X9BIbQ==";
+      };
+    };
+    "vscode-jsonrpc-9.0.0-next.9" = {
+      name = "vscode-jsonrpc";
+      packageName = "vscode-jsonrpc";
+      version = "9.0.0-next.9";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/vscode-jsonrpc/-/vscode-jsonrpc-9.0.0-next.9.tgz";
+        sha512 = "IM/RHL7ZklEUh1N2Rh4OjRL6D9MyIXq3v+zIkPLXq74hM1eW7WRLP0/cjzNu/baRFC00sFxJm95RBKsT8dXzRQ==";
+      };
+    };
+    "vscode-languageserver-10.0.0-next.14" = {
+      name = "vscode-languageserver";
+      packageName = "vscode-languageserver";
+      version = "10.0.0-next.14";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/vscode-languageserver/-/vscode-languageserver-10.0.0-next.14.tgz";
+        sha512 = "1TqBDfRLlAIPs6MR5ISI8z7sWlvGL3oHGm9GAHLNOmBZ2+9pmw0yR9vB44/SYuU4bSizxU24tXDFW+rw9jek4A==";
       };
     };
     "vscode-languageserver-7.0.0" = {
@@ -2533,6 +2587,15 @@ let
         sha512 = "mb1bvRJN8SVznADSGWM9u/b07H7Ecg0I3OgXDuLdn307rl/J3A9YD6/eYOssqhecL27hK1IPZAsaqh00i/Jljg==";
       };
     };
+    "vscode-languageserver-protocol-3.17.6-next.14" = {
+      name = "vscode-languageserver-protocol";
+      packageName = "vscode-languageserver-protocol";
+      version = "3.17.6-next.14";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/vscode-languageserver-protocol/-/vscode-languageserver-protocol-3.17.6-next.14.tgz";
+        sha512 = "0VD83wxN5kI9vgeaIDQnAxgrbZfKiFNIxdFY5LKe3SZdZd+LAJLMrklSrwfefS7hEzaHw6Z++VFdVJJU+gh1Zg==";
+      };
+    };
     "vscode-languageserver-textdocument-1.0.12" = {
       name = "vscode-languageserver-textdocument";
       packageName = "vscode-languageserver-textdocument";
@@ -2558,6 +2621,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/vscode-languageserver-types/-/vscode-languageserver-types-3.17.5.tgz";
         sha512 = "Ld1VelNuX9pdF39h2Hgaeb5hEZM2Z3jUrrMgWQAu82jMtZp7p3vJT3BzToKtZI7NgQssZje5o0zryOrhQvzQAg==";
+      };
+    };
+    "vscode-languageserver-types-3.17.6-next.6" = {
+      name = "vscode-languageserver-types";
+      packageName = "vscode-languageserver-types";
+      version = "3.17.6-next.6";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/vscode-languageserver-types/-/vscode-languageserver-types-3.17.6-next.6.tgz";
+        sha512 = "aiJY5/yW+xzw7KPNlwi3gQtddq/3EIn5z8X8nCgJfaiAij2R1APKePngv+MUdLdYJBVTLu+Qa0ODsT+pHgYguQ==";
       };
     };
     "vscode-markdown-languageservice-0.5.0-alpha.11" = {
@@ -2665,10 +2737,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.84";
+    version = "1.0.86";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.84.tgz";
-      sha512 = "+Qu+z1jTdZPu0UL4dalntkofDGL0BgWqs6XmRlq+RuxurHJy58zKae4PL8naevrkbgazauIPYDDGmHF3u+B0uQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.86.tgz";
+      sha512 = "js1h6JUnFJ1dHvFPBiCxwFChaWjh28XOFamrwebmhOIUBVhQZwMfDJYsNfRyv0qEwpxKxYedvK4nv4WqMCwu9Q==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -3122,6 +3194,66 @@ in
     meta = {
       description = "Speed up eslint to accelerate your development workflow";
       homepage = "https://github.com/mantoni/eslint_d.js";
+      license = "MIT";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
+  vscode-langservers-extracted = nodeEnv.buildNodePackage {
+    name = "vscode-langservers-extracted";
+    packageName = "vscode-langservers-extracted";
+    version = "4.10.0";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/vscode-langservers-extracted/-/vscode-langservers-extracted-4.10.0.tgz";
+      sha512 = "EFf9uQI4dAKbzMQFjDvVm1xJq1DXAQvBEuEfPGrK/xzfsL5xWTfIuRr90NgfmqwO+IEt6vLZm9EOj6R66xIifg==";
+    };
+    dependencies = [
+      sources."@vscode/l10n-0.0.18"
+      sources."boolbase-1.0.0"
+      sources."core-js-3.45.1"
+      sources."css-select-5.2.2"
+      sources."css-what-6.2.2"
+      sources."dom-serializer-2.0.0"
+      sources."domelementtype-2.3.0"
+      sources."domhandler-5.0.3"
+      sources."domutils-3.2.2"
+      sources."entities-4.5.0"
+      sources."he-1.2.0"
+      sources."jsonc-parser-3.3.1"
+      sources."node-html-parser-6.1.13"
+      sources."nth-check-2.1.1"
+      sources."picomatch-2.3.1"
+      sources."regenerator-runtime-0.13.11"
+      sources."request-light-0.7.0"
+      sources."semver-7.7.2"
+      sources."typescript-4.9.5"
+      sources."vscode-css-languageservice-6.3.7"
+      sources."vscode-html-languageservice-5.5.1"
+      sources."vscode-json-languageservice-5.6.1"
+      sources."vscode-jsonrpc-9.0.0-next.9"
+      sources."vscode-languageserver-10.0.0-next.14"
+      (sources."vscode-languageserver-protocol-3.17.6-next.14" // {
+        dependencies = [
+          sources."vscode-languageserver-types-3.17.6-next.6"
+        ];
+      })
+      sources."vscode-languageserver-textdocument-1.0.12"
+      sources."vscode-languageserver-types-3.17.5"
+      (sources."vscode-markdown-languageservice-0.5.0-alpha.11" // {
+        dependencies = [
+          sources."@vscode/l10n-0.0.10"
+          sources."vscode-jsonrpc-8.2.0"
+          sources."vscode-languageserver-protocol-3.17.5"
+        ];
+      })
+      sources."vscode-nls-5.2.0"
+      sources."vscode-uri-3.1.0"
+    ];
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "HTML/CSS/JSON/ESLint language servers extracted from [vscode](https://github.com/Microsoft/vscode).";
+      homepage = "https://github.com/hrsh7th/vscode-langservers-extracted#readme";
       license = "MIT";
     };
     production = true;

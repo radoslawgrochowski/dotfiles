@@ -70,6 +70,7 @@ with lib; let
     localNodePackages."@tailwindcss/language-server"
     localNodePackages."@astrojs/language-server"
     localNodePackages."eslint_d"
+    localNodePackages."vscode-langservers-extracted"
 
     harper
     lua-language-server
