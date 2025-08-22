@@ -4,6 +4,5 @@
   "@mdx-js/language-server",
   "@tailwindcss/language-server",
   "@vtsls/language-server",
-  "eslint_d",
   "vscode-langservers-extracted"
 ]

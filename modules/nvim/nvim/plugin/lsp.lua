@@ -152,9 +152,18 @@ lspconfig.vtsls.setup {
   end,
 }
 
+lspconfig.eslint.setup {
+  filetypes = jsFiletypes,
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      buffer = bufnr,
+      command = 'EslintFixAll',
+    })
+  end,
+}
+
 local prettier = require 'efmls-configs.formatters.prettier'
 local stylua = require 'efmls-configs.formatters.stylua'
-local eslint_d = require 'efmls-configs.formatters.eslint_d'
 local credo = {
   lintCommand = 'mix credo suggest --format=flycheck --read-from-stdin ${INPUT}',
   lintIgnoreExitCode = true,
@@ -164,22 +173,12 @@ local credo = {
 }
 local efmlanguages = {
   lua = { stylua },
-
   css = { prettier },
   html = { prettier },
   json = { prettier },
   markdown = { prettier },
   yaml = { prettier },
-
   elixir = { credo },
-
-  astro = { eslint_d },
-  javascript = { eslint_d },
-  javascriptreact = { eslint_d },
-  ['javascript.jsx'] = { eslint_d },
-  typescript = { eslint_d },
-  typescriptreact = { eslint_d },
-  ['typescript.tsx'] = { eslint_d },
 }
 
 lspconfig.efm.setup {
@@ -228,5 +227,4 @@ lspconfig.elixirls.setup {
 lspconfig.rust_analyzer.setup {
   on_attach = lspformat.on_attach,
 }
-
 require('fidget').setup {}

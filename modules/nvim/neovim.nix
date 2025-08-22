@@ -69,7 +69,6 @@ with lib; let
     localNodePackages."@mdx-js/language-server"
     localNodePackages."@tailwindcss/language-server"
     localNodePackages."@astrojs/language-server"
-    localNodePackages."eslint_d"
     localNodePackages."vscode-langservers-extracted"
 
     harper
