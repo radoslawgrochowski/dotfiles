@@ -16,5 +16,5 @@ recents = "--sort created- --created-after 'last two weeks'"
 
 # COMMAND ALIASES
 [alias]
-new = 'zk new --title "$argv"'
-edit = 'zk edit --interactive "$argv"'
+new = 'zk new --title $argv'
+edit = 'zk edit --interactive $argv'
