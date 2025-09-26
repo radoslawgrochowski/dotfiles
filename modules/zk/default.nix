@@ -8,4 +8,7 @@
   home-manager.users.${username} = {
     home.file."./.config/zk/config.toml".source = ./config.toml;
   };
+  environment.shellAliases = {
+    todo = "${pkgs.zk}/bin/zk new todo --no-input";
+  };
 }
