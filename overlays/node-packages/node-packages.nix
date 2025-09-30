@@ -4,13 +4,13 @@
 
 let
   sources = {
-    "@astrojs/compiler-2.12.2" = {
+    "@astrojs/compiler-2.13.0" = {
       name = "_at_astrojs_slash_compiler";
       packageName = "@astrojs/compiler";
-      version = "2.12.2";
+      version = "2.13.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@astrojs/compiler/-/compiler-2.12.2.tgz";
-        sha512 = "w2zfvhjNCkNMmMMOn5b0J8+OmUaBL1o40ipMvqcG6NRpdC+lKxmTi48DT8Xw0SzJ3AfmeFLB45zXZXtmbsjcgw==";
+        url = "https://registry.npmjs.org/@astrojs/compiler/-/compiler-2.13.0.tgz";
+        sha512 = "mqVORhUJViA28fwHYaWmsXSzLO9osbdZ5ImUfxBarqsYdMlPbqAqGJCxsNzvppp1BEzc1mJNjOVvQqeDN8Vspw==";
       };
     };
     "@astrojs/yaml2ts-0.2.2" = {
@@ -94,13 +94,13 @@ let
         sha512 = "cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==";
       };
     };
-    "@mdx-js/language-service-0.7.2" = {
+    "@mdx-js/language-service-0.7.3" = {
       name = "_at_mdx-js_slash_language-service";
       packageName = "@mdx-js/language-service";
-      version = "0.7.2";
+      version = "0.7.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@mdx-js/language-service/-/language-service-0.7.2.tgz";
-        sha512 = "r/YDweX++qAOYlJUq16M1RpKePOiu8B00qI74qinBDO0zPY3Ve+Rj5JUCNYNA/h6VbkIR3HDzUYXg0XK8fCQXQ==";
+        url = "https://registry.npmjs.org/@mdx-js/language-service/-/language-service-0.7.3.tgz";
+        sha512 = "Kspcrl7Z8iFQ9KlA5/NAbMEXPH1ssSzyHsPxslFhDU6Tw8E2SBBSj1Z9Qyj73pvfdwirT7YKWZdeY/QfIWbCiw==";
       };
     };
     "@nodelib/fs.scandir-2.1.5" = {
@@ -436,13 +436,13 @@ let
         sha512 = "u/O3vwbptzhMs3L1fQE82ZSLHQQfto5gyZzwteVIEyeaY5Fc7R4dapF/BvRoSYFeqfBk4m0V1Vafq5Pjv25wvA==";
       };
     };
-    "debug-4.4.1" = {
+    "debug-4.4.3" = {
       name = "debug";
       packageName = "debug";
-      version = "4.4.1";
+      version = "4.4.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/debug/-/debug-4.4.1.tgz";
-        sha512 = "KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==";
+        url = "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz";
+        sha512 = "RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==";
       };
     };
     "decode-named-character-reference-1.2.0" = {
@@ -598,13 +598,13 @@ let
         sha512 = "7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==";
       };
     };
-    "fast-uri-3.0.6" = {
+    "fast-uri-3.1.0" = {
       name = "fast-uri";
       packageName = "fast-uri";
-      version = "3.0.6";
+      version = "3.1.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/fast-uri/-/fast-uri-3.0.6.tgz";
-        sha512 = "Atfo14OibSv5wAp4VWNsFYE1AchQRTv9cBGWET4pZWHzYshFSS9NQI6I57rdKn9croWVMbYFbLhJ+yJvmZIIHw==";
+        url = "https://registry.npmjs.org/fast-uri/-/fast-uri-3.1.0.tgz";
+        sha512 = "iPeeDKJSWf4IEOasVVrknXpaBV0IApz/gp7S2bb7Z4Lljbl2MGJRqInZiUrQwV16cpzw/D3S5j5Julj/gT52AA==";
       };
     };
     "fastq-1.19.1" = {
@@ -1435,13 +1435,13 @@ let
         sha512 = "1quofZ2RQ9EWdeN34S79+KExV1764+wCUGop5CPL1WGdD0ocPpu91lzPGbwWMECpEpd42kJGQwzRfyov9j4yNg==";
       };
     };
-    "remark-mdx-3.1.0" = {
+    "remark-mdx-3.1.1" = {
       name = "remark-mdx";
       packageName = "remark-mdx";
-      version = "3.1.0";
+      version = "3.1.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/remark-mdx/-/remark-mdx-3.1.0.tgz";
-        sha512 = "Ngl/H3YXyBV9RcRNdlYsZujAmhsxwzxpDzpDEhFBVAGthS4GDgnctpDjgFl/ULx5UEDzqtW1cyBSNKqYYrqLBA==";
+        url = "https://registry.npmjs.org/remark-mdx/-/remark-mdx-3.1.1.tgz";
+        sha512 = "Pjj2IYlUY3+D8x00UJsIOg5BEvfMyeI+2uLPn9VO9Wg4MEtN/VTIq2NEJQfde9PnX15KgtHyl9S0BcTnWrIuWg==";
       };
     };
     "remark-parse-11.0.0" = {
@@ -1795,22 +1795,22 @@ let
         sha512 = "k7gvv7sk3wa+nGll3MaSKyjwQsJjIGCHFjVkl3wjaSP2nouKyn9aokGmqjrl39mi88Oy49giog2GkZH526wjig==";
       };
     };
-    "vscode-css-languageservice-6.3.7" = {
+    "vscode-css-languageservice-6.3.8" = {
       name = "vscode-css-languageservice";
       packageName = "vscode-css-languageservice";
-      version = "6.3.7";
+      version = "6.3.8";
       src = fetchurl {
-        url = "https://registry.npmjs.org/vscode-css-languageservice/-/vscode-css-languageservice-6.3.7.tgz";
-        sha512 = "5TmXHKllPzfkPhW4UE9sODV3E0bIOJPOk+EERKllf2SmAczjfTmYeq5txco+N3jpF8KIZ6loj/JptpHBQuVQRA==";
+        url = "https://registry.npmjs.org/vscode-css-languageservice/-/vscode-css-languageservice-6.3.8.tgz";
+        sha512 = "dBk/9ullEjIMbfSYAohGpDOisOVU1x2MQHOeU12ohGJQI7+r0PCimBwaa/pWpxl/vH4f7ibrBfxIZY3anGmHKQ==";
       };
     };
-    "vscode-html-languageservice-5.5.1" = {
+    "vscode-html-languageservice-5.5.2" = {
       name = "vscode-html-languageservice";
       packageName = "vscode-html-languageservice";
-      version = "5.5.1";
+      version = "5.5.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/vscode-html-languageservice/-/vscode-html-languageservice-5.5.1.tgz";
-        sha512 = "/ZdEtsZ3OiFSyL00kmmu7crFV9KwWR+MgpzjsxO60DQH7sIfHZM892C/E4iDd11EKocr+NYuvOA4Y7uc3QzLEA==";
+        url = "https://registry.npmjs.org/vscode-html-languageservice/-/vscode-html-languageservice-5.5.2.tgz";
+        sha512 = "QpaUhCjvb7U/qThOzo4V6grwsRE62Jk/vf8BRJZoABlMw3oplLB5uovrvcrLO9vYhkeMiSjyqLnCxbfHzzZqmw==";
       };
     };
     "vscode-json-languageservice-4.1.8" = {
@@ -1822,13 +1822,13 @@ let
         sha512 = "0vSpg6Xd9hfV+eZAaYN63xVVMOTmJ4GgHxXnkLCh+9RsQBkWKIghzLhW2B9ebfG+LQQg8uLtsQ2aUKjTgE+QOg==";
       };
     };
-    "vscode-json-languageservice-5.6.1" = {
+    "vscode-json-languageservice-5.6.2" = {
       name = "vscode-json-languageservice";
       packageName = "vscode-json-languageservice";
-      version = "5.6.1";
+      version = "5.6.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/vscode-json-languageservice/-/vscode-json-languageservice-5.6.1.tgz";
-        sha512 = "IQIURBF2VMKBdWcMunbHSI3G2WmJ9H7613E1hRxIXX7YsAPSdBxnEiIUrTnsSW/3fk+QW1kfsvSigqgAFYIYtg==";
+        url = "https://registry.npmjs.org/vscode-json-languageservice/-/vscode-json-languageservice-5.6.2.tgz";
+        sha512 = "miojUH15R/yKxgWkAw1zofv2LDn3Hv3nqIBK+11nGgvdieVClf6ZWOqybPeROruAAMOtX9R6hPptuWYzj3q9NA==";
       };
     };
     "vscode-jsonrpc-6.0.0" = {
@@ -2032,24 +2032,6 @@ let
   };
 in
 {
-  "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
-    name = "_at_anthropic-ai_slash_claude-code";
-    packageName = "@anthropic-ai/claude-code";
-    version = "1.0.88";
-    src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.88.tgz";
-      sha512 = "Np6H4EjkbmNolUpx98DvqLXV/iJrw2y7dz2rDJ7av9ajMz6HZfB8bdJV5D75+jO+Gk1pvA54HCIm0c65lDrzcw==";
-    };
-    buildInputs = globalBuildInputs;
-    meta = {
-      description = "Use Claude, Anthropic's AI assistant, right from your terminal. Claude can understand your codebase, edit files, run terminal commands, and handle entire workflows for you.";
-      homepage = "https://github.com/anthropics/claude-code";
-      license = "SEE LICENSE IN README.md";
-    };
-    production = true;
-    bypassCache = true;
-    reconstructLock = true;
-  };
   "@astrojs/language-server" = nodeEnv.buildNodePackage {
     name = "_at_astrojs_slash_language-server";
     packageName = "@astrojs/language-server";
@@ -2059,7 +2041,7 @@ in
       sha512 = "JivzASqTPR2bao9BWsSc/woPHH7OGSGc9aMxXL4U6egVTqBycB3ZHdBJPuOCVtcGLrzdWTosAqVPz1BVoxE0+A==";
     };
     dependencies = [
-      sources."@astrojs/compiler-2.12.2"
+      sources."@astrojs/compiler-2.13.0"
       sources."@astrojs/yaml2ts-0.2.2"
       sources."@emmetio/abbreviation-2.3.3"
       sources."@emmetio/css-abbreviation-2.1.8"
@@ -2074,18 +2056,34 @@ in
       sources."@nodelib/fs.walk-1.2.8"
       sources."@volar/kit-2.4.23"
       sources."@volar/language-core-2.4.23"
-      sources."@volar/language-server-2.4.23"
-      sources."@volar/language-service-2.4.23"
+      (sources."@volar/language-server-2.4.23" // {
+        dependencies = [
+          sources."request-light-0.7.0"
+          sources."vscode-jsonrpc-8.2.0"
+          sources."vscode-languageserver-9.0.1"
+          sources."vscode-languageserver-protocol-3.17.5"
+        ];
+      })
+      (sources."@volar/language-service-2.4.23" // {
+        dependencies = [
+          sources."vscode-jsonrpc-8.2.0"
+          sources."vscode-languageserver-protocol-3.17.5"
+        ];
+      })
       sources."@volar/source-map-2.4.23"
       sources."@volar/typescript-2.4.23"
-      sources."@vscode/emmet-helper-2.11.0"
+      (sources."@vscode/emmet-helper-2.11.0" // {
+        dependencies = [
+          sources."jsonc-parser-2.3.1"
+        ];
+      })
       sources."@vscode/l10n-0.0.18"
       sources."ajv-8.17.1"
       sources."braces-3.0.3"
       sources."emmet-2.4.11"
       sources."fast-deep-equal-3.1.3"
       sources."fast-glob-3.3.3"
-      sources."fast-uri-3.0.6"
+      sources."fast-uri-3.1.0"
       sources."fastq-1.19.1"
       sources."fill-range-7.1.1"
       sources."glob-parent-5.1.2"
@@ -2093,7 +2091,7 @@ in
       sources."is-glob-4.0.3"
       sources."is-number-7.0.0"
       sources."json-schema-traverse-1.0.0"
-      sources."jsonc-parser-2.3.1"
+      sources."jsonc-parser-3.3.1"
       sources."lodash-4.17.21"
       sources."merge2-1.4.1"
       sources."micromatch-4.0.8"
@@ -2103,7 +2101,7 @@ in
       sources."prettier-3.6.2"
       sources."prettier-plugin-astro-0.14.1"
       sources."queue-microtask-1.2.3"
-      sources."request-light-0.7.0"
+      sources."request-light-0.5.8"
       sources."require-from-string-2.0.2"
       sources."reusify-1.1.0"
       sources."run-parallel-1.2.0"
@@ -2122,16 +2120,16 @@ in
       sources."volar-service-typescript-0.0.62"
       sources."volar-service-typescript-twoslash-queries-0.0.62"
       sources."volar-service-yaml-0.0.62"
-      sources."vscode-css-languageservice-6.3.7"
-      sources."vscode-html-languageservice-5.5.1"
-      (sources."vscode-json-languageservice-4.1.8" // {
+      sources."vscode-css-languageservice-6.3.8"
+      sources."vscode-html-languageservice-5.5.2"
+      sources."vscode-json-languageservice-4.1.8"
+      sources."vscode-jsonrpc-6.0.0"
+      sources."vscode-languageserver-7.0.0"
+      (sources."vscode-languageserver-protocol-3.16.0" // {
         dependencies = [
-          sources."jsonc-parser-3.3.1"
+          sources."vscode-languageserver-types-3.16.0"
         ];
       })
-      sources."vscode-jsonrpc-8.2.0"
-      sources."vscode-languageserver-9.0.1"
-      sources."vscode-languageserver-protocol-3.17.5"
       sources."vscode-languageserver-textdocument-1.0.12"
       sources."vscode-languageserver-types-3.17.5"
       sources."vscode-nls-5.2.0"
@@ -2139,14 +2137,6 @@ in
       sources."yaml-2.8.1"
       (sources."yaml-language-server-1.15.0" // {
         dependencies = [
-          sources."request-light-0.5.8"
-          sources."vscode-jsonrpc-6.0.0"
-          sources."vscode-languageserver-7.0.0"
-          (sources."vscode-languageserver-protocol-3.16.0" // {
-            dependencies = [
-              sources."vscode-languageserver-types-3.16.0"
-            ];
-          })
           sources."yaml-2.2.2"
         ];
       })
@@ -2164,13 +2154,13 @@ in
   "@mdx-js/language-server" = nodeEnv.buildNodePackage {
     name = "_at_mdx-js_slash_language-server";
     packageName = "@mdx-js/language-server";
-    version = "0.6.2";
+    version = "0.6.3";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@mdx-js/language-server/-/language-server-0.6.2.tgz";
-      sha512 = "5zf5LKFF+XFqloXpF15vauzlCTxj8IEd1AlNqiZ3fsuqQ+6CcMO7elV9x/llkkATdRQqPmmw1HIC60vZ6wItUA==";
+      url = "https://registry.npmjs.org/@mdx-js/language-server/-/language-server-0.6.3.tgz";
+      sha512 = "0BvShJa2+EddSinI+mgzoOwtykqwI/HMk5ZlK1XQzxXh2Tfs9wr1tR6/x7Q1ROCKGBP9tZca752agfc94+x01w==";
     };
     dependencies = [
-      sources."@mdx-js/language-service-0.7.2"
+      sources."@mdx-js/language-service-0.7.3"
       sources."@types/debug-4.1.12"
       sources."@types/estree-1.0.8"
       sources."@types/estree-jsx-1.0.5"
@@ -2196,7 +2186,7 @@ in
       sources."character-reference-invalid-2.0.1"
       sources."css-select-5.2.2"
       sources."css-what-6.2.2"
-      sources."debug-4.4.1"
+      sources."debug-4.4.3"
       sources."decode-named-character-reference-1.2.0"
       sources."dequal-2.0.3"
       sources."devlop-1.1.0"
@@ -2289,7 +2279,7 @@ in
       sources."punycode.js-2.3.1"
       sources."remark-frontmatter-5.0.0"
       sources."remark-gfm-4.0.1"
-      sources."remark-mdx-3.1.0"
+      sources."remark-mdx-3.1.1"
       sources."remark-parse-11.0.0"
       sources."remark-stringify-11.0.0"
       sources."request-light-0.7.0"
@@ -2413,9 +2403,9 @@ in
       sources."request-light-0.7.0"
       sources."semver-7.7.2"
       sources."typescript-4.9.5"
-      sources."vscode-css-languageservice-6.3.7"
-      sources."vscode-html-languageservice-5.5.1"
-      sources."vscode-json-languageservice-5.6.1"
+      sources."vscode-css-languageservice-6.3.8"
+      sources."vscode-html-languageservice-5.5.2"
+      sources."vscode-json-languageservice-5.6.2"
       sources."vscode-jsonrpc-9.0.0-next.9"
       sources."vscode-languageserver-10.0.0-next.14"
       (sources."vscode-languageserver-protocol-3.17.6-next.14" // {

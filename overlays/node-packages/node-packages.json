@@ -1,5 +1,4 @@
 [
-  "@anthropic-ai/claude-code",
   "@astrojs/language-server",
   "@mdx-js/language-server",
   "@tailwindcss/language-server",
