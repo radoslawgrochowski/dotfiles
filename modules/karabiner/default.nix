@@ -4,26 +4,32 @@ let
     type = "basic";
     from = {
       key_code = from;
-      modifiers = { optional = [ "any" ]; };
+      modifiers = {
+        optional = [ "any" ];
+      };
     };
-    to = [{ key_code = to; }];
-    conditions = [{
-      type = "frontmost_application_unless";
-      bundle_identifiers = [
-        "^com\\.apple\\.Terminal$"
-        "^net\\.kovidgoyal\\.kitty$"
-      ];
-      file_paths = [ "\\.kitty-wrapped$" ];
-    }];
+    to = [ { key_code = to; } ];
+    conditions = [
+      {
+        type = "frontmost_application_unless";
+        bundle_identifiers = [
+          "^com\\.apple\\.Terminal$"
+          "^net\\.kovidgoyal\\.kitty$"
+        ];
+        file_paths = [ "\\.kitty-wrapped$" ];
+      }
+    ];
   };
 
   disable = key: modifiers: {
     type = "basic";
     from = {
       key_code = key;
-      modifiers = { mandatory = modifiers; };
+      modifiers = {
+        mandatory = modifiers;
+      };
     };
-    to = [{ key_code = "vk_none"; }];
+    to = [ { key_code = "vk_none"; } ];
   };
 
 in
@@ -32,7 +38,7 @@ in
   home-manager.users.${username} = {
     home.packages = [ pkgs.karabiner-elements ];
 
-    # Karabiner Elements still need to be set up manually 
+    # Karabiner Elements still need to be set up manually
     # this just adds local presets
     home.file.karabiner-terminal = {
       target = ".config/karabiner/assets/complex_modifications/terminal.json";
@@ -57,7 +63,10 @@ in
           {
             description = "Disable Command + Shift + H (Slack Huddle)";
             manipulators = [
-              (disable "h" [ "left_command" "left_shift" ])
+              (disable "h" [
+                "left_command"
+                "left_shift"
+              ])
             ];
           }
         ];
@@ -71,7 +80,10 @@ in
           {
             description = "Disable Command + Shift + I (Email current page)";
             manipulators = [
-              (disable "i" [ "left_command" "left_shift" ])
+              (disable "i" [
+                "left_command"
+                "left_shift"
+              ])
             ];
           }
         ];

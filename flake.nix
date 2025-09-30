@@ -25,18 +25,24 @@
   };
 
   outputs =
-    inputs@{ self
-    , nix-darwin
-    , nixpkgs
-    , nixpkgs-unstable
-    , flake-utils
-    , ...
+    inputs@{
+      self,
+      nix-darwin,
+      nixpkgs,
+      nixpkgs-unstable,
+      flake-utils,
+      ...
     }:
     let
       inherit (self) outputs inputs;
       lib = nixpkgs.lib;
       commonModules = [
-        ({ overlays, ... }: { nixpkgs.overlays = overlays; })
+        (
+          { overlays, ... }:
+          {
+            nixpkgs.overlays = overlays;
+          }
+        )
       ];
       neovim-overlay = import ./modules/nvim/overlay.nix { inherit inputs; };
       overlays = (lib.attrValues outputs.overlays) ++ [
@@ -67,7 +73,10 @@
             {
               nixpkgs.hostPlatform = "aarch64-darwin";
               nix.settings.system = "aarch64-darwin";
-              nix.settings.extra-platforms = [ "aarch64-darwin" "x86_64-darwin" ];
+              nix.settings.extra-platforms = [
+                "aarch64-darwin"
+                "x86_64-darwin"
+              ];
             }
             ./hosts/macaron
             ./presets/darwin.nix
@@ -101,8 +110,9 @@
           specialArgs = commonSpecialArgs;
         };
       };
-    } // flake-utils.lib.eachDefaultSystem
-      (system:
+    }
+    // flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs { inherit system overlays; };
       in
@@ -119,11 +129,19 @@
             ln -fs ${pkgs.nvim-luarc-json} .luarc.json
           '';
         };
-        packages = { nvim-rg = pkgs.nvim-rg; };
-      });
+        packages = {
+          nvim-rg = pkgs.nvim-rg;
+        };
+
+        formatter = pkgs.nixfmt-rfc-style;
+      }
+    );
 
   nixConfig = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     extra-substituters = [
       "https://cache.nixos.org"
       "https://radoslawgrochowski-dotfiles.cachix.org"

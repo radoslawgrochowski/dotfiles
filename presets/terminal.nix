@@ -1,4 +1,5 @@
-{ username, pkgs, ... }: {
+{ username, pkgs, ... }:
+{
   imports = [
     ../modules/direnv
     ../modules/fish
@@ -13,7 +14,7 @@
     programs.home-manager.enable = true;
   };
 
-  users.users."${username}".packages = with pkgs;[
+  users.users."${username}".packages = with pkgs; [
     btop
     jc
     jq

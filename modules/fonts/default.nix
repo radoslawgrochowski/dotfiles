@@ -5,4 +5,3 @@
     nerd-fonts.symbols-only
   ];
 }
-

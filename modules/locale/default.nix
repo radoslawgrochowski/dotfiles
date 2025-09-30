@@ -4,7 +4,10 @@
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    supportedLocales = [ "pl_PL.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" ];
+    supportedLocales = [
+      "pl_PL.UTF-8/UTF-8"
+      "en_US.UTF-8/UTF-8"
+    ];
     extraLocaleSettings = {
       LC_ADDRESS = "pl_PL.UTF-8";
       LC_IDENTIFICATION = "pl_PL.UTF-8";

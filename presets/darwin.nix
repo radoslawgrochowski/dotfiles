@@ -1,5 +1,12 @@
 # Configuration common to all macOS systems
-{ pkgs, inputs, outputs, username, ... }: {
+{
+  pkgs,
+  inputs,
+  outputs,
+  username,
+  ...
+}:
+{
   imports = [
     ./common.nix
     inputs.home-manager.darwinModules.home-manager
@@ -19,7 +26,10 @@
   programs.nix-index-database.comma.enable = true;
   programs.bash.enable = true;
   programs.zsh.enable = true;
-  environment.shells = with pkgs; [ bashInteractive zsh ];
+  environment.shells = with pkgs; [
+    bashInteractive
+    zsh
+  ];
   security.pam.services.sudo_local.touchIdAuth = true;
   system.primaryUser = username;
   system.configurationRevision = outputs.rev or outputs.dirtyRev or null;

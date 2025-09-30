@@ -1,4 +1,5 @@
-{ inputs }: final: prev:
+{ inputs }:
+final: prev:
 let
   packages = (final.callPackage ./neovim.nix { });
 in

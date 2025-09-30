@@ -1,67 +1,71 @@
 { pkgs, lib, ... }:
-with lib; let
+with lib;
+let
   mkNeovim = pkgs.callPackage ./lib/mkNeovim.nix { };
   mkLuarcJson = pkgs.callPackage ./lib/mkLuarcJson.nix { };
 
-  plugins = with pkgs.vimPlugins; with pkgs.localVimPlugins; [
-    nvim-nio
-    plenary-nvim
-    which-key-nvim
-    nvim-web-devicons
+  plugins =
+    with pkgs.vimPlugins;
+    with pkgs.localVimPlugins;
+    [
+      nvim-nio
+      plenary-nvim
+      which-key-nvim
+      nvim-web-devicons
 
-    mini-nvim
+      mini-nvim
 
-    nvim-treesitter-context
-    nvim-treesitter.withAllGrammars
-    nvim-ts-autotag
-    nvim-ts-context-commentstring
+      nvim-treesitter-context
+      nvim-treesitter.withAllGrammars
+      nvim-ts-autotag
+      nvim-ts-context-commentstring
 
-    vim-fugitive
-    vim-fubitive
-    vim-rhubarb
-    gitsigns-nvim
+      vim-fugitive
+      vim-fubitive
+      vim-rhubarb
+      gitsigns-nvim
 
-    efmls-configs-nvim
-    fidget-nvim
-    nvim-lspconfig
-    lsp-format-nvim
-    SchemaStore-nvim
-    nvim-vtsls
-    tsc-nvim
+      efmls-configs-nvim
+      fidget-nvim
+      nvim-lspconfig
+      lsp-format-nvim
+      SchemaStore-nvim
+      nvim-vtsls
+      tsc-nvim
 
-    oil-nvim
+      oil-nvim
 
-    telescope-nvim
-    telescope-fzf-native-nvim
-    telescope-ui-select-nvim
-    telescope-oil-nvim
-    dir-telescope-nvim
+      telescope-nvim
+      telescope-fzf-native-nvim
+      telescope-ui-select-nvim
+      telescope-oil-nvim
+      dir-telescope-nvim
 
-    tokyonight-nvim
-    telescope-nvim
-    render-markdown-nvim
-    nvim-colorizer-lua
-    image-nvim
+      tokyonight-nvim
+      telescope-nvim
+      render-markdown-nvim
+      nvim-colorizer-lua
+      image-nvim
 
-    nvim-cmp
-    cmp-buffer
-    cmp-cmdline
-    cmp-nvim-lsp
-    cmp-nvim-lsp-signature-help
-    cmp-path
-    cmp-rg
+      nvim-cmp
+      cmp-buffer
+      cmp-cmdline
+      cmp-nvim-lsp
+      cmp-nvim-lsp-signature-help
+      cmp-path
+      cmp-rg
 
-    FixCursorHold-nvim
-    neotest
-    neotest-jest
+      FixCursorHold-nvim
+      neotest
+      neotest-jest
 
-    nvim-nio
-    nvim-dap
-    nvim-dap-ui
+      nvim-nio
+      nvim-dap
+      nvim-dap-ui
 
-    pkgs.unstable.vimPlugins.snacks-nvim
-    pkgs.unstable.vimPlugins.opencode-nvim
-  ];
+      pkgs.unstable.vimPlugins.snacks-nvim
+      pkgs.unstable.vimPlugins.opencode-nvim
+    ];
 
   extraPackages = with pkgs; [
     efm-langserver
@@ -74,7 +78,7 @@ with lib; let
     harper
     lua-language-server
     nil
-    nixpkgs-fmt
+    nixfmt
     nodePackages.bash-language-server
     nodePackages.prettier
     nodePackages.typescript
@@ -99,10 +103,11 @@ with lib; let
     lsof
   ];
 
-  luaPaths = /* lua */''
-    vim.g.js_debug_path = '${"${pkgs.vscode-js-debug}"}/bin/js-debug';
-    vim.g.elixir_ls_path = '${"${pkgs.elixir-ls}"}/bin/elixir-ls';
-  '';
+  luaPaths = # lua
+    ''
+      vim.g.js_debug_path = '${"${pkgs.vscode-js-debug}"}/bin/js-debug';
+      vim.g.elixir_ls_path = '${"${pkgs.elixir-ls}"}/bin/elixir-ls';
+    '';
 in
 {
   nvim-rg = mkNeovim {

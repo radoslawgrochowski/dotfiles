@@ -21,8 +21,14 @@ in
     programs.fish = {
       enable = true;
       plugins = [
-        { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
-        { name = "done"; src = pkgs.fishPlugins.done.src; }
+        {
+          name = "fzf-fish";
+          src = pkgs.fishPlugins.fzf-fish.src;
+        }
+        {
+          name = "done";
+          src = pkgs.fishPlugins.done.src;
+        }
       ];
       interactiveShellInit = ''
         function fish_user_key_bindings
@@ -31,7 +37,7 @@ in
         set fish_greeting ""
 
         ${tokyoNightFishTheme}
-        
+
         # Load local env vars if file exists
         if test -f "$HOME/.local/env.fish"
           source "$HOME/.local/env.fish"
@@ -62,7 +68,7 @@ in
           pink = "#bb9af7";
         };
 
-        battery.display = [{ threshold = 80; }];
+        battery.display = [ { threshold = 80; } ];
         git_metrics.disabled = false;
 
         # https://github.com/starship/starship/issues/6188

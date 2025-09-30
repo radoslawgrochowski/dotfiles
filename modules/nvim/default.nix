@@ -16,5 +16,3 @@ in
     vi = nvim-rg;
   };
 }
-
-

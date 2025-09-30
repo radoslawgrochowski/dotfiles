@@ -1,4 +1,4 @@
-# replace CA certificate files with custom ones, 
+# replace CA certificate files with custom ones,
 # e.g. because of MITM security like zscaler
 # ca_cert file needs to be provided manualy
 {
