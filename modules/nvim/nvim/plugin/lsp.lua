@@ -3,6 +3,12 @@ local lspconfig = require 'lspconfig'
 local lspformat = require 'lsp-format'
 lspformat.setup {}
 
+-- suppress any inlayHint errors
+local function safe_inlayhint_handler(err, result, ctx, config)
+  if err then return nil end
+  return vim.lsp.handlers._default['textDocument/inlayHint'](err, result, ctx, config)
+end
+
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
 vim.opt.signcolumn = 'yes'
@@ -103,6 +109,10 @@ lspconfig.vtsls.setup {
     },
     typescript = vtslsSettings,
     javascript = vtslsSettings,
+  },
+
+  handlers = {
+    ['textDocument/inlayHint'] = safe_inlayhint_handler,
   },
 
   on_attach = function(client)
