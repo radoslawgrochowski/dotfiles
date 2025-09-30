@@ -31,23 +31,23 @@
         };
         neotest = pkgs.vimUtils.buildVimPlugin {
           name = "neotest";
-          version = "unstable-2025-07-16";
+          version = "unstable-2025-09-06";
           src = pkgs.fetchFromGitHub {
             owner = "nvim-neotest";
             repo = "neotest";
-            rev = "3c81345c28cd639fcc02843ed3653be462f47024";
-            sha256 = "1rqfxhy0c721hzz9azp1w403b8bccq6q24miynb42z4hc14qh8nm";
+            rev = "2cf3544fb55cdd428a9a1b7154aea9c9823426e8";
+            sha256 = "1zz376wb3vyw984zjszg8hda4rzskaq7q93ajwdy63ssx8sc9vy4";
           };
           doCheck = false;
         };
         neotest-jest = pkgs.vimUtils.buildVimPlugin {
           name = "neotest-jest";
-          version = "unstable-2025-06-30";
+          version = "unstable-2025-09-24";
           src = pkgs.fetchFromGitHub {
             owner = "nvim-neotest";
             repo = "neotest-jest";
-            rev = "797515e113ac8e19c6855046d7f746d9c0c39c15";
-            sha256 = "09xq5dn9rjd37ab8nf85d26qhb0k8np1j17y6nk8pb7dc3l15w4j";
+            rev = "2f657403aabab7d68eaa2cb9181dc4bb7fdd8a08";
+            sha256 = "0kvys4bcv1zwybc4qcym18qlz1s0pj8c545nzychwp7m839yzqps";
           };
           doCheck = false;
         };
@@ -59,17 +59,6 @@
             repo = "telescope-oil.nvim";
             rev = "5a86746e2803f67a98f9801ed4cf9c782d649a93";
             sha256 = "09xw4s724gx6zcjk00af1iyczw35xjgq2w6k2z9fj5farl8wszq8";
-          };
-          doCheck = false;
-        };
-        parrot-nvim = pkgs.vimUtils.buildVimPlugin {
-          name = "parrot-nvim";
-          version = "unstable-2025-07-21";
-          src = pkgs.fetchFromGitHub {
-            owner = "frankroeder";
-            repo = "parrot.nvim";
-            rev = "6ad76a1b170b3fa49851504ab17cb39075b93b03";
-            sha256 = "1x6knk6n576zyk2927hy2xisp96vmqg5fa1pbq4m0f2vc8g7qiw0";
           };
           doCheck = false;
         };
