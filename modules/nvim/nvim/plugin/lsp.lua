@@ -6,7 +6,10 @@ lspformat.setup {}
 -- suppress any inlayHint errors
 local function safe_inlayhint_handler(err, result, ctx, config)
   if err then return nil end
-  return vim.lsp.handlers._default['textDocument/inlayHint'](err, result, ctx, config)
+  if vim.lsp.handlers['textDocument/inlayHint'] then
+    return vim.lsp.handlers['textDocument/inlayHint'](err, result, ctx, config)
+  end
+  return nil
 end
 
 -- Reserve a space in the gutter
