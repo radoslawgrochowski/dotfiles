@@ -1,6 +1,6 @@
 { pkgs, username, ... }:
 {
-  users.users."${username}".packages = with pkgs; [
+  users.users."${username}".packages = [
     pkgs.unstable.opencode
   ];
 
