@@ -123,6 +123,7 @@
             node2nix
             update-nix-fetchgit
             fd
+            nixfmt-rfc-style
           ];
           shellHook = ''
             # symlink the .luarc.json generated in the overlay
