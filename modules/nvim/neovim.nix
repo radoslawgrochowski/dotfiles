@@ -78,7 +78,6 @@ let
     harper
     lua-language-server
     nil
-    nixfmt
     nodePackages.bash-language-server
     nodePackages.prettier
     nodePackages.typescript
@@ -117,7 +116,5 @@ in
     configDir = ./nvim;
   };
 
-  nvim-luarc-json = mkLuarcJson {
-    inherit plugins;
-  };
+  nvim-luarc-json = mkLuarcJson { inherit plugins; };
 }
