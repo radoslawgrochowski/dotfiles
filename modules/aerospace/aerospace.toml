@@ -1,5 +1,6 @@
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
 start-at-login = true 
+default-root-container-layout = "accordion"
 
 # See https://nikitabobko.github.io/AeroSpace/guide#exec-env-vars
 [exec]                   # Again, you don't need to copy all config sections to your config.
