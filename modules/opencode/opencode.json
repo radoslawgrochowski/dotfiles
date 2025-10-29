@@ -18,5 +18,36 @@
         "location": "{env:GOOGLE_CLOUD_LOCATION}"
       }
     }
+  },
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "command": [
+        "docker",
+        "container",
+        "run",
+        "-i",
+        "--rm",
+        "--init",
+        "--add-host=host.docker.internal:host-gateway",
+        "mcr.microsoft.com/playwright/mcp"
+      ],
+      "enabled": true
+    }
+  },
+  "permission": {
+    "webfetch": "allow",
+    "bash": {
+      "git status": "allow",
+      "git diff": "allow",
+      "cat *": "allow",
+      "cd *": "allow",
+      "head *": "allow",
+      "ls": "allow",
+      "pwd": "allow",
+      "rg *": "allow",
+      "tail *": "allow",
+      "wc *": "allow"
+    }
   }
 }
