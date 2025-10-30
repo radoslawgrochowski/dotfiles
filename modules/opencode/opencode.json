@@ -38,12 +38,14 @@
   "permission": {
     "webfetch": "allow",
     "bash": {
-      "git status": "allow",
-      "git diff": "allow",
       "cat *": "allow",
       "cd *": "allow",
+      "find *": "allow",
+      "git diff": "allow",
+      "git status": "allow",
+      "grep *": "allow",
       "head *": "allow",
-      "ls": "allow",
+      "ls *": "allow",
       "pwd": "allow",
       "rg *": "allow",
       "tail *": "allow",
