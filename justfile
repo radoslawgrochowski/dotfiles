@@ -9,8 +9,8 @@ update:
 fetchgit *args:
   fd .nix --exec update-nix-fetchgit -v {{args}}
 
-check: 
-  nix flake check --show-trace
+check *args: 
+  nix flake check --show-trace {{args}}
 
 update-node-packages:
   (cd ./overlays/node-packages/; node2nix -i node-packages.json)

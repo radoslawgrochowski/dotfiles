@@ -40,7 +40,6 @@ sudo nixos-rebuild switch --flake "$HOME/Projects/dotfiles#radoslawgrochowski-ws
 #### SSH Setup
 
 1. Generate SSH keys for your user account:
-
    - Follow [GitHub's guide on generating SSH keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 2. Copy keys to root (for system operations requiring root):

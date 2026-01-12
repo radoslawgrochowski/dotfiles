@@ -1,5 +1,4 @@
 local wk = require 'which-key'
-local lspconfig = require 'lspconfig'
 local lspformat = require 'lsp-format'
 lspformat.setup {}
 
@@ -16,14 +15,8 @@ end
 -- This will avoid an annoying layout shift in the screen
 vim.opt.signcolumn = 'yes'
 
--- Add cmp_nvim_lsp capabilities settings to lspconfig
--- This should be executed before you configure any language server
-local lspconfig_defaults = require('lspconfig').util.default_config
-lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-  'force',
-  lspconfig_defaults.capabilities,
-  require('cmp_nvim_lsp').default_capabilities()
-)
+local capabilities =
+  require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 vim.lsp.inlay_hint.enable(true)
 
@@ -59,7 +52,7 @@ wk.add {
   { '<leader>ml', '<cmd>LspLog<cr>', desc = 'Log' },
 }
 
-lspconfig.nil_ls.setup {
+vim.lsp.config('nil_ls', {
   settings = {
     ['nil'] = {
       formatting = {
@@ -68,12 +61,16 @@ lspconfig.nil_ls.setup {
     },
   },
 
+  capabilities = capabilities,
   on_attach = lspformat.on_attach,
-}
+})
+vim.lsp.enable 'nil_ls'
 
-lspconfig.lua_ls.setup {
+vim.lsp.config('lua_ls', {
+  capabilities = capabilities,
   on_attach = lspformat.on_attach,
-}
+})
+vim.lsp.enable 'lua_ls'
 
 local vtslsSettings = {
   updateImportsOnFileMove = { enabled = 'always' },
@@ -97,7 +94,7 @@ local jsFiletypes = {
   'typescript.tsx',
 }
 
-lspconfig.vtsls.setup {
+vim.lsp.config('vtsls', {
   filetypes = jsFiletypes,
   settings = {
     complete_function_calls = true,
@@ -118,6 +115,7 @@ lspconfig.vtsls.setup {
     ['textDocument/inlayHint'] = safe_inlayhint_handler,
   },
 
+  capabilities = capabilities,
   on_attach = function(client)
     client.commands['_typescript.moveToFileRefactoring'] = function(command)
       local action, uri, range = unpack(command.arguments)
@@ -163,17 +161,20 @@ lspconfig.vtsls.setup {
       end)
     end
   end,
-}
+})
+vim.lsp.enable 'vtsls'
 
-lspconfig.eslint.setup {
+vim.lsp.config('eslint', {
   filetypes = jsFiletypes,
+  capabilities = capabilities,
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd('BufWritePre', {
       buffer = bufnr,
       command = 'EslintFixAll',
     })
   end,
-}
+})
+vim.lsp.enable 'eslint'
 
 local prettier = require 'efmls-configs.formatters.prettier'
 local stylua = require 'efmls-configs.formatters.stylua'
@@ -193,8 +194,8 @@ local efmlanguages = {
   yaml = { prettier },
   elixir = { credo },
 }
-
-lspconfig.efm.setup {
+vim.lsp.config('efm', {
+  capabilities = capabilities,
   on_attach = lspformat.on_attach,
   init_options = {
     documentFormatting = true,
@@ -205,39 +206,64 @@ lspconfig.efm.setup {
     rootMarkers = { '.git/' },
     languages = efmlanguages,
   },
-}
+})
+vim.lsp.enable 'efm'
 
 local schemastore = require 'schemastore'
-lspconfig.jsonls.setup {
+vim.lsp.config('jsonls', {
+  capabilities = capabilities,
   settings = {
     json = {
       schemas = schemastore.json.schemas(),
       validate = { enable = true },
     },
   },
-}
-lspconfig.yamlls.setup {
+})
+vim.lsp.enable 'jsonls'
+
+vim.lsp.config('yamlls', {
+  capabilities = capabilities,
   settings = {
     yaml = {
-      schemaStore = {
-        enable = false,
-        url = '',
-      },
+      schemaStore = { enable = false, url = '' },
       schemas = schemastore.json.schemas(),
     },
   },
-}
-lspconfig.bashls.setup {}
-lspconfig.mdx_analyzer.setup {
+})
+vim.lsp.enable 'yamlls'
+
+vim.lsp.config('bashls', {
+  capabilities = capabilities,
+})
+vim.lsp.enable 'bashls'
+
+vim.lsp.config('mdx_analyzer', {
+  capabilities = capabilities,
   root_dir = require('lspconfig.util').root_pattern('.git', 'package.json'),
-}
-lspconfig.tailwindcss.setup {}
-lspconfig.astro.setup {}
-lspconfig.elixirls.setup {
+})
+vim.lsp.enable 'mdx_analyzer'
+
+vim.lsp.config('tailwindcss', {
+  capabilities = capabilities,
+})
+vim.lsp.enable 'tailwindcss'
+
+vim.lsp.config('astro', {
+  capabilities = capabilities,
+})
+vim.lsp.enable 'astro'
+
+vim.lsp.config('elixirls', {
   cmd = { vim.g.elixir_ls_path },
+  capabilities = capabilities,
   on_attach = lspformat.on_attach,
-}
-lspconfig.rust_analyzer.setup {
+})
+vim.lsp.enable 'elixirls'
+
+vim.lsp.config('rust_analyzer', {
+  capabilities = capabilities,
   on_attach = lspformat.on_attach,
-}
+})
+vim.lsp.enable 'rust_analyzer'
+
 require('fidget').setup {}

@@ -1,5 +1,4 @@
 local opencode = require 'opencode'
-local snacks = require 'snacks'
 
 local wk = require 'which-key'
 
@@ -18,4 +17,5 @@ wk.add {
   },
 }
 
-snacks.input.enable()
+---@type opencode.Opts
+vim.g.opencode_opts = {}

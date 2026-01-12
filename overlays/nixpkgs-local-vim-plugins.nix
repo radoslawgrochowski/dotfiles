@@ -3,18 +3,18 @@
   nixpkgsLocalVimPlugins = final: _prev: {
     localVimPlugins = (
       let
-        system = final.system;
-        pkgs = import inputs.nixpkgs { inherit system; };
+        system = final.stdenv.hostPlatform.system;
+        pkgs = import inputs.nixpkgs { localSystem = system; };
       in
       {
         nvim-cmp = pkgs.vimUtils.buildVimPlugin {
           name = "nvim-cmp";
-          version = "unstable-2025-04-13";
+          version = "unstable-2026-01-02";
           src = pkgs.fetchFromGitHub {
             owner = "hrsh7th";
             repo = "nvim-cmp";
-            rev = "b5311ab3ed9c846b585c0c15b7559be131ec4be9";
-            sha256 = "07674djcyac9wlj08y9p5gsmdpsm8zxjfgk3fwyvvx8j7qyzx74p";
+            rev = "85bbfad83f804f11688d1ab9486b459e699292d6";
+            sha256 = "0j5pasmlan2p1k4c2p5yx30a92jbjqag8fxbd1ll2l7p1i9a42w3";
           };
           doCheck = false;
         };
@@ -31,23 +31,23 @@
         };
         neotest = pkgs.vimUtils.buildVimPlugin {
           name = "neotest";
-          version = "unstable-2025-09-06";
+          version = "unstable-2025-11-08";
           src = pkgs.fetchFromGitHub {
             owner = "nvim-neotest";
             repo = "neotest";
-            rev = "2cf3544fb55cdd428a9a1b7154aea9c9823426e8";
-            sha256 = "1zz376wb3vyw984zjszg8hda4rzskaq7q93ajwdy63ssx8sc9vy4";
+            rev = "deadfb1af5ce458742671ad3a013acb9a6b41178";
+            sha256 = "0qiff2cg7dz96mvfihgb9rgmg0zsjf95nvxnfnzw0pnp65ch4bnh";
           };
           doCheck = false;
         };
         neotest-jest = pkgs.vimUtils.buildVimPlugin {
           name = "neotest-jest";
-          version = "unstable-2025-09-24";
+          version = "unstable-2025-12-27";
           src = pkgs.fetchFromGitHub {
             owner = "nvim-neotest";
             repo = "neotest-jest";
-            rev = "2f657403aabab7d68eaa2cb9181dc4bb7fdd8a08";
-            sha256 = "0kvys4bcv1zwybc4qcym18qlz1s0pj8c545nzychwp7m839yzqps";
+            rev = "3f0cc2cff1ee05394081805c622dc2551b54d8c4";
+            sha256 = "0w0jj91gjg2jag5rdlqfwzpb6b00gkrqa2hc040jibw0g0dzvq1c";
           };
           doCheck = false;
         };
@@ -75,12 +75,12 @@
         };
         tsc-nvim = pkgs.vimUtils.buildVimPlugin {
           name = "tsc-nvim";
-          version = "unstable-2025-05-25";
+          version = "unstable-2026-01-12";
           src = pkgs.fetchFromGitHub {
             owner = "dmmulroy";
             repo = "tsc.nvim";
-            rev = "8c1b4ec6a48d038a79ced8674cb15e7db6dd8ef0";
-            sha256 = "00irwjlm3r741i06w6qd6pmgqcs5zh1faz2fnqvlzgm7pyb4qz50";
+            rev = "eef9e2a14726c0fd6886acc47cd914c1b3b0f9f0";
+            sha256 = "1ha3wppksi0xh9zlc825n8y1z3zfz08pw186krvsj1m0phahbxsc";
           };
           doCheck = false;
         };
@@ -97,12 +97,12 @@
         };
         opencode-nvim = pkgs.vimUtils.buildVimPlugin {
           name = "opencode-nvim";
-          version = "unstable-2025-10-05";
+          version = "unstable-2026-01-11";
           src = pkgs.fetchFromGitHub {
             owner = "NickvanDyke";
             repo = "opencode.nvim";
-            rev = "0b0a96f2538e5b102f5ede93a3fe326df549f143";
-            sha256 = "1cj19aldz18z9fjp9wqdd6kvpyiaq9ihknzkvi3cff3jgpj9cmi3";
+            rev = "cb8660e08fb6ecc248f267ff0f45d5be5075c586";
+            sha256 = "1wdldzclakhk2k3niwhmd248aah4z74b15ld6psz5mdb1hzd1y3z";
           };
           doCheck = false;
         };

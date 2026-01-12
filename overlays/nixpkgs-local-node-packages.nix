@@ -3,8 +3,8 @@
   nixpkgsLocalNodePackages = final: _prev: {
     localNodePackages = import ./node-packages/default.nix (
       let
-        system = final.system;
-        pkgs = import inputs.nixpkgs { inherit system; };
+        system = final.stdenv.hostPlatform.system;
+        pkgs = import inputs.nixpkgs { localSystem = system; };
         nodejs = pkgs.nodejs_22;
       in
       {
