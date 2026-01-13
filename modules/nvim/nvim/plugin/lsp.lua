@@ -16,7 +16,7 @@ end
 vim.opt.signcolumn = 'yes'
 
 local capabilities =
-  require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 vim.lsp.inlay_hint.enable(true)
 
@@ -24,20 +24,20 @@ local lspFormat = function() vim.lsp.buf.format { async = false } end
 
 wk.add {
   -- tries to match default keymaps from https://lsp-zero.netlify.app/v3.x/language-server-configuration.html#default-keybindings
-  { 'K', vim.lsp.buf.hover, desc = 'Hover help' },
-  { 'gd', vim.lsp.buf.definition, desc = 'Go to definition' },
-  { 'gD', vim.lsp.buf.declaration, desc = 'Go to declaration' },
-  { 'gi', vim.lsp.buf.implementation, desc = 'Go to implementation' },
+  { 'K',  vim.lsp.buf.hover,           desc = 'Hover help' },
+  { 'gd', vim.lsp.buf.definition,      desc = 'Go to definition' },
+  { 'gD', vim.lsp.buf.declaration,     desc = 'Go to declaration' },
+  { 'gi', vim.lsp.buf.implementation,  desc = 'Go to implementation' },
   { 'go', vim.lsp.buf.type_definition, desc = 'Go to type definition' },
-  { 'gr', vim.lsp.buf.references, desc = 'Find references' },
-  { 'gs', vim.lsp.buf.signature_help, desc = 'Signature help' },
-  { 'gR', vim.lsp.buf.rename, desc = 'Rename' },
-  { 'g;', lspFormat, desc = 'Format' },
-  { 'ga', vim.lsp.buf.code_action, desc = 'Code actions' },
-  { 'gl', vim.diagnostic.open_float, desc = 'Show diagnostic in floating window' },
-  { '[d', vim.diagnostic.goto_prev, desc = 'Previous diagnostic' },
-  { ']d', vim.diagnostic.goto_next, desc = 'Next diagnostic' },
-  { 'gq', vim.diagnostic.setloclist, desc = 'Diagnostic quicklist' },
+  { 'gr', vim.lsp.buf.references,      desc = 'Find references' },
+  { 'gs', vim.lsp.buf.signature_help,  desc = 'Signature help' },
+  { 'gR', vim.lsp.buf.rename,          desc = 'Rename' },
+  { 'g;', lspFormat,                   desc = 'Format' },
+  { 'ga', vim.lsp.buf.code_action,     desc = 'Code actions' },
+  { 'gl', vim.diagnostic.open_float,   desc = 'Show diagnostic in floating window' },
+  { '[d', vim.diagnostic.goto_prev,    desc = 'Previous diagnostic' },
+  { ']d', vim.diagnostic.goto_next,    desc = 'Next diagnostic' },
+  { 'gq', vim.diagnostic.setloclist,   desc = 'Diagnostic quicklist' },
 
   {
     'ga',
@@ -46,10 +46,10 @@ wk.add {
     mode = 'v',
   },
 
-  { '<leader>m', group = 'LSP' },
+  { '<leader>m',  group = 'LSP' },
   { '<leader>mr', '<cmd>LspRestart<cr>', desc = 'Restart' },
-  { '<leader>mi', '<cmd>LspInfo<cr>', desc = 'Info' },
-  { '<leader>ml', '<cmd>LspLog<cr>', desc = 'Log' },
+  { '<leader>mi', '<cmd>LspInfo<cr>',    desc = 'Info' },
+  { '<leader>ml', '<cmd>LspLog<cr>',     desc = 'Log' },
 }
 
 vim.lsp.config('nil_ls', {
@@ -168,10 +168,8 @@ vim.lsp.config('eslint', {
   filetypes = jsFiletypes,
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      buffer = bufnr,
-      command = 'EslintFixAll',
-    })
+    vim.lsp.config.eslint.on_attach(client, bufnr)
+    vim.api.nvim_create_autocmd('BufWritePre', { buffer = bufnr, command = 'LspEslintFixAll' })
   end,
 })
 vim.lsp.enable 'eslint'
