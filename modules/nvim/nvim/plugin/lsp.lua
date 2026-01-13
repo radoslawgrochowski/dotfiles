@@ -164,11 +164,13 @@ vim.lsp.config('vtsls', {
 })
 vim.lsp.enable 'vtsls'
 
+local base_on_attach = vim.lsp.config.eslint.on_attach
 vim.lsp.config('eslint', {
   filetypes = jsFiletypes,
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    vim.lsp.config.eslint.on_attach(client, bufnr)
+    if not base_on_attach then return end
+    base_on_attach(client, bufnr)
     vim.api.nvim_create_autocmd('BufWritePre', { buffer = bufnr, command = 'LspEslintFixAll' })
   end,
 })
