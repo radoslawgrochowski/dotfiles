@@ -63,8 +63,8 @@ let
       nvim-dap
       nvim-dap-ui
 
-      pkgs.unstable.vimPlugins.snacks-nvim
-      pkgs.unstable.vimPlugins.opencode-nvim
+      snacks-nvim
+      opencode-nvim
     ];
 
   extraPackages = with pkgs; [
@@ -98,8 +98,8 @@ let
 
     imagemagick
 
-    # needed for opencode
-    lsof
+    opencode
+    lsof # needed for opencode.nvim
   ];
 
   luaPaths = # lua
