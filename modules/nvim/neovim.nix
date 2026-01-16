@@ -98,7 +98,6 @@ let
 
     imagemagick
 
-    opencode
     lsof # needed for opencode.nvim
   ];
 
