@@ -75,12 +75,12 @@
         };
         tsc-nvim = pkgs.vimUtils.buildVimPlugin {
           name = "tsc-nvim";
-          version = "unstable-2026-01-12";
+          version = "unstable-2026-01-14";
           src = pkgs.fetchFromGitHub {
             owner = "dmmulroy";
             repo = "tsc.nvim";
-            rev = "eef9e2a14726c0fd6886acc47cd914c1b3b0f9f0";
-            sha256 = "1ha3wppksi0xh9zlc825n8y1z3zfz08pw186krvsj1m0phahbxsc";
+            rev = "e083bcf1e54bc3af7df92b33235efb334e8c782c";
+            sha256 = "0f7as51kc3q3f8x0wv6v6xjdlw35blsnrkhyk2vkblprmryhk3sv";
           };
           doCheck = false;
         };
@@ -97,12 +97,12 @@
         };
         opencode-nvim = pkgs.vimUtils.buildVimPlugin {
           name = "opencode-nvim";
-          version = "unstable-2026-01-11";
+          version = "unstable-2026-01-15";
           src = pkgs.fetchFromGitHub {
             owner = "NickvanDyke";
             repo = "opencode.nvim";
-            rev = "cb8660e08fb6ecc248f267ff0f45d5be5075c586";
-            sha256 = "1wdldzclakhk2k3niwhmd248aah4z74b15ld6psz5mdb1hzd1y3z";
+            rev = "f6a099e2ebc38d3dbc1f8ee5ae103edfe991c353";
+            sha256 = "1h9lws65f4rcv739lmhwkyhwl36ghn8b3smwkmy60qk7g147hml8";
           };
           doCheck = false;
         };
