@@ -1,6 +1,13 @@
 { username, pkgs, ... }:
 let
   nvim-rg = "${pkgs.nvim-rg}/bin/nvim";
+
+  # Wrapper script to ensure opencode runs under fish with proper environment
+  opencode-fish = pkgs.writeScriptBin "opencode-fish" ''
+    #!${pkgs.fish}/bin/fish
+    # Wrapper to ensure fish environment is loaded before running opencode
+    exec opencode $argv
+  '';
 in
 {
   environment.variables = {
@@ -8,7 +15,10 @@ in
     GIT_EDITOR = nvim-rg;
     VISUAL = nvim-rg;
   };
-  users.users."${username}".packages = [ pkgs.nvim-rg ];
+  users.users."${username}".packages = [
+    pkgs.nvim-rg
+    opencode-fish
+  ];
   environment.shellAliases = {
     vimdiff = "${nvim-rg} -d";
     nvim = nvim-rg;

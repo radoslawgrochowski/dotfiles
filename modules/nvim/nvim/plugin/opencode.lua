@@ -15,6 +15,7 @@ wk.add {
 vim.g.opencode_opts = {
   provider = {
     enabled = 'kitty',
+    cmd = 'opencode-fish --port',
     kitty = {
       location = 'tab',
     },
