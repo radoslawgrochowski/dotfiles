@@ -5,8 +5,7 @@ let
   # Wrapper script to ensure opencode runs under fish with proper environment
   opencode-fish = pkgs.writeScriptBin "opencode-fish" ''
     #!${pkgs.fish}/bin/fish
-    # Wrapper to ensure fish environment is loaded before running opencode
-    exec opencode $argv
+    exec direnv exec . opencode $argv
   '';
 in
 {
