@@ -18,4 +18,11 @@ wk.add {
 }
 
 ---@type opencode.Opts
-vim.g.opencode_opts = {}
+vim.g.opencode_opts = {
+  provider = {
+    enabled = 'kitty',
+    kitty = {
+      location = 'tab',
+    },
+  },
+}
