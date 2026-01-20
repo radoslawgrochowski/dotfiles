@@ -5,15 +5,9 @@ local wk = require 'which-key'
 wk.add {
   {
     '<leader>aa',
-    function() opencode.ask '@cursor: ' end,
+    function() opencode.ask '@this: ' end,
     desc = 'Ask opencode',
-    mode = 'n',
-  },
-  {
-    '<leader>aa',
-    function() opencode.ask '@selection: ' end,
-    desc = 'Ask opencode about selection',
-    mode = 'v',
+    mode = { 'n', 'v' },
   },
 }
 
