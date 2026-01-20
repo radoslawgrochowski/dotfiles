@@ -4,7 +4,7 @@
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       git
-      (git-machete.overrideAttrs (old: {
+      (git-machete.overridePythonAttrs (old: {
         doCheck = false; # Skip tests - failing in Nix sandbox on macOS
       }))
       git-lfs
