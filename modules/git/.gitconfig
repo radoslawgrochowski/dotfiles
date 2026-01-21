@@ -29,5 +29,3 @@
   fopo = !git fetch origin master && git pull origin master --no-rebase
   shove = !git commit --no-edit --amend && git push --force-with-lease --force-if-includes
   m = !git machete
-	clone-for-worktrees = "!clone-for-worktrees"
-
