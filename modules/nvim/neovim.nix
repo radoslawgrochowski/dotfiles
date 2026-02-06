@@ -59,7 +59,6 @@ let
       neotest
       neotest-jest
 
-      nvim-nio
       nvim-dap
       nvim-dap-ui
 
