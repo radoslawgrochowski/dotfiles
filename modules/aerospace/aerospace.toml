@@ -63,6 +63,9 @@ cmd-ctrl-alt-shift-l = 'focus --boundaries all-monitors-outer-frame right'
 cmd-ctrl-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 cmd-ctrl-alt-shift-q = 'close'
+cmd-ctrl-alt-shift-t = 'exec-and-forget kitty --single-instance zk new todo --no-input'
+cmd-ctrl-alt-shift-n = 'exec-and-forget kitty --single-instance zk edit'
+cmd-ctrl-alt-shift-enter = 'exec-and-forget kitty --single-instance --directory $HOME'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 cmd-ctrl-alt-shift-m = 'mode modify'
@@ -78,3 +81,6 @@ shift-k = 'move-node-to-monitor --focus-follows-window up'
 shift-l = 'move-node-to-monitor --focus-follows-window right'
 minus = 'resize smart -50'
 equal = 'resize smart +50'
+
+[exec.env-vars]
+    PATH = '/etc/profiles/per-user/radoslaw.grochowski/bin:${PATH}'
