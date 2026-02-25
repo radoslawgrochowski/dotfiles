@@ -3,3 +3,6 @@
 .envrc
 .direnv
 .aider*
+.local/
+*.local
+*.local.*
