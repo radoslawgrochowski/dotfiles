@@ -1,12 +1,14 @@
 { username, pkgs, ... }:
 {
   imports = [
+    ../modules/unfree
     ../modules/direnv
     ../modules/fish
     ../modules/git
     ../modules/kitty
     ../modules/nvim
     ../modules/opencode
+    ../modules/claude
     ../modules/zk
   ];
 

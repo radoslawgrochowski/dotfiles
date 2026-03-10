@@ -5,9 +5,9 @@
     ...
   }:
   {
-    my.unfreePackages = [ "spotify" ];
+    my.unfreePackages = [ "claude-code" ];
     users.users.${username}.packages = [
-      pkgs.spotify
+      pkgs.unstable.claude-code
     ];
   }
 )
