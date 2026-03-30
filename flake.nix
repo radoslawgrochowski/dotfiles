@@ -68,9 +68,7 @@
             }
             ./hosts/macaron
             ./presets/darwin.nix
-            ./modules/custom-ca-cert
-            ./presets/terminal.nix
-            ./modules/spotify
+            ./presets/work.nix
           ];
 
           specialArgs = lib.attrsets.mergeAttrsList [
