@@ -5,5 +5,9 @@
       localSystem = final.stdenv.hostPlatform.system;
       config = final.config;
     };
+    master = import inputs.nixpkgs-master {
+      localSystem = final.stdenv.hostPlatform.system;
+      config = final.config;
+    };
   };
 }
