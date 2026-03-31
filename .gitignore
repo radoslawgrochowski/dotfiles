@@ -4,4 +4,3 @@ result
 .luarc.json
 .aider*
 .env
-.config/wt.toml

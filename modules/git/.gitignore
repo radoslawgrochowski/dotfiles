@@ -6,3 +6,4 @@
 .local/
 *.local
 *.local.*
+.config/wt.toml
