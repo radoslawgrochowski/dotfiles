@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: DeterminateSystems/flake-checker-action@2e32b6dce651e6992cc110d569e0b60746e31b48 # main
+      - uses: DeterminateSystems/flake-checker-action@fd11c504211041399e78bd1027d885160c8ae4c2 # main
       - uses: DeterminateSystems/nix-installer-action@v17
       - uses: cachix/cachix-action@v16
         with:
