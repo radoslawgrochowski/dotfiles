@@ -8,5 +8,6 @@
 
   users.users."${username}".packages = with pkgs; [
     jira-cli-go
+    pkgs.unstable.worktrunk
   ];
 }
