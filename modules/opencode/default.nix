@@ -1,7 +1,7 @@
 { pkgs, username, ... }:
 {
   users.users."${username}".packages = [
-    pkgs.unstable.opencode
+    pkgs.master.opencode
   ];
 
   home-manager.users.${username} = {
