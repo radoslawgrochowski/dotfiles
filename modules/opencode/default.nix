@@ -2,6 +2,7 @@
 {
   users.users."${username}".packages = [
     pkgs.master.opencode
+    pkgs.mcp-nixos
   ];
 
   home-manager.users.${username} = {

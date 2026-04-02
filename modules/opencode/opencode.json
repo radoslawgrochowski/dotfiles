@@ -16,6 +16,11 @@
         "mcr.microsoft.com/playwright/mcp"
       ],
       "enabled": true
+    },
+    "nixos": {
+      "type": "local",
+      "command": ["mcp-nixos"],
+      "enabled": true
     }
   },
   "permission": {
