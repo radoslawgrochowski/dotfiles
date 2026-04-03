@@ -1,4 +1,3 @@
-# TODO: remove my username from hostnames
 {
   description = "radoslawgrochowski workstation configuration";
 
