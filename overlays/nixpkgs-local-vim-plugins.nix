@@ -53,12 +53,12 @@
         };
         opencode-nvim = pkgs.vimUtils.buildVimPlugin {
           name = "opencode-nvim";
-          version = "unstable-2026-02-02";
+          version = "unstable-2026-04-02";
           src = pkgs.fetchFromGitHub {
             owner = "NickvanDyke";
             repo = "opencode.nvim";
-            rev = "632ec5879295a3103fa39742b2e3f0639496c96f";
-            sha256 = "0r0zlcph6gkg1v7n2dmizga5q51d5rv1d1s9vdrm253xljq4cdj7";
+            rev = "fa0a495fa2c229115404cb3c1970578f9c6d2f76";
+            sha256 = "1gwhl6fixg2db8f790lbkx1rkspppypcpldlzlk8a7mvb5j4cn3g";
           };
           doCheck = false;
         };
