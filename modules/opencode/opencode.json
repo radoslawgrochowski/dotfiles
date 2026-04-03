@@ -19,7 +19,7 @@
     },
     "nixos": {
       "type": "local",
-      "command": ["mcp-nixos"],
+      "command": ["docker", "run", "--rm", "-i", "ghcr.io/utensils/mcp-nixos"],
       "enabled": true
     }
   },
