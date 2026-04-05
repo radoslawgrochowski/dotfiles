@@ -18,11 +18,12 @@
 
   users.users."${username}".packages = with pkgs; [
     btop
+    gh
     jc
     jq
     nix-search-cli
     ranger
-    tldr
     ripgrep
+    tldr
   ];
 }
