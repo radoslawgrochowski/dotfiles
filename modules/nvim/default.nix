@@ -6,10 +6,12 @@
 }:
 let
   nvim-rg = "${pkgs.nvim-rg}/bin/nvim";
+  docker-path = pkgs.lib.makeBinPath [ pkgs.docker ];
 
   # Wrapper script to ensure opencode runs under fish with proper environment
-  opencode-fish = pkgs.writeScriptBin "opencode-fish" ''
+  opencode-wrapper = pkgs.writeScriptBin "opencode-wrapper" ''
     #!${config.programs.fish.package}/bin/fish
+    set -gx PATH ${docker-path} $PATH
     exec direnv exec . opencode $argv
   '';
 in
@@ -21,7 +23,7 @@ in
   };
   users.users."${username}".packages = [
     pkgs.nvim-rg
-    opencode-fish
+    opencode-wrapper
   ];
   environment.shellAliases = {
     vimdiff = "${nvim-rg} -d";

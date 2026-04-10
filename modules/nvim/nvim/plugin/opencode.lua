@@ -27,7 +27,7 @@ local function get_opencode_port()
 end
 
 local opencode_port = get_opencode_port()
-local opencode_cmd = ('opencode-fish --port %d'):format(opencode_port)
+local opencode_cmd = ('opencode-wrapper --port %d'):format(opencode_port)
 
 local function disconnect_opencode()
   pcall(function() require('opencode.events').disconnect() end)
