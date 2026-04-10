@@ -1,10 +1,15 @@
-{ username, pkgs, ... }:
+{
+  config,
+  username,
+  pkgs,
+  ...
+}:
 let
   nvim-rg = "${pkgs.nvim-rg}/bin/nvim";
 
   # Wrapper script to ensure opencode runs under fish with proper environment
   opencode-fish = pkgs.writeScriptBin "opencode-fish" ''
-    #!${pkgs.fish}/bin/fish
+    #!${config.programs.fish.package}/bin/fish
     exec direnv exec . opencode $argv
   '';
 in

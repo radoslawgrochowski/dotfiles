@@ -7,11 +7,13 @@ let
     sha256 = "1s8qh9a8yajlfybcsky6rb31f0ihfhapm51531zn4xd0fyzy8dz3";
   };
   tokyoNightFishTheme = (builtins.readFile "${tokyoNight}/extras/fish/tokyonight_night.fish");
+  fish = pkgs.master.fish;
 in
 {
   programs.fish.enable = true;
-  users.users.${username}.shell = pkgs.fish;
-  environment.shells = with pkgs; [ fish ];
+  programs.fish.package = fish;
+  users.users.${username}.shell = fish;
+  environment.shells = [ fish ];
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       fd
@@ -20,6 +22,7 @@ in
 
     programs.fish = {
       enable = true;
+      package = fish;
       plugins = [
         {
           name = "fzf-fish";
