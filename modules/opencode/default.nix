@@ -1,12 +1,20 @@
 { pkgs, username, ... }:
 {
-  users.users."${username}".packages = [
-    pkgs.master.opencode
-    pkgs.mcp-nixos
+  users.users."${username}".packages = with pkgs; [ opencode ];
+  nixpkgs.overlays = [
+    (final: prev: {
+      opencode = (
+        pkgs.symlinkJoin {
+          name = "opencode";
+          buildInputs = [ pkgs.makeWrapper ];
+          paths = [ pkgs.master.opencode ];
+          postBuild = ''
+            wrapProgram "$out/bin/opencode" \
+              --set OPENCODE_CONFIG ${./opencode.json} \
+              --set OPENCODE_TUI_CONFIG ${./tui.json}
+          '';
+        }
+      );
+    })
   ];
-
-  home-manager.users.${username} = {
-    home.file."./.config/opencode/opencode.json".source = ./opencode.json;
-    home.file."./.config/opencode/tui.json".source = ./tui.json;
-  };
 }
