@@ -1,5 +1,7 @@
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
-start-at-login = true 
+
+# this is already handled by nix-darwin
+# start-at-login = true 
 default-root-container-layout = "accordion"
 
 # See https://nikitabobko.github.io/AeroSpace/guide#exec-env-vars
