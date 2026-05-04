@@ -24,6 +24,7 @@ let
       vim-fubitive
       vim-rhubarb
       gitsigns-nvim
+      jiejie-nvim
 
       efmls-configs-nvim
       fidget-nvim
