@@ -18,6 +18,9 @@ let
     user = {
       name = "Radosław Grochowski";
     };
+    ui = {
+      default-command = "log";
+    };
     aliases = {
       "cp-ignored-from-root" = [
         "util"
