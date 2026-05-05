@@ -41,7 +41,7 @@ in
         prev.symlinkJoin {
           name = "jj";
           buildInputs = [ prev.makeWrapper ];
-          paths = [ prev.jujutsu ];
+          paths = [ pkgs.master.jujutsu ];
           postBuild = ''
             wrapProgram "$out/bin/jj" \
               --set JJ_CONFIG ${builtins.concatStringsSep ":" jjConfigPaths}
