@@ -11,7 +11,7 @@ if [ -d "$repoPath" ]; then
   repoDir="$(cd "$repoPath" && pwd -P)"
 elif [ -f "$repoPath" ]; then
   repoDir="$(<"$repoPath")"
-  repoDir="$(cd "$repoDir" && pwd -P)"
+  repoDir="$(cd "$(dirname "$repoPath")" && cd "$repoDir" && pwd -P)"
 else
   printf 'Could not resolve jj repo path from %s\n' "$repoPath" >&2
   exit 2

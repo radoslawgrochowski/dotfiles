@@ -26,7 +26,7 @@ let
         "util"
         "exec"
         "--"
-        copyIgnoredFromRoot
+        (pkgs.lib.getExe copyIgnoredFromRoot)
       ];
     };
   };
