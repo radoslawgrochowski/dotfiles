@@ -25,7 +25,7 @@ let
       vim-rhubarb
       gitsigns-nvim
       jiejie-nvim
-      hunk-nvim
+      jj-diffconflicts
 
       efmls-configs-nvim
       fidget-nvim

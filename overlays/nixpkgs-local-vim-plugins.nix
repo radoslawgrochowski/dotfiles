@@ -73,6 +73,17 @@
           };
           doCheck = false;
         };
+        jj-diffconflicts = pkgs.vimUtils.buildVimPlugin {
+          name = "jj-diffconflicts";
+          version = "unstable-2026-03-22";
+          src = pkgs.fetchFromGitHub {
+            owner = "rafikdraoui";
+            repo = "jj-diffconflicts";
+            rev = "58163ae8fe7646179dfd7741206dd9a2b4cdadc0";
+            sha256 = "1gbvq4yx82rz3aqldrsnyjmlskznfxbnyc1axlzyh67d9siwwch8";
+          };
+          doCheck = false;
+        };
       }
     );
   };

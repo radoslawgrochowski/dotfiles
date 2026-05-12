@@ -3,8 +3,8 @@ let
   tokyoNight = pkgs.fetchFromGitHub {
     owner = "folke";
     repo = "tokyonight.nvim";
-    rev = "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd";
-    sha256 = "1s8qh9a8yajlfybcsky6rb31f0ihfhapm51531zn4xd0fyzy8dz3";
+    rev = "cdc07ac78467a233fd62c493de29a17e0cf2b2b6";
+    sha256 = "0kc1l1i7d8fsgq1snpzxjdmp4lp7h6mccp83zzn1w35vwxd93n3b";
   };
   tokyoNightFishTheme = (builtins.readFile "${tokyoNight}/extras/fish/tokyonight_night.fish");
   fish = pkgs.master.fish;
