@@ -8,7 +8,7 @@ in
 {
   security.pki.installCACerts = true;
 
-  system.activationScripts.localCaBundle.text = ''
+  system.activationScripts.extraActivation.text = ''
     set -euo pipefail
 
     ${pkgs.coreutils}/bin/install -d -m 0755 /etc/ssl/certs
