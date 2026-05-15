@@ -43,6 +43,10 @@ let
         (pkgs.lib.getExe copyIgnoredFromRoot)
       ];
     };
+    remotes.origin = {
+      auto-track-bookmarks = "rg/*";
+      auto-track-created-bookmarks = "*";
+    };
   };
 
   baseConfigDir = "${config.users.users.${username}.home}.config/jj";
