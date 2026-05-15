@@ -36,72 +36,20 @@
     }:
     let
       inherit (self) outputs inputs;
-      lib = nixpkgs.lib;
-      commonModules = [
-        (
-          { overlays, ... }:
-          {
-            nixpkgs.overlays = overlays;
-          }
-        )
-      ];
-      neovim-overlay = import ./modules/nvim/overlay.nix { inherit inputs; };
-      overlays = (lib.attrValues outputs.overlays) ++ [ neovim-overlay ];
-      commonSpecialArgs = {
-        inherit outputs;
-        inherit inputs;
-        inherit overlays;
-        username = "radoslawgrochowski";
-      };
+      hosts = import ./hosts { inherit outputs inputs; };
     in
     {
-      darwinConfigurations = {
-        macaron = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          modules = commonModules ++ [
-            {
-              nixpkgs.hostPlatform = "aarch64-darwin";
-              nix.settings.system = "aarch64-darwin";
-              nix.settings.extra-platforms = [
-                "aarch64-darwin"
-                "x86_64-darwin"
-              ];
-            }
-            ./hosts/macaron
-            ./presets/darwin.nix
-            ./presets/work.nix
-          ];
-
-          specialArgs = lib.attrsets.mergeAttrsList [
-            commonSpecialArgs
-            { username = "radoslaw.grochowski"; }
-          ];
-        };
-      };
-
+      darwinConfigurations = hosts.darwinConfigurations;
+      nixosConfigurations = hosts.nixosConfigurations;
       overlays = (import ./overlays { inherit inputs; });
-
-      # Expose the package set, including overlays, for convenience.
-      darwinPackages = builtins.mapAttrs (hostname: config: config.pkgs) self.darwinConfigurations;
-
-      nixosConfigurations = {
-        radoslawgrochowski-wsl = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = commonModules ++ [
-            ./hosts/wsl
-            ./presets/wsl.nix
-            ./modules/docker
-            ./modules/video
-            ./modules/tailscale
-          ];
-          specialArgs = commonSpecialArgs;
-        };
-      };
     }
     // flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = import nixpkgs { inherit system overlays; };
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = (nixpkgs.lib.attrValues outputs.overlays) ++ import ./modules/nvim/overlays.nix;
+        };
       in
       {
         devShells.default = pkgs.mkShell {
