@@ -21,14 +21,18 @@ in
     GIT_EDITOR = nvim-rg;
     VISUAL = nvim-rg;
   };
+
   users.users."${username}".packages = [
     pkgs.nvim-rg
     opencode-wrapper
   ];
+
   environment.shellAliases = {
     vimdiff = "${nvim-rg} -d";
     nvim = nvim-rg;
     vim = nvim-rg;
     vi = nvim-rg;
   };
+
+  nixpkgs.overlays = import ./overlays.nix;
 }
