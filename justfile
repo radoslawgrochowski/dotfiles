@@ -15,15 +15,9 @@ check *args:
 update-node-packages:
   (cd ./overlays/node-packages/; node2nix -i node-packages.json)
 
-darwin-switch: 
-  sudo darwin-rebuild switch --flake .#macaron
-
-nixos-switch:
-  sudo nixos-rebuild switch --flake .
-
 switch:
  @if [ "{{os}}" == "Darwin" ]; then \
-   just darwin-switch; \
+  sudo darwin-rebuild switch --flake .#macaron; \
  else \
-   just nixos-switch; \
+  sudo nixos-rebuild switch --flake .; \
  fi
