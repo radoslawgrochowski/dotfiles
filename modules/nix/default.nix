@@ -12,10 +12,7 @@
           "nix-command"
           "flakes"
         ];
-        trusted-users = [
-          "@admin"
-          "${username}"
-        ];
+        trusted-users = [ username ];
         substituters = [
           "https://cache.nixos.org"
           "https://radoslawgrochowski-dotfiles.cachix.org"
