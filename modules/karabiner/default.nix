@@ -75,7 +75,7 @@ in
       };
     };
     home.file.karabiner-darwin = {
-      target = ".config/karabiner/assets/complex_modifications/dariwn.json";
+      target = ".config/karabiner/assets/complex_modifications/darwin.json";
       text = builtins.toJSON {
         title = "my chrome rules";
         rules = [
