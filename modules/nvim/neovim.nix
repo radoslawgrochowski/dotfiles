@@ -96,6 +96,7 @@ let
     ripgrep
     fd
     vscode-js-debug
+    update-nix-fetchgit
 
     imagemagick
 

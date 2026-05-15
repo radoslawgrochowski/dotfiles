@@ -9,12 +9,12 @@
       {
         nvim-cmp = pkgs.vimUtils.buildVimPlugin {
           name = "nvim-cmp";
-          version = "unstable-2026-01-23";
+          version = "unstable-2026-03-25";
           src = pkgs.fetchFromGitHub {
             owner = "hrsh7th";
             repo = "nvim-cmp";
-            rev = "da88697d7f45d16852c6b2769dc52387d1ddc45f";
-            sha256 = "056nlgqa62v0nbfazw4r46ccvhclxjcaav5hmyk9x6fmrsj3qfgy";
+            rev = "a1d504892f2bc56c2e79b65c6faded2fd21f3eca";
+            sha256 = "0p2hr29k8cargnzrfnlfs2rnhyvxs83509n6992chani6bqcqdxv";
           };
           doCheck = false;
         };
@@ -53,12 +53,12 @@
         };
         opencode-nvim = pkgs.vimUtils.buildVimPlugin {
           name = "opencode-nvim";
-          version = "unstable-2026-04-02";
+          version = "unstable-2026-05-11";
           src = pkgs.fetchFromGitHub {
             owner = "NickvanDyke";
             repo = "opencode.nvim";
-            rev = "fa0a495fa2c229115404cb3c1970578f9c6d2f76";
-            sha256 = "1gwhl6fixg2db8f790lbkx1rkspppypcpldlzlk8a7mvb5j4cn3g";
+            rev = "a89f9b90e2709f7350743bf2d38e80bc4fd5379d";
+            sha256 = "1cgwm1ld1gx5y5lb6x9808zyb84kjsd3yjx336hvh1j8xbr84mbl";
           };
           doCheck = false;
         };
