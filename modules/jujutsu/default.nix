@@ -21,6 +21,20 @@ let
     ui = {
       default-command = "log";
     };
+    merge-tools.diffconflicts = {
+      program = "nvim";
+      merge-args = [
+        "-c"
+        "let g:jj_diffconflicts_marker_length=$marker_length"
+        "-c"
+        "JJDiffConflicts!"
+        "$output"
+        "$base"
+        "$left"
+        "$right"
+      ];
+      merge-tool-edits-conflict-markers = true;
+    };
     aliases = {
       "cp-ignored-from-root" = [
         "util"
