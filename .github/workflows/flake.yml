@@ -42,5 +42,4 @@ jobs:
         with:
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           name: radoslawgrochowski-dotfiles
-      - run: sudo touch /etc/nix/ca_cert.pem
       - run: nix build ${{ matrix.output }} -L --show-trace --accept-flake-config

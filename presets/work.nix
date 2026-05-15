@@ -2,7 +2,7 @@
 {
   imports = [
     ./terminal.nix
-    ../modules/custom-ca-cert
+    ../modules/local-ca-cert
     ../modules/spotify
   ];
 
