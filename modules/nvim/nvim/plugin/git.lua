@@ -1,10 +1,7 @@
--- this is needed for `:GBrowse` to work
--- TODO: make this work on *nix
-vim.api.nvim_create_user_command(
-  'Browse',
-  function(opts) vim.fn.system { 'open', opts.fargs[1] } end,
-  { nargs = 1 }
-)
+vim.api.nvim_create_user_command('Browse', function(opts)
+  local _, err = vim.ui.open(opts.fargs[1])
+  if err then vim.notify(err, vim.log.levels.ERROR, { title = 'Browse' }) end
+end, { nargs = 1 })
 
 local wk = require 'which-key'
 
@@ -17,28 +14,28 @@ gitsigns.setup {
 }
 
 wk.add {
-  { '<leader>g', group = 'Git' },
-  { '<leader>gg', '<cmd>G<cr>', desc = 'Status' },
-  { '<leader>ga', '<cmd>G blame<cr>', desc = 'Blame' },
+  { '<leader>g',  group = 'Git' },
+  { '<leader>gg', '<cmd>G<cr>',                desc = 'Status' },
+  { '<leader>ga', '<cmd>G blame<cr>',          desc = 'Blame' },
   { '<leader>gA', '<cmd>G blame -C -C -C<cr>', desc = 'Blame (deep)' },
-  { '<leader>gB', '<cmd>GBrowse<cr>', desc = 'Browse' },
-  { '<leader>gd', '<cmd>Gvdiff HEAD~<cr>', desc = 'Diff versus HEAD' },
+  { '<leader>gB', '<cmd>GBrowse<cr>',          desc = 'Browse' },
+  { '<leader>gd', '<cmd>Gvdiff HEAD~<cr>',     desc = 'Diff versus HEAD' },
   {
     '<leader>gD',
     '<cmd>Gvdiff origin/master<cr>',
     desc = 'Diff versus master',
   },
 
-  { '<leader>gh', group = 'Hunks' },
-  { '<leader>ghs', gitsigns.stage_hunk, desc = 'Stage hunk' },
-  { '<leader>ghr', gitsigns.reset_hunk, desc = 'Reset hunk' },
-  { '<leader>ghS', gitsigns.stage_buffer, desc = 'Stage buffer' },
-  { '<leader>ghu', gitsigns.undo_stage_hunk, desc = 'Undo stage hunk' },
-  { '<leader>ghR', gitsigns.reset_buffer, desc = 'Reset buffer' },
-  { '<leader>ghp', gitsigns.preview_hunk, desc = 'Preview hunk' },
+  { '<leader>gh',  group = 'Hunks' },
+  { '<leader>ghs', gitsigns.stage_hunk,                                desc = 'Stage hunk' },
+  { '<leader>ghr', gitsigns.reset_hunk,                                desc = 'Reset hunk' },
+  { '<leader>ghS', gitsigns.stage_buffer,                              desc = 'Stage buffer' },
+  { '<leader>ghu', gitsigns.undo_stage_hunk,                           desc = 'Undo stage hunk' },
+  { '<leader>ghR', gitsigns.reset_buffer,                              desc = 'Reset buffer' },
+  { '<leader>ghp', gitsigns.preview_hunk,                              desc = 'Preview hunk' },
   { '<leader>ghb', function() gitsigns.blame_line { full = true } end, desc = 'Blame line' },
-  { '<leader>ghd', gitsigns.diffthis, desc = 'Diff this' },
-  { '<leader>ghD', function() gitsigns.diffthis '~' end, desc = 'Diff this' },
+  { '<leader>ghd', gitsigns.diffthis,                                  desc = 'Diff this' },
+  { '<leader>ghD', function() gitsigns.diffthis '~' end,               desc = 'Diff this' },
   {
     '<leader>gtb',
     gitsigns.toggle_current_line_blame,
