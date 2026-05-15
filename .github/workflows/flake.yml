@@ -3,15 +3,25 @@ name: flake
 on:
   pull_request:
   push:
-    branches:
-      - master
+    branches: [master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
 
 jobs:
   check-flake:
+    name: check-flake
+    permissions:
+      contents: read
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
       - uses: DeterminateSystems/flake-checker-action@3164002371bc90729c68af0e24d5aacf20d7c9f6 # v12
       - uses: DeterminateSystems/nix-installer-action@ef8a148080ab6020fd15196c2084a2eea5ff2d25 # v22
       - uses: cachix/cachix-action@3ba601ff5bbb07c7220846facfa2cd81eeee15a1 # v16
@@ -22,6 +32,8 @@ jobs:
 
   build-flake:
     needs: check-flake
+    permissions:
+      contents: read
     timeout-minutes: 30
     strategy:
       max-parallel: 1
@@ -37,9 +49,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
       - uses: DeterminateSystems/nix-installer-action@ef8a148080ab6020fd15196c2084a2eea5ff2d25 # v22
       - uses: cachix/cachix-action@3ba601ff5bbb07c7220846facfa2cd81eeee15a1 # v16
         with:
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           name: radoslawgrochowski-dotfiles
-      - run: nix build ${{ matrix.output }} -L --show-trace --accept-flake-config
+      - env:
+          NIX_BUILD_OUTPUT: ${{ matrix.output }}
+        run: nix build "$NIX_BUILD_OUTPUT" -L --show-trace --accept-flake-config

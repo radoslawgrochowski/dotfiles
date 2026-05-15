@@ -106,11 +106,12 @@
       {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
+            fd
             just
+            nixfmt-rfc-style
             node2nix
             update-nix-fetchgit
-            fd
-            nixfmt-rfc-style
+            zizmor
           ];
           shellHook = ''
             # symlink the .luarc.json generated in the overlay
