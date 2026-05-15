@@ -44,7 +44,6 @@ let
       dir-telescope-nvim
 
       tokyonight-nvim
-      telescope-nvim
       render-markdown-nvim
       nvim-colorizer-lua
       image-nvim
