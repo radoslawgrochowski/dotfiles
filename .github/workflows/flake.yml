@@ -2,17 +2,9 @@ name: flake
 
 on:
   pull_request:
-    paths:
-      - "**/*.nix"
-      - ".github/workflows/flake.yml"
-      - "flake.lock"
   push:
     branches:
       - master
-    paths:
-      - "**/*.nix"
-      - ".github/workflows/flake.yml"
-      - "flake.lock"
 
 jobs:
   check-flake:
