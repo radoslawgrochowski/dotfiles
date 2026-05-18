@@ -45,12 +45,19 @@ let
     };
   };
 
+  baseConfigDir = "${config.users.users.${username}.home}.config/jj";
+
   jjConfigPaths = builtins.map builtins.toString [
+    baseConfigDir
     jjConfig
-    "${config.users.users.${username}.home}/.config/jj"
   ];
 in
 {
+  systemd.tmpfiles.rules = [
+    "d ${baseConfigDir} 774 ${username} - - -"
+    "f ${baseConfigDir}/config.toml 774 ${username} - - -"
+  ];
+
   users.users."${username}".packages = with pkgs; [ jujutsu ];
   nixpkgs.overlays = [
     (final: prev: {
