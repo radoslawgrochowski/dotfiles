@@ -7,7 +7,7 @@
         pkgs.symlinkJoin {
           name = "opencode";
           buildInputs = [ pkgs.makeWrapper ];
-          paths = [ pkgs.master.opencode ];
+          paths = [ prev.opencode ];
           postBuild = ''
             wrapProgram "$out/bin/opencode" \
               --set OPENCODE_CONFIG ${./opencode.json} \
