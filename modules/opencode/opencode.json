@@ -24,6 +24,13 @@
       "jj*": "ask"
     }
   },
+  "provider": {
+    "openai": {
+      "options": {
+        "headerTimeout": 120000
+      }
+    }
+  },
   "mcp": {
     "playwright": {
       "type": "local",
