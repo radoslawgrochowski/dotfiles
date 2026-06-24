@@ -43,24 +43,13 @@ with lib;
 let
   # This is the structure of a plugin definition.
   # Each plugin in the `plugins` argument list can also be defined as this attrset
-  defaultPlugin = {
-    plugin = null; # e.g. nvim-lspconfig
-    config = null; # plugin config
-    # If `optional` is set to `false`, the plugin is installed in the 'start' packpath
-    # set to `true`, it is installed in the 'opt' packpath, and can be lazy loaded with
-    # ':packadd! {plugin-name}
-    optional = false;
-    runtime = { };
-  };
-
   externalPackages = extraPackages ++ (optionals withSqlite [ pkgs.sqlite ]);
 
   # Map all plugins to an attrset { plugin = <plugin>; config = <config>; optional = <tf>; ... }
-  normalizedPlugins = map (x: defaultPlugin // (if x ? plugin then x else { plugin = x; })) plugins;
+  normalizedPlugins = map (x: (if x ? plugin then x else { plugin = x; })) plugins;
 
-  # This nixpkgs util function creates an attrset
-  # that pkgs.wrapNeovimUnstable uses to configure the Neovim build.
-  neovimConfig = pkgs.neovimUtils.makeNeovimConfig {
+  # Attrset that pkgs.wrapNeovimUnstable uses to configure the Neovim build.
+  neovimConfig = {
     inherit
       extraPython3Packages
       withPython3
@@ -183,14 +172,7 @@ pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (
   neovimConfig
   // {
     luaRcContent = initLua;
-    wrapperArgs =
-      escapeShellArgs neovimConfig.wrapperArgs
-      + " "
-      + extraMakeWrapperArgs
-      + " "
-      + extraMakeWrapperLuaCArgs
-      + " "
-      + extraMakeWrapperLuaArgs;
+    wrapperArgs = extraMakeWrapperArgs + " " + extraMakeWrapperLuaCArgs + " " + extraMakeWrapperLuaArgs;
     wrapRc = true;
   }
 )

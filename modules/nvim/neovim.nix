@@ -69,20 +69,20 @@ let
 
   extraPackages = with pkgs; [
     efm-langserver
-    localNodePackages."@vtsls/language-server"
-    localNodePackages."@mdx-js/language-server"
-    localNodePackages."@tailwindcss/language-server"
-    localNodePackages."@astrojs/language-server"
-    localNodePackages."vscode-langservers-extracted"
+    astro-language-server
+    mdx-language-server
+    tailwindcss-language-server
+    vtsls
+    vscode-langservers-extracted
 
     harper
     lua-language-server
     nil
-    nodePackages.bash-language-server
-    nodePackages.prettier
-    nodePackages.typescript
-    nodePackages.typescript-language-server
-    nodePackages.yaml-language-server
+    bash-language-server
+    prettier
+    typescript
+    typescript-language-server
+    yaml-language-server
     shellcheck
     shfmt
     stylua

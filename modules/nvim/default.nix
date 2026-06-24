@@ -16,6 +16,11 @@ let
   '';
 in
 {
+  my.unfreePackages = [
+    "vim-fubitive"
+    "nvim-vtsls"
+  ];
+
   environment.variables = {
     EDITOR = nvim-rg;
     GIT_EDITOR = nvim-rg;
