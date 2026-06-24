@@ -24,6 +24,8 @@ in
           ../../modules/aerospace
           ../../modules/karabiner
           ../../modules/claude
+          ../../modules/docker
+          ../../modules/locale
           ../../modules/direnv
           ../../modules/fish
           ../../modules/git
@@ -33,11 +35,11 @@ in
           ../../modules/opencode
           ../../modules/unfree
           ../../modules/zk
-          ../../modules/local-ca-cert
           ../../modules/spotify
         ];
 
         users.users."${username}" = {
+          uid = 502;
           name = username;
           home = "/Users/${username}/";
           packages = with pkgs; [
@@ -65,18 +67,26 @@ in
         security.pam.services.sudo_local.touchIdAuth = true;
         system.primaryUser = username;
         system.configurationRevision = outputs.rev or outputs.dirtyRev or null;
-
         system.defaults = {
+          menuExtraClock = {
+            Show24Hour = true;
+            ShowSeconds = false;
+            ShowAMPM = false;
+          };
           dock = {
             autohide = true;
-            autohide-delay = null;
+            autohide-delay = 0.0;
           };
           NSGlobalDomain = {
+            "com.apple.swipescrolldirection" = false;
+            AppleMeasurementUnits = "Centimeters";
+            AppleMetricUnits = 1;
+            ApplePressAndHoldEnabled = false;
+            AppleShowAllExtensions = true;
+            AppleShowAllFiles = true;
+            AppleTemperatureUnit = "Celsius";
             NSAutomaticWindowAnimationsEnabled = false;
             NSWindowResizeTime = 0.001;
-            ApplePressAndHoldEnabled = false;
-            AppleShowAllFiles = true;
-            AppleShowAllExtensions = true;
           };
         };
       }
@@ -88,6 +98,7 @@ in
         "aarch64-darwin"
         "x86_64-darwin"
       ];
+      ids.gids.nixbld = 350;
       system.stateVersion = 4;
     }
   ];
