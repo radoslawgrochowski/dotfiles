@@ -1,4 +1,10 @@
 { pkgs, username, ... }:
+let
+  nixpkgsPin = import (fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/1b31087ac11ac1d2634ed938dd4761a917288938.tar.gz";
+    sha256 = "0zhnqvkl1qw8apxx20g1p2qhbph6q37qgggnp3zqcp9i4hknaymd";
+  }) { inherit (pkgs) system; };
+in
 {
   users.users."${username}".packages = with pkgs; [ opencode ];
   nixpkgs.overlays = [
@@ -7,7 +13,7 @@
         pkgs.symlinkJoin {
           name = "opencode";
           buildInputs = [ pkgs.makeWrapper ];
-          paths = [ pkgs.unstable.opencode ];
+          paths = [ nixpkgsPin.opencode ];
           postBuild = ''
             wrapProgram "$out/bin/opencode" \
               --set OPENCODE_CONFIG ${./opencode.json} \
