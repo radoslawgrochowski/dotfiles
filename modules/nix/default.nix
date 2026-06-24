@@ -12,7 +12,8 @@
           "nix-command"
           "flakes"
         ];
-        trusted-users = [ username ];
+        trusted-users = [ username "root" "@admin" ];
+        accept-flake-config = true;
         substituters = [
           "https://cache.nixos.org"
           "https://radoslawgrochowski-dotfiles.cachix.org"
