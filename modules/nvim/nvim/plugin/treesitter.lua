@@ -1,15 +1,12 @@
-require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true,
-  },
-  context_commentstring = {
-    enable = true,
-  },
-  sync_install = false,
-  auto_install = false,
-}
+require('nvim-treesitter').setup {}
 
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
+
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldlevel = 999
 vim.opt.foldmethod = 'expr'
 
