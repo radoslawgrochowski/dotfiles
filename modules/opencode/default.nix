@@ -6,14 +6,16 @@ let
   }) { localSystem = pkgs.stdenv.hostPlatform.system; };
 in
 {
-  users.users."${username}".packages = with pkgs; [ opencode ];
+  users.users."${username}".packages = [ pkgs.opencode ];
   nixpkgs.overlays = [
     (final: prev: {
       opencode = (
         pkgs.symlinkJoin {
           name = "opencode";
           buildInputs = [ pkgs.makeWrapper ];
-          paths = [ nixpkgsPin.opencode ];
+          paths = [
+            (if pkgs.stdenv.hostPlatform.isLinux then nixpkgsPin.opencode else pkgs.unstable.opencode)
+          ];
           postBuild = ''
             wrapProgram "$out/bin/opencode" \
               --set OPENCODE_CONFIG ${./opencode.json} \
