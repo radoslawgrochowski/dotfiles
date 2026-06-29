@@ -53,7 +53,10 @@
       "jj sparse list": "allow",
       "jj sparse list *": "allow",
       "jj op log": "allow",
-      "jj op log *": "allow"
+      "jj op log *": "allow",
+      "gcloud storage ls": "allow",
+      "gcloud storage ls *": "allow",
+      "gcloud storage cat *": "allow"
     }
   },
   "agent": {
@@ -110,7 +113,10 @@
           "jj sparse list": "allow",
           "jj sparse list *": "allow",
           "jj op log": "allow",
-          "jj op log *": "allow"
+          "jj op log *": "allow",
+          "gcloud storage ls": "allow",
+          "gcloud storage ls *": "allow",
+          "gcloud storage cat *": "allow"
         }
       }
     }
