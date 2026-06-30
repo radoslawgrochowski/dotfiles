@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, username, ... }:
 {
   programs.direnv = {
     enable = true;
@@ -7,8 +7,16 @@
     nix-direnv = {
       enable = true;
     };
-    # TODO: Update and enable shell integrations:
-    # enableBashIntegration = true;
-    # enableFishIntegration = true;
+
+    # disable shell integrations in favour of direnv-instant ones
+    enableBashIntegration = false;
+    enableFishIntegration = false;
+    enableZshIntegration = false;
+  };
+
+  home-manager.users.${username} = {
+    imports = [ inputs.direnv-instant.homeModules.direnv-instant ];
+
+    programs.direnv-instant.enable = true;
   };
 }
