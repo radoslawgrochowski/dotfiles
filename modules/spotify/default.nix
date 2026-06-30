@@ -1,12 +1,8 @@
 (
-  {
-    pkgs,
-    username,
-    ...
-  }:
+  { pkgs, ... }:
   {
     my.unfreePackages = [ "spotify" ];
-    users.users.${username}.packages = [
+    environment.systemPackages = [
       pkgs.spotify
     ];
   }

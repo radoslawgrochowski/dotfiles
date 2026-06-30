@@ -17,6 +17,7 @@ in
       {
         imports = [
           inputs.nix-index-database.darwinModules.nix-index
+          inputs.mac-app-util.darwinModules.default
           inputs.home-manager.darwinModules.home-manager
           ../../modules/fonts
           ../../modules/nix
