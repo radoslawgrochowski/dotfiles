@@ -1,5 +1,8 @@
 { pkgs, username, ... }:
 let
+  opencodeConfig = (pkgs.formats.json { }).generate "opencode.json" (
+    import ./config.nix { inherit (pkgs) lib; }
+  );
   nixpkgsPin = import (fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/1b31087ac11ac1d2634ed938dd4761a917288938.tar.gz";
     sha256 = "0zhnqvkl1qw8apxx20g1p2qhbph6q37qgggnp3zqcp9i4hknaymd";
@@ -18,7 +21,7 @@ in
           ];
           postBuild = ''
             wrapProgram "$out/bin/opencode" \
-              --set OPENCODE_CONFIG ${./opencode.json} \
+              --set OPENCODE_CONFIG ${opencodeConfig} \
               --set OPENCODE_TUI_CONFIG ${./tui.json}
           '';
         }
