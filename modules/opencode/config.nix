@@ -49,7 +49,17 @@ let
     "gcloud storage cat"
   ];
 
-  readOnlyBashPermissions = allowRules (jjReadOnly ++ gcloudReadOnly);
+  jiraReadOnly = lib.concatMap withWildcard [
+    "jira issue view"
+  ];
+
+  agentSkillScripts = [
+    "bash \"$HOME/.agents/skills/*/scripts/*.sh\""
+  ];
+
+  readOnlyBashPermissions = allowRules (
+    jjReadOnly ++ gcloudReadOnly ++ jiraReadOnly ++ agentSkillScripts
+  );
 in
 {
   "$schema" = "https://opencode.ai/config.json";
