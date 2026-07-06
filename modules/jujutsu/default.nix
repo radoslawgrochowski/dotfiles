@@ -21,6 +21,8 @@ let
     ui = {
       default-command = "log";
     };
+    # Compatibility for jiejie.nvim with jj 0.43+, which removed git_head().
+    template-aliases.git_head = ''self.contained_in("first_parent(@)")'';
     merge-tools.diffconflicts = {
       program = "nvim";
       merge-args = [

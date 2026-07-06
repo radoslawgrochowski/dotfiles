@@ -64,12 +64,12 @@
         };
         jiejie-nvim = pkgs.vimUtils.buildVimPlugin {
           name = "jiejie-nvim";
-          version = "unstable-2026-04-17";
+          version = "unstable-2026-06-13";
           src = pkgs.fetchFromGitHub {
             owner = "jceb";
             repo = "jiejie.nvim";
-            rev = "6a3a3598e6e015cfd3f1f447c257314972030e1b";
-            sha256 = "0lakfnfjm8a654vqmycprki2p9a6921p9gwlgjx108m52zbrb5my";
+            rev = "e79982899358a15b535dcc901a61b331ebb3e922";
+            sha256 = "1fizn2rykf89plxsn7h6gpnf72y04gw0v4p5k893pcwvn05546j9";
           };
           doCheck = false;
         };
