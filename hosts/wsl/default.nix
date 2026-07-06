@@ -48,6 +48,7 @@ in
             gh
             jc
             jq
+            yq-go
             nix-search-cli
             ranger
             ripgrep
