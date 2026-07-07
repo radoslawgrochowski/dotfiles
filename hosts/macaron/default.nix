@@ -25,6 +25,7 @@ in
           ../../modules/aerospace
           ../../modules/karabiner
           ../../modules/claude
+          ../../modules/colima
           ../../modules/docker
           ../../modules/locale
           ../../modules/direnv
