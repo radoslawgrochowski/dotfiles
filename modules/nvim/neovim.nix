@@ -79,7 +79,7 @@ let
     lua-language-server
     nil
     bash-language-server
-    prettier
+    pkgs.unstable.prettier
     typescript
     typescript-language-server
     yaml-language-server
