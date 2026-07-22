@@ -63,6 +63,9 @@ let
 in
 {
   "$schema" = "https://opencode.ai/config.json";
+  instructions = [
+    "AGENTS.local.md"
+  ];
   autoupdate = false;
   share = "disabled";
 
