@@ -1,0 +1,45 @@
+name: update-nix-fetchers
+
+on:
+  schedule:
+    - cron: "0 3 * * 5"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  update:
+    name: update-nix-fetchers
+    permissions:
+      contents: write
+      pull-requests: write
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: true
+      - uses: DeterminateSystems/nix-installer-action@ef8a148080ab6020fd15196c2084a2eea5ff2d25 # v22
+      - uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71 # v17
+        with:
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          name: radoslawgrochowski-dotfiles
+      - run: nix develop -c just fetchgit
+      - run: nix flake check --show-trace
+      - if: success()
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          branch: chore/update-nix-fetchers
+          commit-message: "chore: update nix fetchers"
+          title: "chore: update nix fetchers"
+          body: |
+            Ran `update-nix-fetchgit` across `.nix` files via `just fetchgit`.
+
+            Bumps `rev` and `sha256` for `fetchFromGitHub` blocks, including the vim plugins overlay (`overlays/nixpkgs-local-vim-plugins.nix`).
+
+            Gated by `nix flake check --show-trace`.
