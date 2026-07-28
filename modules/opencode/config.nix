@@ -53,12 +53,19 @@ let
     "jira issue view"
   ];
 
+  utilityReadOnly = lib.concatMap withWildcard [
+    "rg"
+    "echo"
+    "head"
+    "tail"
+  ];
+
   agentSkillScripts = [
     "bash \"$HOME/.agents/skills/*/scripts/*.sh\""
   ];
 
   readOnlyBashPermissions = allowRules (
-    jjReadOnly ++ gcloudReadOnly ++ jiraReadOnly ++ agentSkillScripts
+    jjReadOnly ++ gcloudReadOnly ++ jiraReadOnly ++ utilityReadOnly ++ agentSkillScripts
   );
 in
 {
