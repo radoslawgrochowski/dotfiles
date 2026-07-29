@@ -58,6 +58,7 @@ let
     "echo"
     "head"
     "tail"
+    "jq"
   ];
 
   agentSkillScripts = [
