@@ -54,11 +54,12 @@ let
   ];
 
   utilityReadOnly = lib.concatMap withWildcard [
-    "rg"
     "echo"
+    "fd"
     "head"
-    "tail"
     "jq"
+    "rg"
+    "tail"
   ];
 
   agentSkillScripts = [
