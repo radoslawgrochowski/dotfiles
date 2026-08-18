@@ -5,13 +5,27 @@
   ...
 }:
 let
-  copyIgnoredFromRoot = pkgs.writeShellApplication {
-    name = "jj-copy-ignored-from-root";
+  workspaceSibling = pkgs.writeShellApplication {
+    name = "jj-workspace-sibling";
     runtimeInputs = [
+      pkgs.coreutils
+      pkgs.direnv
       pkgs.git
+      pkgs.jujutsu
       pkgs.rsync
     ];
-    text = builtins.readFile ./jj-copy-ignored-from-root.sh;
+    text = builtins.readFile ./jj-workspace-sibling.sh;
+  };
+
+  workspaceShell = pkgs.writeShellApplication {
+    name = "jjws";
+    runtimeInputs = [ workspaceSibling ];
+    text = ''
+      workspacePath="$(jj-workspace-sibling --path "$@")"
+      jj-workspace-sibling "$@"
+      cd "$workspacePath"
+      exec "''${SHELL:-${pkgs.bashInteractive}/bin/bash}"
+    '';
   };
 
   jjConfig = (pkgs.formats.toml { }).generate "jj-config.toml" {
@@ -37,14 +51,6 @@ let
       ];
       merge-tool-edits-conflict-markers = true;
     };
-    aliases = {
-      "cp-ignored-from-root" = [
-        "util"
-        "exec"
-        "--"
-        (pkgs.lib.getExe copyIgnoredFromRoot)
-      ];
-    };
     remotes.origin = {
       auto-track-bookmarks = "rg/*";
       auto-track-created-bookmarks = "*";
@@ -59,7 +65,7 @@ let
   ];
 in
 {
-  users.users."${username}".packages = with pkgs; [ jujutsu ];
+  users.users."${username}".packages = with pkgs; [ jujutsu workspaceShell ];
   nixpkgs.overlays = [
     (final: prev: {
       jujutsu = (
