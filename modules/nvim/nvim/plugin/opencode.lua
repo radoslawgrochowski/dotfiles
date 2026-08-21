@@ -36,7 +36,7 @@ local function kitty_exec(args)
   return vim.trim(output), vim.v.shell_error
 end
 
-local function start_kitty_server()
+local function start_kitty_server(continue_session)
   local launch_cmd = {
     'launch',
     '--cwd=current',
@@ -53,6 +53,8 @@ local function start_kitty_server()
   for arg in opencode_cmd:gmatch '%S+' do
     table.insert(launch_cmd, arg)
   end
+
+  if continue_session then table.insert(launch_cmd, '--continue') end
 
   local stdout, code = kitty_exec(launch_cmd)
   if code == 0 then return end
@@ -73,10 +75,20 @@ wk.add {
   },
   {
     '<leader>aa',
-    function()
-      opencode.ask '@this: '
-    end,
+    function() opencode.ask '@this: ' end,
     desc = 'Ask opencode',
+    mode = { 'n', 'v' },
+  },
+  {
+    '<leader>ap',
+    function() opencode.prompt '@this: ' end,
+    desc = 'Append to opencode prompt',
+    mode = { 'n', 'v' },
+  },
+  {
+    '<leader>ac',
+    function() start_kitty_server(true) end,
+    desc = 'Continue opencode',
     mode = { 'n', 'v' },
   },
 }
