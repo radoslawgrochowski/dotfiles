@@ -114,5 +114,15 @@ in
       ];
       enabled = true;
     };
+
+    bitbucket = {
+      type = "local";
+      enabled = true;
+      command = [
+        "npx"
+        "-y"
+        "bitbucket-mcp@5.0.6"
+      ];
+    };
   };
 }
