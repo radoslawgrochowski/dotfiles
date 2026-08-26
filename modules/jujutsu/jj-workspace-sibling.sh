@@ -73,12 +73,11 @@ if [ -e "$workspacePath" ] || [ -L "$workspacePath" ]; then
   exit 2
 fi
 
-untrackedPaths="$(mktemp)"
-copyPaths="$(mktemp)"
-trap 'rm -f "$untrackedPaths" "$copyPaths"' EXIT
+localCandidatePaths="$(mktemp)"
+trap 'rm -f "$localCandidatePaths"' EXIT
 
-git -C "$rootWorkspace" ls-files --others --exclude-standard -z > "$untrackedPaths"
-git -C "$rootWorkspace" ls-files --others --ignored --exclude-standard -z >> "$untrackedPaths"
+git -C "$rootWorkspace" ls-files --others --exclude-standard -z > "$localCandidatePaths"
+git -C "$rootWorkspace" ls-files --others --ignored --exclude-standard -z >> "$localCandidatePaths"
 
 matchingLocalPath() {
   matchingPath=""
@@ -147,22 +146,10 @@ fi
 workspaceCreated=true
 
 while IFS= read -r -d '' path; do
-  case "$path" in
-    .jj | .jj/* | .direnv | .direnv/* | .dockercache | .dockercache/* | *.cache/* | .envrc)
-      continue
-      ;;
-  esac
-
   if matchingLocalPath "$path"; then
     linkPath "$rootWorkspace/$matchingPath" "$workspacePath/$matchingPath" false
-  else
-    printf '%s\0' "$path" >> "$copyPaths"
   fi
-done < "$untrackedPaths"
-
-if [ -s "$copyPaths" ]; then
-  rsync -a --info=name,progress2 --from0 --files-from="$copyPaths" "$rootWorkspace/" "$workspacePath/"
-fi
+done < "$localCandidatePaths"
 
 if [ -e "$rootWorkspace/.envrc" ]; then
   linkPath "$rootWorkspace/.envrc" "$workspacePath/.envrc" true

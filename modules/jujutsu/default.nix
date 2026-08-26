@@ -12,7 +12,6 @@ let
       pkgs.direnv
       pkgs.git
       pkgs.jujutsu
-      pkgs.rsync
     ];
     text = builtins.readFile ./jj-workspace-sibling.sh;
   };
