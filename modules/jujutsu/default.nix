@@ -5,7 +5,18 @@
   ...
 }:
 let
-  jujutsu = pkgs.unstable.jujutsu;
+
+  jujutsu = (
+    pkgs.symlinkJoin {
+      name = "jj";
+      buildInputs = [ pkgs.makeWrapper ];
+      paths = [ pkgs.unstable.jujutsu ];
+      postBuild = ''
+        wrapProgram "$out/bin/jj" \
+          --set JJ_CONFIG ${builtins.concatStringsSep ":" jjConfigPaths}
+      '';
+    }
+  );
 
   workspaceSibling = pkgs.writeShellApplication {
     name = "jj-workspace-sibling";
@@ -71,19 +82,5 @@ in
     workspaceShell
   ];
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      jujutsu = (
-        prev.symlinkJoin {
-          name = "jj";
-          buildInputs = [ prev.makeWrapper ];
-          paths = [ jujutsu ];
-          postBuild = ''
-            wrapProgram "$out/bin/jj" \
-              --set JJ_CONFIG ${builtins.concatStringsSep ":" jjConfigPaths}
-          '';
-        }
-      );
-    })
-  ];
+  nixpkgs.overlays = [ (final: prev: { jujutsu = jujutsu; }) ];
 }
