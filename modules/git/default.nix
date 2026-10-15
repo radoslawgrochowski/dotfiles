@@ -4,9 +4,6 @@
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       git
-      (pkgs.unstable.git-machete.overridePythonAttrs (old: {
-        doCheck = false; # Skip tests - failing in Nix sandbox on macOS
-      }))
       git-lfs
     ];
     home.file."./.gitconfig".source = ./.gitconfig;
