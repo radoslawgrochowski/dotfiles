@@ -178,13 +178,6 @@ vim.lsp.enable 'eslint'
 
 local prettier = require 'efmls-configs.formatters.prettier'
 local stylua = require 'efmls-configs.formatters.stylua'
-local credo = {
-  lintCommand = 'mix credo suggest --format=flycheck --read-from-stdin ${INPUT}',
-  lintIgnoreExitCode = true,
-  lintStdin = true,
-  lintFormats = { '%f:%l:%c: %m' },
-  rootMarkers = { 'mix.exs', 'mix.lock' },
-}
 local efmlanguages = {
   lua = { stylua },
   css = { prettier },
@@ -192,7 +185,6 @@ local efmlanguages = {
   json = { prettier },
   markdown = { prettier },
   yaml = { prettier },
-  elixir = { credo },
 }
 vim.lsp.config('efm', {
   capabilities = capabilities,
@@ -252,13 +244,6 @@ vim.lsp.config('astro', {
   capabilities = capabilities,
 })
 vim.lsp.enable 'astro'
-
-vim.lsp.config('elixirls', {
-  cmd = { vim.g.elixir_ls_path },
-  capabilities = capabilities,
-  on_attach = lspformat.on_attach,
-})
-vim.lsp.enable 'elixirls'
 
 vim.lsp.config('rust_analyzer', {
   capabilities = capabilities,

@@ -87,9 +87,6 @@ let
     shfmt
     stylua
 
-    elixir
-    elixir-ls
-
     pkgs.unstable.rust-analyzer
 
     ripgrep
@@ -105,7 +102,6 @@ let
   luaPaths = # lua
     ''
       vim.g.js_debug_path = '${"${pkgs.vscode-js-debug}"}/bin/js-debug';
-      vim.g.elixir_ls_path = '${"${pkgs.elixir-ls}"}/bin/elixir-ls';
     '';
 in
 {
