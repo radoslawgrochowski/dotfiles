@@ -1,6 +1,14 @@
 (
-  { username, inputs, ... }:
   {
+    username,
+    inputs,
+    pkgs,
+    ...
+  }:
+  {
+    environment.systemPackages = [
+      pkgs.unstable.nix-auth
+    ];
     nix = {
       nixPath = [
         "nixpkgs=${inputs.nixpkgs}"
@@ -12,7 +20,11 @@
           "nix-command"
           "flakes"
         ];
-        trusted-users = [ username "root" "@admin" ];
+        trusted-users = [
+          username
+          "root"
+          "@admin"
+        ];
         accept-flake-config = true;
         substituters = [
           "https://cache.nixos.org"

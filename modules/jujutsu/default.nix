@@ -5,13 +5,15 @@
   ...
 }:
 let
+  jujutsu = pkgs.unstable.jujutsu;
+
   workspaceSibling = pkgs.writeShellApplication {
     name = "jj-workspace-sibling";
     runtimeInputs = [
       pkgs.coreutils
       pkgs.direnv
       pkgs.git
-      pkgs.jujutsu
+      jujutsu
     ];
     text = builtins.readFile ./jj-workspace-sibling.sh;
   };
@@ -64,14 +66,18 @@ let
   ];
 in
 {
-  users.users."${username}".packages = with pkgs; [ jujutsu workspaceShell ];
+  users.users."${username}".packages = [
+    jujutsu
+    workspaceShell
+  ];
+
   nixpkgs.overlays = [
     (final: prev: {
       jujutsu = (
         prev.symlinkJoin {
           name = "jj";
           buildInputs = [ prev.makeWrapper ];
-          paths = [ pkgs.master.jujutsu ];
+          paths = [ jujutsu ];
           postBuild = ''
             wrapProgram "$out/bin/jj" \
               --set JJ_CONFIG ${builtins.concatStringsSep ":" jjConfigPaths}
