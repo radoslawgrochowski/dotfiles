@@ -88,10 +88,8 @@ local vtslsSettings = {
 local jsFiletypes = {
   'javascript',
   'javascriptreact',
-  'javascript.jsx',
   'typescript',
   'typescriptreact',
-  'typescript.tsx',
 }
 
 vim.lsp.config('vtsls', {

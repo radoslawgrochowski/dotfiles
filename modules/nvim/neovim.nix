@@ -56,13 +56,6 @@ let
       cmp-path
       cmp-rg
 
-      FixCursorHold-nvim
-      neotest
-      neotest-jest
-
-      nvim-dap
-      nvim-dap-ui
-
       snacks-nvim
       pkgs.unstable.vimPlugins.opencode-nvim
     ];
