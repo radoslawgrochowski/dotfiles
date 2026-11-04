@@ -29,6 +29,7 @@ in
           ../../modules/kitty
           ../../modules/nvim
           ../../modules/opencode
+          ../../modules/tmux
           ../../modules/unfree
           ../../modules/zk
           ../../modules/docker
