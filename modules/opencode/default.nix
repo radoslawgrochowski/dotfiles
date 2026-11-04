@@ -4,8 +4,8 @@ let
     import ./config.nix { inherit (pkgs) lib; }
   );
   nixpkgsPin = import (fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/1b31087ac11ac1d2634ed938dd4761a917288938.tar.gz"; # pin
-    sha256 = "0zhnqvkl1qw8apxx20g1p2qhbph6q37qgggnp3zqcp9i4hknaymd";
+    url = "https://github.com/NixOS/nixpkgs/archive/436e34e0bb929ffed9857ad34d74254ad5101d17.tar.gz"; # pin
+    sha256 = "0dqjxam8xz8fwqsiqgaf8nnwf52wkp4fnc9l9v524s62pnyyizd1";
   }) { localSystem = pkgs.stdenv.hostPlatform.system; };
 in
 {
@@ -16,9 +16,7 @@ in
         pkgs.symlinkJoin {
           name = "opencode";
           buildInputs = [ pkgs.makeWrapper ];
-          paths = [
-            (if pkgs.stdenv.hostPlatform.isLinux then nixpkgsPin.opencode else pkgs.unstable.opencode)
-          ];
+          paths = [ nixpkgsPin.opencode ];
           postBuild = ''
             wrapProgram "$out/bin/opencode" \
               --set OPENCODE_CONFIG ${opencodeConfig} \
