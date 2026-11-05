@@ -12,7 +12,15 @@ let
   opencode-wrapper = pkgs.writeScriptBin "opencode-wrapper" ''
     #!${config.programs.fish.package}/bin/fish
     set -gx PATH ${docker-path} $PATH
-    exec direnv exec . opencode $argv
+    set -l port_args
+    if set -q TMUX TMUX_PANE; and not contains -- --port $argv; and not string match -qr '^--port=' -- $argv
+      set -l session_id (tmux display-message -p -t "$TMUX_PANE" '#{session_id}' | string replace '$' "")
+      if string match -qr '^[0-9]+$' -- $session_id
+        # Keep this port calculation in sync with plugin/opencode.lua.
+        set port_args --port (math "20000 + $session_id % 20000")
+      end
+    end
+    exec direnv exec . opencode $port_args $argv
   '';
 in
 {
@@ -33,6 +41,7 @@ in
   ];
 
   environment.shellAliases = {
+    opencode = "opencode-wrapper";
     vimdiff = "${nvim-rg} -d";
     nvim = nvim-rg;
     vim = nvim-rg;
