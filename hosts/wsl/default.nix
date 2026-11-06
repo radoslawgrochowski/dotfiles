@@ -31,7 +31,6 @@ in
           ../../modules/opencode
           ../../modules/tmux
           ../../modules/unfree
-          ../../modules/zk
           ../../modules/docker
           ../../modules/video
           ../../modules/tailscale
