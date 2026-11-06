@@ -9,12 +9,12 @@
       {
         nvim-cmp = pkgs.vimUtils.buildVimPlugin {
           name = "nvim-cmp";
-          version = "unstable-2026-07-10";
+          version = "unstable-2026-11-05";
           src = pkgs.fetchFromGitHub {
             owner = "hrsh7th";
             repo = "nvim-cmp";
-            rev = "2ffe79f1f021def8dd1fcd81deb16f1bb0d989f3";
-            sha256 = "19z6cgwny9d3i1qzgppc3wxnjjpq4m95k8rnvif03m3gfl0hmpv0";
+            rev = "fe29aba4117227a6df637bc41e4b4fb4e98864a0";
+            sha256 = "03b5s85z728w72wyqpfjgxfmbl20gdgx8i960vwkqh40sx8lp5pm";
           };
           doCheck = false;
         };
