@@ -18,7 +18,7 @@ in
 
       ${tokyoNightTmuxTheme}
 
-      set -g status-right ""
+      set -g status-right "#{prefix_highlight}"
       setw -g window-status-separator "|"
 
       run-shell ${pkgs.tmuxPlugins.prefix-highlight.rtp}
