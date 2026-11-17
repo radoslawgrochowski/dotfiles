@@ -22,8 +22,6 @@ in
       setw -g window-status-separator "|"
 
       run-shell ${pkgs.tmuxPlugins.prefix-highlight.rtp}
-      run-shell ${pkgs.tmuxPlugins.resurrect.rtp}
-      run-shell ${pkgs.tmuxPlugins.continuum.rtp}
     '';
   };
 }
